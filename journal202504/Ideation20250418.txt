@@ -3,6 +3,18 @@ Ideating libraries to rewrite in Rust under PMHLRRY Pradhan Mantri Har Library R
 Go to Rust 
 - A good library for web scraping & crawling, a rewrite of https://github.com/gocolly/colly
 
+Java to Rust
+- Caffeine - A high-performance, in-memory caching library for Java
+- Joda-Time - A date and time library for Java
+- Joda-Money - A money and currency library for Java
+- Resilience4j - Lightweight fault tolerance library
+- JGraphT - Graph theory algorithms and data structures
+- Retrofit - Type-safe HTTP client with annotation-based API
+- AssertJ - Fluent assertions with rich failure messages
+- Jimfs - In-memory file system implementation
+- ModelMapper - Object mapping that doesn't require configuration
+- Failsafe - Circuit breaking and retry policies
+- Thumbnailator - Simple, efficient image manipulation library
 
 
 
