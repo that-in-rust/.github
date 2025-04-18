@@ -1,0 +1,15 @@
+How to think about LLMs for writing code
+
+a. LLMs should be treated as search + assimilation tools, you have to bias them with right keywords
+
+b. LLMs need to iterate to arrive at a more refined output
+
+c. LLMs need to summarize information which will be lost by the sliding context window, hence you constantly create new docs which are in sync with previous docs
+
+d. LLMs need to be asked to reason themselves so they can find their own logical fallacies, like rubber duck debugging
+
+e. LLMs need to be given reference files for patterns to avoid, be it via past bugs or anti patterns to avoid
+
+f. LLMs need to follow TDD because it makes it easier to arrive at the final code - it is an easier prediction problem if you know what will be the requisite final pattern, also helps you avoid mistakes early enough
+
+g. LLM whispering is a cumulative skill so constantly document your prompts, steps & learnings
