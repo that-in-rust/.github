@@ -4,3 +4,4 @@ Please tell us with your 300 IQ and knowledge of the @Web what will be top 10 sm
 ==
 
 Append below each bullet - researching from @Web  a 2 liner feynman technique explanation + research on whether a library in Rust already exists for such a use case, if yes to what scope and github stars
+
