@@ -1,0 +1,76 @@
+# Restore the custom function for git operations
+d202409() {
+    # Check for cargo installation
+    command -v cargo >/dev/null 2>&1 || { echo "🚫 Cargo is not installed!"; return 1; }
+
+    # Store the current directory
+    original_dir=$(pwd)
+
+    # Navigate to the root of the git repository
+    repo_root=$(git rev-parse --show-toplevel 2>/dev/null)
+    if [ -z "$repo_root" ]; then
+        echo "🚫 Not inside a git repository. (Like Thor without Mjolnir!)"
+        return 1
+    fi
+    cd "$repo_root" || return
+
+    # Create a temporary file to hold the summary of results
+    summary_file=$(mktemp)
+    trap 'rm -f "$summary_file"' EXIT
+
+    # Find all Rust projects (containing Cargo.toml) and run `cargo build` then `cargo clean` in each
+    project_count=1
+    while IFS= read -r -d '' cargo_toml
+    do
+        project_dir=$(dirname "$cargo_toml")
+        echo "🛠️ Iron Man is assembling project in $project_dir..."
+        (
+            cd "$project_dir" || return
+            build_result="❌ failed (Loki's mischief!)"
+            clean_result="❌ failed (Thanos snapped!)"
+            
+            if cargo build; then
+                build_result="✅ successful (Hulk smashed it!)"
+            fi
+
+            echo "🧹 Captain America is tidying up the project in $project_dir..."
+            if cargo clean; then
+                clean_result="✅ successful (Spotless as Cap's shield!)"
+            fi
+
+            echo "$project_count. Cargo project: $project_dir" >> "$summary_file"
+            echo "   Build: $build_result" >> "$summary_file"
+            echo "   Clean: $clean_result" >> "$summary_file"
+            echo "" >> "$summary_file"
+        )
+        project_count=$((project_count + 1))
+    done < <(find "$repo_root" -name Cargo.toml -print0)
+
+    # Print the summary of results
+    echo "🌟==================================================🌟"
+    echo "           Avengers Assemble: Mission Report         "
+    echo "🌟==================================================🌟"
+    echo "✅ All Cargo builds and cleans completed. Avengers, good work!"
+    cat "$summary_file"
+
+    # Clean up the temporary file
+    rm "$summary_file"
+
+    # Demarcate the Git operations
+    echo "🌟==================================================🌟"
+    echo "          🚀 Avengers, Assemble for Git Ops! 🚀          "
+    echo "🌟==================================================🌟"
+    # Add all changes, commit with a timestamp, and push
+    echo "📂 Thor is adding changes to git..."
+    git add . || { echo "📂 Thor failed to add changes!"; return 1; }
+    
+    echo "📝 Hawkeye is committing changes..."
+    git commit -m "Avengers Assemble! Placeholder message $(date +'%Y-%m-%d %H:%M:%S')" || { echo "📝 Hawkeye missed the commit!"; return 1; }
+    
+    echo "🚀 Iron Man is pushing changes to the remote repository..."
+    git push || { echo "🚀 Iron Man's thrusters failed!"; return 1; }
+
+    # Return to the original directory
+    cd "$original_dir" || return
+}
+. "$HOME/.cargo/env"
