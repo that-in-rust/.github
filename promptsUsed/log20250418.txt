@@ -1,0 +1,5 @@
+Please tell us with your 300 IQ and knowledge of the @Web what will be top 10 small libraries in Java which can be rewritten in Rust for utility to the Rust ecosystem or to other ecosystems - and they have not been written yet
+
+
+==
+
