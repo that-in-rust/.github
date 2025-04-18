@@ -1,1 +1,5 @@
-    
+Ideating libraries to rewrite in Rust under PMHLRRY Pradhan Mantri Har Library Rust Rewrite Yojna
+
+Go to Rust 
+- A good library for web scraping & crawling, a rewrite of https://github.com/gocolly/colly
+- 
