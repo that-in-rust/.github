@@ -1,0 +1,43 @@
+My Standard Operating Procedure to code using LLMs based on 350+ hrs of using them over the last few months
+
+- Create file named r01_initial_ideation.txt for just noting down all the ideas without any structure
+
+- Create file named r02_domain_analysis.txt which will contain the best of the conversation we have with tab nine or 
+@web
+ in order summarize the best domain knowledge needed for the problem statement
+
+- Create file named r03_prd_v1.txt which will be the first PRD for the user journey at a high level
+
+- Create file named r04_prd_v2.txt which hopefully is a more precise version of the previous PRD based on multiple iterations on the previous file
+
+- Create file named r05_arch_L1.txt which will contain the first attempt at the architecture of the PRD - this file should leverage a relationship of consistency with r04_prd_v2.txt + r02_domain_analysis.txt
+
+PAUSE HERE & NOTICE:
+
+a. LLMs should be treated as search + assimilation tools, you have to bias them with right keywords
+
+b. LLMs need to iterate to arrive at a more refined output
+
+c. LLMs need to summarize information which will lost by the sliding context window, hence you constantly create new docs which are in sync with previous docs
+
+now
+
+- Create file named r06_arch_L2.txt which will contain the second more granular iteration of the architecture of the PRD - this file should leverage a relationship of consistency with r05_arch_L1.txt + r04_prd_v2.txt + r02_domain_analysis.txt
+
+- Create file named r07_explain_architecture.txt which will contain the explanation of the architecture of the PRD - this file should leverage a relationship of consistency with r06_arch_L2.txt + r04_prd_v2.txt + r02_domain_analysis.txt. This file is basically a rubber-duck debugging of the architecture with us as the listener who wants to make sure that the r06_arch_L2.txt is well thought out
+
+- Create a file named r08_TDD_v1.txt which will basically ask the LLM to write a TDD plan to implement the r06_arch_L2.txt in the most minimalistic way possible, it should be consistent with r04_prd_v2.txt & r02_domain_analysis.txt
+
+- If the r08_TDD_v1.txt is good enough, then select each step of the TDD plan as a checkbox - and ask LLM to implement the TDD plan in the most idiomatic bug-free way possible line by line
+
+- Create a file named r09_bug_log.txt + r10_avoid_bugs.txt which will contain meta patterns and best practices discovered during the implementation of the TDD plan
+
+PAUSE HERE & NOTICE:
+
+d. LLMs need to be asked to reason themselves so they can find their own logical fallacies, like rubber duck debugging
+
+e. LLMs need to be given reference files for patterns to avoid, be it via past bugs or anti patterns to avoid
+
+f. LLMs need to follow TDD because it makes it easier to arrive at the final code - it is an easier prediction problem if you know what will be the requisite final pattern, also helps you avoid mistakes early enough
+
+g. LLM whispering is a cumulative skill so constantly document your prompts, steps & learnings
