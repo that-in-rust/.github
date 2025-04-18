@@ -2,4 +2,9 @@ Ideating libraries to rewrite in Rust under PMHLRRY Pradhan Mantri Har Library R
 
 Go to Rust 
 - A good library for web scraping & crawling, a rewrite of https://github.com/gocolly/colly
-- 
+
+
+
+
+JavaScript to Rust
+- A generic library for general helpers like slice, map, channels like lodash which actually enables functional programming patterns in Rust. Think of it as a utility belt that makes common operations more concise. Imagine you're working with collections in Rust - this library would provide simple, chainable methods to transform data. For example, instead of writing verbose iterator chains, you could use intuitive methods like `.map()`, `.filter()`, and `.reduce()` that work consistently across different collection types. The key insight is that while Rust already has powerful iterators, a lodash-like library would provide a more approachable, consistent API that feels familiar to developers coming from JavaScript, making the transition to Rust smoother while maintaining Rust's performance and safety guarantees.
