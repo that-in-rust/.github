@@ -1,0 +1,160 @@
+Ideation Summary
+
+High
+
+Low
+
+
+
+Unclassified
+
+- Go Colly Functionality in Rust called Collymancy
+- Lodash Functionality in Rust called Arithmancy
+- DES / ABM Engine in Rust called TimeTurner (SimCore)
+- Data Visualization Primitives / Grammar in Rust called GraphisRevelio
+- Unified, foundational library for parsing standard formats (URDF/SDF) and integrated kinematics/dynamics in Rust called Mobilicorpus (RoboticsCore)
+
+
+
+Libraries that can be written in Rust with a cool name inspired by Harry Potter:
+
+1.  **Parseltongue** - A comprehensive NLP toolkit for Rust that speaks the language of text processing
+    *   Exists partially: `rsnltk` [https://github.com/dhchenx/rsnltk] uses Python bindings; native ecosystem has specialized crates (`tokenizers`, `rust-bert`) but lacks a single comprehensive foundational one.
+2.  **Marauder's Map** - A unified geospatial library that reveals all locations and paths
+    *   Exists partially: The `GeoRust` ecosystem (`geo-types`, `proj`, `geos`) provides core components, but a single high-level unified library is less established.
+3.  **Arithmancy** - A numerical computing library for scientific and mathematical operations
+    *   Exists: Crates like `ndarray` provide core numerical array capabilities; specialized scientific crates (`nalgebra` for linear algebra) also exist.
+4.  **Accio** - A data fetching and caching library that summons information efficiently
+    *   Exists: Crates like `reqwest` handle fetching; `moka`, `cached`, `lru` provide various caching strategies.
+5.  **Legilimens** - A machine learning library focused on pattern recognition and prediction
+    *   Exists: Several crates like `linfa`, `burn`, and bindings like `tch-rs` (PyTorch) exist, covering different ML aspects from native implementations to inference.
+6.  **Protego** - A security and cryptography library that shields your applications
+    *   Exists: The `RustCrypto` organization provides many crates for various algorithms; `ring` is another popular option for core cryptography.
+7.  **Lumos** - A visualization and charting library that illuminates your data
+    *   Exists: Crates like `plotters` handle plotting; UI libraries like `egui` and `iced` often include charting components, and bindings to JS libraries exist.
+8.  **Reparo** - An error handling and recovery framework that fixes broken states
+    *   Exists: Standard Rust error handling (`Result`, `?`) is robust; crates like `anyhow`, `eyre`, `thiserror` enhance it. Recovery frameworks (like circuit breakers) exist (`failsafe-rs`, `circuit_breaker`).
+9.  **Obliviate** - A memory management and garbage collection optimization library
+    *   Doesn't Exist (as GC): Rust's core ownership/borrowing system avoids the need for traditional GC. Crates for custom allocators or arenas exist but serve different purposes.
+10. **Alohomora** - An authentication and access control library that unlocks secure resources
+    *   Exists: Crates for specific protocols (JWT like `jsonwebtoken`, OAuth clients) and access control models (e.g., `casbin-rs`) are available, often integrated into web frameworks.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=========================
+
+Long Note 1 
+
+Okay, thinking about foundational libraries like `image` (providing core types and operations for image data) or `petgraph` (providing core graph data structures and algorithms), here are a few ideas for similar foundational libraries in domains where Rust might currently lack a single, widely adopted, comprehensive core crate:
+
+1.  **Core NLP Toolkit (`nlp-core` / `text-core`):**
+    * **Analogy:** Similar to how `image` provides `ImageBuffer` and basic operations (resize, crop, filters), or `petgraph` provides `Graph` and traversal/analysis algorithms.
+    * **Concept:** A foundational library for Natural Language Processing that focuses on *data structures and fundamental, model-agnostic algorithms*. This wouldn't be a full ML framework but would provide the building blocks.
+    * **Potential Scope:**
+        * Standardized representations for text corpora, documents, sentences, tokens (including metadata like offsets).
+        * Interfaces and implementations for various tokenization strategies (whitespace, punctuation, subword like BPE/WordPiece - perhaps via feature flags or separate crates).
+        * Implementations for core algorithms like stemming (Porter, Snowball), lemmatization interfaces (requiring dictionaries), n-gram generation, TF-IDF calculation, basic text distance/similarity measures (Levenshtein, Jaccard).
+        * Common data structures for holding embeddings or vocabulary mappings.
+    * **Why it might not exist:** NLP in Rust often involves bindings to Python libraries, specialized tokenizer crates (like `tokenizers` by Hugging Face), or parts of larger ML frameworks. A dedicated, foundational *Rust-native* library for the basics seems less established.
+
+2.  **Unified Geospatial Toolkit (`georust-unified` / `geokit`):**
+    * **Analogy:** Similar to `image` handling various image formats or `petgraph` providing different graph representations.
+    * **Concept:** While the `GeoRust` ecosystem has excellent crates (`geo-types`, `proj`, `geos`, `wkt`, `geojson`, etc.), they are somewhat fragmented. A unifying foundational library could provide a more cohesive API experience.
+    * **Potential Scope:**
+        * Re-exporting core types from `geo-types`.
+        * Providing unified interfaces for reading/writing common vector formats (GeoJSON, WKT, Shapefile - maybe behind features).
+        * Integrating common geospatial operations (buffering, intersection, simplification, convex hull, distance calculations) using `geos` or native Rust implementations where available.
+        * Streamlined handling of coordinate reference systems (CRS) via `proj`.
+        * Potentially basic raster support (reading metadata, accessing pixel values) for common formats like GeoTIFF (via features).
+    * **Why it might not exist:** The current `GeoRust` approach is modular. While powerful, users often need to combine multiple crates. A higher-level library aiming for ease of use and integration could fill a niche, much like `image` simplifies dealing with different image crates.
+
+3.  **Computational Geometry Core (`geom-core` / `cad-core`):**
+    * **Analogy:** `petgraph` provides the fundamental graph structures; `image` provides the fundamental pixel buffer.
+    * **Concept:** A library providing robust, foundational data structures and algorithms for 2D and 3D computational geometry, particularly relevant for CAD, CAM, simulation, and graphics.
+    * **Potential Scope:**
+        * Core geometric primitives (Points, Vectors, Lines, Planes, Curves - NURBS/Bezier, Surfaces, basic Solids).
+        * Support for common representations like Boundary Representation (B-rep - vertices, edges, faces, shells, solids) and potentially mesh representations (half-edge, etc.).
+        * Implementations of fundamental geometric algorithms: intersections (curve-curve, surface-surface), boolean operations (union, subtract, intersect) for solids/surfaces, triangulation, offsetting, distance queries, bounding box calculations.
+        * Focus on robustness (handling floating-point issues common in geometry).
+    * **Why it might not exist:** This is a complex domain. While libraries like `nalgebra` (linear algebra), `parry` (collision detection), `bezier-rs` (Bezier curves), and emerging projects like `fornjot` (a Code-CAD *kernel*) exist, a stable, general-purpose *library* focused purely on providing these core geometric data structures and robust algorithms seems less mature or widely adopted compared to `image` or `petgraph`.
+
+These libraries aim to provide the essential, reusable building blocks for their respective domains, allowing more specialized applications and libraries to be built on top of them more easily.
+
+=========================
+
+Long Note 2
+
+
+Okay, let's dive into some more domains and refine the ideas for potential foundational Rust libraries, keeping the examples of `image` and `petgraph` in mind. The goal is to identify areas where a core, reusable library providing standard data structures, algorithms, and abstractions for a specific domain could be beneficial but doesn't seem to have a mature, widely-adopted solution yet.
+
+Here are a few more ideas, expanding on or adding to the previous list:
+
+1.  **General Signal Processing Toolkit (`signal-core` / `dsp-core`):**
+    * **Analogy:** `image` for visual data, `petgraph` for relational data, this would be for sequential/signal data.
+    * **Concept:** While `dasp` provides excellent fundamentals for *audio* PCM data, and `rustfft` handles FFTs, a broader foundational library for general digital signal processing could be valuable.
+    * **Potential Scope:**
+        * Standardized representations for 1D signals (building perhaps on `ndarray` or its own types).
+        * Implementations for common filter design (FIR, IIR - Butterworth, Chebyshev, etc.).
+        * A suite of standard windowing functions (beyond `dasp`'s current scope, if any).
+        * Core algorithms for spectral analysis (Power Spectral Density, Spectrograms).
+        * Resampling and interpolation algorithms applicable beyond just audio sample rates.
+        * Basic modulation/demodulation techniques.
+    * **Why it might not exist:** DSP often involves specialized knowledge, and existing Rust crates might focus on specific niches (audio, radio) or provide low-level primitives. A unified library integrating common filter design, windowing, and spectral analysis tools for general signals seems less established.
+    * **Rust Equivalent Research:** Partial. Crates like `rustfft`, `realfft`, `dasp`, `cpal`, and frameworks like `FutureSDR` exist, covering parts (FFT, audio, SDR framework), but a single *foundational* crate integrating *all* general DSP aspects (filters, windowing, spectral analysis, resampling, mod/demod) might not be as mature or unified as `image`/`petgraph`. [Source: https://users.rust-lang.org/t/rf-signal-processing-in-rust/79660] [Harry Potter Inspired Name: Sonorus]
+
+2.  **Simulation Core Engine (`sim-core`):**
+    * **Analogy:** `petgraph` provides graph structures/algorithms useful in many simulations; `image` provides image structures useful in visual simulations. This would provide the *engine* structure.
+    * **Concept:** A foundational library for building time-based simulations, particularly discrete-event simulation (DES) or potentially agent-based modeling (ABM).
+    * **Potential Scope:**
+        * Core discrete-event scheduling queue (event loop, time management).
+        * Primitives for defining simulation entities, events, and state.
+        * Mechanisms for resource management and contention within the simulation.
+        * Statistics collection framework (e.g., time-in-system, queue lengths).
+        * (For ABM): Grid structures, agent scheduling, interaction patterns.
+    * **Why it might not exist:** Simulation is diverse. Existing efforts might be highly specialized for specific domains (network simulation, physics simulation via `bevy`/`rapier`/`nphysics`) or experimental. A general-purpose, ergonomic DES/ABM *engine* library doesn't appear to be a standard, widely-adopted crate yet.
+    * **Rust Equivalent Research:** No. While specific simulation libraries exist (e.g., for physics), a general-purpose, foundational DES/ABM engine crate doesn't appear widely adopted. [Harry Potter Inspired Name: TimeTurner]
+
+3.  **Data Visualization Primitives / Grammar (`viz-core`):**
+    * **Analogy:** `image` provides the canvas and basic drawing; this would provide the higher-level building blocks or rules for mapping data to that canvas effectively.
+    * **Concept:** Instead of a specific plotting library (like `plotters`), this would be a foundational library providing either:
+        * a) Core 2D drawing primitives specifically tailored for data visualization needs (handling scales, axes, legends, common marks like points/lines/bars abstractly).
+        * b) An implementation of a declarative "Grammar of Graphics" (like R's ggplot2 or Vega-Lite), allowing users to define visualizations by mapping data variables to aesthetic properties.
+    * **Potential Scope:**
+        * (Option A): Abstract primitives for scales (linear, log, time), axes, tick generation, common geometric marks (points, lines, rects, arcs), legend components, potentially basic layout helpers. Integration points for different rendering backends (`piet`, `wgpu`, SVG).
+        * (Option B): A system to parse a declarative spec (e.g., a Rust struct-based definition or a JSON format like Vega-Lite) and translate it into renderable components, handling data transformation, scale generation, and layout automatically.
+    * **Why it might not exist:** Existing plotting libraries often bundle these concerns. Lower-level 2D graphics libraries (`piet`, `raqote`) are generic. A dedicated library focused *specifically* on the foundational primitives or declarative grammar for *data visualization itself* seems less common in the Rust ecosystem compared to mature plotting solutions.
+    * **Rust Equivalent Research:** No. Existing plotting libraries bundle concerns, and low-level graphics crates are generic; a dedicated foundational library for viz primitives or grammar seems less common. [Harry Potter Inspired Name: GraphisRevelio]
+
+4.  **Robotics Modeling & Kinematics Core (`robotics-core`):**
+    * **Analogy:** `petgraph` for abstract relationships, `image` for pixel data, this would be for articulated physical systems.
+    * **Concept:** A library providing standard ways to represent robot structures and perform fundamental kinematic and potentially dynamic calculations.
+    * **Potential Scope:**
+        * Parsers and in-memory representations for standard robot description formats like URDF and potentially SDF.
+        * Integration with `nalgebra` for core linear algebra.
+        * Forward and inverse kinematics solvers (building on existing math libraries or implementing common methods like Jacobian-based approaches).
+        * Potentially basic dynamics calculations (e.g., Recursive Newton-Euler Algorithm) if scope allows.
+        * Data structures for representing robot state (joint positions, velocities).
+    * **Why it might not exist:** While `nalgebra-kinematics` exists and ROS bindings (`rosrust`) handle the ROS ecosystem, a dedicated crate for parsing standard *non-ROS* formats like URDF/SDF and providing an integrated representation linked to standard kinematic calculations seems less established or potentially fragmented across smaller crates (`urdf-rs` exists but focus might be narrow).
+    * **Rust Equivalent Research:** Partial. Crates like `nalgebra-kinematics`, `urdf-rs`, and ROS bindings exist, but a unified, foundational library for parsing standard formats (URDF/SDF) and integrated kinematics/dynamics seems less established. [Harry Potter Inspired Name: Mobilicorpus]
+
+These areas represent domains where Rust is applicable, but where a unifying, foundational library providing core data structures and algorithms – similar in spirit to `image` or `petgraph` – might still be missing or underdeveloped, offering opportunities for impactful new crate development.
+
+
+
+

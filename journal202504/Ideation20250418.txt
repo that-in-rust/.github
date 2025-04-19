@@ -1,3 +1,9 @@
+Summary 
+
+- Go Colly Functionality in Rust
+- Lodash Functionality in Rust
+
+
 Ideating libraries to rewrite in Rust under PMHLRRY Pradhan Mantri Har Library Rust Rewrite Yojna
 
 Go to Rust 
