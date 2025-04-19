@@ -20,6 +20,13 @@ Rust offers an exceptional combination of performance, safety, and developer exp
 
 As the Stack Overflow survey has shown for multiple years, Rust is beloved by developers for good reason - its powerful compiler acts like a helpful pair-programmer, guiding you toward better code.
 
+## Ideation framework
+
+1. Product Market Fit of a functionality is proven in another language ecosystem, and it can be ported to the Rust ecosystem, e.g. gofmt -> rustfmt
+
+2. Product Market Fit of a library is proven, but the library could be rewritten in Rust for improved efficiency, efficacy & feature coverage
+
+
 ## Join Us
 
 Interested in contributing or have ideas for new tools? Feel free to check out our repositories and get involved!
