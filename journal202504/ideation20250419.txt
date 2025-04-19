@@ -14,7 +14,31 @@ Unclassified
 - Data Visualization Primitives / Grammar in Rust called GraphisRevelio
 - Unified, foundational library for parsing standard formats (URDF/SDF) and integrated kinematics/dynamics in Rust called Mobilicorpus (RoboticsCore)
 - Unified SciPy replacement in Rust called Arithmancy or SciRust which is a comprehensive scientific computing suite analogous to Python's SciPy (offering optimization, integration, interpolation, signal processing, linear algebra, statistics, etc.) built on top of core array libraries like `ndarray`. The ecosystem is more fragmented.
-- 
+- Unified Guava replacement in Rust called RoomOfRequirement which is a comprehensive collection of additional specialized collections and utilities (akin to Java's Guava offering Multimaps, Multisets, BiMaps, Tables, RangeSets/Maps)
+- Unified C++ Boost/STL replacement for Rust called Boosty which is a comprehensive collection of additional specialized libraries and utilities (akin to C++ Boost) - one comprehensive trait based API for all advanced data structures and algorithms
+- Concurrent or Lock-Free Containers
+    - Despite Rust’s strong focus on concurrency and safety, there is not yet an official set of lock-free or wait-free list, queue, and map abstractions consolidated in a single “go-to” library (akin to parts of Java’s java.util.concurrent or C++’s concurrency support).
+    - Rust has individual crates offering lock-free data structures, but no unified “batteries-included” library (like Go’s built-in concurrency-based collections).
+- Persistent data structures (and ephemeral versions) appear in academic libraries for older languages, but Rust lacks a robust, standard “one-stop” crate featuring, say, persistent red-black trees or ephemeral union-find with standardized traits.
+- Unified, high-level, pure-Rust library for reading and writing a wide array of common video container formats (MP4, MKV, AVI, WebM, etc.) without relying on C bindings is less established compared to the foundational libraries in C/C++.
+
+
+===========================================
+
+
+You are a 300 IQ entity. Append below this- sub bullets of Rust libraries which do NOT exist for the given topic despite existing in languages like C C++ Java Python Go -  Use @Web  comprehensively to be super accurate in your findings. Also think of the name of the library inspired by Harry Potter which captures the essence of its utility
+
+242. `video-io` - Libraries for reading and writing video container formats (MP4, AVI, MKV, WebM).
+    *   **Pensieve:** While excellent crates exist for specific formats (like `mp4` [https://lib.rs/crates/mp4](https://lib.rs/crates/mp4)) and comprehensive support is available via FFmpeg wrappers (e.g., `ffmpeg-next` [https://lib.rs/crates/ffmpeg-next](https://lib.rs/crates/ffmpeg-next), `video-rs` [https://lib.rs/crates/video-rs](https://lib.rs/crates/video-rs)) or GStreamer bindings ([https://lib.rs/crates/gstreamer-video](https://lib.rs/crates/gstreamer-video)), a *unified, high-level, pure-Rust* library for reading and writing a wide array of common video container formats (MP4, MKV, AVI, WebM, etc.) without relying on C bindings is less established compared to the foundational libraries in C/C++.
+
+
+
+
+001. `data-structures` - Implementations of fundamental data structures (lists, trees, maps, graphs, heaps).
+    *   **RoomOfRequirement:** While Rust's `std::collections` and crates like `im` (immutable collections) and `petgraph` (graphs) provide excellent core and specialized structures, a single, widely adopted library offering a broad suite of *additional* specialized collections and utilities (akin to Java's Guava offering Multimaps, Multisets, BiMaps, Tables, RangeSets/Maps) is less established.
+
+
+
 
 
 Libraries that can be written in Rust with a cool name inspired by Harry Potter:
