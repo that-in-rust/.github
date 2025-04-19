@@ -1,205 +1,395 @@
 
 
-**III. Technical Capability (Granular GitHub Topics)**
-*(What specific technical function or capability does the code provide? Use these granular topics for GitHub repository classification. Ref: [https://dev.to/pwd9000/github-repository-best-practices-23ck](https://dev.to/pwd9000/github-repository-best-practices-23ck))*
+Technical Capability (Granular GitHub Topics)
+*(What specific technical function or capability does the code provide? Use these granular topics for GitHub repository classification. GitHub topics should use lowercase letters, numbers, and hyphens, be 50 characters or less, and a repository should ideally have no more than 20 topics. Ref: [https://docs.github.com/articles/classifying-your-repository-with-topics](https://docs.github.com/articles/classifying-your-repository-with-topics), [https://dev.to/pwd9000/github-repository-best-practices-23ck](https://dev.to/pwd9000/github-repository-best-practices-23ck))*
 
-    **A. Core Computing & Algorithms**
-        001. `data-structures` - Implementations of fundamental data structures (lists, trees, maps, graphs, heaps).
-        002. `sorting-algorithms` - Implementations of sorting algorithms (quicksort, mergesort, heapsort).
-        003. `searching-algorithms` - Implementations of searching algorithms (binary search, hash-based search).
-        004. `graph-algorithms` - Algorithms for graph traversal, shortest paths, network flow, minimum spanning trees.
-        005. `string-algorithms` - Algorithms for string matching, searching, manipulation (e.g., KMP, Boyer-Moore, Levenshtein distance).
-        006. `combinatorial-algorithms` - Algorithms for permutations, combinations, subset generation.
-        007. `computational-geometry` - Algorithms for geometric problems (convex hull, triangulation, intersection).
-        008. `numerical-optimization` - Algorithms for finding optimal solutions (linear/non-linear programming, gradient descent, evolutionary algorithms).
-        009. `async-runtime` - Frameworks or libraries providing asynchronous execution environments (e.g., Tokio, async-std).
-        010. `threading-concurrency` - Libraries for creating and managing OS threads, thread pools, and basic concurrency control.
-        011. `actor-model` - Frameworks implementing the actor model for concurrency (e.g., Actix).
-        012. `synchronization-primitives` - Implementations of locks, mutexes, semaphores, condition variables, atomics.
-        013. `parallel-computing` - Libraries facilitating task parallelism, data parallelism (e.g., Rayon).
+    **A. Core Computing, Algorithms & Concurrency**
 
-    **B. Data Handling & Processing**
-        014. `json-processing` - Libraries for parsing, serializing, and manipulating JSON data.
-        015. `yaml-processing` - Libraries for parsing, serializing, and manipulating YAML data.
-        016. `xml-processing` - Libraries for parsing, serializing, and manipulating XML data (DOM, SAX).
-        017. `protobuf-processing` - Libraries for working with Protocol Buffers definition and serialization.
-        018. `csv-processing` - Libraries for reading and writing Comma-Separated Values data.
-        019. `toml-processing` - Libraries for parsing and serializing TOML configuration files.
-        020. `binary-serialization` - Libraries for efficient binary serialization formats (e.g., Bincode, MessagePack, Cap'n Proto).
-        021. `data-format-conversion` - Tools or libraries specifically for converting between different data formats.
-        022. `parser-generator` - Tools for creating parsers from grammars (e.g., LALRPOP, Pest, Nom) for DSLs, protocols, etc.
-        023. `data-validation` - Libraries for defining and enforcing constraints or schemas on data structures (e.g., Cerberus, Pydantic-like).
-        024. `data-transformation-etl` - Tools and libraries for Extract, Transform, Load (ETL), data mapping, cleaning, and enrichment.
-        025. `string-manipulation` - Libraries providing advanced string operations beyond basic standard library functions.
-        026. `regular-expressions` - Libraries providing regular expression matching engines and utilities.
-        027. `text-formatting` - Libraries for advanced text layout, wrapping, and templating (beyond basic interpolation).
-        028. `diffing-patching` - Libraries for computing differences between data structures or text and applying patches.
-        029. `unicode-support` - Libraries providing enhanced Unicode handling, normalization, or segmentation.
+        **A.1. Fundamental Algorithms & Data Structures**
+            001. `data-structures` - Implementations of fundamental data structures (lists, trees, maps, graphs, heaps).
+            002. `linear-data-structures` - Specific implementations like linked lists, queues, stacks, deques.
+            003. `tree-data-structures` - Specific implementations like binary trees, B-trees, tries, segment trees.
+            004. `hash-data-structures` - Specific implementations like hash maps, hash sets, hash tables.
+            005. `graph-data-structures` - Representations of graphs (adjacency list/matrix) and associated structures.
+            006. `sorting-algorithms` - Implementations of sorting algorithms (quicksort, mergesort, heapsort, radix sort).
+            007. `searching-algorithms` - Implementations of searching algorithms (binary search, hash-based search, interpolation search).
+            008. `graph-algorithms` - Algorithms for graph traversal (BFS, DFS), shortest paths (Dijkstra, Bellman-Ford), network flow, minimum spanning trees (Prim, Kruskal).
+            009. `string-algorithms` - Algorithms for string matching, searching, manipulation (e.g., KMP, Boyer-Moore, Levenshtein distance, suffix arrays/trees).
+            010. `combinatorial-algorithms` - Algorithms for permutations, combinations, subset generation, backtracking.
+            011. `computational-geometry` - Algorithms for geometric problems (convex hull, triangulation, intersection detection, Voronoi diagrams).
+            012. `numerical-optimization` - Algorithms for finding optimal solutions (linear/non-linear programming, gradient descent, simulated annealing, evolutionary algorithms).
 
-    **C. Input/Output & Storage**
-        030. `file-system-io` - Libraries for interacting with the file system (sync/async reads/writes, directory traversal, file watching).
-        031. `database-driver` - Low-level connectors or drivers for specific database systems (PostgreSQL, MySQL, SQLite, MongoDB).
-        032. `orm` - Object-Relational Mappers for abstracting database interactions.
-        033. `query-builder` - Libraries providing programmatic, type-safe ways to construct SQL or other database queries.
-        034. `database-migration-tool` - Tools or libraries for managing database schema changes over time.
-        035. `search-engine-client` - Client libraries for interacting with search engines (Elasticsearch, OpenSearch, Meilisearch, Solr).
-        036. `in-memory-cache` - Implementations of in-memory caching strategies (LRU, LFU, TTL).
-        037. `distributed-cache-client` - Client libraries for interacting with distributed caching systems (Redis, Memcached).
+        **A.2. Concurrency & Parallelism**
+            013. `async-runtime` - Frameworks or libraries providing asynchronous execution environments (e.g., Tokio, async-std, asyncio).
+            014. `coroutines` - Libraries providing or utilizing coroutines for cooperative multitasking.
+            015. `threading-concurrency` - Libraries for creating and managing OS threads, thread pools, and basic concurrency control.
+            016. `actor-model` - Frameworks implementing the actor model for concurrency (e.g., Actix, Akka).
+            017. `synchronization-primitives` - Implementations of locks, mutexes, semaphores, condition variables, atomics, barriers.
+            018. `parallel-computing` - Libraries facilitating task parallelism, data parallelism (e.g., Rayon, OpenMP bindings).
+            019. `gpu-computing` - Libraries for general-purpose computing on GPUs (CUDA, OpenCL wrappers).
 
-    **D. Networking & Communication**
-        038. `http-client` - Libraries for making HTTP requests.
-        039. `http-server` - Frameworks or libraries for building HTTP servers.
-        040. `http2-support` - Libraries providing specific support for HTTP/2 features.
-        041. `http3-support` - Libraries providing specific support for HTTP/3 and QUIC features.
-        042. `tcp-programming` - Libraries for low-level TCP socket programming.
-        043. `udp-programming` - Libraries for low-level UDP socket programming.
-        044. `quic-protocol` - Implementations of the QUIC transport protocol.
-        045. `grpc-implementation` - Libraries for building gRPC clients or servers.
-        046. `websocket-client` - Libraries for establishing WebSocket client connections.
-        047. `websocket-server` - Libraries or frameworks for handling WebSocket server connections.
-        048. `network-programming-framework` - Higher-level frameworks abstracting network operations (e.g., Netty-like, Twisted-like).
-        049. `webrtc` - Libraries implementing WebRTC protocols for real-time peer-to-peer communication.
-        050. `mqtt-client` - Client libraries for the MQTT messaging protocol.
-        051. `message-passing` - Libraries implementing message passing patterns (e.g., ZeroMQ/nanomsg bindings or implementations).
-        052. `rpc-framework` - Libraries for Remote Procedure Calls (e.g., Thrift, Cap'n Proto RPC, custom implementations).
-        053. `html-parsing` - Libraries specifically for parsing and manipulating HTML documents.
-        054. `web-crawler` - Libraries or frameworks designed for crawling websites.
-        055. `browser-automation` - Libraries for controlling web browsers programmatically (e.g., Selenium, Puppeteer wrappers).
+    **B. Data Handling, Processing & Formats**
 
-    **E. User Interface & Graphics**
-        056. `gui-toolkit` - Libraries providing widgets, components, and layout engines for building graphical UIs (e.g., GTK, Qt, Druid, Iced, egui).
-        057. `terminal-user-interface` (tui) - Libraries for building text-based UIs in the terminal (e.g., Cursive, Ratatui).
-        058. `2d-graphics` - Libraries focused on 2D drawing, shapes, and vector graphics.
-        059. `3d-graphics` - Libraries focused on 3D rendering, meshes, transformations.
-        060. `rendering-engine` - Higher-level engines integrating various graphics concepts (e.g., Bevy, Fyrox).
-        061. `shader-programming` - Libraries or tools aiding in writing, compiling, or managing shaders (GLSL, HLSL, WGSL).
-        062. `graphics-api-wrapper` - Bindings or abstractions over low-level graphics APIs (Vulkan, OpenGL, DirectX, Metal, WebGPU).
-        063. `scene-graph` - Libraries implementing scene graph structures for managing 3D scenes.
-        064. `data-visualization-charting` - Libraries for creating static or interactive charts and plots (e.g., Plotly, Plotters).
-        065. `rich-text-editor` - Components or libraries for building rich text editing capabilities.
-        066. `component-library` - Collections of pre-built UI components for specific UI toolkits or frameworks.
+        **B.1. Data Serialization & Formats**
+            020. `json-processing` - Libraries for parsing, serializing, and manipulating JSON data.
+            021. `yaml-processing` - Libraries for parsing, serializing, and manipulating YAML data.
+            022. `xml-processing` - Libraries for parsing, serializing, and manipulating XML data (DOM, SAX, StAX).
+            023. `protobuf-processing` - Libraries for working with Protocol Buffers definition and serialization.
+            024. `flatbuffers-processing` - Libraries for working with FlatBuffers serialization.
+            025. `capnproto-processing` - Libraries for working with Cap'n Proto serialization.
+            026. `messagepack-processing` - Libraries for working with MessagePack serialization.
+            027. `csv-processing` - Libraries for reading and writing Comma-Separated Values data.
+            028. `toml-processing` - Libraries for parsing and serializing TOML configuration files.
+            029. `binary-serialization` - Libraries for other efficient binary serialization formats (e.g., Bincode, CBOR).
+            030. `data-format-conversion` - Tools or libraries specifically for converting between different data formats.
 
-    **F. Application Logic & Control**
-        067. `state-management` - Libraries for managing application state (e.g., Redux pattern, finite state machines, signals).
-        068. `workflow-engine-bpm` - Libraries or frameworks for defining, executing, and managing business processes or workflows.
-        069. `rule-engine` - Systems for managing and executing business rules or logic externally from core code.
-        070. `job-scheduling` - Libraries for scheduling background tasks, cron-like jobs, or delayed execution.
-        071. `message-queue-client` (mq-client) - Client libraries for interacting with message brokers (RabbitMQ, Kafka, NATS, Redis Streams).
+        **B.2. Parsing & Text Processing**
+            031. `parser-generator` - Tools for creating parsers from grammars (e.g., LALRPOP, Pest, Nom, ANTLR) for DSLs, protocols, etc.
+            032. `lexer-tokenizer` - Libraries specifically focused on lexical analysis or tokenization.
+            033. `string-manipulation` - Libraries providing advanced string operations beyond basic standard library functions.
+            034. `regular-expressions` - Libraries providing regular expression matching engines and utilities.
+            035. `text-formatting` - Libraries for advanced text layout, wrapping, and templating (beyond basic interpolation).
+            036. `unicode-support` - Libraries providing enhanced Unicode handling, normalization, segmentation, or grapheme cluster support.
+            037. `diffing-patching` - Libraries for computing differences between data structures or text and applying patches.
 
-    **G. Security**
-        072. `hashing-algorithms` - Implementations of cryptographic hash functions (SHA-2, SHA-3, Blake2).
-        073. `password-hashing` - Libraries specifically for securely hashing passwords (Argon2, scrypt, bcrypt).
-        074. `symmetric-encryption` - Libraries for symmetric encryption algorithms (AES, ChaCha20).
-        075. `asymmetric-encryption` - Libraries for public-key cryptography (RSA, ECC).
-        076. `digital-signatures` - Libraries for creating and verifying digital signatures (ECDSA, EdDSA).
-        077. `random-number-generation` (csprng) - Cryptographically secure pseudo-random number generators.
-        078. `cryptographic-protocols` - Implementations or bindings for protocols like TLS/SSL.
-        079. `authentication-library` - Libraries handling user login, session management, password verification.
-        080. `oauth-library` - Libraries implementing OAuth/OIDC client or server flows.
-        081. `jwt-library` - Libraries for creating, parsing, and validating JSON Web Tokens.
-        082. `authorization-library` - Libraries implementing authorization models like RBAC or ABAC.
-        083. `security-scanning-integration` - Tools or libraries integrated into applications for security checks (dependency scanning, SAST hooks).
-        084. `security-hardening` - Libraries or tools focused on applying security best practices (e.g., setting secure headers, input sanitization).
+        **B.3. Data Management & Transformation**
+            038. `data-validation` - Libraries for defining and enforcing constraints or schemas on data structures (e.g., Cerberus, Pydantic-like, JSON Schema validation).
+            039. `data-transformation-etl` - Tools and libraries for Extract, Transform, Load (ETL), data mapping, cleaning, and enrichment.
+            040. `data-wrangling` - Libraries focused on manipulating and cleaning messy and complex datasets.
 
-    **H. Development Lifecycle Support**
-        085. `unit-testing-framework` - Frameworks primarily for writing and running unit tests.
-        086. `integration-testing-framework` - Frameworks facilitating integration testing (e.g., managing external services).
-        087. `end-to-end-testing-framework` (e2e) - Frameworks for testing complete application flows, often involving UI interaction.
-        088. `benchmark-testing` - Libraries or tools for writing and running performance benchmarks.
-        089. `mocking-stubbing` - Tools for creating test doubles (mocks, stubs, fakes).
-        090. `property-based-testing` - Libraries supporting property-based testing (e.g., QuickCheck, Proptest).
-        091. `fuzz-testing` - Tools and libraries for generating random inputs to find bugs (fuzzing).
-        092. `structured-logging` - Libraries promoting logging in structured formats (JSON, key-value pairs).
-        093. `log-aggregation-client` - Libraries for sending logs to centralized logging systems (e.g., Fluentd, Loki).
-        094. `metrics-collection` - Libraries for instrumenting code to emit metrics (counters, gauges, histograms), often Prometheus-compatible.
-        095. `distributed-tracing` - Libraries implementing distributed tracing standards (e.g., OpenTelemetry, Jaeger, Zipkin).
-        096. `application-performance-monitoring` (apm) - Agents or libraries providing integrated APM capabilities.
-        097. `debugging-utilities` - Tools enhancing the debugging experience (pretty printers, improved panic handlers).
-        098. `performance-profiling` - Libraries or tools aiding in runtime performance analysis (CPU, memory profiling).
-        099. `configuration-management` - Libraries for loading, validating, and accessing application configuration (files, env vars, remote sources).
-        100. `dependency-injection` (di) - Frameworks or libraries implementing DI containers or patterns.
-        101. `error-reporting` - Libraries enhancing error handling with context, backtraces, or reporting to external services.
-        102. `circuit-breaker` - Implementations of the circuit breaker pattern for fault tolerance.
-        103. `retry-mechanism` - Libraries providing strategies for retrying failed operations.
+    **C. Input/Output, Storage & Databases**
 
-    **I. Domain-Specific Computation**
-        104. `linear-algebra` - Libraries for matrix and vector operations (BLAS/LAPACK wrappers or native implementations).
-        105. `statistics` - Libraries for statistical analysis, probability distributions, hypothesis testing.
-        106. `numerical-methods` - Libraries for numerical integration, differentiation, interpolation, root-finding.
-        107. `differential-equations-solver` - Libraries for solving ordinary and partial differential equations (ODEs, PDEs).
-        108. `signal-processing` - Libraries for analyzing and manipulating signals (FFT, filters, wavelets).
-        109. `tensor-library` - Libraries providing multi-dimensional array (tensor) operations, fundamental for ML.
-        110. `automatic-differentiation` (autograd) - Libraries providing automatic computation of gradients.
-        111. `neural-network-layers` - Libraries offering building blocks for neural networks (convolutional, recurrent, attention layers).
-        112. `ml-inference-engine` - Libraries optimized for running pre-trained machine learning models (e.g., ONNX runtime bindings).
-        113. `ml-training-framework` - Higher-level frameworks for defining, training, and evaluating ML models.
-        114. `text-tokenization` - Libraries for splitting text into words or subwords (e.g., SentencePiece, WordPiece).
-        115. `stemming-lemmatization` - Libraries for reducing words to their base or root form.
-        116. `sentiment-analysis` - Libraries for determining the sentiment expressed in text.
-        117. `named-entity-recognition` (ner) - Libraries for identifying named entities (persons, organizations, locations) in text.
-        118. `language-model` - Libraries providing access to or implementations of language models (word embeddings, transformers).
-        119. `image-recognition` - Libraries focused on classifying images or identifying objects within them.
-        120. `object-detection` - Libraries specifically for locating and classifying multiple objects in images/video.
-        121. `image-segmentation` - Libraries for partitioning an image into segments (semantic, instance, panoptic).
-        122. `feature-extraction-cv` - Libraries for extracting key features from images (SIFT, SURF, ORB).
-        123. `optical-flow` - Libraries for estimating the motion of objects between video frames.
-        124. `discrete-event-simulation` - Frameworks for modeling systems where state changes occur at discrete points in time.
-        125. `agent-based-modeling` - Frameworks for simulating the actions and interactions of autonomous agents.
-        126. `physics-engine` - Libraries for simulating rigid body dynamics, collisions, and physics constraints (2D or 3D).
-        127. `system-dynamics` - Libraries for modeling and simulating complex systems using stocks, flows, and feedback loops.
-        128. `robot-kinematics-dynamics` - Libraries for calculating robot motion, forces, and torques.
-        129. `motion-planning` - Algorithms for planning collision-free paths for robots (RRT, A*).
-        130. `sensor-processing` - Libraries for processing data from sensors like LIDAR, cameras, IMUs.
-        131. `robot-control-systems` - Libraries for implementing robot controllers (PID, trajectory tracking).
-        132. `ros-integration` - Libraries or tools for interacting with the Robot Operating System (ROS).
-        133. `sequence-alignment` - Tools for aligning DNA, RNA, or protein sequences (e.g., Smith-Waterman, BLAST-like).
-        134. `genomic-data-analysis` - Libraries for processing and analyzing genomic data formats (VCF, BAM, FASTA).
-        135. `protein-structure-analysis` - Tools for analyzing or predicting protein structures (PDB parsing, folding simulation).
-        136. `phylogenetic-analysis` - Libraries for constructing and analyzing evolutionary trees.
-        137. `financial-modeling` - Libraries for quantitative finance models (option pricing, risk modeling).
-        138. `algorithmic-trading` - Frameworks or libraries for developing and backtesting trading strategies.
-        139. `risk-analysis-finance` - Libraries specifically for financial risk assessment (VaR, stress testing).
-        140. `financial-time-series` - Libraries specialized in analyzing financial time series data.
-        141. `gis-library` - General-purpose Geographic Information System libraries.
-        142. `geospatial-vector-data` - Libraries for handling vector formats (Shapefile, GeoJSON, WKT).
-        143. `geospatial-raster-data` - Libraries for handling raster formats (GeoTIFF, NetCDF).
-        144. `coordinate-projection-transformation` - Libraries for converting between different geographic coordinate systems (e.g., Proj bindings).
-        145. `spatial-indexing` - Implementations of spatial indexes (R-tree, Quadtree) for efficient geographic queries.
+        **C.1. Filesystem & IO**
+            041. `file-system-io` - Libraries for interacting with the file system (sync/async reads/writes, directory traversal, file watching, permissions).
+            042. `memory-mapped-files` - Libraries for working with memory-mapped file I/O.
 
-    **J. Media Processing**
-        146. `image-io` - Libraries for reading and writing various image formats (PNG, JPEG, GIF, BMP, TIFF).
-        147. `image-resizing-cropping` - Libraries focused on geometric transformations of images.
-        148. `image-filtering-effects` - Libraries applying filters (blur, sharpen) or artistic effects to images.
-        149. `color-space-conversion` - Libraries for converting images between color spaces (RGB, HSV, LAB).
-        150. `image-feature-detection` - Libraries for detecting features like edges, corners, blobs in images.
-        151. `audio-io` - Libraries for reading and writing various audio formats (WAV, MP3, Ogg Vorbis, FLAC).
-        152. `audio-effects` - Libraries for applying audio effects (reverb, delay, equalization, pitch shifting).
-        153. `audio-mixing-synthesis` - Libraries for combining audio sources or generating sound programmatically.
-        154. `audio-feature-extraction` - Libraries for extracting features from audio (MFCCs, pitch, tempo).
-        155. `video-io` - Libraries for reading and writing video container formats (MP4, AVI, MKV).
-        156. `video-encoding-decoding` - Libraries or bindings for video codecs (H.264, VP9, AV1), often via FFmpeg.
-        157. `video-frame-manipulation` - Libraries for accessing and modifying individual video frames.
-        158. `video-analysis` - Libraries for higher-level video analysis tasks like object tracking or scene detection.
+        **C.2. Databases & Querying**
+            043. `database-driver` - Low-level connectors or drivers for specific database systems (PostgreSQL, MySQL, SQLite, MongoDB, etc.).
+            044. `orm` - Object-Relational Mappers for abstracting database interactions.
+            045. `query-builder` - Libraries providing programmatic, type-safe ways to construct SQL or other database queries.
+            046. `sql-parsing` - Libraries specifically for parsing and manipulating SQL queries.
+            047. `database-migration-tool` - Tools or libraries for managing database schema changes over time.
+            048. `embedded-database` - Databases designed to be embedded within an application (e.g., SQLite, RocksDB, LevelDB).
 
-    **K. System & Hardware Interaction**
-        159. `process-management` - Libraries for creating, managing, and communicating with child processes.
-        160. `inter-process-communication` (ipc) - Libraries facilitating communication between processes (shared memory, pipes, sockets).
-        161. `signal-handling` - Libraries for catching and handling OS signals (SIGINT, SIGTERM).
-        162. `user-permissions-management` - Libraries for interacting with user accounts and file permissions.
-        163. `system-information` - Libraries for querying system details (CPU usage, memory, disk space, network interfaces).
-        164. `gpio-library` - Libraries for controlling General Purpose Input/Output pins (common on Raspberry Pi, embedded).
-        165. `i2c-library` - Libraries for communicating over the I2C bus.
-        166. `spi-library` - Libraries for communicating over the SPI bus.
-        167. `usb-library` - Libraries for interacting with USB devices.
-        168. `serial-communication` - Libraries for communicating over serial ports (UART).
-        169. `wasm-runtime` - Embeddable WebAssembly runtimes (e.g., Wasmer, Wasmtime).
-        170. `wasm-compiler` - Tools that compile languages to WebAssembly.
-        171. `wasm-tools` - Linkers, optimizers, or other utilities for working with Wasm modules.
-        172. `wasm-bindings` - Libraries facilitating interaction between Wasm modules and the host environment (JS or native).
+        **C.3. Caching & Search**
+            049. `search-engine-client` - Client libraries for interacting with search engines (Elasticsearch, OpenSearch, Meilisearch, Solr, Algolia).
+            050. `in-memory-cache` - Implementations of in-memory caching strategies (LRU, LFU, TTL, FIFO).
+            051. `distributed-cache-client` - Client libraries for interacting with distributed caching systems (Redis, Memcached).
+            052. `redis-client` - Specific client libraries for Redis.
+            053. `memcached-client` - Specific client libraries for Memcached.
 
-    **L. Globalization & Accessibility**
-        173. `translation-management` - Libraries supporting internationalization (i18n) through message catalogs (e.g., gettext).
-        174. `locale-formatting` - Libraries providing localization (l10n) for dates, numbers, and currencies according to locale rules.
-        175. `unicode-collation` - Libraries implementing locale-sensitive string comparison (sorting).
-        176. `accessibility-linter` - Tools or libraries that check code or UIs for accessibility issues.
-        177. `screen-reader-support` - Libraries or components specifically designed to work well with screen readers (e.g., managing ARIA attributes).
+    **D. Networking & Communication Protocols**
+
+        **D.1. Core Networking**
+            054. `tcp-programming` - Libraries for low-level TCP socket programming.
+            055. `udp-programming` - Libraries for low-level UDP socket programming.
+            056. `network-programming-framework` - Higher-level frameworks abstracting network operations (e.g., Netty-like, Twisted-like).
+            057. `socket-programming` - General term for libraries dealing with network sockets.
+            058. `network-addressing` - Libraries for handling IP addresses, subnets, MAC addresses.
+
+        **D.2. Web Protocols & Frameworks**
+            059. `http-client` - Libraries for making HTTP/1.1 and HTTP/2 requests.
+            060. `http-server` - Frameworks or libraries for building HTTP/1.1 and HTTP/2 servers.
+            061. `web-framework` - Higher-level frameworks for building web applications (often including routing, middleware, templating).
+            062. `http2-support` - Libraries providing specific support for HTTP/2 features (e.g., multiplexing, server push).
+            063. `http3-support` - Libraries providing specific support for HTTP/3 and QUIC features.
+            064. `quic-protocol` - Implementations of the QUIC transport protocol.
+            065. `websocket-client` - Libraries for establishing WebSocket client connections.
+            066. `websocket-server` - Libraries or frameworks for handling WebSocket server connections.
+            067. `url-parsing` - Libraries for parsing and manipulating URLs.
+
+        **D.3. RPC, Messaging & P2P**
+            068. `grpc-implementation` - Libraries for building gRPC clients or servers.
+            069. `rpc-framework` - Libraries for other Remote Procedure Calls (e.g., Thrift, Cap'n Proto RPC, JSON-RPC, XML-RPC).
+            070. `mqtt-client` - Client libraries for the MQTT messaging protocol.
+            071. `amqp-client` - Client libraries for the AMQP messaging protocol (e.g., for RabbitMQ).
+            072. `nats-client` - Client libraries for the NATS messaging system.
+            073. `message-passing` - Libraries implementing message passing patterns (e.g., ZeroMQ/nanomsg bindings or implementations).
+            074. `zeromq` - Bindings or implementations related to ZeroMQ.
+            075. `p2p-networking` - Libraries facilitating peer-to-peer network communication (e.g., libp2p).
+            076. `webrtc` - Libraries implementing WebRTC protocols for real-time peer-to-peer communication.
+
+        **D.4. Web Interaction & Parsing**
+            077. `html-parsing` - Libraries specifically for parsing and manipulating HTML documents (DOM manipulation).
+            078. `css-parsing` - Libraries for parsing CSS stylesheets.
+            079. `web-crawler` - Libraries or frameworks designed for crawling websites.
+            080. `browser-automation` - Libraries for controlling web browsers programmatically (e.g., Selenium, Puppeteer wrappers).
+
+    **E. User Interface, Graphics & Multimedia**
+
+        **E.1. User Interface Toolkits**
+            081. `gui-toolkit` - Libraries providing widgets, components, and layout engines for building graphical UIs (e.g., GTK, Qt, Druid, Iced, egui, Flutter, React Native).
+            082. `immediate-mode-gui` - GUI libraries following the immediate mode paradigm (e.g., Dear ImGui, egui).
+            083. `retained-mode-gui` - GUI libraries following the retained mode paradigm (e.g., GTK, Qt).
+            084. `terminal-user-interface` (tui) - Libraries for building text-based UIs in the terminal (e.g., Cursive, Ratatui, ncurses).
+            085. `component-library` - Collections of pre-built UI components for specific UI toolkits or frameworks.
+            086. `rich-text-editor` - Components or libraries for building rich text editing capabilities.
+
+        **E.2. Graphics Rendering**
+            087. `2d-graphics` - Libraries focused on 2D drawing, shapes, and vector graphics (e.g., Cairo, Skia wrappers).
+            088. `3d-graphics` - Libraries focused on 3D rendering, meshes, transformations.
+            089. `rendering-engine` - Higher-level engines integrating various graphics concepts (e.g., Bevy, Fyrox, Godot bindings, Unity integrations).
+            090. `game-engine` - Comprehensive frameworks for game development, often including rendering, physics, audio, input.
+            091. `shader-programming` - Libraries or tools aiding in writing, compiling, or managing shaders (GLSL, HLSL, WGSL, SPIR-V).
+            092. `compute-shader` - Libraries utilizing GPU compute capabilities via compute shaders.
+            093. `graphics-api-wrapper` - Bindings or abstractions over low-level graphics APIs (Vulkan, OpenGL, DirectX, Metal, WebGPU).
+            094. `vulkan` - Bindings or helpers specifically for the Vulkan API.
+            095. `opengl` - Bindings or helpers specifically for the OpenGL API.
+            096. `webgpu` - Bindings or helpers specifically for the WebGPU API.
+            097. `scene-graph` - Libraries implementing scene graph structures for managing 3D scenes.
+            098. `data-visualization-charting` - Libraries for creating static or interactive charts and plots (e.g., Plotly, Plotters, D3.js wrappers).
+
+        **E.3. Multimedia Processing** (See also Section J)
+            099. `image-processing` - General libraries for image manipulation (combines IO, filtering, transforms).
+            100. `audio-processing` - General libraries for audio manipulation (combines IO, effects, synthesis).
+            101. `video-processing` - General libraries for video manipulation (combines IO, encoding, frame access).
+
+    **F. Application Logic, Control Flow & Messaging**
+
+        **F.1. State & Control Flow**
+            102. `state-management` - Libraries for managing application state (e.g., Redux pattern, signals, state containers).
+            103. `finite-state-machine` (fsm) - Libraries for implementing finite state machines or statecharts.
+            104. `workflow-engine-bpm` - Libraries or frameworks for defining, executing, and managing business processes or workflows.
+            105. `rule-engine` - Systems for managing and executing business rules or logic externally from core code.
+
+        **F.2. Background Tasks & Messaging**
+            106. `job-scheduling` - Libraries for scheduling background tasks, cron-like jobs, or delayed execution.
+            107. `cron` - Libraries specifically for parsing or scheduling cron expressions.
+            108. `message-queue-client` (mq-client) - Client libraries for interacting with message brokers (RabbitMQ, Kafka, NATS, Redis Streams, SQS, Pub/Sub).
+            109. `kafka-client` - Specific client libraries for Apache Kafka.
+            110. `rabbitmq-client` - Specific client libraries for RabbitMQ (often via AMQP).
+
+    **G. Security & Cryptography**
+
+        **G.1. Cryptographic Primitives**
+            111. `cryptography` - General tag for libraries providing cryptographic functionalities.
+            112. `hashing-algorithms` - Implementations of cryptographic hash functions (SHA-2, SHA-3, Blake2, MD5 - use with caution).
+            113. `password-hashing` - Libraries specifically for securely hashing passwords (Argon2, scrypt, bcrypt, PBKDF2).
+            114. `symmetric-encryption` - Libraries for symmetric encryption algorithms (AES, ChaCha20, DES/3DES - use with caution).
+            115. `asymmetric-encryption` - Libraries for public-key cryptography (RSA, ECC - e.g., P-256, Curve25519).
+            116. `digital-signatures` - Libraries for creating and verifying digital signatures (ECDSA, EdDSA, RSA-PSS).
+            117. `random-number-generation` (csprng) - Cryptographically secure pseudo-random number generators.
+            118. `cryptographic-primitives` - Lower-level building blocks like block cipher modes, padding schemes.
+
+        **G.2. Protocols & Standards**
+            119. `cryptographic-protocols` - Implementations or bindings for protocols like TLS/SSL, SSH, PGP.
+            120. `tls-implementation` - Libraries providing TLS client or server functionality (e.g., OpenSSL bindings, rustls).
+            121. `ssh-client` - Libraries for implementing SSH client functionality.
+            122. `ssh-server` - Libraries for implementing SSH server functionality.
+            123. `jwt-library` - Libraries for creating, parsing, and validating JSON Web Tokens.
+            124. `paseto-library` - Libraries for Platform-Agnostic Security Tokens.
+
+        **G.3. Authentication & Authorization**
+            125. `authentication-library` - Libraries handling user login, session management, password verification.
+            126. `oauth-library` - Libraries implementing OAuth (1.0a, 2.0) / OIDC client or server flows.
+            127. `saml-library` - Libraries implementing Security Assertion Markup Language flows.
+            128. `authorization-library` - Libraries implementing authorization models like RBAC, ABAC, ACLs, or policy engines (e.g., Casbin).
+
+        **G.4. Application Security**
+            129. `security-scanning-integration` - Tools or libraries integrated into applications for security checks (dependency scanning, SAST hooks).
+            130. `security-hardening` - Libraries or tools focused on applying security best practices (e.g., setting secure headers, rate limiting).
+            131. `input-validation` - Libraries focused specifically on validating and sanitizing user input.
+            132. `output-encoding` - Libraries focused on properly encoding output for different contexts (HTML, SQL, JS) to prevent injection attacks.
+            133. `secrets-management` - Libraries for securely storing and retrieving secrets (e.g., Vault clients, KMS integration).
+
+    **H. Development Lifecycle, Testing & Observability**
+
+        **H.1. Testing Frameworks & Tools**
+            134. `testing-framework` - General frameworks for writing and running tests.
+            135. `unit-testing-framework` - Frameworks primarily for writing and running unit tests.
+            136. `integration-testing-framework` - Frameworks facilitating integration testing (e.g., managing external services, containers).
+            137. `end-to-end-testing-framework` (e2e) - Frameworks for testing complete application flows, often involving UI interaction.
+            138. `test-runner` - Tools specifically for discovering and executing tests.
+            139. `assertion-library` - Libraries providing rich assertion functions for tests.
+            140. `mocking-stubbing` - Tools for creating test doubles (mocks, stubs, fakes, spies).
+            141. `property-based-testing` - Libraries supporting property-based testing (e.g., QuickCheck, Hypothesis, Proptest).
+            142. `fuzz-testing` - Tools and libraries for generating random inputs to find bugs (fuzzing).
+            143. `code-coverage` - Tools for measuring test coverage.
+            144. `snapshot-testing` - Testing approach comparing output against a stored "snapshot".
+
+        **H.2. Performance & Benchmarking**
+            145. `benchmark-testing` - Libraries or tools for writing and running performance benchmarks.
+            146. `performance-profiling` - Libraries or tools aiding in runtime performance analysis (CPU, memory profiling, flamegraphs).
+
+        **H.3. Observability (Logging, Metrics, Tracing)**
+            147. `logging` - General libraries for application logging.
+            148. `structured-logging` - Libraries promoting logging in structured formats (JSON, key-value pairs).
+            149. `log-aggregation-client` - Libraries for sending logs to centralized logging systems (e.g., Fluentd, Loki, ELK Stack).
+            150. `metrics-collection` - Libraries for instrumenting code to emit metrics (counters, gauges, histograms).
+            151. `prometheus-client` - Libraries specifically for exposing metrics in Prometheus format.
+            152. `distributed-tracing` - Libraries implementing distributed tracing standards (e.g., OpenTelemetry, Jaeger, Zipkin).
+            153. `opentelemetry` - Libraries specifically implementing the OpenTelemetry standard.
+            154. `application-performance-monitoring` (apm) - Agents or libraries providing integrated APM capabilities.
+            155. `error-reporting` - Libraries enhancing error handling with context, backtraces, or reporting to external services (e.g., Sentry, Bugsnag).
+
+        **H.4. Build, Configuration & Development Tools**
+            156. `build-tool` - Tools managing the build process (compilation, packaging, dependencies) - e.g., Make, CMake, Gradle, Maven, Cargo, NPM/Yarn.
+            157. `code-formatter` - Tools for automatically formatting source code according to style guidelines.
+            158. `linter` - Tools for static analysis to find potential errors, bugs, or stylistic issues.
+            159. `debugging-utilities` - Tools enhancing the debugging experience (pretty printers, improved panic handlers, debuggers).
+            160. `configuration-management` - Libraries for loading, validating, and accessing application configuration (files, env vars, remote sources, feature flags).
+            161. `dependency-injection` (di) - Frameworks or libraries implementing DI containers or patterns.
+            162. `command-line-interface` (cli) - Libraries for building command-line applications (argument parsing, subcommands).
+
+        **H.5. Resilience & Fault Tolerance**
+            163. `circuit-breaker` - Implementations of the circuit breaker pattern for fault tolerance.
+            164. `retry-mechanism` - Libraries providing strategies for retrying failed operations (e.g., exponential backoff).
+            165. `rate-limiting` - Libraries for implementing rate limiting logic.
+
+    **I. Domain-Specific Computation & Science**
+
+        **I.1. Mathematics & Scientific Computing**
+            166. `mathematics` - General mathematical functions and utilities.
+            167. `linear-algebra` - Libraries for matrix and vector operations (BLAS/LAPACK wrappers or native implementations).
+            168. `statistics` - Libraries for statistical analysis, probability distributions, hypothesis testing.
+            169. `numerical-methods` - Libraries for numerical integration, differentiation, interpolation, root-finding.
+            170. `differential-equations-solver` - Libraries for solving ordinary and partial differential equations (ODEs, PDEs).
+            171. `signal-processing` - Libraries for analyzing and manipulating signals (FFT, filters, wavelets).
+            172. `symbolic-computation` - Libraries for performing symbolic mathematics (computer algebra systems).
+
+        **I.2. Machine Learning & Artificial Intelligence**
+            173. `machine-learning` (ml) - General tag for machine learning libraries or applications.
+            174. `artificial-intelligence` (ai) - Broader tag, often encompassing ML, reasoning, planning.
+            175. `tensor-library` - Libraries providing multi-dimensional array (tensor) operations, fundamental for ML (e.g., NumPy, Torch, TensorFlow bindings).
+            176. `automatic-differentiation` (autograd) - Libraries providing automatic computation of gradients.
+            177. `neural-network-layers` - Libraries offering building blocks for neural networks (convolutional, recurrent, attention layers).
+            178. `ml-inference-engine` - Libraries optimized for running pre-trained machine learning models (e.g., ONNX runtime bindings, TensorFlow Lite).
+            179. `onnx` - Libraries related to the Open Neural Network Exchange format.
+            180. `ml-training-framework` - Higher-level frameworks for defining, training, and evaluating ML models (e.g., PyTorch, TensorFlow, Keras, JAX).
+            181. `deep-learning` - Focused specifically on deep neural networks.
+            182. `reinforcement-learning` - Libraries and frameworks for reinforcement learning algorithms.
+            183. `natural-language-processing` (nlp) - General tag for NLP tasks.
+            184. `text-tokenization` - Libraries for splitting text into words or subwords (e.g., SentencePiece, WordPiece, BPE).
+            185. `word-embedding` - Libraries for generating or using word embeddings (Word2Vec, GloVe, FastText).
+            186. `stemming-lemmatization` - Libraries for reducing words to their base or root form.
+            187. `sentiment-analysis` - Libraries for determining the sentiment expressed in text.
+            188. `named-entity-recognition` (ner) - Libraries for identifying named entities (persons, organizations, locations) in text.
+            189. `language-model` - Libraries providing access to or implementations of language models (LSTMs, Transformers, BERT, GPT).
+            190. `transformer-model` - Libraries specifically implementing or using Transformer architectures.
+            191. `computer-vision` (cv) - General tag for computer vision tasks.
+            192. `image-recognition` - Libraries focused on classifying images or identifying objects within them.
+            193. `object-detection` - Libraries specifically for locating and classifying multiple objects in images/video (e.g., YOLO, SSD).
+            194. `image-segmentation` - Libraries for partitioning an image into segments (semantic, instance, panoptic).
+            195. `feature-extraction-cv` - Libraries for extracting key features from images (SIFT, SURF, ORB, HOG).
+            196. `optical-flow` - Libraries for estimating the motion of objects between video frames.
+            197. `ocr` - Optical Character Recognition libraries.
+
+        **I.3. Simulation & Modeling**
+            198. `simulation` - General tag for simulation libraries.
+            199. `discrete-event-simulation` - Frameworks for modeling systems where state changes occur at discrete points in time.
+            200. `agent-based-modeling` - Frameworks for simulating the actions and interactions of autonomous agents.
+            201. `physics-engine` - Libraries for simulating rigid body dynamics, collisions, and physics constraints (2D or 3D).
+            202. `system-dynamics` - Libraries for modeling and simulating complex systems using stocks, flows, and feedback loops.
+
+        **I.4. Robotics**
+            203. `robotics` - General tag for robotics libraries.
+            204. `robot-kinematics-dynamics` - Libraries for calculating robot motion, forces, and torques.
+            205. `motion-planning` - Algorithms for planning collision-free paths for robots (RRT, A*, PRM).
+            206. `sensor-processing` - Libraries for processing data from sensors like LIDAR, cameras, IMUs.
+            207. `robot-control-systems` - Libraries for implementing robot controllers (PID, trajectory tracking).
+            208. `ros-integration` - Libraries or tools for interacting with the Robot Operating System (ROS/ROS2).
+
+        **I.5. Bioinformatics & Cheminformatics**
+            209. `bioinformatics` - General tag for bioinformatics tools.
+            210. `sequence-alignment` - Tools for aligning DNA, RNA, or protein sequences (e.g., Smith-Waterman, Needleman-Wunsch, BLAST-like).
+            211. `genomic-data-analysis` - Libraries for processing and analyzing genomic data formats (VCF, BAM, SAM, FASTA, FASTQ).
+            212. `protein-structure-analysis` - Tools for analyzing or predicting protein structures (PDB parsing, folding simulation).
+            213. `phylogenetic-analysis` - Libraries for constructing and analyzing evolutionary trees.
+            214. `cheminformatics` - Libraries for working with chemical structures and data (SMILES, SDF).
+
+        **I.6. Finance**
+            215. `quantitative-finance` (quant) - General tag for financial modeling and analysis.
+            216. `financial-modeling` - Libraries for quantitative finance models (option pricing - Black-Scholes, risk modeling).
+            217. `algorithmic-trading` - Frameworks or libraries for developing and backtesting trading strategies.
+            218. `risk-analysis-finance` - Libraries specifically for financial risk assessment (VaR, CVaR, stress testing).
+            219. `financial-time-series` - Libraries specialized in analyzing financial time series data (e.g., technical indicators).
+
+        **I.7. Geospatial & GIS**
+            220. `gis-library` - General-purpose Geographic Information System libraries.
+            221. `geospatial` - Broader tag for libraries dealing with geographic data.
+            222. `geospatial-vector-data` - Libraries for handling vector formats (Shapefile, GeoJSON, WKT, KML).
+            223. `geospatial-raster-data` - Libraries for handling raster formats (GeoTIFF, NetCDF, GRId).
+            224. `coordinate-projection-transformation` - Libraries for converting between different geographic coordinate systems (e.g., Proj bindings).
+            225. `spatial-indexing` - Implementations of spatial indexes (R-tree, Quadtree, Geohash) for efficient geographic queries.
+            226. `geocoding` - Libraries for converting addresses to coordinates and vice-versa.
+            227. `routing-engine` - Libraries for calculating routes on road networks (e.g., OpenStreetMap data).
+
+    **J. Media Processing (Detailed)**
+
+        **J.1. Image Processing**
+            228. `image-io` - Libraries for reading and writing various image formats (PNG, JPEG, GIF, BMP, TIFF, WebP, AVIF).
+            229. `image-metadata` - Libraries for reading and writing image metadata (EXIF, IPTC, XMP).
+            230. `image-resizing-cropping` - Libraries focused on geometric transformations of images.
+            231. `image-filtering-effects` - Libraries applying filters (blur, sharpen, convolution) or artistic effects to images.
+            232. `color-management` - Libraries for handling color profiles and accurate color representation.
+            233. `color-space-conversion` - Libraries for converting images between color spaces (RGB, HSV, LAB, CMYK).
+            234. `image-feature-detection` - Libraries for detecting features like edges, corners, blobs in images (distinct from CV feature extraction).
+
+        **J.2. Audio Processing**
+            235. `audio-io` - Libraries for reading and writing various audio formats (WAV, MP3, Ogg Vorbis, FLAC, AAC, Opus).
+            236. `audio-effects` - Libraries for applying audio effects (reverb, delay, equalization, pitch shifting, distortion).
+            237. `audio-mixing-synthesis` - Libraries for combining audio sources or generating sound programmatically (oscillators, envelopes).
+            238. `audio-feature-extraction` - Libraries for extracting features from audio (MFCCs, pitch, tempo, spectral analysis).
+            239. `speech-recognition` (asr) - Libraries for converting spoken audio to text.
+            240. `speech-synthesis` (tts) - Libraries for converting text to spoken audio.
+            241. `midi` - Libraries for working with the Musical Instrument Digital Interface protocol.
+
+        **J.3. Video Processing**
+            242. `video-io` - Libraries for reading and writing video container formats (MP4, AVI, MKV, WebM).
+            243. `video-encoding-decoding` - Libraries or bindings for video codecs (H.264, H.265/HEVC, VP9, AV1).
+            244. `ffmpeg-binding` - Bindings or wrappers around the FFmpeg library.
+            245. `video-frame-manipulation` - Libraries for accessing and modifying individual video frames.
+            246. `video-analysis` - Libraries for higher-level video analysis tasks like object tracking, scene detection, action recognition.
+            247. `video-streaming` - Libraries related to streaming video protocols (HLS, DASH, RTMP, RTSP).
+
+    **K. System, Hardware & WebAssembly Interaction**
+
+        **K.1. Operating System Interaction**
+            248. `operating-system` (os) - General interaction with the underlying OS.
+            249. `process-management` - Libraries for creating, managing, and communicating with child processes.
+            250. `inter-process-communication` (ipc) - Libraries facilitating communication between processes (shared memory, pipes, message queues, sockets).
+            251. `signal-handling` - Libraries for catching and handling OS signals (SIGINT, SIGTERM, SIGHUP).
+            252. `user-permissions-management` - Libraries for interacting with user accounts, groups, and file permissions.
+            253. `system-information` - Libraries for querying system details (CPU usage, memory, disk space, network interfaces, OS version).
+            254. `daemonization` - Libraries to help run processes as background daemons or services.
+            255. `windows-api` - Libraries providing direct access to Windows API functions.
+            256. `linux-api` - Libraries providing direct access to Linux system calls or interfaces (e.g., netlink, io_uring).
+            257. `macos-api` - Libraries providing direct access to macOS frameworks or APIs.
+
+        **K.2. Hardware & Embedded Systems**
+            258. `hardware-interaction` - General tag for interacting with hardware components.
+            259. `embedded-systems` - Libraries specifically targeting embedded platforms or development.
+            260. `firmware` - Code intended to run as firmware on hardware devices.
+            261. `gpio-library` - Libraries for controlling General Purpose Input/Output pins (common on Raspberry Pi, embedded).
+            262. `i2c-library` - Libraries for communicating over the I2C bus.
+            263. `spi-library` - Libraries for communicating over the SPI bus.
+            264. `usb-library` - Libraries for interacting with USB devices (e.g., libusb wrappers).
+            265. `serial-communication` - Libraries for communicating over serial ports (UART).
+            266. `bluetooth-library` - Libraries for interacting with Bluetooth devices (Classic or BLE).
+            267. `can-bus-library` - Libraries for communicating over the CAN bus.
+
+        **K.3. WebAssembly**
+            268. `webassembly` (wasm) - General tag for WebAssembly related projects.
+            269. `wasm-runtime` - Embeddable WebAssembly runtimes (e.g., Wasmer, Wasmtime, WAMR).
+            270. `wasm-compiler` - Tools that compile languages to WebAssembly.
+            271. `wasm-tools` - Linkers, optimizers, validators, or other utilities for working with Wasm modules.
+            272. `wasm-bindings` - Libraries facilitating interaction between Wasm modules and the host environment (JS, Python, Rust, etc.).
+            273. `wasi` - Libraries implementing or targeting the WebAssembly System Interface.
+
+    **L. Globalization, Accessibility & Human Interaction**
+
+        **L.1. Internationalization & Localization**
+            274. `internationalization` (i18n) - General support for adapting software to different languages and regions.
+            275. `localization` (l10n) - Providing locale-specific components and translations.
+            276. `translation-management` - Libraries supporting i18n through message catalogs or similar systems (e.g., gettext, Fluent).
+            277. `gettext` - Libraries specifically using the gettext system.
+            278. `fluent` - Libraries specifically using Mozilla's Fluent system.
+            279. `locale-formatting` - Libraries providing localization (l10n) for dates, times, numbers, and currencies according to locale rules.
+            280. `unicode-collation` - Libraries implementing locale-sensitive string comparison (sorting).
+            281. `pluralization` - Handling language plural rules correctly.
+
+        **L.2. Accessibility**
+            282. `accessibility` (a11y) - General support for making software usable by people with disabilities.
+            283. `accessibility-linter` - Tools or libraries that check code or UIs for accessibility issues (WCAG compliance).
+            284. `screen-reader-support` - Libraries or components specifically designed to work well with screen readers.
+            285. `aria-attributes` - Libraries or tools focused on managing ARIA (Accessible Rich Internet Applications) attributes.
