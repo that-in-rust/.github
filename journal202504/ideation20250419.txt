@@ -13,7 +13,8 @@ Unclassified
 - DES / ABM Engine in Rust called TimeTurner (SimCore)
 - Data Visualization Primitives / Grammar in Rust called GraphisRevelio
 - Unified, foundational library for parsing standard formats (URDF/SDF) and integrated kinematics/dynamics in Rust called Mobilicorpus (RoboticsCore)
-
+- Unified SciPy replacement in Rust called Arithmancy or SciRust which is a comprehensive scientific computing suite analogous to Python's SciPy (offering optimization, integration, interpolation, signal processing, linear algebra, statistics, etc.) built on top of core array libraries like `ndarray`. The ecosystem is more fragmented.
+- 
 
 
 Libraries that can be written in Rust with a cool name inspired by Harry Potter:
