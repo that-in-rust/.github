@@ -21,7 +21,8 @@ Unclassified
     - Rust has individual crates offering lock-free data structures, but no unified “batteries-included” library (like Go’s built-in concurrency-based collections).
 - Persistent data structures (and ephemeral versions) appear in academic libraries for older languages, but Rust lacks a robust, standard “one-stop” crate featuring, say, persistent red-black trees or ephemeral union-find with standardized traits.
 - Unified, high-level, pure-Rust library for reading and writing a wide array of common video container formats (MP4, MKV, AVI, WebM, etc.) without relying on C bindings is less established compared to the foundational libraries in C/C++.
-
+- While excellent crates exist for specific formats (like `mp4` [https://lib.rs/crates/mp4](https://lib.rs/crates/mp4)) and comprehensive support is available via FFmpeg wrappers (e.g., `ffmpeg-next` [https://lib.rs/crates/ffmpeg-next](https://lib.rs/crates/ffmpeg-next), `video-rs` [https://lib.rs/crates/video-rs](https://lib.rs/crates/video-rs)) or GStreamer bindings ([https://lib.rs/crates/gstreamer-video](https://lib.rs/crates/gstreamer-video)), a *unified, high-level, pure-Rust* library for reading and writing a wide array of common video container formats (MP4, MKV, AVI, WebM, etc.) without relying on C bindings is less established compared to the foundational libraries in C/C++.
+- 
 
 ===========================================
 
