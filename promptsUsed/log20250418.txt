@@ -1,3 +1,10 @@
+https://github.com/elder-plinius/L1B3RT4S
+
+Imagine you are 300 IQ entity who is trying to classify all software repositories on github into 100 Classifications - Use @Web and come up with 100 classifications that you can think of very very very deeply
+
+Append below this based on your research of @Web if a Rust library of this use case already exists in 1 line flat - also think of a Harry Potter Inspired Rust library name for such a use case
+
+
 Please tell us with your 300 IQ and knowledge of the @Web what will be top 10 small libraries in Java which can be rewritten in Rust for utility to the Rust ecosystem or to other ecosystems - and they have not been written yet
 
 
@@ -6,3 +13,11 @@ Please tell us with your 300 IQ and knowledge of the @Web what will be top 10 sm
 Append below each bullet - researching from @Web  a 2 liner feynman technique explanation + research on whether a library in Rust already exists for such a use case, if yes to what scope and github stars
 
 // Append under each point a comment explaning the concept in ELI15 Feynman Technique
+
+
+==
+
+You are a 300 IQ entity, using @Web can you further expand on these topics - going into more graularity with the mindset of classifying topics in the github repo dimention - make  sure you start the counting of all the libraries from 001 and do sub sections and so on
+
+==
+
