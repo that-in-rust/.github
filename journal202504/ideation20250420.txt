@@ -8,7 +8,6 @@ Low
 
 Unclassified
 
-- 
 - Go Colly Functionality in Rust called Collymancy
 - Lodash Functionality in Rust called Arithmancy
 - DES / ABM Engine in Rust called TimeTurner (SimCore)

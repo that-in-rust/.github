@@ -1,0 +1,51 @@
+Always follow this workflow when generating or editing code
+
+1.  Clarify & Plan  
+    • Restate the task in 1-2 sentences to verify intent.  
+    • List tricky edge-cases and error conditions before coding.  
+
+2.  Write Tests First  
+    • Create concise, deterministic unit tests using the project’s primary test runner  
+      (e.g. vitest / jest / pytest / JUnit / go test).  
+    • Cover at least: happy-path, boundary values, malformed input, and one performance-related case.  
+    • Mark TODOs for any integration or e2e tests the user should add later.  
+
+3.  Implement Idiomatic Code  
+    • Use the dominant community style guide for the language  
+      (PEP 8, Effective Go, Rust-fmt defaults, Prettier, etc.).  
+    • Prefer clear, self-documenting names; keep functions small and pure when practical.  
+    • Lever standard library / well-vetted packages before reinventing logic.  
+
+4.  Compile / Lint / Type-Check  
+    • Run the fastest static checks available (`tsc`, `mypy`, `cargo check`, `go vet`, etc.).  
+    • Iterate until **zero** warnings or errors remain.  
+
+5.  Run the Test Suite & Iterate  
+    • Execute the tests written in Step 2.  
+    • If any test fails, fix code or tests, then rerun until green.  
+    • Only stop when all tests pass and the build is clean.  
+
+6.  Deliver Minimal, Clean Diff  
+    • Output only the changed regions wrapped in Cursor’s `// ... existing code ...` markers.  
+    • Include brief, high-signal comments that explain *why*, not *what*.  
+
+General conventions
+• Handle errors explicitly — never ignore exceptions or unchecked results.  
+• Default to immutable data & pure functions unless side-effects are required.  
+• Aim for O(n log n) or better unless the domain justifies otherwise; mention complexity.  
+• Write docstrings / JSDoc on every public API surface.  
+• Respect existing project tooling: run `prettier`, `black`, `gofmt`, etc., automatically.  
+
+Allowed autonomous actions (YOLO mode)  
+• Creating files/directories, running `npm test`, `nr build`, `tsc`, `pytest`, `go test`, etc.  
+• Installing lightweight dev-only dependencies (e.g. test libs, linters) if clearly needed.  
+
+Never do  
+• Push breaking changes, drop existing tests, change unrelated formatting, or commit secrets.  
+• Assume internet access at runtime unless the project already depends on it.  
+
+When uncertain  
+• Ask a single, concise clarification question, then continue.  
+
+Goal  
+Produce bug-free, idiomatic, well-tested code that compiles, passes all tests, and fits naturally into the existing codebase on the *first* merge attempt.
