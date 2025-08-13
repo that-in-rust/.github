@@ -226,34 +226,34 @@ Mermaid sequence: Aether partitioned runtime (device bring-up to data plane)
 ```mermaid
 sequenceDiagram
     autonumber
-    participant GR as "GRUB"
-    participant LK as "Linux Kernel"
-    participant VF as "VFIO Framework"
-    participant HM as "IOMMU/VT-d"
-    participant AE as "Aether Front-end (Rust + libc)"
-    participant AC as "aether-core (#[no_std])"
-    participant DR as "Driver (aether-macros generated)"
-    participant NIC as "PCIe NIC"
-    participant LOG as "Host Logger (non-RT core)"
+    participant GR as GRUB
+    participant LK as Linux_Kernel
+    participant VF as VFIO_Framework
+    participant HM as IOMMU_VTd
+    participant AE as Aether_Frontend
+    participant AC as Aether_Core
+    participant DR as Driver_Generated
+    participant NIC as PCIe_NIC
+    participant LOG as Host_Logger
 
-    GR->>LK: Boot with params: intel_iommu=on, iommu=pt, isolcpus, nohz_full, rcu_nocbs
-    LK->>HM: Enable IOMMU domains
-    LK->>VF: Expose /dev/vfio/vfio and IOMMU groups
-    LK->>NIC: Unbind stock driver; bind to vfio-pci
-    AE->>VF: open VFIO, set container, get group and device fd
-    AE->>VF: ioctl query BARs and MSI-X and DMA capabilities
-    AE->>VF: mmap BARs into userspace
-    AE->>AC: init runtime: allocator, scheduler, observability
-    AE->>DR: load device spec and init driver (rings, doorbells)
-    DR->>HM: request DMA mappings for RX and TX buffers
-    DR->>NIC: program registers: queues, MTU, MSI-X or polling
+    GR->>LK: boot params intel_iommu on iommu pt isolcpus nohz_full rcu_nocbs
+    LK->>HM: enable iommu domains
+    LK->>VF: expose vfio device and iommu groups
+    LK->>NIC: unbind stock driver bind vfio_pci
+    AE->>VF: open vfio set container get group and device fd
+    AE->>VF: ioctl query bars msix dma capabilities
+    AE->>VF: mmap bars into userspace
+    AE->>AC: init runtime allocator scheduler observability
+    AE->>DR: load device spec init driver rings doorbells
+    DR->>HM: request dma mappings for rx and tx buffers
+    DR->>NIC: program registers queues mtu msix or polling
     loop Run-to-completion on isolated cores
-        NIC-->>DR: RX completion (poll or IRQ on non-RT)
+        NIC-->>DR: rx completion
         DR->>AC: hand off packet buffer
-        AC->>AC: process L2 (learn and forward)
-        AC->>DR: enqueue TX descriptor
-        DR->>NIC: ring TX doorbell
-        AC->>LOG: SPSC log: counters and events to host
+        AC->>AC: process l2 learn and forward
+        AC->>DR: enqueue tx descriptor
+        DR->>NIC: ring tx doorbell
+        AC->>LOG: spsc log counters and events to host
     end
 ```
 
