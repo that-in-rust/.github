@@ -236,24 +236,24 @@ sequenceDiagram
     participant NIC as "PCIe NIC"
     participant LOG as "Host Logger (non-RT core)"
 
-    GR->>LK: "Boot with params: intel_iommu=on, iommu=pt,<br/>isolcpus,nohz_full,rcu_nocbs"
-    LK->>HM: "Enable IOMMU domains"
-    LK->>VF: "Expose /dev/vfio/vfio and IOMMU groups"
-    LK->>NIC: "Unbind stock driver; bind to vfio-pci"
-    AE->>VF: "open() VFIO, set container, get group + device fd"
-    AE->>VF: "ioctl: query regions (BARs), MSI-X, DMA capabilities"
-    AE->>VF: "mmap BARs into userspace"
-    AE->>AC: "Init runtime: allocator, scheduler, observability"
-    AE->>DR: "Load device spec; init driver (rings, doorbells)"
-    DR->>HM: "Request DMA mappings for RX/TX buffers"
-    DR->>NIC: "Program registers: queues, MTU, MSI-X/poll"
+    GR->>LK: Boot with params: intel_iommu=on, iommu=pt, isolcpus, nohz_full, rcu_nocbs
+    LK->>HM: Enable IOMMU domains
+    LK->>VF: Expose /dev/vfio/vfio and IOMMU groups
+    LK->>NIC: Unbind stock driver; bind to vfio-pci
+    AE->>VF: open VFIO, set container, get group and device fd
+    AE->>VF: ioctl query BARs and MSI-X and DMA capabilities
+    AE->>VF: mmap BARs into userspace
+    AE->>AC: init runtime: allocator, scheduler, observability
+    AE->>DR: load device spec and init driver (rings, doorbells)
+    DR->>HM: request DMA mappings for RX and TX buffers
+    DR->>NIC: program registers: queues, MTU, MSI-X or polling
     loop Run-to-completion on isolated cores
-        NIC-->>DR: "RX completion (poll or IRQ on non-RT)"
-        DR->>AC: "Hand off packet buffer"
-        AC->>AC: "Process L2 (learn+forward)"
-        AC->>DR: "Enqueue TX descriptor"
-        DR->>NIC: "Ring TX doorbell"
-        AC->>LOG: "SPSC log: counters/events to host"
+        NIC-->>DR: RX completion (poll or IRQ on non-RT)
+        DR->>AC: hand off packet buffer
+        AC->>AC: process L2 (learn and forward)
+        AC->>DR: enqueue TX descriptor
+        DR->>NIC: ring TX doorbell
+        AC->>LOG: SPSC log: counters and events to host
     end
 ```
 
@@ -261,64 +261,64 @@ Mermaid flowchart: components, isolation boundaries, and data flow
 
 ```mermaid
 flowchart LR
-    subgraph "Host Partition (Linux)"
-        HP1["systemd/SSH/Management"]
-        HP2["VFIO Framework (/dev/vfio)"]
-        HP3["IRQ Affinity Control (irqbalance off)"]
-        HP4["Host Logger (reads SPSC log)"]
+    subgraph Host[Host Partition (Linux)]
+        HP1[systemd / SSH / Management]
+        HP2[VFIO Framework (/dev/vfio)]
+        HP3[IRQ Affinity Control (irqbalance off)]
+        HP4[Host Logger (reads SPSC log)]
     end
 
-    subgraph "Aether Partition (Isolated Cores)"
-        AE0["Aether Front-end (Rust + libc)"]
-        subgraph AE1["aether-core (#[no_std])"]
-            AE1a["Allocator (fixed-size blocks)"]
-            AE1b["Scheduler (run-to-completion)"]
-            AE1c["Observability (atomic counters, SPSC)"]
+    subgraph APart[Aether Partition (Isolated Cores)]
+        AE0[Aether Front-end (Rust + libc)]
+        subgraph AE1[aether-core (#[no_std])]
+            AE1a[Allocator (fixed-size blocks)]
+            AE1b[Scheduler (run-to-completion)]
+            AE1c[Observability (atomic counters, SPSC)]
         end
-        subgraph AE2["Driver (aether-macros generated)"]
-            AE2a["MMIO BAR access (volatile)"]
-            AE2b["DMA Rings (RX/TX descriptors)"]
-            AE2c["IOMMU Mappings (buffer pools)"]
+        subgraph AE2[Driver (aether-macros generated)]
+            AE2a[MMIO BAR access (volatile)]
+            AE2b[DMA Rings (RX/TX descriptors)]
+            AE2c[IOMMU Mappings (buffer pools)]
         end
     end
 
-    subgraph HW["Hardware"]
-        NIC["PCIe NIC"]
-        IOMMU["IOMMU/VT-d"]
-        CPU["CPU Cores (RT + non-RT)"]
-        MEM["RAM (pinned buffers)"]
+    subgraph HW[Hardware]
+        NIC[PCIe NIC]
+        IOMMU[IOMMU / VT-d]
+        CPU[CPU Cores (RT and non-RT)]
+        MEM[RAM (pinned buffers)]
     end
 
-    HP2 -- "bind NIC to vfio-pci" --> NIC
+    HP2 -- bind NIC to vfio-pci --> NIC
     NIC --- IOMMU
-    AE0 -- "open/ioctl/mmap" --> HP2
+    AE0 -- open/ioctl/mmap --> HP2
     AE0 --> AE1
     AE1 --> AE2
     AE2 <---> NIC
     IOMMU --- MEM
     CPU --- AE1
     CPU --- HP1
-    AE1c -- "SPSC shared memory" --> HP4
-    HP3 -- "route IRQs to non-RT cores" --> CPU
+    AE1c -- SPSC shared memory --> HP4
+    HP3 -- route IRQs to non-RT cores --> CPU
 ```
 
 Rust OS/Unikernel track: boot and I/O stack (for headless appliance)
 
 ```mermaid
 flowchart TD
-    subgraph FW["UEFI Firmware"]
-        GOP["GOP Framebuffer"]
-        MAP["Memory Map (E820/UEFI)"]
+    subgraph FW[UEFI Firmware]
+        GOP[GOP Framebuffer]
+        MAP[Memory Map (E820 / UEFI)]
     end
-    BOOT["UEFI App (Rust kernel entry)"]
-    CORE["#[no_std] Kernel Core"]
-    GDTIDT["GDT/IDT + Exception Handlers"]
-    PAGING["64-bit Paging + Higher-half Mapping"]
-    ALLOC["Heap Allocator (fixed/LL/FSB)"]
-    NVME["NVMe Driver (PCIe, MMIO, DMA Queues)"]
-    ETH["Ethernet Driver (PCIe DMA Rings)"]
-    TCPIP["smoltcp (TCP/IP)"]
-    APP["Target App (e.g., web/db appliance)"]
+    BOOT[UEFI App (Rust kernel entry)]
+    CORE[#[no_std] Kernel Core]
+    GDTIDT[GDT/IDT + Exception Handlers]
+    PAGING[64-bit Paging + Higher-half Mapping]
+    ALLOC[Heap Allocator (fixed / LL / FSB)]
+    NVME[NVMe Driver (PCIe, MMIO, DMA Queues)]
+    ETH[Ethernet Driver (PCIe DMA Rings)]
+    TCPIP[smoltcp (TCP/IP)]
+    APP[Target App (e.g., web / db appliance)]
 
     FW --> BOOT --> CORE --> GDTIDT --> PAGING --> ALLOC
     CORE --> NVME --> APP
