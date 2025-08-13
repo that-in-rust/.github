@@ -307,18 +307,18 @@ Rust OS/Unikernel track: boot and I/O stack (for headless appliance)
 ```mermaid
 flowchart TD
     subgraph UEFI_Firmware
-        GOP[GOP Framebuffer]
-        MAP[Memory Map (E820 / UEFI)]
+        GOP["GOP framebuffer"]
+        MAP["Memory map E820 UEFI"]
     end
-    BOOT[UEFI App (Rust kernel entry)]
-    CORE[no_std Kernel Core]
-    GDTIDT[GDT/IDT + Exception Handlers]
-    PAGING[64-bit Paging + Higher-half Mapping]
-    ALLOC[Heap Allocator (fixed / LL / FSB)]
-    NVME[NVMe Driver (PCIe, MMIO, DMA Queues)]
-    ETH[Ethernet Driver (PCIe DMA Rings)]
-    TCPIP[smoltcp (TCP/IP)]
-    APP[Target App (web / db appliance)]
+    BOOT["UEFI app Rust kernel entry"]
+    CORE["no_std kernel core"]
+    GDTIDT["GDT IDT and exceptions"]
+    PAGING["64-bit paging and higher half mapping"]
+    ALLOC["Heap allocator fixed LL FSB"]
+    NVME["NVMe driver PCIe MMIO DMA queues"]
+    ETH["Ethernet driver PCIe DMA rings"]
+    TCPIP["smoltcp TCP IP"]
+    APP["Target app web db appliance"]
 
     UEFI_Firmware --> BOOT --> CORE --> GDTIDT --> PAGING --> ALLOC
     CORE --> NVME --> APP
