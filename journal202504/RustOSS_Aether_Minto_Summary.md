@@ -261,16 +261,16 @@ Mermaid flowchart: components, isolation boundaries, and data flow
 
 ```mermaid
 flowchart LR
-    subgraph Host[Host Partition (Linux)]
+    subgraph Host_Partition_Linux
         HP1[systemd / SSH / Management]
         HP2[VFIO Framework (/dev/vfio)]
         HP3[IRQ Affinity Control (irqbalance off)]
         HP4[Host Logger (reads SPSC log)]
     end
 
-    subgraph APart[Aether Partition (Isolated Cores)]
+    subgraph Aether_Partition_Isolated_Cores
         AE0[Aether Front-end (Rust + libc)]
-        subgraph AE1[aether-core (#[no_std])]
+        subgraph AE1[aether-core (no_std)]
             AE1a[Allocator (fixed-size blocks)]
             AE1b[Scheduler (run-to-completion)]
             AE1c[Observability (atomic counters, SPSC)]
@@ -282,7 +282,7 @@ flowchart LR
         end
     end
 
-    subgraph HW[Hardware]
+    subgraph Hardware
         NIC[PCIe NIC]
         IOMMU[IOMMU / VT-d]
         CPU[CPU Cores (RT and non-RT)]
@@ -306,21 +306,21 @@ Rust OS/Unikernel track: boot and I/O stack (for headless appliance)
 
 ```mermaid
 flowchart TD
-    subgraph FW[UEFI Firmware]
+    subgraph UEFI_Firmware
         GOP[GOP Framebuffer]
         MAP[Memory Map (E820 / UEFI)]
     end
     BOOT[UEFI App (Rust kernel entry)]
-    CORE[#[no_std] Kernel Core]
+    CORE[no_std Kernel Core]
     GDTIDT[GDT/IDT + Exception Handlers]
     PAGING[64-bit Paging + Higher-half Mapping]
     ALLOC[Heap Allocator (fixed / LL / FSB)]
     NVME[NVMe Driver (PCIe, MMIO, DMA Queues)]
     ETH[Ethernet Driver (PCIe DMA Rings)]
     TCPIP[smoltcp (TCP/IP)]
-    APP[Target App (e.g., web / db appliance)]
+    APP[Target App (web / db appliance)]
 
-    FW --> BOOT --> CORE --> GDTIDT --> PAGING --> ALLOC
+    UEFI_Firmware --> BOOT --> CORE --> GDTIDT --> PAGING --> ALLOC
     CORE --> NVME --> APP
     CORE --> ETH --> TCPIP --> APP
     CORE --> GOP
