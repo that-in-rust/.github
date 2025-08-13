@@ -262,44 +262,44 @@ Mermaid flowchart: components, isolation boundaries, and data flow
 ```mermaid
 flowchart LR
     subgraph Host_Partition_Linux
-        HP1[systemd / SSH / Management]
-        HP2[VFIO Framework (/dev/vfio)]
-        HP3[IRQ Affinity Control (irqbalance off)]
-        HP4[Host Logger (reads SPSC log)]
+        HP1["Host management"]
+        HP2["VFIO framework"]
+        HP3["IRQ affinity control"]
+        HP4["Host logger"]
     end
 
     subgraph Aether_Partition_Isolated_Cores
-        AE0[Aether Front-end (Rust + libc)]
-        subgraph AE1[aether-core (no_std)]
-            AE1a[Allocator (fixed-size blocks)]
-            AE1b[Scheduler (run-to-completion)]
-            AE1c[Observability (atomic counters, SPSC)]
+        AE0["Aether frontend"]
+        subgraph AE1["aether-core no_std"]
+            AE1a["Allocator fixed blocks"]
+            AE1b["Scheduler run-to-completion"]
+            AE1c["Observability counters and ring"]
         end
-        subgraph AE2[Driver (aether-macros generated)]
-            AE2a[MMIO BAR access (volatile)]
-            AE2b[DMA Rings (RX/TX descriptors)]
-            AE2c[IOMMU Mappings (buffer pools)]
+        subgraph AE2["Driver generated"]
+            AE2a["MMIO BAR access"]
+            AE2b["DMA rings RX TX"]
+            AE2c["IOMMU mappings buffers"]
         end
     end
 
     subgraph Hardware
-        NIC[PCIe NIC]
-        IOMMU[IOMMU / VT-d]
-        CPU[CPU Cores (RT and non-RT)]
-        MEM[RAM (pinned buffers)]
+        NIC["PCIe NIC"]
+        IOMMU["IOMMU VT-d"]
+        CPU["CPU cores"]
+        MEM["RAM pinned buffers"]
     end
 
-    HP2 -- bind NIC to vfio-pci --> NIC
+    HP2 --> NIC
     NIC --- IOMMU
-    AE0 -- open/ioctl/mmap --> HP2
+    AE0 --> HP2
     AE0 --> AE1
     AE1 --> AE2
     AE2 <---> NIC
     IOMMU --- MEM
     CPU --- AE1
     CPU --- HP1
-    AE1c -- SPSC shared memory --> HP4
-    HP3 -- route IRQs to non-RT cores --> CPU
+    AE1c --> HP4
+    HP3 --> CPU
 ```
 
 Rust OS/Unikernel track: boot and I/O stack (for headless appliance)
