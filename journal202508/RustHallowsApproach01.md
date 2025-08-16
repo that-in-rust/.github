@@ -31,6 +31,11 @@ We need to ideate
         - S3
         - Object
         - RDBMS
+   - Ideas for differentiation
+      - Kafka
+      - OpenSearch
+      - Backend API
+
  
 ```
 
