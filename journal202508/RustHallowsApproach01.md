@@ -50,6 +50,8 @@ normal browser < WASM runtime << realtime-app-specific-partitioned-engine
 
 So, can we have the browser specific realtime-app-specific-partitioned-engine? Will it win significantly against the normal browser?
 - Truly parallel browser like Servo
+- Will Chrome be optimized more by realtime-app-specific-partitioned-engine?
+
 
 ```
 
