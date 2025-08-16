@@ -17,12 +17,19 @@ We need to ideate
     - Logging
     - Database : 
     - Load Balancers :
-    - Streaming
+    - Streaming:
+- what will create differentiation?
+    - 
+- Unclassified
     - Web Socket
     - WebRTC
     - GraphQL
     - protobuf
-- what will create differentiation?
-    - 
-
+    - Storage
+        - Block
+        - File
+        - S3
+        - Object
+        - RDBMS
+ 
 ```
