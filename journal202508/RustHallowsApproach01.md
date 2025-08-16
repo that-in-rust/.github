@@ -5,7 +5,7 @@ We need to ideate
     - if architecture options are clear enough
     - if idiomatic pattern reference files are SOTA
     - if we can use TDD as the driving force
--  which app-specific-partitioned-kernel can offer a clear differentiation?
+-  which app-specific-real-time-partitioned-kernel can offer a clear differentiation?
     - Data Ecosystem for aggregation
         - Kafka-inspired tool with Scala language : 10/10
         - Data Lake 
