@@ -17,6 +17,11 @@ We need to ideate
     - Logging
     - Database : 
     - Load Balancers :
+    - Streaming
+    - Web Socket
+    - WebRTC
+    - GraphQL
+    - protobuf
 - what will create differentiation?
     - 
 
