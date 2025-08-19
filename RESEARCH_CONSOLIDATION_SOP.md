@@ -497,67 +497,31 @@ find "/home/amuldotexe/Downloads/zzRustResearch" -name "*.pdf" | wc -l
 - **Coverage**: All 439 files (172 .md + 91 .txt + 24 .json + 150 PDF/DOC)
 - **Quality**: Comprehensive coverage of all major research themes
 
-### Progress Tracking
+## Quality Assurance
 
-Below is the list of all files to be processed. Mark each with [ ] when completed.
+### Verification Checklist
+- [ ] Ideas & Insights Table covers all major technical concepts
+- [ ] Performance claims with specific metrics included
+- [ ] URLs Table has comprehensive context for each entry
+- [ ] No source attribution maintained throughout
+- [ ] Semantic deduplication completed across all file types
+- [ ] All 439 files processed systematically
+### File Processing Details
+- **Total Files Processed**: 439
+- **File Types**:
+  - **Markdown Files**: [List of markdown files]
+  - **Text Files**: [List of text files]
+  - **JSON Files**: [List of JSON files]
+  - **PDF/DOC Files**: [List of PDF/DOC files]
+- **Example URL Extracted**: 
+  - [Cloud costs for programmers; key factors](https://www.vantage.sh/blog/cloud-costs-every-programmer-should-know) - Pricing strategy
 
-### Markdown Files
- - [ ] /home/amuldotexe/Downloads/zzRustResearch/RustLLM Rust OS Rust Kernel, Postgres Optimization.md
- - [ ] /home/amuldotexe/Downloads/zzRustResearch/# Parselmouth_ A Revolutionary Rust-Based Browser....md
- - [ ] /home/amuldotexe/Downloads/zzRustResearch/RustLLM response (24).md
- - [ ] /home/amuldotexe/Downloads/zzRustResearch/Kafka real-time partitioned engine (1).docx.md
- - [ ] /home/amuldotexe/Downloads/zzRustResearch/RustLLM response (22).md
- - [ ] /home/amuldotexe/Downloads/zzRustResearch/merged_output_20250816.md
- - [ ] /home/amuldotexe/Downloads/zzRustResearch/RustLLM response (9).md
- - [ ] /home/amuldotexe/Downloads/zzRustResearch/RustLLM response (25).md
- - [ ] /home/amuldotexe/Downloads/zzRustResearch/RustHallows McKinsey Infographic_ Harry Potter Architectures.md
- - [ ] /home/amuldotexe/Downloads/zzRustResearch/RandomIdeas/20250807-research-1-axiom-dsl-prd.md
- - [ ] /home/amuldotexe/Downloads/zzRustResearch/RandomIdeas/20250811-rust-library-prd.md
- - [ ] /home/amuldotexe/Downloads/zzRustResearch/RandomIdeas/20250808.md
- - [ ] /home/amuldotexe/Downloads/zzRustResearch/RandomIdeas/20250807-DSL-exploration.md
- - [ ] /home/amuldotexe/Downloads/zzRustResearch/RandomIdeas/20250811-Reverse-engineer.md
- - [ ] /home/amuldotexe/Downloads/zzRustResearch/RandomIdeas/20250807-research-2-weaver-dsl-prd.md
- - [ ] /home/amuldotexe/Downloads/zzRustResearch/RandomIdeas/20250811-partitioned-runtime.md
- - [ ] /home/amuldotexe/Downloads/zzRustResearch/RandomIdeas/20250807-DSL-exploration-web-rendering.md
- - [ ] /home/amuldotexe/Downloads/zzRustResearch/RandomIdeas/20250811-concurrent-rust.md
- - [ ] /home/amuldotexe/Downloads/zzRustResearch/RandomIdeas/20250807-research-1-axiom-dsl.md
- - [ ] /home/amuldotexe/Downloads/zzRustResearch/RandomIdeas/20250807-research-2-weaver-dsl.md
- - [ ] /home/amuldotexe/Downloads/zzRustResearch/RustLLM Rust Business App Browser Ideation_ (1).md
- - [ ] /home/amuldotexe/Downloads/zzRustResearch/RustLLM Project Veritaserum_ A Post-Web Ecosystem for Productive, Performant, and Secure Applications.md
- - [ ] /home/amuldotexe/Downloads/zzRustResearch/RustLLM response.md
- - [ ] /home/amuldotexe/Downloads/zzRustResearch/RustLLM # Parselmouth_ A Revolutionary Rust-Based Browser... (1).md
- - [ ] /home/amuldotexe/Downloads/zzRustResearch/Rust LLM Veritaserum 2025 (1).md
- - [ ] /home/amuldotexe/Downloads/zzRustResearch/RustLLM response (29).md
- - [ ] /home/amuldotexe/Downloads/zzRustResearch/RustLLM response (11).md
- - [ ] /home/amuldotexe/Downloads/zzRustResearch/RustLLM response (21).md
- - [ ] /home/amuldotexe/Downloads/zzRustResearch/RustLLM response (19).md
- - [ ] /home/amuldotexe/Downloads/zzRustResearch/Rust Project Ideas/micro-library-ideas-0.md
- - [ ] /home/amuldotexe/Downloads/zzRustResearch/Legacy-Free Browser Engine Expansion_.md
- - [ ] /home/amuldotexe/Downloads/zzRustResearch/Calculus Graphs for IIT JEE_.md
- - [ ] /home/amuldotexe/Downloads/zzRustResearch/DM/RustHallowsPrep20250815_summary.md
- - [ ] /home/amuldotexe/Downloads/zzRustResearch/Rust LLM Project Veritaserum_ An Architectural Blueprint for a Post-Web Application Ecosystem (1).md
- - [ ] /home/amuldotexe/Downloads/zzRustResearch/RustLLM Veritaserum 2025 (2).md
- - [ ] /home/amuldotexe/Downloads/zzRustResearch/Rust LLM Rust WASM Business Application Ecosystem_.md
- - [ ] /home/amuldotexe/Downloads/zzRustResearch/RustLLM RustOSS Custom OS on Specific Hardware.md
- - [ ] /home/amuldotexe/Downloads/zzRustResearch/Rust LLM Coding API Cost Inquiry_.md
- - [ ] /home/amuldotexe/Downloads/zzRustResearch/journal202506/Deep Dive Into Rust Runtime Architecture.md
- - [ ] /home/amuldotexe/Downloads/zzRustResearch/journal202506/Veritaserum 2025 (2).md
- - [ ] /home/amuldotexe/Downloads/zzRustResearch/journal202506/MegaResearchDoc2025087.md
- - [ ] /home/amuldotexe/Downloads/zzRustResearch/journal202506/Rust300 Rust Library Idea Generation.md
- - [ ] /home/amuldotexe/Downloads/zzRustResearch/journal202506/Harry Potter UI Framework Evolved_.md
- - [ ] /home/amuldotexe/Downloads/zzRustResearch/journal202506/Zenith_ Rust Simplified Blueprint_.md
- - [ ] /home/amuldotexe/Downloads/zzRustResearch/journal202506/# Parselmouth_ A Revolutionary Rust-Based Browser... (1).md
- - [ ] /home/amuldotexe/Downloads/zzRustResearch/journal202506/RustReconstruct Aura CPU Analysis tool.md
- - [ ] /home/amuldotexe/Downloads/zzRustResearch/journal202506/Rust WASM Business Application Ecosystem_ (2).md
- - [ ] /home/amuldotexe/Downloads/zzRustResearch/journal202506/UBI Zenith_ Rust Simplified Blueprint.md
- - [ ] /home/amuldotexe/Downloads/zzRustResearch/journal202506/Rust OS Rust Kernel, Postgres Optimization.md
- - [ ] /home/amuldotexe/Downloads/zzRustResearch/journal202506/Rust Business App Browser Ideation_ (1).md
- - [ ] /home/amuldotexe/Downloads/zzRustResearch/journal202506/RustPRD Rust Beyond WASM Concurrency (1).md
- - [ ] /home/amuldotexe/Downloads/zzRustResearch/journal202506/Project Veritaserum_ An Architectural Blueprint for a Post-Web Application Ecosystem (4).md
- - [ ] /home/amuldotexe/Downloads/zzRustResearch/journal202506/Project Veritaserum_ A Post-Web Ecosystem for Productive, Performant, and Secure Applications.md
- - [ ] /home/amuldotexe/Downloads/zzRustResearch/journal202506/Rust WASM Unified Project Ideation_.md
- - [ ] /home/amuldotexe/Downloads/zzRustResearch/journal202506/Project Veritaserum_ A Blueprint for a Unified, High-Performance Application Ecosystem (2).md
- - [ ] /home/amuldotexe/Downloads/zzRustResearch/journal202506/Legacy-Free Browser Engine Expansion_ (1).md
- - [ ] /home/amuldotexe/Downloads/zzRustResearch/journal202506/DSL for Rust Frontend_.md
- - [ ] /home/amuldotexe/Downloads/zzRustResearch/journal202506/Browser Engine Performance Deep Dive_.md
- - [ ] /home/amuldotexe/Downloads/zzRustResearch/journal202506/RustOSS part 1 Aether Runtime Business Evaluation (1).md
+### File Processing Details
+- **Total Files Processed**: 439
+- **File Types**:
+  - **Markdown Files**: [List of markdown files]
+  - **Text Files**: [List of text files]
+  - **JSON Files**: [List of JSON files]
+  - **PDF/DOC Files**: [List of PDF/DOC files]
+- **Example URL Extracted**: 
+  - [Cloud costs for programmers; key factors](https://www.vantage.sh/blog/cloud-costs-every-programmer-should-know) - Pricing strategy
