@@ -1,5 +1,29 @@
 # What can speed up our building in next 1 month?
 
+## Unanswered questions phase 1
+
+## Observations phase 1
+
+- 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Key clear first candidates for max Product Differentiation for app-specific-real-time-Rust-Driven-partitioned-kernel:
 
 level 1
@@ -9,6 +33,7 @@ level 1
 - Tokio in terms of latency
 - Pingora in terms of latency
 - Open Search or Elastic Search in terms of latency
+
 
 
 
