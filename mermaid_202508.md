@@ -1,4 +1,6 @@
-# Architecture 1: Traditional Multi-Threaded Async I/O (Rust + OS Scheduler)
+# Building a POC for RustHallows
+## Attempt 01
+### Architecture 1: Traditional Multi-Threaded Async I/O (Rust + OS Scheduler)
 
 ``` mermaid
 flowchart TB
