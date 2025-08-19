@@ -1,4 +1,4 @@
-
+# Architecture 1: Traditional Multi-Threaded Async I/O (Rust + OS Scheduler)
 
 ``` mermaid
 flowchart TB
