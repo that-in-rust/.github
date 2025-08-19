@@ -86,3 +86,9 @@ This feature creates a Standard Operating Procedure (SOP) for AI assistants (Kir
 2. WHEN presenting ideas THEN the system SHALL use clear markdown formatting with headers and lists
 3. WHEN including references THEN the system SHALL format them consistently
 4. WHEN the document is complete THEN it SHALL include a table of contents for easy navigation
+
+### Requirements Update
+
+- **Direct Terminal Processing:**
+  - Avoid creating intermediate files during research consolidation.
+  - Use commands like `awk`, `grep`, and `head` directly in the terminal for efficient processing.

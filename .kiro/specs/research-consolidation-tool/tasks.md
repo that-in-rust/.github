@@ -43,6 +43,12 @@
   - Save to journalSummary2025 folder with timestamp
   - _Requirements: 4.3, 5.1, 5.3, 7.1, 7.2, 7.3, 7.4_
 
+### Task: Direct Terminal Processing
+
+1. Identify the file to process.
+2. Use terminal commands like `awk` or `grep` to extract relevant data.
+3. Append insights directly to the consolidated markdown file without creating intermediate files.
+
 ## Context Handoff Support
 
 ### Multi-Session Continuation

@@ -1,0 +1,91 @@
+/home/amuldotexe/Downloads/zzRustResearch/Harry Potter UI Framework Evolved_.txt
+/home/amuldotexe/Downloads/zzRustResearch/Rewriting Rails in Rust - cloud cost impact.txt
+/home/amuldotexe/Downloads/zzRustResearch/Tokio Comparison.txt
+/home/amuldotexe/Downloads/zzRustResearch/RustLLM trun_4122b840faa84ad7bd3793df0e5f39ee.txt
+/home/amuldotexe/Downloads/zzRustResearch/merged_output_20250816v2.txt
+/home/amuldotexe/Downloads/zzRustResearch/RustLLM response (1).txt
+/home/amuldotexe/Downloads/zzRustResearch/Rust Kernel, Postgres Optimization_.txt
+/home/amuldotexe/Downloads/zzRustResearch/Rust LLM Legacy-Free Browser Engine Expansion_.txt
+/home/amuldotexe/Downloads/zzRustResearch/RustLLM trun_4122b840faa84ad79c9c39b3ebabf8a0 (2).txt
+/home/amuldotexe/Downloads/zzRustResearch/Zenith_ Rust Simplified Blueprint_.txt
+/home/amuldotexe/Downloads/zzRustResearch/Rust LLM Rust Business App Browser Ideation_.txt
+/home/amuldotexe/Downloads/zzRustResearch/RustLLM trun_4122b840faa84ad7ad32e2e83c79a44e.txt
+/home/amuldotexe/Downloads/zzRustResearch/RustJobs Adoption Data Expansion & Analysis.txt
+/home/amuldotexe/Downloads/zzRustResearch/Rust LLM Veritaserum 2025.txt
+/home/amuldotexe/Downloads/zzRustResearch/Harry Potter UI Framework Evolved_ (1).txt
+/home/amuldotexe/Downloads/zzRustResearch/RustLLM response (8).txt
+/home/amuldotexe/Downloads/zzRustResearch/journal202506/Deep Dive Into Rust Runtime Architecture.txt
+/home/amuldotexe/Downloads/zzRustResearch/journal202506/Rust Runtime Architecture Deep Dive.txt
+/home/amuldotexe/Downloads/zzRustResearch/RustLLM trun_4122b840faa84ad78e8b046375c5c2e2.txt
+/home/amuldotexe/Downloads/zzRustResearch/RustLLM response (7).txt
+/home/amuldotexe/Downloads/zzRustResearch/WhatsApp Chat with X mutuals.txt
+/home/amuldotexe/Downloads/zzRustResearch/RustLLM Deep Dive Into Rust Runtime Architecture.txt
+/home/amuldotexe/Downloads/zzRustResearch/RustLLM response (4).txt
+/home/amuldotexe/Downloads/zzRustResearch/trun_4122b840faa84ad78e8b046375c5c2e2 (2).txt
+/home/amuldotexe/Downloads/zzRustResearch/trun_4122b840faa84ad7a24867ec3a76c16a (copy).txt
+/home/amuldotexe/Downloads/zzRustResearch/UBI Meta 20250714.txt
+/home/amuldotexe/Downloads/zzRustResearch/RustLLM Enhancing Code Archiving Utility_.txt
+/home/amuldotexe/Downloads/zzRustResearch/Export all that you learnt in this chat in a sing....txt
+/home/amuldotexe/Downloads/zzRustResearch/Rust LLM Project Veritaserum_ A Blueprint for a Unified, High-Performance Application Ecosystem.txt
+/home/amuldotexe/Downloads/zzRustResearch/RustLLM Rust30020250815.txt
+/home/amuldotexe/Downloads/zzRustResearch/RustLLM response.txt
+/home/amuldotexe/Downloads/zzRustResearch/Enhancing Code Archiving Utility_ (2).txt
+/home/amuldotexe/Downloads/zzRustResearch/Legacy-Free Browser_ Deep Research Analysis_.txt
+/home/amuldotexe/Downloads/zzRustResearch/# Parselmouth_ A Revolutionary Rust-Based Browser....txt
+/home/amuldotexe/Downloads/zzRustResearch/coderamp-labs-gitingest.txt
+/home/amuldotexe/Downloads/zzRustResearch/DSL for Rust Frontend_ (1).txt
+/home/amuldotexe/Downloads/zzRustResearch/zzUnclassified/meta-repo20240419v1.txt
+/home/amuldotexe/Downloads/zzRustResearch/zzUnclassified/study20250502v1.txt
+/home/amuldotexe/Downloads/zzRustResearch/zzUnclassified/CodeSOP_20250418.txt
+/home/amuldotexe/Downloads/zzRustResearch/zzUnclassified/alias_d202409_20250418.txt
+/home/amuldotexe/Downloads/zzRustResearch/zzUnclassified/SixLLM_20250418.txt
+/home/amuldotexe/Downloads/zzRustResearch/zzUnclassified/meta-software20250419.txt
+/home/amuldotexe/Downloads/zzRustResearch/RustLLM RustOSS part 1 Aether Runtime Business Evaluation.txt
+/home/amuldotexe/Downloads/zzRustResearch/RustLLM response (5).txt
+/home/amuldotexe/Downloads/zzRustResearch/journal202504/RustOSS part 1 Aether Runtime Business Evaluation.txt
+/home/amuldotexe/Downloads/zzRustResearch/journal202504/ideation20250419.txt
+/home/amuldotexe/Downloads/zzRustResearch/journal202504/Ideation20250418.txt
+/home/amuldotexe/Downloads/zzRustResearch/journal202504/ideation20250420.txt
+/home/amuldotexe/Downloads/zzRustResearch/UBI Zenith_ Rust Simplified Blueprint.txt
+/home/amuldotexe/Downloads/zzRustResearch/RustLLM Enhancing Code Archiving Utility_ (1).txt
+/home/amuldotexe/Downloads/zzRustResearch/RustHallows GPT5 01.txt
+/home/amuldotexe/Downloads/zzRustResearch/RustHallows Project Deep Dive.txt
+/home/amuldotexe/Downloads/zzRustResearch/Cloud Cost Impact Analysis_.txt
+/home/amuldotexe/Downloads/zzRustResearch/journal202508/RustHallowsPrep20250815.txt
+/home/amuldotexe/Downloads/zzRustResearch/journal202508/RustHallowsBase04.txt
+/home/amuldotexe/Downloads/zzRustResearch/journal202508/RustHallowsBase04-part-2.txt
+/home/amuldotexe/Downloads/zzRustResearch/journal202508/RustHallowsBase04-part-7.txt
+/home/amuldotexe/Downloads/zzRustResearch/journal202508/RustHallowsBase04-part-1.txt
+/home/amuldotexe/Downloads/zzRustResearch/journal202508/RustHallowsBase04-part-5.txt
+/home/amuldotexe/Downloads/zzRustResearch/journal202508/RustHallowsBase04-part-8.txt
+/home/amuldotexe/Downloads/zzRustResearch/journal202508/RustHallowsPrep2.txt
+/home/amuldotexe/Downloads/zzRustResearch/journal202508/RustHallowsBase04-part-9.txt
+/home/amuldotexe/Downloads/zzRustResearch/journal202508/RustHallowsBase04-part-10.txt
+/home/amuldotexe/Downloads/zzRustResearch/journal202508/RustHallowsBase04-part-4.txt
+/home/amuldotexe/Downloads/zzRustResearch/journal202508/RustHallowsBase04-part-6.txt
+/home/amuldotexe/Downloads/zzRustResearch/journal202508/RustHallowsBase04-part-3.txt
+/home/amuldotexe/Downloads/zzRustResearch/RustLLM Rust Runtime Architecture Deep Dive.txt
+/home/amuldotexe/Downloads/zzRustResearch/Rust Backend DSL Design_.txt
+/home/amuldotexe/Downloads/zzRustResearch/Rust LLM Loco vs. Rails Popularity_.txt
+/home/amuldotexe/Downloads/zzRustResearch/Rust LLM Ferrum_ Minimalist Backend DSL Prototype_.txt
+/home/amuldotexe/Downloads/zzRustResearch/RustLLM response (9).txt
+/home/amuldotexe/Downloads/zzRustResearch/OFL.txt
+/home/amuldotexe/Downloads/zzRustResearch/merged_output_20250816v1.txt
+/home/amuldotexe/Downloads/zzRustResearch/UBI Rust Ferrum_ Minimalist Backend DSL Prototype.txt
+/home/amuldotexe/Downloads/zzRustResearch/merged_output_20250816.txt
+/home/amuldotexe/Downloads/zzRustResearch/before-i-go-interview-irodov.txt
+/home/amuldotexe/Downloads/zzRustResearch/RustLLM Rust30020250814.txt
+/home/amuldotexe/Downloads/zzRustResearch/Rust LLM Zenith_ Rust Simplified Blueprint_ (1).txt
+/home/amuldotexe/Downloads/zzRustResearch/promptsUsed/cursorRules20250502.txt
+/home/amuldotexe/Downloads/zzRustResearch/promptsUsed/log20250418.txt
+/home/amuldotexe/Downloads/zzRustResearch/RustLLM response (3).txt
+/home/amuldotexe/Downloads/zzRustResearch/Rust LLM Browser Engine Performance Deep Dive_.txt
+/home/amuldotexe/Downloads/zzRustResearch/UBI Comprehensive Rust Idiomatic Patterns Guide.txt
+/home/amuldotexe/Downloads/zzRustResearch/Export all that you learnt in this chat in a sing... (1).txt
+/home/amuldotexe/Downloads/zzRustResearch/# Parselmouth_ A Revolutionary Rust-Based Browser... (1).txt
+/home/amuldotexe/Downloads/zzRustResearch/RustLLM response (6).txt
+/home/amuldotexe/Downloads/zzRustResearch/RustLLM response (2).txt
+/home/amuldotexe/Downloads/zzRustResearch/DSL for Rust Frontend_.txt
+/home/amuldotexe/Downloads/zzRustResearch/Marauder Post web.txt
+/home/amuldotexe/Downloads/zzRustResearch/patternsRust/i00-pattern-list.txt
+/home/amuldotexe/Downloads/zzRustResearch/RustLLM trun_4122b840faa84ad78124aa70192d96ab (1).txt

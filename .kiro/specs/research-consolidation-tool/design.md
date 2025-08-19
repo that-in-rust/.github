@@ -185,3 +185,12 @@ The system operates through a multi-stage pipeline:
 - Deduplication effectiveness measurement
 - Source reference integrity verification
 - Output document structure and readability assessment
+
+### Direct Terminal Processing
+
+To streamline research consolidation, process files directly in the terminal without creating intermediate files. For example:
+
+```bash
+awk 'NR>60 && NR<=80' /path/to/research/file.txt
+```
+This approach reduces overhead and simplifies workflows.

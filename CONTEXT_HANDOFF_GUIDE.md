@@ -112,6 +112,15 @@ grep -oE 'https?://[^[:space:]]+' "filename"
 | [URL] | [What it's about, why useful] | [Which research themes it supports] |
 ```
 
+### Best Practice: Direct Terminal Processing
+
+When resuming work, process files directly in the terminal to avoid unnecessary file creation. Use commands like:
+
+```bash
+awk 'NR>60 && NR<=80' file.txt
+```
+This ensures a more efficient and streamlined workflow.
+
 ## Handoff Checklist
 
 When starting a new thread, verify:
