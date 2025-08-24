@@ -1,3 +1,17 @@
+# RustHallows Notes 20250824
+
+
+
+
+
+
+
+
+
+
+
+
+
 Below is a **succinct, LLM‑ready prompt pack** that captures the most important **keywords, ideas, OSS module seeds, and meta‑patterns** from your RustHallows materials—organized top‑down (Minto) and trimmed to **only the highest‑leverage items** for differentiated Rust OSS. I kept GPU‑specific ideas out per your preference.
 
 ---
