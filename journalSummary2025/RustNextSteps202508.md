@@ -86,8 +86,8 @@ This data shows that VirtIO, especially when combined with vDPA, offers performa
 
 ## Next Steps
 
-
-
+- Objective 1: Very simple use cases for an app specific RTOS that is significantly differentiated from the application performance in Ubuntu 22 / Linux 
+- Objective 2: Minimum set of drivers, and periphery software we need to write in no-std to ensure that these RTOSes can be run
 
 
 
