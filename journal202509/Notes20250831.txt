@@ -13,4 +13,9 @@ What can help us prepare in next 100 days
 
 
 What 3 things can help us get the next Rust job?
-- 
+- Identify big libraries for Rust contributions
+- Build Rust knowledge base
+    - System Design
+    - DSA
+    - Idiomatic design patterns of Rust
+- 300 LOC Rust small OSS libraries
