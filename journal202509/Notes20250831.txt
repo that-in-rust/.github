@@ -7,8 +7,10 @@ The next job
 What can help us prepare in next 100 days
 - A. Blockchain Rust contributions for immediate money
 - B. 300 LOC Rust small OSS libraries
-- C.Rust big library contribution
+- C. Rust big library contribution
 - D. Full Stack projects + DSA + System Design (React + Springboot)
 - E. RustHallows
 
 
+What 3 things can help us get the next Rust job?
+- 
