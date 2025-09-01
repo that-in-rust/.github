@@ -1,3 +1,14 @@
 Next 100 days
 
-Do we go further 
+The next job 
+- Usual Full-Stack Developer role
+- Rust Systems Programmer role
+
+What can help us prepare in next 100 days
+- A. Blockchain Rust contributions for immediate money
+- B. 300 LOC Rust small OSS libraries
+- C.Rust big library contribution
+- D. Full Stack projects + DSA + System Design (React + Springboot)
+- E. RustHallows
+
+
