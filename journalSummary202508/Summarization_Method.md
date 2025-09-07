@@ -1,96 +1,560 @@
-# Summarization Method — Minto Pyramid + Chunked Streaming
+# Summarization Method
 
-This document describes the exact method used to turn very large notes into one cohesive, high‑quality Minto Pyramid summary table, while reading the source in manageable terminal chunks.
+This document describes the exact method used to turn the repository's notes into one cohesive, high‑quality Minto Pyramid summary table in the root `README.md`.
 
-## Goals
+## Core Mandate
 
-- Bold: Single cohesive output: a master table (no per‑chunk notes)
-- Bold: Minto structure: clear answer, MECE pillars, evidence patterns
-- Bold: Scalability: process arbitrarily long files safely and repeatably
-- Bold: Reusability: same method works for future notes files
+The process must be exhaustive and mechanical to ensure complete coverage.
 
-## Input Constraints
+- **Scope:** Every single `.txt`, `.json`, `.md`, and `.pdf` file in the entire repository must be processed. Files that cannot be read (e.g., PDFs, binary files) will be noted as skipped.
+- **Reading Method:** Files must *only* be read in sequential, non-overlapping 250-line chunks using terminal commands (`head`, `tail`).
+- **Progress Tracking:** A master checklist of all files will be maintained in this document. Progress will be updated in the checklist after each 250-line chunk is processed and its concepts are added to the `README.md`.
 
-- Bold: Chunk size: read 250 lines per iteration (CLI output cap). Do not run large-range filtered scans as a substitute; always advance in fixed 250-line windows.
-- Bold: No network: rely solely on local file contents
-- Bold: Large files: iterate until EOF; maintain state in memory/editor
+## Master File Checklist
 
-## High‑Level Approach
-
-- Bold: Stream: read file in 250‑line windows from start to end (strict)
-- Bold: Extract: identify candidate concepts (patterns, strategies, techs)
-- Bold: Synthesize: map into Minto table columns with MECE coverage
-- Bold: Deduplicate: normalize names; merge synonyms; avoid repeats
-- Bold: Enrich: add concise metrics, pitfalls, and search keywords
-- Bold: Cohere: present as a single master table (no chunk references)
-
-## Detailed Workflow
-
-- Bold: 1) Initialize: create an empty master table with fixed columns
-- Bold: 2) Scan: for window N..N+249, parse text and collect candidates
-- Bold: 3) Normalize: canonicalize names (lowercase key; trim; unify hyphens)
-- Bold: 4) Classify: assign Level/Category (Answer, Pillar, Pattern, etc.)
-- Bold: 5) Reduce: one‑line, action‑oriented cells; avoid verbosity
-- Bold: 6) Merge: if item exists, enrich cells (When, Pitfalls, Metrics)
-- Bold: 7) Keywords: add high‑signal terms; dedupe; keep short, specific
-- Bold: 8) Commit: update the table without chunk labels; track coverage
-
-## Extraction Heuristics
-
-- Bold: JSON‑ish cues: keys like `pattern_name`, `strategy_name`, `technique_name`, `field`, `title`
-- Bold: Lexical cues: lines mentioning “pattern”, “anti‑pattern”, “consistency”, “replication”, “caching”, “CQRS”, “Saga”, “API Gateway”, “BFF”, etc.
-- Bold: Support fields: “description”, “use_case(s)”, “pros_and_cons”, “challenges”, “metrics”
-- Bold: Domain buckets: Architecture, Data, Distributed Systems, Reliability, Delivery/Ops, Security, Decision, Anti‑Patterns, Platforms
-
-## Table Schema (columns)
-
-- Bold: Level: Answer | Pillar | Pattern | Data Store | Streams | Decision | Migration | Security | Anti‑Patterns | Reference
-- Bold: Category: Thematic bucket (e.g., Architecture, Data, Reliability)
-- Bold: Item: Canonical name (e.g., Circuit Breaker, CQRS)
-- Bold: Core Idea: One clear principle statement
-- Bold: When to Use: Triggers/contexts where it fits
-- Bold: Pitfalls / Anti‑Patterns: Common mistakes to avoid
-- Bold: Metrics / Signals: How to know it’s working/regressing
-- Bold: Keywords: Short, high‑signal tags for search/LLM retrieval
-
-## Synthesis Rules
-
-- Bold: MECE: ensure pillars cover content without overlap
-- Bold: One‑liners: write concise, active‑voice, single‑line cells
-- Bold: No chunk labels: final artifact never mentions chunks
-- Bold: Merge synonyms: e.g., “Write‑Back” ≈ “Write‑Behind”; “Saga Pattern” ≈ “Saga”
-- Bold: Prefer principles: lead with “what it is” then “when to use”
-- Bold: Add metrics: choose observable, practical indicators (e.g., p95 latency, error budget burn)
-- Bold: Anti‑patterns: include remediation intent in Pitfalls
-
-## Keyword Curation
-
-- Bold: Signal: prefer canonical, specific terms over generic buzzwords
-- Bold: Dedupe: lowercase/trim; collapse variants; keep a short list
-- Bold: Purpose: enable fast LLM retrieval and future cross‑reference
-
-## Quality Gates
-
-- Bold: Coverage: track processed line range (e.g., “1–N processed”). Only bump coverage after actually completing all 250‑line windows up to N.
-- Bold: Remediation: if any non-windowed scan was used, re-process that range in 250‑line windows before updating coverage.
-- Bold: Consistency: consistent tone, schema, and taxonomy
-- Bold: Uniqueness: do not add near‑duplicates; enrich existing rows
-- Bold: Relevance: table items must map to actual source content
-
-## Operational Commands (local only)
-
-- Bold: Count lines: `wc -l path/to/file.txt`
-- Bold: Read window: `sed -n 'START,ENDp' path/to/file.txt`
-- Bold: Grep patterns: `rg -n -o -P '"(pattern_name|strategy_name|technique_name)"\s*:\s*"[^"]+' file`
-- Bold: Append/update: maintain table in a single Markdown; avoid chunk notes
-
-## Example Mapping
-
-- Bold: Input: “Retries with Exponential Backoff and Jitter … avoids thundering herd”
-- Bold: Row: Level=Pattern | Category=Reliability | Item=Retries with Backoff + Jitter | Core Idea=Space out retries with randomness to reduce contention | When=Transient failures | Pitfalls=Retry storms | Metrics=Retry histograms, success‑after‑retry | Keywords=Exponential backoff, Jitter
-
-## Maintenance
-
-- Bold: Reuse: copy this method for other large notes
-- Bold: Evolve: if schema changes, record rationale in an ADR
-- Bold: Finalize: when EOF reached, freeze coverage marker and keywords
+- [x] ./journal202509/Notes20250830.md (complete)
+- [ ] ./journal202509/Architecture Options for a WASM-Based Deterministic RTOS.docx (skipped, binary)
+- [x] ./journal202509/Notes20250830.txt (complete, source data for previously processed file)
+- [x] ./journal202509/Notes20250831.md (complete)
+- [x] ./journal202509/Notes20250829.txt (complete, source data for previously processed file)
+- [x] ./journal202509/Notes20250829.txt (complete, source data for previously processed file)
+- [x] ./journal202508/RustHallowsBase04-part-11 (complete, empty)
+- [ ] ./journal202508/RustHallowsBase03.md
+- [ ] ./journal202508/Drive AI Index (Colab → Sheets) - 20250822162612 - STAGING_3.csv
+- [ ] ./journal202508/RustOS Without the Driver Debt_ A Virtualization-First Blueprint to Bypass Linux's GPL Trap and Ship Faster (3).md
+- [ ] ./journal202508/RustHallowsBase04.txt
+- [ ] ./journal202508/Write-Once Mastery_ The 4-Pillar Playbook and 11 Supporting Tactics that Deliver 95% of Production-Grade Zig Code Quality.md
+- [ ] ./journal202508/Drive AI Index (Colab → Sheets) - 20250822162612 - STAGING_1.csv
+- [ ] ./journal202508/trun_82b88932a051498485c362bd64070533 (2).json
+- [ ] ./journal202508/RustRuntime20250815_observations.md
+- [ ] ./journal202508/chat20250819.md
+- [ ] ./journal202508/RustHallowsBase04-part-4.txt
+- [ ] ./journal202508/RustHallowsBase04-part-7.txt
+- [ ] ./journal202508/chat20250819_part_07.md
+- [ ] ./journal202508/trun_82b88932a05149848977c59a26485225.json
+- [ ] ./journal202508/RustHallows Open-Source B2B Use Cases Comparison.docx.md
+- [ ] ./journal202508/RustHallowsBase04-part-2.txt
+- [ ] ./journal202508/trun_82b88932a0514984a4fd517f37b144be (3).json
+- [ ] ./journal202508/Rust30020250815.json
+- [ ] ./journal202508/RustHallowsBase04-part-6.txt
+- [ ] ./journal202508/parallel202508-summary.md
+- [ ] ./journal202508/Drive AI Index (Colab → Sheets) - 20250822162612 - Sheet1.csv
+- [ ] ./journal202508/chat.html
+- [ ] ./journal202508/From Fragmentation to Formation_ A Battle-tested Blueprint for a Rust-Powered OS that Unifies Drivers Across Android Phones and Business Servers (1).md
+- [ ] ./journal202508/The 95-Percent Blueprint_ Pareto Patterns, Pitfalls, and Playbooks for High-Caliber System Design.md
+- [ ] ./journal202508/chat20250819_part_03.md
+- [ ] ./journal202508/trun_82b88932a0514984bc2d6d98eab7423f (1).json
+- [ ] ./journal202508/Spring Boot Mastery in 20% of the Effort_ The Pareto Playbook for 95% World-Class Java Backends.md
+- [ ] ./journal202508/Rust30020250815_complete.md
+- [ ] ./journal202508/RustHallowsBase05.md
+- [ ] ./journal202508/Serenity Toolkit 2025 (1).md
+- [ ] ./journal202508/RustHallowsBase04-part-10.txt
+- [ ] ./journal202508/conversations.json
+- [ ] ./journal202508/chat20250819_part_09.md
+- [ ] ./journal202508/trun_1b986480e1c84d75b1db55a0eab78357 (1).json
+- [ ] ./journal202508/RustHallowsBase01.md
+- [ ] ./journal202508/Drivers20250824/Comparative Architecture Exploration for RustHallows OS.docx
+- [ ] ./journal202508/Drivers20250824/trun_da5838edb25d44d389074277f64aa5e8 (1).json
+- [ ] ./journal202508/Drivers20250824/Universal Virtio_ The Fast-Track Blueprint for Shrinking Driver Chaos and Accelerating New OS Innovation.md
+- [ ] ./journal202508/Drivers20250824/trun_da5838edb25d44d38ae43a28e5428fa3.json
+- [ ] ./journal202508/Drivers20250824/Rust-Powered, Virtio-First Servers_ A 9-Month Path to Certifiable, Micro-Second Latency Platforms.md
+- [ ] ./journal202508/Drivers20250824/trun_da5838edb25d44d3b54fe7c1fd3e5d2a.json
+- [ ] ./journal202508/Drivers20250824/Rust Apex_ A Vertically-Integrated, Certification-Ready Stack Targeting 10-40× Gains for Safety-Critical Systems.md
+- [ ] ./journal202508/Drivers20250824/RustHallows_ A Strategic Analysis of a High-Assurance, High-Performance OS.md
+- [ ] ./journal202508/Drivers20250824/Project Nirbhik_ What It Really Takes to Build a Rust-First, Cross-Platform OS for Macs & 80% of PCs — Costs, Constraints, and Smarter Paths to Indian Digital Sovereignty.md
+- [ ] ./journal202508/Drivers20250824/RustHallows OS Strategic Analysis.txt
+- [ ] ./journal202508/Drivers20250824/Rust OS vs. The Linux Hardware Universe_ A Data-Driven Roadmap to 80% Device Coverage with 20% of the Effort.md
+- [ ] ./journal202508/Drivers20250824/RustHallows OS Strategic Analysis.docx
+- [ ] ./journal202508/Drivers20250824/trun_da5838edb25d44d38ae43a28e5428fa3.txt
+- [ ] ./journal202508/Drivers20250824/Universal Virtio_ The Fast-Track Blueprint for Shrinking Driver Chaos and Accelerating New OS Innovation (1).md
+- [ ] ./journal202508/Drivers20250824/trun_da5838edb25d44d3a70374acaa5842fc.json
+- [ ] ./journal202508/Drivers20250824/trun_da5838edb25d44d3b54fe7c1fd3e5d2a (1).json
+- [ ] ./journal202508/Drivers20250824/RustHallows_ A Strategic Analysis of a High-Assurance, High-Performance OS.txt
+- [ ] ./journal202508/Drivers20250824/trun_da5838edb25d44d39eabe0c3e214baf8.json
+- [ ] ./journal202508/Drivers20250824/Rust Apex_ A Vertically-Integrated, Certification-Ready Stack Targeting 10-40× Gains for Safety-Critical Systems.txt
+- [ ] ./journal202508/Drivers20250824/Rust-Powered, Virtio-First Servers_ A 9-Month Path to Certifiable, Micro-Second Latency Platforms (1).md
+- [ ] ./journal202508/Drivers20250824/trun_da5838edb25d44d3aafd38d1d60f89ec.json
+- [ ] ./journal202508/Drivers20250824/trun_da5838edb25d44d3aafd38d1d60f89ec.txt
+- [ ] ./journal202508/Drivers20250824/trun_da5838edb25d44d389074277f64aa5e8.json
+- [ ] ./journal202508/trun_82b88932a0514984bbc73cb821649c97 (1).json
+- [ ] ./journal202508/RustHallowsBase04-part-9.txt
+- [ ] ./journal202508/trun_82b88932a05149849141e53cc0d99975.json
+- [ ] ./journal202508/RustHallowsBase04-part-5.txt
+- [ ] ./journal202508/chat20250819_part_04.md
+- [ ] ./journal202508/trun_1b986480e1c84d75b02b7fba69f359c9.json
+- [ ] ./journal202508/RustHallowsBase04-part-8.txt
+- [ ] ./journal202508/chat20250819_part_08.md
+- [ ] ./journal202508/Brain & Body Reset_ A 360° Playbook to Dislodge Adult ADHD and Trauma—From FDA Gold-Standards to 4,000-Year-Old Rituals (2).md
+- [ ] ./journal202508/High-Impact Rust_ The 95_5 Playbook—Pareto-Optimal Patterns, Proven Tooling & Hidden Traps That Separate Elite Crates From the Rest.md
+- [ ] ./journal202508/trun_1b986480e1c84d75a6ad29b1d72efff6.json
+- [ ] ./journal202508/RustHallowsPrep20250815_summary.md
+- [ ] ./journal202508/Drive AI Index (Colab → Sheets) - 20250822162612 - STAGING_2.csv
+- [ ] ./journal202508/RustHallowsBase02.md
+- [ ] ./journal202508/chat20250819_part_02.md
+- [ ] ./journal202508/trun_82b88932a05149848977c59a26485225 (1).json
+- [ ] ./journal202508/parallel202508/RustOS Without the Driver Debt_ A Virtualization-First Blueprint to Bypass Linux's GPL Trap and Ship Faster (3).md
+- [ ] ./journal202508/parallel202508/Write-Once Mastery_ The 4-Pillar Playbook and 11 Supporting Tactics that Deliver 95% of Production-Grade Zig Code Quality.md
+- [ ] ./journal202508/parallel202508/trun_82b88932a051498485c362bd64070533 (1).json
+- [ ] ./journal202508/parallel202508/trun_82b88932a051498485c362bd64070533 (2).json
+- [ ] ./journal202508/parallel202508/RustOS Without the Driver Debt_ A Virtualization-First Blueprint to Bypass Linux's GPL Trap and Ship Faster (2).md
+- [ ] ./journal202508/parallel202508/RustHallows POC Architecture Design.md
+- [ ] ./journal202508/parallel202508/trun_82b88932a0514984a4fd517f37b144be (2).json
+- [ ] ./journal202508/parallel202508/Project Unidriver_ A Roadmap to End Driver Fragmentation and Ignite the Next Wave of Open-Source Operating Systems.md
+- [ ] ./journal202508/parallel202508/trun_82b88932a05149848977c59a26485225.json
+- [ ] ./journal202508/parallel202508/trun_82b88932a0514984a4fd517f37b144be (3).json
+- [ ] ./journal202508/parallel202508/trun_82b88932a0514984a4fd517f37b144be.json
+- [ ] ./journal202508/parallel202508/trun_82b88932a051498485c362bd64070533.json
+- [ ] ./journal202508/parallel202508/trun_82b88932a0514984a4fd517f37b144be (1).json
+- [ ] ./journal202508/parallel202508/From Fragmentation to Formation_ A Battle-tested Blueprint for a Rust-Powered OS that Unifies Drivers Across Android Phones and Business Servers (1).md
+- [ ] ./journal202508/parallel202508/Peace Mode, On-Demand_ A cross-disciplinary playbook—spanning neurology, breath science, ancient ritual, and modern tech—for reliably switching the nervous system into Ventral Vagal 'calm & connected' gear.md
+- [ ] ./journal202508/parallel202508/Project Codename _RustHallows__ A Vertically-Integrated, Rust-Native Stack Targeting 10-40× Performance Gains for Safety-Critical Systems.md
+- [ ] ./journal202508/parallel202508/The 95-Percent Blueprint_ Pareto Patterns, Pitfalls, and Playbooks for High-Caliber System Design.md
+- [ ] ./journal202508/parallel202508/trun_82b88932a0514984bc2d6d98eab7423f (1).json
+- [ ] ./journal202508/parallel202508/RustOS Without the Driver Debt_ A Virtualization-First Blueprint to Bypass Linux's GPL Trap and Ship Faster (1).md
+- [ ] ./journal202508/parallel202508/trun_1b986480e1c84d75bc94381ba6d21189.json
+- [ ] ./journal202508/parallel202508/Spring Boot Mastery in 20% of the Effort_ The Pareto Playbook for 95% World-Class Java Backends.md
+- [ ] ./journal202508/parallel202508/trun_82b88932a0514984bc2d6d98eab7423f.json
+- [ ] ./journal202508/parallel202508/Brain & Body Reset_ A 360° Playbook to Dislodge Adult ADHD and Trauma—From FDA Gold-Standards to 4,000-Year-Old Rituals (1).md
+- [ ] ./journal202508/parallel202508/Serenity Toolkit 2025 (1).md
+- [ ] ./journal202508/parallel202508/trun_1b986480e1c84d75b1db55a0eab78357 (1).json
+- [ ] ./journal202508/parallel202508/trun_82b88932a0514984bbc73cb821649c97 (1).json
+- [ ] ./journal202508/parallel202508/trun_82b88932a05149849141e53cc0d99975.json
+- [ ] ./journal202508/parallel202508/trun_1b986480e1c84d75b02b7fba69f359c9.json
+- [ ] ./journal202508/parallel202508/Brain & Body Reset_ A 360° Playbook to Dislodge Adult ADHD and Trauma—From FDA Gold-Standards to 4,000-Year-Old Rituals (2).md
+- [ ] ./journal202508/parallel202508/High-Impact Rust_ The 95_5 Playbook—Pareto-Optimal Patterns, Proven Tooling & Hidden Traps That Separate Elite Crates From the Rest.md
+- [ ] ./journal202508/parallel202508/trun_1b986480e1c84d75a6ad29b1d72efff6.json
+- [ ] ./journal202508/parallel202508/RustHallows Expansion_ Harry Potter Themed Ideation.md
+- [ ] ./journal202508/parallel202508/trun_82b88932a05149848977c59a26485225 (1).json
+- [ ] ./journal202508/parallel202508/Brain & Body Reset_ A 360° Playbook to Dislodge Adult ADHD and Trauma—From FDA Gold-Standards to 4,000-Year-Old Rituals.md
+- [ ] ./journal202508/parallel202508/trun_7335e17607c241928b3e963a2c106e48.json
+- [ ] ./journal202508/parallel202508/From Fragmentation to Formation_ A Battle-tested Blueprint for a Rust-Powered OS that Unifies Drivers Across Android Phones and Business Servers.md
+- [ ] ./journal202508/parallel202508/RustOS Without the Driver Debt_ A Virtualization-First Blueprint to Bypass Linux's GPL Trap and Ship Faster.md
+- [ ] ./journal202508/parallel202508/Serenity Toolkit 2025.md
+- [ ] ./journal202508/parallel202508/Top-Tier React in 2025_ The 12½ Patterns that Cover 95% of Use-Cases (and the Landmines to Avoid).md
+- [ ] ./journal202508/parallel202508/trun_82b88932a0514984938aec7b95fbee66.json
+- [ ] ./journal202508/parallel202508/Peace Mode, On-Demand_ A cross-disciplinary playbook—spanning neurology, breath science, ancient ritual, and modern tech—for reliably switching the nervous system into Ventral Vagal 'calm & connected' gear (1).md
+- [ ] ./journal202508/parallel202508/trun_82b88932a0514984bbc73cb821649c97.json
+- [ ] ./journal202508/RustRuntime20250815.md
+- [ ] ./journal202508/Rust30020250815_minto.md
+- [ ] ./journal202508/Rust30020250814.json
+- [ ] ./journal202508/RustHallowsPrep20250815.txt
+- [ ] ./journal202508/From Fragmentation to Formation_ A Battle-tested Blueprint for a Rust-Powered OS that Unifies Drivers Across Android Phones and Business Servers.md
+- [ ] ./journal202508/chat20250819_part_10.md
+- [ ] ./journal202508/Drive AI Index (Colab → Sheets) - 20250822162612 - TOC.csv
+- [ ] ./journal202508/chat20250819_part_06.md
+- [ ] ./journal202508/chat20250819_part_05.md
+- [ ] ./journal202508/RustHallowsPrep2.txt
+- [ ] ./journal202508/RustHallowsBase04-part-3.txt
+- [ ] ./journal202508/chat20250819_part_01.md
+- [ ] ./journal202508/chat20250819_part_00.md
+- [ ] ./journal202508/Rust30020250815_full.md
+- [ ] ./journal202508/Top-Tier React in 2025_ The 12½ Patterns that Cover 95% of Use-Cases (and the Landmines to Avoid).md
+- [ ] ./journal202508/RustHallowsBase04-part-1.txt
+- [ ] ./journal202508/RustHallowsApproach01.md
+- [ ] ./journal202508/trun_82b88932a0514984938aec7b95fbee66.json
+- [ ] ./journal202508/Peace Mode, On-Demand_ A cross-disciplinary playbook—spanning neurology, breath science, ancient ritual, and modern tech—for reliably switching the nervous system into Ventral Vagal 'calm & connected' gear (1).md
+- [ ] ./journal202508/Rust30020250815.md
+- [ ] ./promptsUsed/cursorRules20250502.txt
+- [ ] ./promptsUsed/log20250418.txt
+- [ ] ./Web4/Ideas.md
+- [ ] ./Web4/0DSL.md
+- [ ] ./Web4/0Draft.md
+- [ ] ./Web4/0Celery.md
+- [ ] ./Web4/0Frontend.md
+- [ ] ./LICENSE
+- [ ] ./README.md
+- [ ] ./analysis/parallel202508/rust_os_unified_drivers_analysis.md
+- [ ] ./analysis/parallel202508/rusthallows_analysis.md
+- [ ] ./analysis/parallel202508/high_impact_rust_analysis.md
+- [ ] ./analysis/parallel202508/top_tier_react_analysis.md
+- [ ] ./analysis/parallel202508/rustos_without_driver_debt_analysis.md
+- [ ] ./analysis/parallel202508/95_percent_blueprint_analysis.md
+- [ ] ./analysis/parallel202508/project_unidriver_analysis.md
+- [ ] ./analysis/parallel202508/spring_boot_mastery_analysis.md
+- [ ] ./Rust Project Ideas/micro-library-ideas-0.md
+- [ ] ./mermaid_202508.md
+- [ ] ./.git/info/exclude
+- [ ] ./.git/ORIG_HEAD
+- [ ] ./.git/index
+- [ ] ./.git/COMMIT_EDITMSG
+- [ ] ./.git/packed-refs
+- [ ] ./.git/hooks/sendemail-validate.sample
+- [ ] ./.git/hooks/update.sample
+- [ ] ./.git/hooks/pre-commit.sample
+- [ ] ./.git/hooks/pre-merge-commit.sample
+- [ ] ./.git/hooks/push-to-checkout.sample
+- [ ] ./.git/hooks/pre-rebase.sample
+- [ ] ./.git/hooks/pre-applypatch.sample
+- [ ] ./.git/hooks/post-update.sample
+- [ ] ./.git/hooks/applypatch-msg.sample
+- [ ] ./.git/hooks/prepare-commit-msg.sample
+- [ ] ./.git/hooks/commit-msg.sample
+- [ ] ./.git/hooks/pre-push.sample
+- [ ] ./.git/hooks/pre-receive.sample
+- [ ] ./.git/hooks/fsmonitor-watchman.sample
+- [ ] ./.git/logs/refs/heads/main
+- [ ] ./.git/logs/refs/remotes/origin/HEAD
+- [ ] ./.git/logs/HEAD
+- [ ] ./.git/objects/39/51c8b9a6b18e4f37f5c89f37657e4f219c9b8e
+- [ ] ./.git/objects/03/a113e04011bfa909d34c1437c5bfa629997579
+- [ ] ./.git/objects/03/3d14adf6aa17087e3bb6abcdbd39e5ae2bc214
+- [ ] ./.git/objects/03/ca77cf315bf3b9cabd42ed6483a577aeca2a52
+- [ ] ./.git/objects/03/ccbd1f03216b843c55ce510bb317ab7809c2d7
+- [ ] ./.git/objects/e9/21ba71e1afe5a8a5ca7a41aaa6584fefa20d9f
+- [ ] ./.git/objects/fb/36d66afdc669d87d1d8eb608b509a8414e6f72
+- [ ] ./.git/objects/fb/2605c0c269a42e2325121fa9a2a6c14afa2cd5
+- [ ] ./.git/objects/41/fc97e6ac7d8d4a33d10facc73d28e3f6062de4
+- [ ] ./.git/objects/41/ca5641378cb20777e58329258351d09f38a584
+- [ ] ./.git/objects/ee/fea477e22d594b354fa4f0c3af132a9d2ce688
+- [ ] ./.git/objects/ee/8d2d6379052519e57b57c2280c0cd48ed86c68
+- [ ] ./.git/objects/ee/0a96e4f30794801433be7e7370a6a2eba515ba
+- [ ] ./.git/objects/f3/ee3e2bea818ec3b11ae522e6e44016fd9ebd2d
+- [ ] ./.git/objects/f3/443a7a6af3fe9392cef8536cca96d8bfd7490d
+- [ ] ./.git/objects/79/f18b816042841e7d4f1497e66e7b3571fb84c7
+- [ ] ./.git/objects/79/d6717f3f5bdfe5fda99745a7f41638b3d145a1
+- [ ] ./.git/objects/27/bba24b8681a586b54622d1e82165af2a6b0b58
+- [ ] ./.git/objects/27/02568ef86bf899406633001ee95374dd93f53b
+- [ ] ./.git/objects/7a/0319af8c3bc22de733a519abd55d7e32b1fec1
+- [ ] ./.git/objects/a5/52cb2f23cfff4b981311409305fb9bcc8694cb
+- [ ] ./.git/objects/a5/eb5405b935972292ba8bf6707e2ce25b56f103
+- [ ] ./.git/objects/09/b93f15fb5b40835523f831b9fe965f0ee4cea8
+- [ ] ./.git/objects/74/7e06e7cbe917e404972b0ed5164d2a3b411d0b
+- [ ] ./.git/objects/74/c9331c9923b244a436892b3b27e37093e36a0e
+- [ ] ./.git/objects/fa/d803dc0a0d6656fee06779870e3c59dbf0fcee
+- [ ] ./.git/objects/fa/f73faf3f770afe5a35d9c7fa53ea28e64f257c
+- [ ] ./.git/objects/a8/84bd5d7cdf79b50e3ff7bfced661125e9538e0
+- [ ] ./.git/objects/fc/ea8117d233f6eff1beecac242de1b8c92f0915
+- [ ] ./.git/objects/f7/ba809e41f0fa1b569f793afe041d0e339b2150
+- [ ] ./.git/objects/f7/5a0012c12ba310450df314c7f15c563abe58df
+- [ ] ./.git/objects/f5/b0c7bbe3350c87d08ae22bcfc5f9ea9be41cff
+- [ ] ./.git/objects/0c/be970b619213ede3420d8a12161c88c29e2aa6
+- [ ] ./.git/objects/0c/7dd4cd81bbe64c234f4fbb68389d28356f2b71
+- [ ] ./.git/objects/0c/ace09c06194cf321ee34298339a3b622780eaf
+- [ ] ./.git/objects/0c/4c3957ced2140fd7dddd48f2ed7f7da4a8dcdf
+- [ ] ./.git/objects/ed/61350f472b36c66255a33a1e02067a64acf18d
+- [ ] ./.git/objects/ed/b0e19f34542354d8cde6bad6e4078a3f8af20b
+- [ ] ./.git/objects/ed/1987ae1c6c1e96cc83af7338eba7a1ba445bf8
+- [ ] ./.git/objects/4e/1495ae0d764061cfc28030a3a279a7024b408b
+- [ ] ./.git/objects/f1/468c31bf13dd51b37ecf9bcb72078063038e36
+- [ ] ./.git/objects/c4/9e9d81cea324c014484c78933809d90f97b592
+- [ ] ./.git/objects/c4/f63ee876603d3edd5d354f8bb29ed48ebb5809
+- [ ] ./.git/objects/c6/f610f788e6a17e1921e45f9aee56af993e0db2
+- [ ] ./.git/objects/c6/9bc43e505dbaf2cb8cd76b8b53f77e097747c1
+- [ ] ./.git/objects/bc/903e236737d9da9817fc45c1bc0c222c37dffe
+- [ ] ./.git/objects/bc/561ca24040d4673d05a80dc9b1182b442a46b3
+- [ ] ./.git/objects/94/892b653fe2351ec63f18209b0afc91bac359d8
+- [ ] ./.git/objects/d3/5c38a2c4ced744f601a08a76130df9ee7fa9f0
+- [ ] ./.git/objects/d3/924bd6ffd03eb305b2b0ed2377e4e55b815989
+- [ ] ./.git/objects/66/685b1b083e2e93e156d1cafd224d772fdf1759
+- [ ] ./.git/objects/8d/abd2a0c193122beee7384fca00a82256e11a4f
+- [ ] ./.git/objects/99/eed9f7e014b2760fd3a9e30cd7add60ede4376
+- [ ] ./.git/objects/71/d7cf74d18e68d1fc9598b8f91435c4fefd4299
+- [ ] ./.git/objects/a1/d13b0b7c4da0e89f2ba5e6c1f77a629df0366b
+- [ ] ./.git/objects/6a/bbe28e2e3b9b303cb5f163188d6be2bc6a07c4
+- [ ] ./.git/objects/ff/3e6c8c1456299ecc111f8a7096cd81317f310f
+- [ ] ./.git/objects/cf/13e8a129befe8b1e1699462d98c196e50f8135
+- [ ] ./.git/objects/cf/c7ba035496f0eec98fdc67c0a8a172450cbdc3
+- [ ] ./.git/objects/cf/3aec0b4afb70375fbfc3648db20aa5124274b4
+- [ ] ./.git/objects/49/9eaef9b5064407fd063460d018d00c6488a34e
+- [ ] ./.git/objects/49/3198d262a525b389a6453f3cece73f6dde0b46
+- [ ] ./.git/objects/ad/2a560e60df9a88745d054281235201b959a39b
+- [ ] ./.git/objects/ac/1fc0f4c277aee5abd5ee9e7466098ccf8d2deb
+- [ ] ./.git/objects/88/c03d859751c9c1c69debc09bc5652ad9dc216d
+- [ ] ./.git/objects/88/2dc7540b62c0aa7eb1371af24e3620506f63e0
+- [ ] ./.git/objects/48/c3a38d87f632ad8231e2a67049f0b0238a4381
+- [ ] ./.git/objects/ef/380963f8edbeab7a7f634561d8436439df69af
+- [ ] ./.git/objects/ca/bd9d0d6f2a77033a37c2ccf94af8a26c642ffd
+- [ ] ./.git/objects/61/74dbbf1bc195423c7ebcf8e16b57281deec4f9
+- [ ] ./.git/objects/pack/pack-0f0bfb2fd9334e2c28e90703bf41ea48b63444d7.idx
+- [ ] ./.git/objects/pack/pack-0f0bfb2fd9334e2c28e90703bf41ea48b63444d7.pack
+- [ ] ./.git/objects/pack/pack-0f0bfb2fd9334e2c28e90703bf41ea48b63444d7.rev
+- [ ] ./.git/objects/3a/eed7fc42a4e4ec828af549613b405ec34a3c5c
+- [ ] ./.git/objects/3a/a6757040e35b0fb10126e3ce4268884e42acca
+- [ ] ./.git/objects/3a/e796971bccfbf338dee7421f5329627cacb913
+- [ ] ./.git/objects/26/99fd7a124b0db4eb14449a52e575d7a0243004
+- [ ] ./.git/objects/15/acb1cd8383e3f5b101a4472f387c21392afa4b
+- [ ] ./.git/objects/19/d72cf021a813b4e114387c62df48974b0006da
+- [ ] ./.git/objects/19/80d77cb3eb2400f4f9f80d0d788095db16de77
+- [ ] ./.git/objects/67/ea69c5d5af54c2832ec60cb20a3ae1125bd1a3
+- [ ] ./.git/objects/67/261acab5a6f0f031a964aec638d6cb21f56385
+- [ ] ./.git/objects/cb/94f0472cf7b17561f6f645c106bcf3c8a46f80
+- [ ] ./.git/objects/78/6429df8f9681216cbb2073450a4b3cc9f31937
+- [ ] ./.git/objects/78/d5d98865316a85a4c6715bdc0154e0e928a3da
+- [ ] ./.git/objects/a7/6e24ecbd65abe2aa6230ac1825f620f6de5a1e
+- [ ] ./.git/objects/a7/1f340efa797376fb972d2e8a1e195ec78bc272
+- [ ] ./.git/objects/db/a574b5f2571ded9c15e27cd2294737d74e8a39
+- [ ] ./.git/objects/92/eb7a9679a13dc394311edecd8d0dba5bd903c6
+- [ ] ./.git/objects/92/66bb717a6c70e7cff5b3c7f8c4696e21663aff
+- [ ] ./.git/objects/3f/7ccf0dcb753f91460b6bd709af47d7790abb59
+- [ ] ./.git/objects/be/2c221a98d3ed9733ec4a007a2ff6de0e8b6e5b
+- [ ] ./.git/objects/7b/8a0e3e0bbc7763c2dfcf61ffbdd74003c87c71
+- [ ] ./.git/objects/7b/9e16da92293683d35fd9985cc5dff4ff7596b8
+- [ ] ./.git/objects/7b/057409e6b30dc1498ba4623928c9d513ddb98e
+- [ ] ./.git/objects/0f/36d06222259ef37c3c41104cbf962e6e9e7342
+- [ ] ./.git/objects/0f/afc21dfe021d893a453d060c5986e35b0534a1
+- [ ] ./.git/objects/0f/c89c392d0f5a7ae7bcbad981d5100e301d63da
+- [ ] ./.git/objects/fe/09447d2cbc84710a8514a526d56047e94a0887
+- [ ] ./.git/objects/c3/553e58574843e627f295b154a0e99b39dd664e
+- [ ] ./.git/objects/40/fd6d32815133bab615b03cf060dc0cd3036c6b
+- [ ] ./.git/objects/b1/89551ced02899a8a0d5630b05ef4b29b85259f
+- [ ] ./.git/objects/b1/bed3d8a6314f6a683c21ada167fb2e14267f16
+- [ ] ./.git/objects/b0/26e34616c80cffc5e9844feb5065e0107fdd84
+- [ ] ./.git/objects/b0/98a5f05953d6b32f7dd72a984da770f2269d0d
+- [ ] ./.git/objects/b0/995724c59db61e09ba28df3032dd25d2d94e8c
+- [ ] ./.git/objects/01/5dc1e087c90a80811c81cc0e194aa3f46d9fd4
+- [ ] ./.git/objects/01/1586c35777a96df5c8d6d23dd749d203b7857b
+- [ ] ./.git/objects/82/a42fe21c048a2dd03658fb78f162e1ceb24c7b
+- [ ] ./.git/objects/82/497fc16a15d2881d3f977637e7f94e70f2e7cd
+- [ ] ./.git/objects/7e/3e942a6deadab39ecc66c996deaff5970917bb
+- [ ] ./.git/objects/a3/35285c32c03c3652af571e9de2191372c1b6f5
+- [ ] ./.git/objects/a3/c355e8718ebde9eba52d77e9ddfe9ac942479f
+- [ ] ./.git/objects/a3/af57003de284f70631e73520814e7983f452f7
+- [ ] ./.git/objects/a3/45b908fea653efae3b11c008108376b4ed2092
+- [ ] ./.git/objects/da/abe1dee4961b09aa6a2691f8b7be1f0210fd1b
+- [ ] ./.git/objects/85/706134757c55feb5810fa2b9bca1ad2c3b9d6e
+- [ ] ./.git/objects/b7/0cc2050a1a43af2ddc00ded16bad940749997e
+- [ ] ./.git/objects/b7/9f1b57de9fa7a093dbd0524ad8789b65664fc5
+- [ ] ./.git/objects/f2/4de6456c45e62ea812802258849b922695e935
+- [ ] ./.git/objects/20/391cc85259ba37e8b9d4bad4ac5e4b8e6b4f52
+- [ ] ./.git/objects/60/38e85d37d7de6c1a5ad25d5f97c58e14bef538
+- [ ] ./.git/objects/60/25a8a139b73d0669ad062ec1452ccd62479a43
+- [ ] ./.git/objects/60/b70c8aada3a45fba95771b1665a3b1ed695029
+- [ ] ./.git/objects/9d/c9be00c3a8b3eef03ab7b65ad9359b2d339b64
+- [ ] ./.git/objects/4c/369bf5cfe17cc5296d834a125e5ed51836a97a
+- [ ] ./.git/objects/4c/7212658f866ac6929094870a6ba62f3de21f62
+- [ ] ./.git/objects/2e/7606ad57aca44ecf39d1ae11c9e44336b2a39e
+- [ ] ./.git/objects/2e/bc5443d98e4df6f2f8fc8c003db8f94c3f2df3
+- [ ] ./.git/objects/9b/3f008a815896f1df01d5433b6da9d4697f9686
+- [ ] ./.git/objects/46/bd4a4599f3abdf018f8845e7b3a793f5a82481
+- [ ] ./.git/objects/46/67856f8a636ffb094bf0df6deffcf95b406ddd
+- [ ] ./.git/objects/50/845f36fcaa7b955fe8fe4b0223455a318f3852
+- [ ] ./.git/objects/50/e5fe14037c235c6f7f7b43a1be3cf41bbf6eea
+- [ ] ./.git/objects/8e/156e45f33560b36b45b33dc68b43e4f8471773
+- [ ] ./.git/objects/8e/e8423f6017d640c138962de2b265d0eae17b1c
+- [ ] ./.git/objects/8e/b5465c35db65d5a4b02795fb03bce1dc7027e9
+- [ ] ./.git/objects/65/915751a85e54a916b80bd228b5cfae44d615cc
+- [ ] ./.git/objects/18/ebf5a968e15159b0b4aac0c806289faa2d339f
+- [ ] ./.git/objects/11/e423725c7fa1e953c63d9969304b6d4b5b2ce1
+- [ ] ./.git/objects/11/e8a13843b72f9720cf107e7b9e425440e0822b
+- [ ] ./.git/objects/33/b7876e35b6bc1a4282d2eb43e676c1f3210cdb
+- [ ] ./.git/objects/33/bccc10515bf3674ffff5b2d0a38a2af7dac1bc
+- [ ] ./.git/objects/25/a45fdb4bed34d0144c50fd5686345972a4cb03
+- [ ] ./.git/objects/8a/3453b0749e944358ec9ee2ec0567b96f678871
+- [ ] ./.git/objects/8a/a7221e56e6054d87b317d29173924582316108
+- [ ] ./.git/objects/5a/1db2630b96aec8b163ffdd0a4e0efb2b6a457d
+- [ ] ./.git/objects/5a/d15d7e316cd95f178e22cbd4579223d5c1b1af
+- [ ] ./.git/objects/36/1c70e49e3d6eafecca964571b46f581cc5d8f2
+- [ ] ./.git/objects/3e/1b7a3a66240c5c78148d635074fd5f08324177
+- [ ] ./.git/objects/84/b40c442be93877e55226225b95e386f5f06346
+- [ ] ./.git/objects/96/e1b8fe3e094a07077d850d1e62f0b8874e8792
+- [ ] ./.git/objects/80/c04a8397cfbb28bb840d62e76bdc541de671eb
+- [ ] ./.git/objects/06/accfeae8d13ec5367c9be4d42356d59c327553
+- [ ] ./.git/objects/06/30d972e0d92a795285a65312b81ae081237a46
+- [ ] ./.git/objects/d5/f4921a7bfbfcdbebdb8c69d325b9afa255edfc
+- [ ] ./.git/objects/d5/0db1a82dd75254c6af3ce7be4d0f956373dd15
+- [ ] ./.git/objects/3d/c94497e3d89610ad0868d332ef1f934e127e5e
+- [ ] ./.git/objects/3d/0c7e5a5165492167820f2e72775bee4ef9233b
+- [ ] ./.git/objects/3d/5bf65e6bf44131801ac21055138bda24cd463c
+- [ ] ./.git/objects/02/b1d7adcc452ac5849b06233ee2dd461cfc48bc
+- [ ] ./.git/objects/bd/a332efe0b3bd8a9b0ef63d7ae17ffcc7e2f01c
+- [ ] ./.git/objects/bd/b0cb15ffde9c95f77a3fa05fde798457b0047f
+- [ ] ./.git/objects/45/390e1259fbb8cf0e4058139b9f1d34b4e4a8e7
+- [ ] ./.git/objects/45/3b34b8ad2f66ec171d7aced0b6bc72aa31e620
+- [ ] ./.git/objects/45/56f303825088df39512b37fb17210891ba4b91
+- [ ] ./.git/objects/45/b20edf2d5dfbb75139cd57988ac0244c0cbc0a
+- [ ] ./.git/objects/16/23464e63105dea279902bbb49cf1b81d94ddd4
+- [ ] ./.git/objects/bb/d8772cbd4296eccb21a1622c17daa3498a96ba
+- [ ] ./.git/objects/bb/6604a68b416b0cd061ee9725c5a5c6f4db297b
+- [ ] ./.git/objects/d2/16709dc76a61249feb7eeff53bf9a1c83e2075
+- [ ] ./.git/objects/d2/ae6f05cfbda1587aa4273535b73931febc77f1
+- [ ] ./.git/objects/af/333ee02c96d28d111ffce8e5de8053b4f75503
+- [ ] ./.git/objects/af/2a903ffe04b33265337700e628f1addd54a570
+- [ ] ./.git/objects/53/558d46201954b0dac1756fe74a6b77ed1fb8b5
+- [ ] ./.git/objects/35/d404004a4d01ad6adcfa6ccab4e5a5e4ea15b6
+- [ ] ./.git/objects/35/1a784dc4fe9fe8ad4553909421c1f16476b33c
+- [ ] ./.git/objects/89/2f369d36ac7243129ee85c79fca40198b2a9c0
+- [ ] ./.git/objects/83/4e94c87eea4016f70d59c9ff74013218523bac
+- [ ] ./.git/objects/d7/b9dd819dd5f24d30360960f093a97c19158d28
+- [ ] ./.git/objects/d7/f8f04f2afcb2b4a99f25c3c3c300d923865fc0
+- [ ] ./.git/objects/3c/a5259c38254d78a6ca812205d32f2d195a8754
+- [ ] ./.git/objects/3c/1c6de863c317f3a2eca9331ddc663559942f70
+- [ ] ./.git/objects/4b/e76d40a75d5f85b855d0abadfd64b2fd4bac3e
+- [ ] ./.git/objects/4b/f17b116f3cc0c6f95bb1255f0690f18c0a76db
+- [ ] ./.git/objects/4b/3bab6ef7c1b9146a66d296b1ce81eaa557d103
+- [ ] ./.git/objects/23/a19177ec03a787de47cc3bd1ca8d243e30b52d
+- [ ] ./.git/objects/23/bce2364828f5edfb17d5313b9d774a7a4a831f
+- [ ] ./.git/objects/23/b239a63af94888b56b7194d0b794a05615f316
+- [ ] ./.git/objects/e5/26bf4af949d7cfdd9eb715c5c26fce213bff94
+- [ ] ./.git/objects/5d/5d020f9163b759efc7443e71f41baa7283ec4c
+- [ ] ./.git/objects/5d/66551e083de2188755bb8be08c927231ed9a8f
+- [ ] ./.git/objects/5d/c09f913cff18922c6d19f9a8fb7cf2790aba4c
+- [ ] ./.git/objects/a2/4cf3d7894e0ee77c83be90684026af95f39bf4
+- [ ] ./.git/objects/a2/1ca9e79f3a2cc0640ee74ec9350e629633c1fb
+- [ ] ./.git/objects/a2/65e6ab952ff31c7495c80f3a9d9c762d8e782f
+- [ ] ./.git/objects/86/d74ddda5984a09488a8c88cadc7b7a15c4a422
+- [ ] ./.git/objects/86/b372134773f612c73bd1d840106c79c5b1ed08
+- [ ] ./.git/objects/86/3b5c59f00484d3ecaa1129c9c54bba3e52065a
+- [ ] ./.git/objects/98/aeddc6be9e8cf04ed00230cbe9b2869310cb89
+- [ ] ./.git/objects/98/31a54287b5fd3c0496cf1e8d525833eff3b853
+- [ ] ./.git/objects/98/d18bd3a1479e7ad33517e7a370a5ce77ff6768
+- [ ] ./.git/objects/98/d0744070286ac990e7207b8591b9943a6bf3d4
+- [ ] ./.git/objects/07/307b21ec91fda9ce9f6d7ca250b141dcaad2fd
+- [ ] ./.git/objects/07/7363f649ccad077b04ce0e1e36db547d17a80a
+- [ ] ./.git/objects/de/c6356376d50b41d1db7c276c9a8558e5fd286e
+- [ ] ./.git/objects/d8/3d419ace0c5572a0c38dbef344954086c97594
+- [ ] ./.git/objects/d8/8e9eaa991dc647bf5d7d8a18ac62773818ec8e
+- [ ] ./.git/objects/e3/0399f13749072efd0ce09cfb009983b19cb12b
+- [ ] ./.git/objects/e3/e2245d242b86e1ffe8dde9492e8d87bf2c27d9
+- [ ] ./.git/objects/f8/974f6b0cab63577420f489712fccc91d8b1a50
+- [ ] ./.git/objects/b8/d2b4b4ad48c3999fe89f86f98530a1024b40f6
+- [ ] ./.git/objects/b8/43907af8ebca85ba83c65567b09d0b9e1def8a
+- [ ] ./.git/objects/b8/3205e6c5eb602f204c62fee8c8c20d91366ecc
+- [ ] ./.git/objects/9c/02bfb780d3d44b7278688a111d9de6b4bf2543
+- [ ] ./.git/objects/9c/adf356d7406a68c21218fa13959808aece9d50
+- [ ] ./.git/objects/9c/a8ad6a846c2a38c4d92b8fa4229abfb430a865
+- [ ] ./.git/objects/47/ff89460a53725ac33b62888fdb5f3e2af408c3
+- [ ] ./.git/objects/72/0100430a58ccc2db1183ae2dafb165ce47c6fc
+- [ ] ./.git/objects/72/459501c3acbf88cd5937db75a90aa863a2227c
+- [ ] ./.git/objects/9a/c8d51f10840191270f9b4b15403e956cf4c8e2
+- [ ] ./.git/objects/9a/c95581da40032c3aa645ae787177f5a3a35eb9
+- [ ] ./.git/objects/9a/89f71062c8b150003a6b0dc36f4ed6eb050327
+- [ ] ./.git/objects/f9/7afc721e91567614a0a7c5d586c02021bcfdb4
+- [ ] ./.git/objects/0b/c32e502d4eed5a453b10f392c2d123ad42f9b0
+- [ ] ./.git/objects/1e/c8390a3b48a23c0ba40da6833ed00934e69fc8
+- [ ] ./.git/objects/1e/d09956089a71144710267de33d876f8fe06deb
+- [ ] ./.git/objects/9f/ecf29ae5f1674550854711ed3373b1d37a44a0
+- [ ] ./.git/objects/9f/253de6bd253cdfdd8454d745d00c24a764bea3
+- [ ] ./.git/objects/9f/b8e26bb829a455e93bc3fcda9ac0600795a336
+- [ ] ./.git/objects/38/bc8b1bec708a1a67e9c9a18a9c157abe76125e
+- [ ] ./.git/objects/5e/0c85f6105e898be3ab2ad9ef0e78d2f2011210
+- [ ] ./.git/objects/14/5525a20a788d9a3e535e2564f4eddef3be1f6b
+- [ ] ./.git/objects/14/5c8bc0b85426a1f37bda4904a2e7a430bfec61
+- [ ] ./.git/objects/13/aa1b8cb1338aaccfd568a81fd1dddc4ba1f588
+- [ ] ./.git/objects/13/7b22433170604f9d3c3537f73a4e0f6d505b17
+- [ ] ./.git/objects/13/9356dadbcb52e3db3445b525676cc60acdda0a
+- [ ] ./.git/objects/63/bb720ac4a85aa410f25a96eed1b17dc4a1f78a
+- [ ] ./.git/objects/63/170e064ea614fbfd6c8579c5082a11e047e7e5
+- [ ] ./.git/objects/08/1d9b1efbac64204b202a9b0a91c46f80c9d130
+- [ ] ./.git/objects/08/76375e08eaf7f979fe9fa3f41e8cff499bf432
+- [ ] ./.git/objects/93/d2c74bc41cce1a928fc0dfe184bb7dfdf4bd13
+- [ ] ./.git/objects/68/436dc95215cb772252b306f882c78201a451f2
+- [ ] ./.git/objects/70/9bfe40813029bc9c45108e71648e35d0f68f2c
+- [ ] ./.git/objects/8b/3ee83ad30abe3a0b5a947fbaff3c9b6c76924f
+- [ ] ./.git/objects/8b/55dfcbacc6b4476775ee6da8474525fbd655d0
+- [ ] ./.git/objects/54/d59a29bc9bda4490e1baeaead2b245a7f58761
+- [ ] ./.git/objects/54/7e7527190fc0ac5f7d66f83bda20d937cade32
+- [ ] ./.git/objects/57/19686ff143649a251ee52ad0605e77dc85636b
+- [ ] ./.git/objects/64/8a2fc0bb65e4cf40a4b8b39966cc3edc9ae6aa
+- [ ] ./.git/objects/21/f908e443339d4da3912e49d325e2b62bf43bbf
+- [ ] ./.git/objects/21/3640100897cdaf43fc05c3263649ecf7654293
+- [ ] ./.git/objects/aa/6f2d8021f282acaa6ba311b89c32a830601535
+- [ ] ./.git/objects/1f/149c0bf1bf1f90c0bbde06b8767898789ef800
+- [ ] ./.git/objects/b5/7b9a6c9620668372eb1161debbd5ee196aa97f
+- [ ] ./.git/objects/91/69172dfbc3d869aa1befe77f460599955a83fd
+- [ ] ./.git/objects/34/59a9c97917316365d3eb80c59d42e1320a6c72
+- [ ] ./.git/objects/5b/0402361b78a6906d3bb882ee840a4f66cf224f
+- [ ] ./.git/objects/5b/e12bf56d0fddd5547bce2d7108ac5a44884ee6
+- [ ] ./.git/objects/eb/eda4884fa9431cf5073ea41a58983f5c5d1962
+- [ ] ./.git/objects/1c/385d9df50d8a42488b97bef81ca2774055c870
+- [ ] ./.git/objects/1c/81504c30415d26f4292f1a654ad98f750be104
+- [ ] ./.git/refs/heads/main
+- [ ] ./.git/refs/remotes/origin/HEAD
+- [ ] ./.git/description
+- [ ] ./.git/shallow
+- [ ] ./.git/HEAD
+- [ ] ./.git/config
+- [ ] ./journal202506/Harry Potter UI Framework Evolved_.md
+- [ ] ./journal202506/Project Veritaserum_ A Post-Web Ecosystem for Productive, Performant, and Secure Applications.md
+- [ ] ./journal202506/Deep Dive Into Rust Runtime Architecture.txt
+- [ ] ./journal202506/Rust Business App Browser Ideation_ (1).md
+- [ ] ./journal202506/RustHallows Evolving RustWeb Runtime Ecosystem (1).docx
+- [ ] ./journal202506/MegaResearchDoc2025087.md
+- [ ] ./journal202506/RustOSS part 1 Aether Runtime Business Evaluation (1).md
+- [ ] ./journal202506/RustHallows Evolving RustWeb Runtime Ecosystem (2).docx
+- [ ] ./journal202506/DSL for Rust Frontend_.md
+- [ ] ./journal202506/Project Veritaserum_ A Blueprint for a Unified, High-Performance Application Ecosystem (2).md
+- [ ] ./journal202506/Rust Monolith_ Partitioned Runtime Kernel (1).docx
+- [ ] ./journal202506/Rust WASM Unified Project Ideation_.md
+- [ ] ./journal202506/RustPRD Rust Beyond WASM Concurrency (1).md
+- [ ] ./journal202506/Legacy-Free Browser Engine Expansion_ (1).md
+- [ ] ./journal202506/Rust OS Rust Kernel, Postgres Optimization.md
+- [ ] ./journal202506/Rust WASM Business Application Ecosystem_ (2).md
+- [ ] ./journal202506/Rust Architecture Design Dialog (1).docx
+- [ ] ./journal202506/Zenith_ Rust Simplified Blueprint_.md
+- [ ] ./journal202506/RustHallows Rust Unikernel_ A Foundational Treatise.docx
+- [ ] ./journal202506/Rust300 Rust Library Idea Generation.md
+- [ ] ./journal202506/RustReconstruct Aura CPU Analysis tool.md
+- [ ] ./journal202506/RustHallows Runtime Architecture Deep Dive (2).docx
+- [ ] ./journal202506/Deep Dive Into Rust Runtime Architecture.md
+- [ ] ./journal202506/Project Veritaserum_ An Architectural Blueprint for a Post-Web Application Ecosystem (4).md
+- [ ] ./journal202506/Veritaserum 2025 (2).md
+- [ ] ./journal202506/# Parselmouth_ A Revolutionary Rust-Based Browser... (1).md
+- [ ] ./journal202506/Browser Engine Performance Deep Dive_.md
+- [ ] ./journal202506/Rust Runtime Architecture Deep Dive.txt
+- [ ] ./journal202506/UBI Zenith_ Rust Simplified Blueprint.md
+- [ ] ./.idea/vcs.xml
+- [ ] ./.idea/modules.xml
+- [ ] ./.idea/.gitignore
+- [ ] ./.idea/.github.iml
+- [ ] ./RandomIdeas/20250807-DSL-exploration-web-rendering.md
+- [ ] ./RandomIdeas/20250808.md
+- [ ] ./RandomIdeas/20250811-Reverse-engineer.md
+- [ ] ./RandomIdeas/20250807-DSL-exploration.md
+- [ ] ./RandomIdeas/20250811-partitioned-runtime.md
+- [ ] ./RandomIdeas/20250807-research-2-weaver-dsl.md
+- [ ] ./RandomIdeas/20250811-concurrent-rust.md
+- [ ] ./RandomIdeas/20250807-research-1-axiom-dsl-prd.md
+- [ ] ./RandomIdeas/20250807-research-2-weaver-dsl-prd.md
+- [ ] ./RandomIdeas/20250807-research-1-axiom-dsl.md
+- [ ] ./RandomIdeas/20250811-rust-library-prd.md
+- [ ] ./patternsRust/i00-pattern-list.txt
+- [ ] ./profile/ReadMe.md
+- [ ] ./zzUnclassified/convert_json_to_md.sh
+- [ ] ./zzUnclassified/SixLLM_20250418.txt
+- [ ] ./zzUnclassified/DM/RustHallowsPrep20250815_summary.md
+- [ ] ./zzUnclassified/all_pdf_files.txt
+- [ ] ./zzUnclassified/all_json_files.txt
+- [ ] ./zzUnclassified/meta-repo20240419v1.txt
+- [ ] ./zzUnclassified/CONTEXT_HANDOFF_GUIDE.md
+- [ ] ./zzUnclassified/md_files.txt
+- [ ] ./zzUnclassified/all_md_files.txt
+- [ ] ./zzUnclassified/alias_d202409_20250418.txt
+- [ ] ./zzUnclassified/copilot-instructions.md
+- [ ] ./zzUnclassified/all_doc_files.txt
+- [ ] ./zzUnclassified/chatmodes/Run terminal commands without asking me.chatmode.md
+- [ ] ./zzUnclassified/study20250502v1.txt
+- [ ] ./zzUnclassified/example20250418.ipynb
+- [ ] ./zzUnclassified/meta-software20250419.txt
+- [ ] ./zzUnclassified/RESEARCH_CONSOLIDATION_SOP.md
+- [ ] ./zzUnclassified/all_txt_files.txt
+- [ ] ./zzUnclassified/CodeSOP_20250418.txt
+- [ ] ./journal202504/FullStack20250725.md
+- [ ] ./journal202504/Custom OS in Rust_ Feasibility_.md
+- [ ] ./journal202504/Aether Runtime Business Evaluation_.md
+- [ ] ./journal202504/MegaResearchDoc2025087.md
+- [ ] ./journal202504/RustOSS part 1 Aether Runtime Business Evaluation (1).md
+- [ ] ./journal202504/RustOSS part 1 Aether Runtime Business Evaluation.txt
+- [ ] ./journal202504/RustOSS part 1 Aether Runtime Business Evaluation.docx
+- [ ] ./journal202504/Zzazz 20250813.md
+- [ ] ./journal202504/RustOSSideation20250811.md
+- [ ] ./journal202504/RustOSSideation20250811_minto.md
+- [ ] ./journal202504/ideation20250420.txt
+- [ ] ./journal202504/RustOSS Custom OS on Specific Hardware.md
+- [ ] ./journal202504/RustOSS_Aether_Minto_Summary.md
+- [ ] ./journal202504/ideation20250419.txt
+- [ ] ./journal202504/Ideation20250418.txt
+- [ ] ./journal202504/RustOSS runtime.md
+- [ ] ./journal202504/PRDsRust300p1.md
+- [ ] ./journal202504/Partitioned Runtime_ Analysis and Applications_.md
+- [ ] ./journal202504/ideation20250806.md
+- [ ] ./journalSummary202508/RustNextSteps202508.md
+- [ ] ./journalSummary202508/RustResearchSum20250823.md
+- [ ] ./journalSummary202508/RustResearch_Consolidated_20250819.md
+- [ ] ./journalSummary202508/zzRustResearch_urls_chunk2.txt
+- [ ] ./journalSummary202508/Summarization_Method.md
+- [ ] ./journalSummary202508/large-file-analysis-sop.md
+- [ ] ./journalSummary202508/RawSum20250823.md
+- [ ] ./journalSummary202508/summary_20250828_152345_start.txt
+- [ ] ./journalSummary202508/RustResearchKeyPoints20250823.md
+- [ ] ./journalSummary202508/RustHallowsKeywords20250824.md
+- [ ] ./journalSummary202508/RawResearch20250823.md
