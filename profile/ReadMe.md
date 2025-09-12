@@ -7,7 +7,7 @@ Welcome to that-in-rust! We are a group of developers passionate about building 
 
 We believe in the power of Rust for creating efficient, reliable, and maintainable software. Our organization focuses on developing practical utilities that solve real-world problems while showcasing Rust's capabilities in & beyond systems programming.
 
-## Our Projects
+## Our Key Projects
 
 - [tweet-scrolls](https://github.com/that-in-rust/tweet-scrolls) - Convert your Twitter archive into scrolls, where all your multi-tweet threads are stored in a single header in a txt file
 - [txt-sectumsempra](https://github.com/that-in-rust/txt-sectumsempra) - Divide a text file into multiple chunks
