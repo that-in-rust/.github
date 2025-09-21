@@ -1,0 +1,172 @@
+{
+  "input": "Research Briefing & Objective:\n\nYou are a Senior Staff Engineer and technical author building a definitive visual knowledge base called \"The Architect's Playbook.\" Your mission is to curate a library of the most insightful and well-designed diagrams, images, and visual explanations related to software and distributed system design. This library will be used for training materials, technical documentation, and architectural whitepapers.\n\nPhase 1: Search & Selection Criteria\n\nYour goal is to find high-quality images that visually explain a core concept in system design. Each image must be:\n\nInformative: The diagram must clearly and accurately represent a specific architectural pattern, concept, or data flow (e.g., Load Balancer setups, Caching strategies, CAP Theorem trade-offs, Microservices communication patterns).\n\nWell-Annotated: The image should have clear labels, legends, and annotations that make it understandable even with minimal accompanying text.\n\nSourced: The image must originate from a reputable technical source, such as a well-known engineering blog, official cloud provider documentation (AWS, GCP, Azure), a conference presentation, or an academic paper.\n\nPhase 2: Dataset Compilation & Final Deliverable\n\nThe final output must be a comprehensive table in CSV format, with each row representing a single, unique system design image.\n\nThe table must have the following exact headers:\n\nImage_URL (A direct link to the image file)\n\nConcept_Pattern\n\nDescription\n\nComplexityLevel\n\nSourceType\n\nSource_URL (The URL of the article or page where the image was found)\n\nConstraint Checklist:\nConcept_Pattern: This should be the primary concept the image illustrates. Use standardized terms like Rate Limiter, Circuit Breaker, Service Discovery, CQRS, Event Sourcing, CAP Theorem, Message Queue, Sharding, Leader Election, etc.\n\nDescription: Provide a 1-2 sentence summary of what the diagram is showing.\n\nComplexityLevel: Classify the concept's difficulty as Foundational, Intermediate, or Advanced.\n\nSourceType: Categorize the source as Engineering Blog, Official Documentation, Conference Talk, Academic Paper, or Book.\n\nExclusions: Avoid overly simplistic, low-resolution, or purely decorative images that do not add genuine educational value. Do not include screenshots of code.",
+  "output": {
+    "system_design_diagrams": [
+      {
+        "Image_URL": "https://docs.aws.amazon.com/autoscaling/ec2/userguide/images/elb-tutorial-architecture-diagram.png",
+        "Concept_Pattern": "AWS Auto Scaling Group with Application Load Balancer",
+        "Description": "Illustrates a scalable cloud infrastructure on AWS using an Auto Scaling group connected to an Application Load Balancer within a VPC.",
+        "ComplexityLevel": "Intermediate",
+        "SourceType": "Official Documentation",
+        "Source_URL": "https://docs.aws.amazon.com/autoscaling/ec2/userguide/tutorial-ec2-auto-scaling-load-balancer.html"
+      },
+      {
+        "Image_URL": "https://learn.microsoft.com/en-us/azure/load-balancer/media/load-balancer-overview/load-balancer.png",
+        "Concept_Pattern": "Azure Load Balancer Overview",
+        "Description": "Depicts the operation of the Azure Load Balancer at Layer 4, distributing inbound traffic to backend pool instances based on load-balancing rules.",
+        "ComplexityLevel": "Foundational",
+        "SourceType": "Official Documentation",
+        "Source_URL": "https://learn.microsoft.com/en-us/azure/load-balancer/load-balancer-overview"
+      }
+    ]
+  },
+  "outputBasis": [
+    {
+      "field": "system_design_diagrams",
+      "citations": [
+        {
+          "title": "What is an Application Load Balancer?",
+          "url": "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html",
+          "excerpts": [
+            "\n\n![The components of a basic Application Load Balancer](/images/elasticloadbalancing/latest/application/images/component_architecture.png)",
+            "Elastic Load Balancing automatically distributes your incoming traffic across multiple targets, such as EC2\n instances, containers, and IP addresses, in one or more Availability Zones",
+            "A _load balancer_ serves as the single point of contact for\n clients. The load balancer distributes incoming application traffic across multiple\n targets, such as EC2 instances, in multiple Availability Zones. This increases the\n availability of your applicati"
+          ]
+        }
+      ],
+      "reasoning": "The most relevant excerpts directly depict the two diagrams described in the finegrained field value: one showing the AWS Application Load Balancer diagram (with the image reference) and another describing the Azure Load Balancer at Layer 4 with its backend distribution behavior. The AWS excerpt explicitly includes an image caption referencing the ALB diagram, which aligns with the Image_URL in the field value. The Azure-related excerpt describes the Layer-4 load balancer behavior and the role of the backend pool, matching the Azure diagram concept in the field value. The combination of a concrete AWS ALB diagram reference and a concrete Azure Load Balancer description provides direct support for the field value entries and their associated metadata (concept pattern, description, complexity, and source).",
+      "confidence": "high"
+    },
+    {
+      "field": "system_design_diagrams.0",
+      "citations": [
+        {
+          "title": "What is an Application Load Balancer?",
+          "url": "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html",
+          "excerpts": [
+            "\n\n![The components of a basic Application Load Balancer](/images/elasticloadbalancing/latest/application/images/component_architecture.png)",
+            "Elastic Load Balancing automatically distributes your incoming traffic across multiple targets, such as EC2\n instances, containers, and IP addresses, in one or more Availability Zones",
+            "A _load balancer_ serves as the single point of contact for\n clients. The load balancer distributes incoming application traffic across multiple\n targets, such as EC2 instances, in multiple Availability Zones. This increases the\n availability of your applicati"
+          ]
+        }
+      ],
+      "reasoning": "The field value centers on an architectural diagram featuring an Application Load Balancer (ALB) within AWS infrastructure, specifically in conjunction with an Auto Scaling Group. The excerpts provide direct information about ALB concepts: an image illustrating the components of a basic Application Load Balancer, and textual explanations that the load balancer distributes traffic across multiple targets and can be the single point of contact for clients. These details map closely to the diagram's core idea of how ALB functions within a scalable AWS setup. While the excerpts do not explicitly mention the Auto Scaling Group, they establish the essential ALB behavior and architectural placement that the diagram conveys, which is the primary pattern being represented in the field value. The combination of a visual ALB diagram and explicit ALB role descriptions supports the concept illustrated in the field value and helps explain how the ALB interacts with multiple targets in a multi-zone, scalable environment.",
+      "confidence": "medium"
+    },
+    {
+      "field": "system_design_diagrams.0.SourceType",
+      "citations": [
+        {
+          "title": "What is an Application Load Balancer?",
+          "url": "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html",
+          "excerpts": [
+            "\n\n![The components of a basic Application Load Balancer](/images/elasticloadbalancing/latest/application/images/component_architecture.png)",
+            "Elastic Load Balancing automatically distributes your incoming traffic across multiple targets, such as EC2\n instances, containers, and IP addresses, in one or more Availability Zones",
+            "A _load balancer_ serves as the single point of contact for\n clients. The load balancer distributes incoming application traffic across multiple\n targets, such as EC2 instances, in multiple Availability Zones. This increases the\n availability of your applicati"
+          ]
+        }
+      ],
+      "reasoning": "The target field value is 'Official Documentation' for a diagram source. Excerpts that contain explicit references to AWS documentation URLs and descriptions derived from official AWS Elastic Load Balancing materials directly support this field value. The first excerpt clearly labels the image with a source URL from the AWS docs, establishing its official provenance. The second excerpt describes the load balancer concept and explicitly cites the same documentation context, signaling that the content is drawn from official materials. The third excerpt reiterates that the load balancer distributes traffic across targets in multiple Availability Zones, phrased in a way consistent with AWS documentation and its authoritative tone. Collectively, these excerpts confirm that the source type is official documentation rather than a blog, conference talk, or academic paper. The content in all three aligns with the definition of official documentation and reinforces the field value through explicit source attribution and alignment with AWS docs.",
+      "confidence": "high"
+    },
+    {
+      "field": "system_design_diagrams.0.Image_URL",
+      "citations": [
+        {
+          "title": "What is an Application Load Balancer?",
+          "url": "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html",
+          "excerpts": [
+            "Elastic Load Balancing automatically distributes your incoming traffic across multiple targets, such as EC2\n instances, containers, and IP addresses, in one or more Availability Zones",
+            "A _load balancer_ serves as the single point of contact for\n clients. The load balancer distributes incoming application traffic across multiple\n targets, such as EC2 instances, in multiple Availability Zones. This increases the\n availability of your applicati",
+            "\n\n![The components of a basic Application Load Balancer](/images/elasticloadbalancing/latest/application/images/component_architecture.png)"
+          ]
+        }
+      ],
+      "reasoning": "The target field value is a diagram URL for an AWS ELB/ALB architecture. Excerpts that describe how a load balancer distributes incoming traffic across multiple targets and serves as a single point of contact are directly aligned with what an ELB diagram conveys. From the excerpts: one excerpt states that Elastic Load Balancing automatically distributes incoming traffic across multiple targets in one or more Availability Zones, which matches the diagram's core function of traffic distribution across targets. Another excerpt reiterates that a load balancer is the single point of contact for clients and distributes traffic across targets, reinforcing the typical structure shown in an ELB/ALB diagram. A third excerpt describes the components of a basic Application Load Balancer and shows an image illustrating its architecture, which is indicative of the diagram's subject matter even if the exact image URL is not provided. Taken together, these excerpts support the context and content of a typical ELB/ALB architecture diagram, though none confirm the exact URL provided. The best-supported interpretation is that the excerpts collectively validate the diagram's domain (ELB/ALB architecture) and its annotated concept (traffic distribution across targets, single point of contact).",
+      "confidence": "medium"
+    },
+    {
+      "field": "system_design_diagrams.0.Description",
+      "citations": [
+        {
+          "title": "What is an Application Load Balancer?",
+          "url": "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html",
+          "excerpts": [
+            "\n\n![The components of a basic Application Load Balancer](/images/elasticloadbalancing/latest/application/images/component_architecture.png)",
+            "Elastic Load Balancing automatically distributes your incoming traffic across multiple targets, such as EC2\n instances, containers, and IP addresses, in one or more Availability Zones",
+            "A _load balancer_ serves as the single point of contact for\n clients. The load balancer distributes incoming application traffic across multiple\n targets, such as EC2 instances, in multiple Availability Zones. This increases the\n availability of your applicati"
+          ]
+        }
+      ],
+      "reasoning": "The finegrained field value describes a scalable AWS-based architecture where an Auto Scaling group is connected to an Application Load Balancer within a VPC. The provided excerpts focus on the role and behavior of the Application Load Balancer (ALB) in AWS. The first excerpt presents a diagram of the ALB components, which directly aligns with the idea of an ALB as part of a scalable AWS setup. The second excerpt explains that Elastic Load Balancing distributes incoming traffic across multiple targets (such as EC2 instances) and across one or more Availability Zones, which supports understanding how a scalable, highly available infrastructure operates with an ALB. The third excerpt reinforces the ALB's role as a single point of contact that distributes traffic to multiple targets across multiple Availability Zones, contributing to the perceived scalability and reliability of the architecture. Although none of the excerpts explicitly mention Auto Scaling groups or VPC, they collectively substantiate the core concept of using an ALB to enable scalable, highly available AWS infrastructure, which is the central idea in the finegrained field value.",
+      "confidence": "medium"
+    },
+    {
+      "field": "system_design_diagrams.0.Concept_Pattern",
+      "citations": [
+        {
+          "title": "What is an Application Load Balancer?",
+          "url": "https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html",
+          "excerpts": [
+            "\n\n![The components of a basic Application Load Balancer](/images/elasticloadbalancing/latest/application/images/component_architecture.png)",
+            "Elastic Load Balancing automatically distributes your incoming traffic across multiple targets, such as EC2\n instances, containers, and IP addresses, in one or more Availability Zones",
+            "A _load balancer_ serves as the single point of contact for\n clients. The load balancer distributes incoming application traffic across multiple\n targets, such as EC2 instances, in multiple Availability Zones. This increases the\n availability of your applicati"
+          ]
+        }
+      ],
+      "reasoning": "The fine-grained field value refers to an architectural pattern where an Application Load Balancer (ALB) sits in front of a scalable group of compute resources, such as instances managed perhaps by an Auto Scaling Group. The excerpts collectively describe the ALB as the entry point for client requests and explain that it distributes incoming traffic across multiple targets (EC2 instances, containers, IP addresses) in one or more Availability Zones. This aligns with the core role of an ALB in front of a pool of resources to achieve load distribution and high availability. The first excerpt explicitly references the components of a basic Application Load Balancer, highlighting its architectural role. The second excerpt emphasizes the ALB's automatic distribution of traffic across multiple targets, which is central to the pattern of fronting a scalable fleet of resources. The third excerpt reiterates the ALB's function as the single point of contact and its traffic-distribution behavior across targets in multiple zones. Taken together, these excerpts support the presence and function of the Application Load Balancer component within the described pattern, which is the essential element of the requested field value, even though a direct mention of Auto Scaling Group is not present in the excerpts themselves.",
+      "confidence": "medium"
+    }
+  ],
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "system_design_diagrams": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "Image_URL": {
+              "type": "string",
+              "description": "A direct link to the image file."
+            },
+            "Concept_Pattern": {
+              "type": "string",
+              "description": "The primary concept or pattern the image illustrates (e.g., Circuit Breaker, Service Discovery)."
+            },
+            "Description": {
+              "type": "string",
+              "description": "A 1-2 sentence summary of what the diagram is showing."
+            },
+            "ComplexityLevel": {
+              "type": "string",
+              "description": "The classified difficulty of the concept (Foundational, Intermediate, or Advanced)."
+            },
+            "SourceType": {
+              "type": "string",
+              "description": "The category of the source (e.g., Engineering Blog, Official Documentation, Book)."
+            },
+            "Source_URL": {
+              "type": "string",
+              "description": "The URL of the article or page where the image was found."
+            }
+          },
+          "required": [
+            "Image_URL",
+            "Concept_Pattern",
+            "Description",
+            "ComplexityLevel",
+            "SourceType",
+            "Source_URL"
+          ],
+          "additionalProperties": false
+        },
+        "description": "A comprehensive list of curated system design diagrams, formatted to match the user's requested CSV structure. Each item in the array represents a single, unique image and should contain the following details: the direct link to the image file (Image_URL), the primary concept or pattern it illustrates (Concept_Pattern), a 1-2 sentence summary of what the diagram shows (Description), a classification of the concept's difficulty as Foundational, Intermediate, or Advanced (ComplexityLevel), the category of the source such as Engineering Blog, Official Documentation, Conference Talk, Academic Paper, or Book (SourceType), and the URL of the article or page where the image was found (Source_URL)."
+      }
+    },
+    "required": [
+      "system_design_diagrams"
+    ],
+    "additionalProperties": false
+  }
+}

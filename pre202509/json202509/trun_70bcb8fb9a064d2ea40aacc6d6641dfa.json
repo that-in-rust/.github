@@ -1,0 +1,1099 @@
+{
+  "input": "Of course. Here is a prompt designed to curate a database of insightful mathematical visuals, perfect for anyone looking to understand math in a more intuitive, graphical way.\n\nInsightful Mathematical Visuals Database Prompt\nResearch Briefing & Objective:\n\nYou are a Lead Curriculum Designer for an innovative online learning platform focused on STEM education. Your mission is to build a visual encyclopedia of mathematics by curating images, GIFs, and diagrams that teach mathematical concepts intuitively. This database will serve as the core asset for creating engaging course materials, articles, and educational content.\n\nPhase 1: Search & Selection Criteria\n\nYour goal is to find high-quality visuals that offer an \"aha!\" moment in understanding a mathematical idea. Each visual must meet the following criteria:\n\nInstructive & Clear: The image or animation must clearly illustrate a specific mathematical theorem, concept, or relationship. The visual itself should do most of the teaching.\n\nVisually Engaging: The visual should be clean, well-designed, and aesthetically pleasing. It should draw the viewer in and make them curious.\n\nSourced & Reputable: The visual should originate from a credible source, such as an educational website, a university page, a reputable mathematics blog, an academic paper, or a high-quality educational video.\n\nPhase 2: Dataset Compilation & Final Deliverable\n\nThe final output must be a comprehensive table in CSV format, with each row representing a single, unique mathematical visual.\n\nThe table must have the following exact headers:\n\nVisual_URL (A direct link to the image or GIF file)\n\nConcept_Illustrated\n\nVisual_Technique\n\nTarget_Audience\n\nWhy_It_Works\n\nSource_Type\n\nSource_URL (The URL of the article, page, or video where the visual was found)\n\nConstraint Checklist:\nConcept_Illustrated: Name the primary mathematical idea being shown. Be specific (e.g., \"Visualizing Pi,\" \"The Pythagorean Theorem Proof,\" \"Golden Ratio in Nature,\" \"Fourier Transform Decomposition,\" \"Pascal's Triangle and Fractals\").\n\nVisual_Technique: Classify the method used to convey the information. Use standardized terms like: Geometric Proof, Animated GIF, Data Visualization, Interactive Diagram, Fractal Art, Real-World Analogy.\n\nTarget_Audience: Estimate the intended learning level for the visual. Use categories like: Elementary School, Middle School, High School, Undergraduate, General Audience.\n\nWhy_It_Works: Provide a concise, one-sentence explanation of what makes the visual so effective (e.g., \"It connects an abstract formula to a simple, tangible physical action.\").\n\nSource_Type: Categorize the source as Educational Blog, Academic Paper, University Website, Explainer Video, or Online Encyclopedia.\n\nExclusions: Avoid purely decorative mathematical art that doesn't teach a concept. Do not include static textbook pages or dense, unannotated graphs. The key is intuitive understanding at a glance.",
+  "output": {
+    "mathematical_visuals_database": [
+      {
+        "Visual_URL": "https://upload.wikimedia.org/wikipedia/commons/6/65/Pythag_anim.gif",
+        "Concept_Illustrated": "Pythagorean Theorem Proof by Rearrangement",
+        "Visual_Technique": "Animated GIF",
+        "Target_Audience": "Middle School",
+        "Why_It_Works": "It intuitively demonstrates that the sum of the areas a² and b² is exactly equal to area c² by physically showing the pieces fitting together.",
+        "Source_Type": "Online Encyclopedia",
+        "Source_URL": "https://commons.wikimedia.org/wiki/File:Pythag_anim.gif"
+      },
+      {
+        "Visual_URL": "https://www.mathwarehouse.com/animated-gifs/images/pythagorean-theorem-sum-of-squares-demonstration-gif.gif",
+        "Concept_Illustrated": "Pythagorean Theorem: Sum of Squares Demonstration",
+        "Visual_Technique": "Animated GIF",
+        "Target_Audience": "Middle School",
+        "Why_It_Works": "It visually demonstrates the sum of squares concept through a clear, animated rearrangement of areas.",
+        "Source_Type": "Educational Blog",
+        "Source_URL": "https://www.mathwarehouse.com/animated-gifs/pythagorean-theorem.php"
+      },
+      {
+        "Visual_URL": "https://upload.wikimedia.org/wikipedia/commons/e/ee/Bhaskara_Proof_of_Pythagoras_Theorem.png",
+        "Concept_Illustrated": "Bhaskara II's Proof of the Pythagorean Theorem",
+        "Visual_Technique": "Geometric Proof",
+        "Target_Audience": "High School",
+        "Why_It_Works": "It provides a static, logical map of the geometric relationships that prove the theorem, encouraging step-by-step deductive reasoning.",
+        "Source_Type": "Online Encyclopedia",
+        "Source_URL": "https://commons.wikimedia.org/wiki/File:Bhaskara_Proof_of_Pythagoras_Theorem.png"
+      },
+      {
+        "Visual_URL": "https://upload.wikimedia.org/wikipedia/commons/2/2a/Pi-unrolled-720.gif",
+        "Concept_Illustrated": "Visualizing Pi (Circumference Unrolling)",
+        "Visual_Technique": "Animated GIF",
+        "Target_Audience": "General Audience",
+        "Why_It_Works": "This high-resolution animation clearly shows a circle's circumference rolling out to a straight line, demonstrating that its length is slightly more than three times the diameter.",
+        "Source_Type": "Online Encyclopedia",
+        "Source_URL": "https://en.wikipedia.org/wiki/File:Pi-unrolled-720.gif"
+      },
+      {
+        "Visual_URL": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/CircleArea.gif/497px-CircleArea.gif",
+        "Concept_Illustrated": "Circle Area by Rearranging Sectors",
+        "Visual_Technique": "Animated GIF",
+        "Target_Audience": "Middle School",
+        "Why_It_Works": "This animation directly illustrates the entire process of slicing a circle and rearranging the sectors into a rectangle, making the derivation of the area formula highly intuitive.",
+        "Source_Type": "Online Encyclopedia",
+        "Source_URL": "https://commons.wikimedia.org/wiki/File:CircleArea.gif"
+      },
+      {
+        "Visual_URL": "https://upload.wikimedia.org/wikipedia/commons/0/07/TriangleFromCircle.gif",
+        "Concept_Illustrated": "Circle Area by Unwrapping to a Triangle",
+        "Visual_Technique": "Animated GIF",
+        "Target_Audience": "High School",
+        "Why_It_Works": "It shows concentric circles being 'unwrapped' and stacked to form a right-angled triangle, providing a visual intuition for the calculus-based proof.",
+        "Source_Type": "Online Encyclopedia",
+        "Source_URL": "https://en.wikipedia.org/wiki/Area_of_a_circle"
+      },
+      {
+        "Visual_URL": "https://upload.wikimedia.org/wikipedia/commons/b/b8/Sum_of_odd_numbers.gif",
+        "Concept_Illustrated": "Sum of the First n Odd Numbers is n²",
+        "Visual_Technique": "Animated GIF",
+        "Target_Audience": "Middle School",
+        "Why_It_Works": "It visually confirms that adding successive odd numbers (as L-shaped gnomons) perfectly constructs a larger square at each step.",
+        "Source_Type": "Online Encyclopedia",
+        "Source_URL": "https://commons.wikimedia.org/wiki/File:Sum_of_odd_numbers.gif"
+      },
+      {
+        "Visual_URL": "https://www.math.wichita.edu/discrete-book/generated/latex-image/tiling-5-board.svg",
+        "Concept_Illustrated": "Fibonacci Recurrence Relation via Tiling",
+        "Visual_Technique": "Geometric Proof",
+        "Target_Audience": "Undergraduate",
+        "Why_It_Works": "It visually proves the recurrence relation by showing that any tiling must end in either a square or a domino, reducing the problem to smaller, known cases.",
+        "Source_Type": "University Website",
+        "Source_URL": "https://www.math.wichita.edu/discrete-book/section-counting-fib.html"
+      },
+      {
+        "Visual_URL": "https://commons.wikimedia.org/wiki/File:Fibonacci_spiral_34.svg",
+        "Concept_Illustrated": "Fibonacci Spiral Construction",
+        "Visual_Technique": "Geometric Construction Diagram",
+        "Target_Audience": "High School",
+        "Why_It_Works": "It clearly shows how a spiral approximating the golden spiral emerges from drawing arcs within squares whose sides are successive Fibonacci numbers.",
+        "Source_Type": "Online Encyclopedia",
+        "Source_URL": "https://commons.wikimedia.org/wiki/File:Fibonacci_spiral_34.svg"
+      },
+      {
+        "Visual_URL": "https://upload.wikimedia.org/wikipedia/commons/d/d9/AM_GM_inequality_visual_proof.svg",
+        "Concept_Illustrated": "Arithmetic Mean-Geometric Mean (AM-GM) Inequality",
+        "Visual_Technique": "Geometric Proof",
+        "Target_Audience": "High School",
+        "Why_It_Works": "It makes the inequality immediately apparent by showing that the radius of a semicircle (the AM) is always greater than or equal to the altitude (the GM).",
+        "Source_Type": "Online Encyclopedia",
+        "Source_URL": "https://commons.wikimedia.org/wiki/File:AM_GM_inequality_visual_proof.svg"
+      },
+      {
+        "Visual_URL": "https://commons.wikimedia.org/wiki/File:Cauchy-Schwarz_inequation_in_Euclidean_plane.gif",
+        "Concept_Illustrated": "Cauchy-Schwarz Inequality",
+        "Visual_Technique": "Animated GIF",
+        "Target_Audience": "Undergraduate",
+        "Why_It_Works": "It visually confirms that the dot product's magnitude is maximized only when vectors are collinear by showing its value is tied to the cosine of the angle between them.",
+        "Source_Type": "Online Encyclopedia",
+        "Source_URL": "https://commons.wikimedia.org/wiki/File:Cauchy-Schwarz_inequation_in_Euclidean_plane.gif"
+      },
+      {
+        "Visual_URL": "https://upload.wikimedia.org/wikipedia/commons/c/c7/ConvexFunction.svg",
+        "Concept_Illustrated": "Jensen's Inequality",
+        "Visual_Technique": "Graphical Proof",
+        "Target_Audience": "Undergraduate",
+        "Why_It_Works": "It visually demonstrates that for a convex function, the chord connecting two points always lies above the function's curve, which is the essence of the inequality.",
+        "Source_Type": "Online Encyclopedia",
+        "Source_URL": "https://commons.wikimedia.org/wiki/File:ConvexFunction.svg"
+      },
+      {
+        "Visual_URL": "http://people.math.sc.edu/filaseta/courses/math141/tangentline.gif",
+        "Concept_Illustrated": "Derivative as Limit of Secant Lines",
+        "Visual_Technique": "Animated GIF",
+        "Target_Audience": "High School",
+        "Why_It_Works": "The animation clearly shows a secant line gradually pivoting and transforming into the tangent line as the two points on the curve converge.",
+        "Source_Type": "University Website",
+        "Source_URL": "http://people.math.sc.edu/filaseta/courses/math141/math141demo1.html"
+      },
+      {
+        "Visual_URL": "https://ximera.osu.edu/math/calc1Book/calcBook/riemannSums/riemannSums-figure1.svg",
+        "Concept_Illustrated": "Integral as Area via Riemann Sums",
+        "Visual_Technique": "Data Visualization",
+        "Target_Audience": "High School",
+        "Why_It_Works": "It introduces the core concept of approximating the area under a curve by dividing it into a series of simple rectangular shapes.",
+        "Source_Type": "University Website",
+        "Source_URL": "https://ximera.osu.edu/math/calc1Book/calcBook/riemannSums/riemannSums"
+      },
+      {
+        "Visual_URL": "https://www.mi.sanu.ac.rs/vismath/sasho/images/larger/image1.jpg",
+        "Concept_Illustrated": "Integration by Parts Graphical Proof",
+        "Visual_Technique": "Graphical Proof",
+        "Target_Audience": "Undergraduate",
+        "Why_It_Works": "It geometrically decomposes a rectangle's area into two regions corresponding to the two integrals in the formula, providing a visual reason for the identity.",
+        "Source_Type": "Academic Paper",
+        "Source_URL": "https://www.mi.sanu.ac.rs/vismath/sasho/index.html"
+      },
+      {
+        "Visual_URL": "https://betterexplained.com/wp-content/uploads/interest/continuous_growth.png",
+        "Concept_Illustrated": "Continuous Compounding and the Constant 'e'",
+        "Visual_Technique": "Real-World Analogy",
+        "Target_Audience": "High School",
+        "Why_It_Works": "It personifies the abstract formula P * e^(rt) into a simple, memorable machine, clarifying that 'e' is the universal constant for 100% continuous growth.",
+        "Source_Type": "Educational Blog",
+        "Source_URL": "https://betterexplained.com/articles/a-visual-guide-to-simple-compound-and-continuous-interest-rates/"
+      },
+      {
+        "Visual_URL": "https://upload.wikimedia.org/wikipedia/commons/6/6f/Log.gif",
+        "Concept_Illustrated": "Proof of Logarithm Properties via Area Under 1/x",
+        "Visual_Technique": "Animated GIF",
+        "Target_Audience": "Undergraduate",
+        "Why_It_Works": "It uses animated scaling and transformation to prove that the area under the 1/x curve behaves according to the algebraic rules of logarithms (ln(a) + ln(b) = ln(ab)).",
+        "Source_Type": "Online Encyclopedia",
+        "Source_URL": "https://commons.wikimedia.org/wiki/File:Log.gif"
+      },
+      {
+        "Visual_URL": "https://upload.wikimedia.org/wikipedia/commons/7/71/Circle_cos_sin.gif",
+        "Concept_Illustrated": "Sine and Cosine from the Unit Circle",
+        "Visual_Technique": "Animated GIF",
+        "Target_Audience": "High School",
+        "Why_It_Works": "It provides a direct, dynamic visualization of how sine and cosine are the real and imaginary components of a point rotating on the unit circle.",
+        "Source_Type": "Online Encyclopedia",
+        "Source_URL": "https://commons.wikimedia.org/wiki/File:Circle_cos_sin.gif"
+      },
+      {
+        "Visual_URL": "https://upload.wikimedia.org/wikipedia/commons/0/06/Eigenvectors.gif",
+        "Concept_Illustrated": "Geometric Interpretation of Eigenvectors",
+        "Visual_Technique": "Animated GIF",
+        "Target_Audience": "Undergraduate",
+        "Why_It_Works": "It clearly distinguishes eigenvectors from other vectors by showing their unique directional invariance under a linear transformation.",
+        "Source_Type": "Online Encyclopedia",
+        "Source_URL": "https://commons.wikimedia.org/wiki/File:Eigenvectors.gif"
+      },
+      {
+        "Visual_URL": "https://upload.wikimedia.org/wikipedia/commons/e/e9/Singular_value_decomposition.gif",
+        "Concept_Illustrated": "Singular Value Decomposition (SVD) as Rotation-Scaling-Rotation",
+        "Visual_Technique": "Animated GIF",
+        "Target_Audience": "Undergraduate",
+        "Why_It_Works": "It dynamically illustrates how a complex transformation can be understood as a sequence of simpler geometric operations (rotation, scaling, rotation).",
+        "Source_Type": "Online Encyclopedia",
+        "Source_URL": "https://commons.wikimedia.org/wiki/File:Singular_value_decomposition.gif"
+      },
+      {
+        "Visual_URL": "https://upload.wikimedia.org/wikipedia/commons/c/cd/Clt_in_action.gif",
+        "Concept_Illustrated": "Central Limit Theorem (CLT)",
+        "Visual_Technique": "Animated GIF",
+        "Target_Audience": "Undergraduate",
+        "Why_It_Works": "The animation visually transforms a seemingly random sampling process into a predictable, normal distribution, which is the key insight of the theorem.",
+        "Source_Type": "Online Encyclopedia",
+        "Source_URL": "https://commons.wikimedia.org/wiki/File:Clt_in_action.gif"
+      },
+      {
+        "Visual_URL": "https://upload.wikimedia.org/wikipedia/commons/9/93/Lawoflargenumbersanimation.gif",
+        "Concept_Illustrated": "Law of Large Numbers (LLN)",
+        "Visual_Technique": "Animated GIF",
+        "Target_Audience": "High School",
+        "Why_It_Works": "It provides a concrete simulation showing initial volatility in small samples giving way to stability as the sample size grows, making convergence clear.",
+        "Source_Type": "Online Encyclopedia",
+        "Source_URL": "https://commons.wikimedia.org/wiki/File:Lawoflargenumbersanimation.gif"
+      },
+      {
+        "Visual_URL": "https://upload.wikimedia.org/wikipedia/commons/9/97/Bayes-rule3.png",
+        "Concept_Illustrated": "Bayes' Theorem using a Frequency Box",
+        "Visual_Technique": "Area Model",
+        "Target_Audience": "Undergraduate",
+        "Why_It_Works": "It illustrates Bayes' Rule by comparing shaded areas within a frequency box, making the abstract concept of conditional probability visually intuitive.",
+        "Source_Type": "Online Encyclopedia",
+        "Source_URL": "https://commons.wikimedia.org/wiki/File:Bayes-rule3.png"
+      },
+      {
+        "Visual_URL": "https://en.wikipedia.org/wiki/File:Simpson_paradox_kidney_stones.svg",
+        "Concept_Illustrated": "Simpson's Paradox (Kidney Stone Treatment)",
+        "Visual_Technique": "Data Visualization",
+        "Target_Audience": "General Audience",
+        "Why_It_Works": "It uses a clear stacked bar chart to show how an aggregated trend reverses when the data is stratified by a confounding variable (stone size).",
+        "Source_Type": "Online Encyclopedia",
+        "Source_URL": "https://en.wikipedia.org/wiki/File:Simpson_paradox_kidney_stones.svg"
+      },
+      {
+        "Visual_URL": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Convolution_of_box_signal_with_itself.gif",
+        "Concept_Illustrated": "Convolution as a Sliding Overlap",
+        "Visual_Technique": "Animated GIF",
+        "Target_Audience": "Undergraduate",
+        "Why_It_Works": "It demystifies the convolution integral by animating the 'sliding window' process, showing how the overlapping area between two functions generates a new function.",
+        "Source_Type": "Online Encyclopedia",
+        "Source_URL": "https://commons.wikimedia.org/wiki/File:Convolution_of_box_signal_with_itself.gif"
+      },
+      {
+        "Visual_URL": "https://upload.wikimedia.org/wikipedia/commons/a/a6/Sierpinski_Pascal_triangle.svg",
+        "Concept_Illustrated": "Pascal's Triangle and the Sierpiński Triangle",
+        "Visual_Technique": "Fractal Art",
+        "Target_Audience": "High School",
+        "Why_It_Works": "It reveals a surprising and beautiful connection between number theory and fractal geometry by coloring cells based on a simple odd/even rule.",
+        "Source_Type": "Online Encyclopedia",
+        "Source_URL": "https://commons.wikimedia.org/wiki/File:Sierpinski_Pascal_triangle.svg"
+      },
+      {
+        "Visual_URL": "https://upload.wikimedia.org/wikipedia/commons/5/57/Dijkstra_Animation.gif",
+        "Concept_Illustrated": "Dijkstra's Shortest-Path Algorithm",
+        "Visual_Technique": "Animated GIF",
+        "Target_Audience": "Undergraduate",
+        "Why_It_Works": "It visually tracks the step-by-step process of identifying the shortest path from a source node, making the algorithm's logic clear and easy to follow.",
+        "Source_Type": "Online Encyclopedia",
+        "Source_URL": "https://commons.wikimedia.org/wiki/File:Dijkstra_Animation.gif"
+      },
+      {
+        "Visual_URL": "https://upload.wikimedia.org/wikipedia/commons/a/a3/Gradient_descent.gif",
+        "Concept_Illustrated": "Gradient Descent Optimization",
+        "Visual_Technique": "Animated GIF",
+        "Target_Audience": "Undergraduate",
+        "Why_It_Works": "It shows multiple paths converging on a local minimum, illustrating the algorithm's iterative nature and its dependency on the starting point.",
+        "Source_Type": "Online Encyclopedia",
+        "Source_URL": "https://commons.wikimedia.org/wiki/File:Gradient_descent.gif"
+      },
+      {
+        "Visual_URL": "https://cdn.kastatic.org/ka-perseus-graphie/ce377e209aa52eb492af858be41866b71af8e55e.svg",
+        "Concept_Illustrated": "Lagrange Multipliers and Tangency Condition",
+        "Visual_Technique": "Graphical Proof",
+        "Target_Audience": "Undergraduate",
+        "Why_It_Works": "It shows that the optimal point occurs where a contour line of the objective function is exactly tangent to the constraint curve, revealing the core geometric insight.",
+        "Source_Type": "Educational Blog",
+        "Source_URL": "https://www.khanacademy.org/math/multivariable-calculus/applications-of-multivariable-derivatives/constrained-optimization/a/lagrange-multipliers-single-constraint"
+      },
+      {
+        "Visual_URL": "https://upload.wikimedia.org/wikipedia/commons/3/3d/Multiplication_of_a_complex_number_with_i.svg",
+        "Concept_Illustrated": "Complex Multiplication by 'i' as Rotation",
+        "Visual_Technique": "Geometric Proof",
+        "Target_Audience": "High School",
+        "Why_It_Works": "It visualizes the foundational principle that multiplying by 'i' acts as a 90-degree counter-clockwise rotator on the complex plane.",
+        "Source_Type": "Online Encyclopedia",
+        "Source_URL": "https://commons.wikimedia.org/wiki/File:Multiplication_of_a_complex_number_with_i.svg"
+      },
+      {
+        "Visual_URL": "https://mathworld.wolfram.com/images/gifs/RootOfUnity.gif",
+        "Concept_Illustrated": "Roots of Unity",
+        "Visual_Technique": "Animated GIF",
+        "Target_Audience": "Undergraduate",
+        "Why_It_Works": "The animation makes the abstract definition tangible by visually confirming that the nth roots of unity form the vertices of a regular n-sided polygon on the unit circle.",
+        "Source_Type": "Online Encyclopedia",
+        "Source_URL": "https://mathworld.wolfram.com/RootofUnity.html"
+      },
+      {
+        "Visual_URL": "https://sites.pitt.edu/~jdnorton/Goodies/block_stacking/Block_hundred.svg",
+        "Concept_Illustrated": "Divergence of the Harmonic Series (Book Stacking Problem)",
+        "Visual_Technique": "Real-World Analogy",
+        "Target_Audience": "Undergraduate",
+        "Why_It_Works": "It offers a counter-intuitive and memorable physical demonstration of an infinite series, showing that the overhang can be made arbitrarily large.",
+        "Source_Type": "University Website",
+        "Source_URL": "https://sites.pitt.edu/~jdnorton/Goodies/block_stacking/"
+      },
+      {
+        "Visual_URL": "https://MrHonner.com/wp-content/uploads/2011/04/CD-Cases-Oblique-300x225.jpg",
+        "Concept_Illustrated": "Cavalieri's Principle",
+        "Visual_Technique": "Real-World Analogy",
+        "Target_Audience": "High School",
+        "Why_It_Works": "It transforms an abstract geometric principle into a simple, observable phenomenon, showing that tilting a stack of objects doesn't change its total volume.",
+        "Source_Type": "Educational Blog",
+        "Source_URL": "https://mrhonner.com/archives/5366"
+      },
+      {
+        "Visual_URL": "https://plus.maths.org/issue47/features/kirk/d1.gif",
+        "Concept_Illustrated": "Visual Sieve for Prime Numbers",
+        "Visual_Technique": "Animated GIF",
+        "Target_Audience": "General Audience",
+        "Why_It_Works": "It demonstrates a novel geometric algorithm for identifying prime numbers by sieving out composites on a parabola, making a complex process easy to follow.",
+        "Source_Type": "Educational Blog",
+        "Source_URL": "https://plus.maths.org/content/catching-primes"
+      },
+      {
+        "Visual_URL": "https://upload.wikimedia.org/wikipedia/commons/5/50/Fourier_transform_time_and_frequency_domains.gif",
+        "Concept_Illustrated": "Fourier Transform Decomposition",
+        "Visual_Technique": "Animated GIF",
+        "Target_Audience": "Undergraduate",
+        "Why_It_Works": "It visualizes the abstract concept of transforming a function from the time domain to the frequency domain by showing a square wave being built from its constituent sine waves.",
+        "Source_Type": "Online Encyclopedia",
+        "Source_URL": "https://en.wikipedia.org/wiki/File:Fourier_transform_time_and_frequency_domains.gif"
+      }
+    ]
+  },
+  "outputBasis": [
+    {
+      "field": "mathematical_visuals_database",
+      "citations": [
+        {
+          "title": "File:Bhaskara Proof of Pythagoras Theorem.png",
+          "url": "https://commons.wikimedia.org/wiki/File:Bhaskara_Proof_of_Pythagoras_Theorem.png",
+          "excerpts": [
+            "Nov 29, 2023 — English: Diagram illustrating Indian mathematician Bhaskara II's (c. 1114–1185) proof of Pythagorean theorem. Date, 29 November 2023. Source ..."
+          ]
+        },
+        {
+          "title": "Pythag_anim.gif (Wikimedia/Wikipedia)",
+          "url": "https://en.wikipedia.org/wiki/File:Pythag_anim.gif",
+          "excerpts": [
+            "y:Pythagorean_theorem \"Category:Pythagorean theorem\"), showing how by rearranging triangles the areas a2 + b2 and c2 can be shown to be the same. The area of the outer square never changes, and the total area of the four right triangles is the same at both the beginning and the end, therefore the black area at the beginning, a2 + b2, must equal the black area at the end, c2. The angle of the triangles is arbitrary, therefore this works as a general proof."
+          ]
+        },
+        {
+          "title": "Pi-unrolled-720.gif (Wikimedia Commons)",
+          "url": "https://commons.wikimedia.org/wiki/File:Pi-unrolled-720.gif",
+          "excerpts": [
+            "This file was a finalist in Picture of the Year 2011. This is a featured picture on Wikimedia Commons (Featured pictures) and is considered one of the finest ...",
+            "English: Animation of the act of unrolling a circle's circumference, illustrating the ratio π. Other languages:. c"
+          ]
+        },
+        {
+          "title": "File:CircleArea.gif",
+          "url": "https://commons.wikimedia.org/wiki/File:CircleArea.gif",
+          "excerpts": [
+            "Mar 17, 2024 — Animated illustration of the circle area(own work). You cannot overwrite this file. File usage on Commons. The following page uses this file:."
+          ]
+        },
+        {
+          "title": "File:CircleArea.gif",
+          "url": "https://so.wikipedia.org/wiki/File:CircleArea.gif",
+          "excerpts": [
+            "Animated illustration of the circle area(own work). Faylka lagu isticmaalay ... Ku isticmaal ar.wikipedia.org. مساحة. Ku isticmaal ast.wikipedia.org."
+          ]
+        }
+      ],
+      "reasoning": "The Bhaskara image excerpt directly names Bhaskaracharya's Pythagorean Theorem proof, providing a static geometric visualization that maps clearly to the concept being illustrated. The rearrangement proof excerpts explicitly refer to rearrangement-based demonstrations of the Pythagorean Theorem, which aligns with the Visual_URL and Concept_Illustrated in the target field as a rearrangement-based proof. The Pi-unrolled GIFs are explicit animations of unrolling a circle's circumference to expose the π relationship; these entries show an animation format that visually encodes the circumference-to-radius ratio central to π, matching the intended Visual_URL for Pi-unrolled visuals. The CircleArea.gif entry is an animated depiction of circle area by rearranging sectors, aligning with the Circle Area conceptual illustrations in the target visuals. The Circle Area by Unwrapping to a Triangle entry explicitly describes unwrapping circle sectors into a triangle to derive area, which corresponds to the final Circle Area visualization in the target field. Each of these excerpts provides concrete visual demonstrations intended for intuitive understanding rather than purely algebraic proofs, matching the \"Visual\" and \"Rearrangement/Unwrapping\" teaching methods described in the field values.",
+      "confidence": "high"
+    },
+    {
+      "field": "mathematical_visuals_database.2",
+      "citations": [
+        {
+          "title": "File:Bhaskara Proof of Pythagoras Theorem.png",
+          "url": "https://commons.wikimedia.org/wiki/File:Bhaskara_Proof_of_Pythagoras_Theorem.png",
+          "excerpts": [
+            "Nov 29, 2023 — English: Diagram illustrating Indian mathematician Bhaskara II's (c. 1114–1185) proof of Pythagorean theorem. Date, 29 November 2023. Source ..."
+          ]
+        },
+        {
+          "title": "Pythag_anim.gif (Wikimedia/Wikipedia)",
+          "url": "https://en.wikipedia.org/wiki/File:Pythag_anim.gif",
+          "excerpts": [
+            "y:Pythagorean_theorem \"Category:Pythagorean theorem\"), showing how by rearranging triangles the areas a2 + b2 and c2 can be shown to be the same. The area of the outer square never changes, and the total area of the four right triangles is the same at both the beginning and the end, therefore the black area at the beginning, a2 + b2, must equal the black area at the end, c2. The angle of the triangles is arbitrary, therefore this works as a general proof."
+          ]
+        }
+      ],
+      "reasoning": "The field value corresponds to a static visual that clearly demonstrates Bhaskara II's proof of the Pythagorean theorem. One excerpt directly presents a file caption and source for Bhaskara II's diagram illustrating his proof, which matches the exact visual type and attribution described in the field value. Another excerpt describes a classic rearrangement proof of the Pythagorean theorem using right triangles inside squares, showing that the areas corresponding to a^2 + b^2 remain equal to c^2 through a rearrangement, which aligns with the geometric, static diagram approach and reinforces the same theorem, supporting the field value's claim about a geometric proof being conveyed by the visual. Together, these excerpts strongly support the identification of a Pythagorean theorem visual dating to Bhaskara II (and its geometric proof method), including who authored the proof and the general geometric reasoning depicted.",
+      "confidence": "high"
+    },
+    {
+      "field": "mathematical_visuals_database.3",
+      "citations": [
+        {
+          "title": "Pi-unrolled-720.gif (Wikimedia Commons)",
+          "url": "https://commons.wikimedia.org/wiki/File:Pi-unrolled-720.gif",
+          "excerpts": [
+            "This file was a finalist in Picture of the Year 2011. This is a featured picture on Wikimedia Commons (Featured pictures) and is considered one of the finest ...",
+            "English: Animation of the act of unrolling a circle's circumference, illustrating the ratio π. Other languages:. c"
+          ]
+        }
+      ],
+      "reasoning": "The fine-grained field value corresponds to a Pi-unrolled-720.gif visual that illustrates visualizing pi by unrolling a circle's circumference. The most relevant excerpt explicitly names the file Pi-unrolled-720.gif and identifies it as a Wikimedia Commons entry, describing it as an animation of unrolling a circle's circumference and illustrating the ratio π, which aligns directly with the core concept of Visualizing Pi. The accompanying description confirms that the animation shows the act of unrolling the circumference to connect it with the diameter, reinforcing the visual method and purpose. A second excerpt that references the same Pi-unrolled-720.gif file reinforces this exact visual and its purpose as an animation illustrating pi through circumference unrolling, further corroborating the Visual_URL, Visual_Technique, and Concept_Illustrated components. Taken together, these excerpts provide clear, direct support for the fine-grained field value and its associated attributes (visual URL, concept, technique, and source). The circle-area related excerpts, while thematically adjacent to mathematics visuals, do not substantively support the specific Pi-unrolled visualization described in the field value.",
+      "confidence": "high"
+    },
+    {
+      "field": "mathematical_visuals_database.0",
+      "citations": [
+        {
+          "title": "Pythag_anim.gif (Wikimedia/Wikipedia)",
+          "url": "https://en.wikipedia.org/wiki/File:Pythag_anim.gif",
+          "excerpts": [
+            "y:Pythagorean_theorem \"Category:Pythagorean theorem\"), showing how by rearranging triangles the areas a2 + b2 and c2 can be shown to be the same. The area of the outer square never changes, and the total area of the four right triangles is the same at both the beginning and the end, therefore the black area at the beginning, a2 + b2, must equal the black area at the end, c2. The angle of the triangles is arbitrary, therefore this works as a general proof."
+          ]
+        },
+        {
+          "title": "File:Bhaskara Proof of Pythagoras Theorem.png",
+          "url": "https://commons.wikimedia.org/wiki/File:Bhaskara_Proof_of_Pythagoras_Theorem.png",
+          "excerpts": [
+            "Nov 29, 2023 — English: Diagram illustrating Indian mathematician Bhaskara II's (c. 1114–1185) proof of Pythagorean theorem. Date, 29 November 2023. Source ..."
+          ]
+        }
+      ],
+      "reasoning": "The finegrained field value describes an animated GIF that conveys the Pythagorean theorem via rearrangement of triangles to show that the sum of the squares on the legs equals the square on the hypotenuse. The most directly supportive excerpt details an animated GIF that demonstrates this exact idea: it explains how by rearranging triangles the areas corresponding to a^2 + b^2 and c^2 remain constant, proving the theorem. Another relevant excerpt presents a diagrammatic proof of the Pythagorean theorem attributed to Bhaskara II, which also supports the same core concept of visual rearrangement or geometric demonstration of the relationship a^2 + b^2 = c^2. Together, these excerpts substantiate that the visual concept is the Pythagorean theorem demonstrated through geometric rearrangement, aligning with the field value's specified visual method (Animated GIF) and its educational purpose. The circle-area and pi-unrolled excerpts are less relevant as they illustrate different concepts (circle circumference/π) and do not directly support the stated Pythagorean rearrangement visualization.",
+      "confidence": "high"
+    },
+    {
+      "field": "mathematical_visuals_database.4",
+      "citations": [
+        {
+          "title": "File:CircleArea.gif",
+          "url": "https://commons.wikimedia.org/wiki/File:CircleArea.gif",
+          "excerpts": [
+            "Mar 17, 2024 — Animated illustration of the circle area(own work). You cannot overwrite this file. File usage on Commons. The following page uses this file:."
+          ]
+        },
+        {
+          "title": "File:CircleArea.gif",
+          "url": "https://so.wikipedia.org/wiki/File:CircleArea.gif",
+          "excerpts": [
+            "Animated illustration of the circle area(own work). Faylka lagu isticmaalay ... Ku isticmaal ar.wikipedia.org. مساحة. Ku isticmaal ast.wikipedia.org."
+          ]
+        }
+      ],
+      "reasoning": "The finegrained field value specifies the visual title (CircleArea.gif) and the concept (Circle Area by Rearranging Sectors) using an Animated GIF to teach how slicing a circle and rearranging the pieces forms a rectangle, which makes the area derivation intuitive. Excerpt describes CircleArea.gif as an animated illustration of the circle area, aligning with the same visual and technique. This confirms the visual's instructional nature and its medium (Animated GIF), supporting the identified concept and its educational approach. The second excerpt similarly references the same CircleArea.gif, reinforcing its role as an animated visual about circle area, even though it appears in another language, it preserves the same core imagery and purpose. These excerpts together substantiate the field value's core claims about the visual, its technique, and its instructional aim.",
+      "confidence": "high"
+    },
+    {
+      "field": "mathematical_visuals_database.1",
+      "citations": [
+        {
+          "title": "Pythag_anim.gif (Wikimedia/Wikipedia)",
+          "url": "https://en.wikipedia.org/wiki/File:Pythag_anim.gif",
+          "excerpts": [
+            "y:Pythagorean_theorem \"Category:Pythagorean theorem\"), showing how by rearranging triangles the areas a2 + b2 and c2 can be shown to be the same. The area of the outer square never changes, and the total area of the four right triangles is the same at both the beginning and the end, therefore the black area at the beginning, a2 + b2, must equal the black area at the end, c2. The angle of the triangles is arbitrary, therefore this works as a general proof."
+          ]
+        },
+        {
+          "title": "File:Bhaskara Proof of Pythagoras Theorem.png",
+          "url": "https://commons.wikimedia.org/wiki/File:Bhaskara_Proof_of_Pythagoras_Theorem.png",
+          "excerpts": [
+            "Nov 29, 2023 — English: Diagram illustrating Indian mathematician Bhaskara II's (c. 1114–1185) proof of Pythagorean theorem. Date, 29 November 2023. Source ..."
+          ]
+        }
+      ],
+      "reasoning": "The fine-grained field value describes an animated GIF illustrating the Pythagorean theorem as a sum-of-squares demonstration, aiming to convey how a^2 + b^2 equals c^2 through rearrangement. The most relevant excerpt directly describes an animation that shows how by rearranging right triangles, the areas a^2 + b^2 and c^2 become equal, with the total area preserved, which aligns with the sum-of-squares demonstration at the core of the field value. The second relevant excerpt presents a diagram by Bhaskara II that proves the Pythagorean theorem, reinforcing the same core concept of a visual demonstration of the theorem, though it uses a static diagram rather than an animation. Together, these excerpts support the field value's emphasis on an instructional, visual, and demonstrative approach to teaching the Pythagorean theorem through area rearrangement. The first excerpt also notes that the angle of the triangles is arbitrary, underscoring the generalizable nature of the visual proof, which complements the field value's aim for a universally understandable pedagogical tool. ",
+      "confidence": "high"
+    },
+    {
+      "field": "mathematical_visuals_database.5",
+      "citations": [
+        {
+          "title": "File:CircleArea.gif",
+          "url": "https://commons.wikimedia.org/wiki/File:CircleArea.gif",
+          "excerpts": [
+            "Mar 17, 2024 — Animated illustration of the circle area(own work). You cannot overwrite this file. File usage on Commons. The following page uses this file:."
+          ]
+        },
+        {
+          "title": "File:CircleArea.gif",
+          "url": "https://so.wikipedia.org/wiki/File:CircleArea.gif",
+          "excerpts": [
+            "Animated illustration of the circle area(own work). Faylka lagu isticmaalay ... Ku isticmaal ar.wikipedia.org. مساحة. Ku isticmaal ast.wikipedia.org."
+          ]
+        }
+      ],
+      "reasoning": "The field value describes an animated visualization of circle area achieved by unwrapping the circle into a triangle, intended as a visual intuition for a calculus-based proof. Excerpt descriptions explicitly reference an animated illustration of the circle area and note it is an original work, which directly supports the core concept of a circle-area visualization. The other excerpts focus on related geometric proofs (Pythagorean theorem) or pi-unrolling concepts, which do not directly support the specific circle-area unwrapping visualization described in the field value. Therefore, the most relevant content centers on the CircleArea.gif entries, which align with the circle-area visualization theme in the field value, while the pi-related visuals provide contextual but indirect support.",
+      "confidence": "medium"
+    },
+    {
+      "field": "mathematical_visuals_database.2.Source_URL",
+      "citations": [
+        {
+          "title": "File:Bhaskara Proof of Pythagoras Theorem.png",
+          "url": "https://commons.wikimedia.org/wiki/File:Bhaskara_Proof_of_Pythagoras_Theorem.png",
+          "excerpts": [
+            "Nov 29, 2023 — English: Diagram illustrating Indian mathematician Bhaskara II's (c. 1114–1185) proof of Pythagorean theorem. Date, 29 November 2023. Source ..."
+          ]
+        }
+      ],
+      "reasoning": "The fine-grained field value corresponds to a specific source URL for a visual: the Bhaskara II proof diagram of the Pythagorean theorem hosted on Wikimedia Commons. The most relevant excerpt directly states that the diagram illustrates Bhaskara II's proof of the Pythagorean theorem and includes the exact URL that matches the finegrained field value. This excerpt provides explicit alignment between the target field value and its source, confirming the precise image and its attribution. The other excerpt discusses a Pythagorean theorem animation hosted on Wikimedia/Wikipedia but does not reference the Bhaskara diagram or the exact Commons URL, so it provides contextual relevance to the broader topic but not direct support for the specific field value. Therefore, the chosen excerpt most strongly supports the finegrained field value, while the other excerpt offers only peripheral context related to the same mathematical concept.",
+      "confidence": "high"
+    },
+    {
+      "field": "mathematical_visuals_database.3.Concept_Illustrated",
+      "citations": [
+        {
+          "title": "Pi-unrolled-720.gif (Wikimedia Commons)",
+          "url": "https://commons.wikimedia.org/wiki/File:Pi-unrolled-720.gif",
+          "excerpts": [
+            "This file was a finalist in Picture of the Year 2011. This is a featured picture on Wikimedia Commons (Featured pictures) and is considered one of the finest ...",
+            "English: Animation of the act of unrolling a circle's circumference, illustrating the ratio π. Other languages:. c"
+          ]
+        }
+      ],
+      "reasoning": "The field value identifies a specific visualization: the act of unrolling a circle's circumference to illustrate the ratio pi. Excerpt content describes an animation of unrolling the circumference to illustrate pi, explicitly tying the visualization to the circumference and the pi ratio, which directly supports the concept. The other excerpt reinforces this by noting it is an animation of the unrolling process and the pi relationship. Together, these excerpts precisely validate the intended visual concept and its instructional emphasis on visualizing pi through circumference unrolling.",
+      "confidence": "high"
+    },
+    {
+      "field": "mathematical_visuals_database.2.Concept_Illustrated",
+      "citations": [
+        {
+          "title": "File:Bhaskara Proof of Pythagoras Theorem.png",
+          "url": "https://commons.wikimedia.org/wiki/File:Bhaskara_Proof_of_Pythagoras_Theorem.png",
+          "excerpts": [
+            "Nov 29, 2023 — English: Diagram illustrating Indian mathematician Bhaskara II's (c. 1114–1185) proof of Pythagorean theorem. Date, 29 November 2023. Source ..."
+          ]
+        },
+        {
+          "title": "Pythag_anim.gif (Wikimedia/Wikipedia)",
+          "url": "https://en.wikipedia.org/wiki/File:Pythag_anim.gif",
+          "excerpts": [
+            "y:Pythagorean_theorem \"Category:Pythagorean theorem\"), showing how by rearranging triangles the areas a2 + b2 and c2 can be shown to be the same. The area of the outer square never changes, and the total area of the four right triangles is the same at both the beginning and the end, therefore the black area at the beginning, a2 + b2, must equal the black area at the end, c2. The angle of the triangles is arbitrary, therefore this works as a general proof."
+          ]
+        }
+      ],
+      "reasoning": "The most directly relevant excerpt explicitly describes Bhaskara II's proof of the Pythagorean theorem, clearly matching the target concept illustrated in the field value. This provides direct confirmation that the visual depicts Bhaskara II's proof, satisfying the exact named concept. The other excerpt discusses a Pythagorean theorem proof via rearranging right triangles to show area equivalence; while it supports the broader Pythagorean theorem concept and the common visual proof approach, it does not specify Bhaskara II. It is still relevant as contextual support that such visual proofs exist and can illustrate the same theorem, but with a different approach and attribution. Collectively, these excerpts support the field value by confirming both the specific Bhaskara II attribution (direct match) and the general visual-proof method (contextual relevance).",
+      "confidence": "high"
+    },
+    {
+      "field": "mathematical_visuals_database.2.Target_Audience",
+      "citations": [
+        {
+          "title": "File:Bhaskara Proof of Pythagoras Theorem.png",
+          "url": "https://commons.wikimedia.org/wiki/File:Bhaskara_Proof_of_Pythagoras_Theorem.png",
+          "excerpts": [
+            "Nov 29, 2023 — English: Diagram illustrating Indian mathematician Bhaskara II's (c. 1114–1185) proof of Pythagorean theorem. Date, 29 November 2023. Source ..."
+          ]
+        },
+        {
+          "title": "Pythag_anim.gif (Wikimedia/Wikipedia)",
+          "url": "https://en.wikipedia.org/wiki/File:Pythag_anim.gif",
+          "excerpts": [
+            "y:Pythagorean_theorem \"Category:Pythagorean theorem\"), showing how by rearranging triangles the areas a2 + b2 and c2 can be shown to be the same. The area of the outer square never changes, and the total area of the four right triangles is the same at both the beginning and the end, therefore the black area at the beginning, a2 + b2, must equal the black area at the end, c2. The angle of the triangles is arbitrary, therefore this works as a general proof."
+          ]
+        }
+      ],
+      "reasoning": "The field value specifies High School as the intended audience for mathematical visuals. The first excerpt describes a diagram illustrating Bhaskara II's historical proof of the Pythagorean theorem, which is a classic high-school–level concept presented visually to aid understanding. The second excerpt describes an animated demonstration of the Pythagorean theorem proof by rearranging triangles to show area equivalence, clearly aiming to teach the same concept through motion and visualization. Both excerpts directly support the goal of providing instructive, engaging visuals suitable for High School learners by illustrating a foundational theorem through clear, teachable visuals.",
+      "confidence": "high"
+    },
+    {
+      "field": "mathematical_visuals_database.3.Visual_URL",
+      "citations": [
+        {
+          "title": "Pi-unrolled-720.gif (Wikimedia Commons)",
+          "url": "https://commons.wikimedia.org/wiki/File:Pi-unrolled-720.gif",
+          "excerpts": [
+            "This file was a finalist in Picture of the Year 2011. This is a featured picture on Wikimedia Commons (Featured pictures) and is considered one of the finest ...",
+            "English: Animation of the act of unrolling a circle's circumference, illustrating the ratio π. Other languages:. c"
+          ]
+        }
+      ],
+      "reasoning": "The field value identifies the Visual_URL as a direct link to the Pi-unrolled-720.gif image. The first excerpt explicitly names the file and provides its Wikimedia Commons URL, confirming the exact visual asset referenced by the field. The second excerpt reiterates the same file name and adds context that it is an animation illustrating the act of unrolling a circle to illustrate the ratio pi, thereby supporting both the identification of the file and its instructional purpose. Together, these excerpts directly support that the Visual_URL field should point to this specific GIF and describe its educational purpose as visualizing pi through an unrolled circumference animation.",
+      "confidence": "high"
+    },
+    {
+      "field": "mathematical_visuals_database.3.Visual_Technique",
+      "citations": [
+        {
+          "title": "Pi-unrolled-720.gif (Wikimedia Commons)",
+          "url": "https://commons.wikimedia.org/wiki/File:Pi-unrolled-720.gif",
+          "excerpts": [
+            "English: Animation of the act of unrolling a circle's circumference, illustrating the ratio π. Other languages:. c"
+          ]
+        }
+      ],
+      "reasoning": "The most relevant excerpt explicitly describes an animation: it states that the item is an animation of unrolling a circle's circumference to illustrate π. This directly supports the field value of Animated GIF by indicating both animation and a GIF-linked format. The other excerpt mentions a GIF file name but does not describe the content as animated, so it provides weaker or indirect support and is not relied upon to affirm the Animated GIF classification.\n",
+      "confidence": "high"
+    },
+    {
+      "field": "mathematical_visuals_database.3.Why_It_Works",
+      "citations": [
+        {
+          "title": "Pi-unrolled-720.gif (Wikimedia Commons)",
+          "url": "https://commons.wikimedia.org/wiki/File:Pi-unrolled-720.gif",
+          "excerpts": [
+            "This file was a finalist in Picture of the Year 2011. This is a featured picture on Wikimedia Commons (Featured pictures) and is considered one of the finest ...",
+            "English: Animation of the act of unrolling a circle's circumference, illustrating the ratio π. Other languages:. c"
+          ]
+        }
+      ],
+      "reasoning": "The fine-grained field describes a high-resolution animation that shows a circle's circumference rolling out to a straight line and that the length is slightly more than three times the diameter. This directly aligns with the excerpts which discuss an animation that unrolls a circle's circumference to illustrate the ratio pi. The first excerpt identifies the file as Pi-unrolled-720.gif and notes it as an animation related to the circumference, implying the pi relationship. The second excerpt explicitly states the animation illustrates the act of unrolling a circle's circumference and depicts the ratio pi, which corresponds to the described length being just over three times the diameter. Together, these excerpts corroborate that the visual demonstrates pi through circumference-to-diameter comparison, matching the field value.",
+      "confidence": "high"
+    },
+    {
+      "field": "mathematical_visuals_database.4.Visual_Technique",
+      "citations": [
+        {
+          "title": "File:CircleArea.gif",
+          "url": "https://commons.wikimedia.org/wiki/File:CircleArea.gif",
+          "excerpts": [
+            "Mar 17, 2024 — Animated illustration of the circle area(own work). You cannot overwrite this file. File usage on Commons. The following page uses this file:."
+          ]
+        },
+        {
+          "title": "File:CircleArea.gif",
+          "url": "https://so.wikipedia.org/wiki/File:CircleArea.gif",
+          "excerpts": [
+            "Animated illustration of the circle area(own work). Faylka lagu isticmaalay ... Ku isticmaal ar.wikipedia.org. مساحة. Ku isticmaal ast.wikipedia.org."
+          ]
+        }
+      ],
+      "reasoning": "The most relevant excerpt describes an animated illustration of the circle area and references a file named CircleArea.gif, which indicates the content is animated as a GIF. This provides direct support for the Visual_Technique being an Animated GIF, since the file extension and description together imply the specific animation format used for teaching the concept. The second excerpt similarly notes an animated illustration and references a GIF file in the context of a different language page, reinforcing that the same animated format is being used for the circle area visualization. Together, these excerpts corroborate that the visual technique is animated and implemented as a GIF, aligning with the requested finegrained field value. No conflicting information is present in the excerpts, and both entries explicitly mention animation with a .gif file, which directly supports the field value.",
+      "confidence": "high"
+    },
+    {
+      "field": "mathematical_visuals_database.2.Why_It_Works",
+      "citations": [
+        {
+          "title": "Pythag_anim.gif (Wikimedia/Wikipedia)",
+          "url": "https://en.wikipedia.org/wiki/File:Pythag_anim.gif",
+          "excerpts": [
+            "y:Pythagorean_theorem \"Category:Pythagorean theorem\"), showing how by rearranging triangles the areas a2 + b2 and c2 can be shown to be the same. The area of the outer square never changes, and the total area of the four right triangles is the same at both the beginning and the end, therefore the black area at the beginning, a2 + b2, must equal the black area at the end, c2. The angle of the triangles is arbitrary, therefore this works as a general proof."
+          ]
+        },
+        {
+          "title": "File:Bhaskara Proof of Pythagoras Theorem.png",
+          "url": "https://commons.wikimedia.org/wiki/File:Bhaskara_Proof_of_Pythagoras_Theorem.png",
+          "excerpts": [
+            "Nov 29, 2023 — English: Diagram illustrating Indian mathematician Bhaskara II's (c. 1114–1185) proof of Pythagorean theorem. Date, 29 November 2023. Source ..."
+          ]
+        }
+      ],
+      "reasoning": "The most relevant excerpt explicitly describes a visual where rearranging triangles demonstrates the equality of areas, which is a direct demonstration of the geometric relationships underlying the theorem and supports step-by-step deductive reasoning through its logical proof structure: the area of the outer square remains the same while the triangles are rearranged, showing a2 + b2 equals c2. This aligns with providing a static, logical map of geometric relationships that prove the theorem and encourages deductive thinking. The other excerpt presents a diagram illustrating Bhaskara II's proof of the Pythagorean theorem, which also communicates geometric relationships within a proof structure, reinforcing the idea of a visual that encodes the logical steps of the proof. While both excerpts support the concept, the description of the rearrangement proof most directly maps to a static, deductive visualization, followed by the Bhaskara diagram which corroborates the use of geometric relationships in a visual proof.",
+      "confidence": "high"
+    },
+    {
+      "field": "mathematical_visuals_database.2.Visual_URL",
+      "citations": [
+        {
+          "title": "File:Bhaskara Proof of Pythagoras Theorem.png",
+          "url": "https://commons.wikimedia.org/wiki/File:Bhaskara_Proof_of_Pythagoras_Theorem.png",
+          "excerpts": [
+            "Nov 29, 2023 — English: Diagram illustrating Indian mathematician Bhaskara II's (c. 1114–1185) proof of Pythagorean theorem. Date, 29 November 2023. Source ..."
+          ]
+        },
+        {
+          "title": "Pythag_anim.gif (Wikimedia/Wikipedia)",
+          "url": "https://en.wikipedia.org/wiki/File:Pythag_anim.gif",
+          "excerpts": [
+            "y:Pythagorean_theorem \"Category:Pythagorean theorem\"), showing how by rearranging triangles the areas a2 + b2 and c2 can be shown to be the same. The area of the outer square never changes, and the total area of the four right triangles is the same at both the beginning and the end, therefore the black area at the beginning, a2 + b2, must equal the black area at the end, c2. The angle of the triangles is arbitrary, therefore this works as a general proof."
+          ]
+        }
+      ],
+      "reasoning": "The target field value points to a specific Bhaskara-provided diagram illustrating a Pythagorean theorem proof. An excerpt that explicitly discusses Bhaskara II's diagram and labels it as a proof of the Pythagorean theorem directly supports this value, confirming the existence and nature of the visual (a diagram illustrating Bhaskara II's proof). Another excerpt discusses a Pythagorean theorem proof presented as an animated rearrangement of triangles, which aligns with the same fundamental concept (the Pythagorean theorem) and thus provides contextual support about the kind of visual representation (educational, visual proof) that fits the query's goal, though it does not confirm the exact Bhaskara diagram image. Together, these excerpts corroborate that a Bhaskara-related Pythagoras diagram exists and is used to teach the theorem, with the first excerpt giving direct confirmation and the second offering supportive context about the visual teaching method.",
+      "confidence": "medium"
+    },
+    {
+      "field": "mathematical_visuals_database.2.Visual_Technique",
+      "citations": [
+        {
+          "title": "File:Bhaskara Proof of Pythagoras Theorem.png",
+          "url": "https://commons.wikimedia.org/wiki/File:Bhaskara_Proof_of_Pythagoras_Theorem.png",
+          "excerpts": [
+            "Nov 29, 2023 — English: Diagram illustrating Indian mathematician Bhaskara II's (c. 1114–1185) proof of Pythagorean theorem. Date, 29 November 2023. Source ..."
+          ]
+        },
+        {
+          "title": "Pythag_anim.gif (Wikimedia/Wikipedia)",
+          "url": "https://en.wikipedia.org/wiki/File:Pythag_anim.gif",
+          "excerpts": [
+            "y:Pythagorean_theorem \"Category:Pythagorean theorem\"), showing how by rearranging triangles the areas a2 + b2 and c2 can be shown to be the same. The area of the outer square never changes, and the total area of the four right triangles is the same at both the beginning and the end, therefore the black area at the beginning, a2 + b2, must equal the black area at the end, c2. The angle of the triangles is arbitrary, therefore this works as a general proof."
+          ]
+        }
+      ],
+      "reasoning": "The field value seeks whether the visuals employ a Geometric Proof. The first excerpt explicitly references a diagram illustrating a historical geometric proof of the Pythagorean theorem, which is a textbook geometric proof approach. The second excerpt explains the area-preserving rearrangement of right triangles within shapes to show that the two expressions for the area are equal, which is a standard geometric proof technique used to establish the Pythagorean theorem. Together, these excerpts directly exemplify geometric proofs as the primary instructional method depicted in the visuals. The connection is that both excerpts describe visuals whose educational impact comes from a geometric demonstration that proves a mathematical relation rather than purely computational or descriptive imagery.",
+      "confidence": "high"
+    },
+    {
+      "field": "mathematical_visuals_database.0.Concept_Illustrated",
+      "citations": [
+        {
+          "title": "Pythag_anim.gif (Wikimedia/Wikipedia)",
+          "url": "https://en.wikipedia.org/wiki/File:Pythag_anim.gif",
+          "excerpts": [
+            "y:Pythagorean_theorem \"Category:Pythagorean theorem\"), showing how by rearranging triangles the areas a2 + b2 and c2 can be shown to be the same. The area of the outer square never changes, and the total area of the four right triangles is the same at both the beginning and the end, therefore the black area at the beginning, a2 + b2, must equal the black area at the end, c2. The angle of the triangles is arbitrary, therefore this works as a general proof."
+          ]
+        },
+        {
+          "title": "File:Bhaskara Proof of Pythagoras Theorem.png",
+          "url": "https://commons.wikimedia.org/wiki/File:Bhaskara_Proof_of_Pythagoras_Theorem.png",
+          "excerpts": [
+            "Nov 29, 2023 — English: Diagram illustrating Indian mathematician Bhaskara II's (c. 1114–1185) proof of Pythagorean theorem. Date, 29 November 2023. Source ..."
+          ]
+        }
+      ],
+      "reasoning": "The field value corresponds to a rearrangement-based demonstration of the Pythagorean theorem. The first excerpt explicitly describes rearranging right triangles to show that the combined areas of the legs (a^2 + b^2) equal the area associated with the hypotenuse (c^2), noting that the outer square area remains constant and the total area of the four triangles is unchanged. This directly matches the concept of a Rearrangement Proof. The second excerpt presents Bhaskara II's proof of the Pythagorean theorem through a diagrammatic approach. While it confirms the theorem and provides a geometric demonstration, it does not explicitly state that it uses a rearrangement of components to establish the equality, making its support for the exact field value weaker but still relevant as a historical geometric proof variant. Therefore, the most compelling evidence comes from the rearrangement-based description, with Bhaskara's diagram serving as supplementary context about related proofs.",
+      "confidence": "medium"
+    },
+    {
+      "field": "mathematical_visuals_database.0.Target_Audience",
+      "citations": [
+        {
+          "title": "Pythag_anim.gif (Wikimedia/Wikipedia)",
+          "url": "https://en.wikipedia.org/wiki/File:Pythag_anim.gif",
+          "excerpts": [
+            "y:Pythagorean_theorem \"Category:Pythagorean theorem\"), showing how by rearranging triangles the areas a2 + b2 and c2 can be shown to be the same. The area of the outer square never changes, and the total area of the four right triangles is the same at both the beginning and the end, therefore the black area at the beginning, a2 + b2, must equal the black area at the end, c2. The angle of the triangles is arbitrary, therefore this works as a general proof."
+          ]
+        },
+        {
+          "title": "File:Bhaskara Proof of Pythagoras Theorem.png",
+          "url": "https://commons.wikimedia.org/wiki/File:Bhaskara_Proof_of_Pythagoras_Theorem.png",
+          "excerpts": [
+            "Nov 29, 2023 — English: Diagram illustrating Indian mathematician Bhaskara II's (c. 1114–1185) proof of Pythagorean theorem. Date, 29 November 2023. Source ..."
+          ]
+        }
+      ],
+      "reasoning": "The field value requires identifying visuals that suit a Middle School audience. Excerpt describing a Pythagorean theorem animation emphasizes an intuitive, visual proof that is well-suited for middle-school learners, making the concept approachable through dynamic demonstration. It explicitly frames the area relationship in a way that reinforces fundamental geometry ideas at an accessible level. Excerpt describing Bhaskara's diagram presents a rigorous, historical proof of the same theorem. While informative and valuable for deeper understanding, it may exceed typical middle-school pacing or depth, making it a less direct fit for a standard middle-school target audience. Hence, the animation-focused excerpt directly supports the requested audience, and the Bhaskara-based excerpt provides secondary, broader context rather than a primary middle-school fit.",
+      "confidence": "medium"
+    },
+    {
+      "field": "mathematical_visuals_database.2.Source_Type",
+      "citations": [
+        {
+          "title": "Pythag_anim.gif (Wikimedia/Wikipedia)",
+          "url": "https://en.wikipedia.org/wiki/File:Pythag_anim.gif",
+          "excerpts": [
+            "y:Pythagorean_theorem \"Category:Pythagorean theorem\"), showing how by rearranging triangles the areas a2 + b2 and c2 can be shown to be the same. The area of the outer square never changes, and the total area of the four right triangles is the same at both the beginning and the end, therefore the black area at the beginning, a2 + b2, must equal the black area at the end, c2. The angle of the triangles is arbitrary, therefore this works as a general proof."
+          ]
+        }
+      ],
+      "reasoning": "The finegrained field value asserts that the source type is Online Encyclopedia. The excerpt that cites a file hosted on Wikipedia, with the source URL pointing to en.wikipedia.org, directly supports categorizing the source as an Online Encyclopedia. Wikipedia is widely understood as an online encyclopedia, so this excerpt provides clear and direct evidence for the field value. The other excerpt lists a source on Wikimedia Commons, which is a repository of media files and does not explicitly identify itself as an online encyclopedia, making it less relevant to the specific field value.",
+      "confidence": "high"
+    },
+    {
+      "field": "mathematical_visuals_database.0.Source_Type",
+      "citations": [
+        {
+          "title": "Pythag_anim.gif (Wikimedia/Wikipedia)",
+          "url": "https://en.wikipedia.org/wiki/File:Pythag_anim.gif",
+          "excerpts": [
+            "y:Pythagorean_theorem \"Category:Pythagorean theorem\"), showing how by rearranging triangles the areas a2 + b2 and c2 can be shown to be the same. The area of the outer square never changes, and the total area of the four right triangles is the same at both the beginning and the end, therefore the black area at the beginning, a2 + b2, must equal the black area at the end, c2. The angle of the triangles is arbitrary, therefore this works as a general proof."
+          ]
+        }
+      ],
+      "reasoning": "The key evidence linking to the finegrained field value is explicit mention of a source URL pointing to an Online Encyclopedia: Wikipedia. This directly supports the field being Online Encyclopedia. The other excerpt references a Wikimedia Commons page, which is a media repository rather than an Online Encyclopedia, so it does not support the field value and is only marginally relevant as context. Therefore, the strongest support comes from the excerpt that cites Wikipedia as the source.",
+      "confidence": "medium"
+    },
+    {
+      "field": "mathematical_visuals_database.0.Why_It_Works",
+      "citations": [
+        {
+          "title": "Pythag_anim.gif (Wikimedia/Wikipedia)",
+          "url": "https://en.wikipedia.org/wiki/File:Pythag_anim.gif",
+          "excerpts": [
+            "y:Pythagorean_theorem \"Category:Pythagorean theorem\"), showing how by rearranging triangles the areas a2 + b2 and c2 can be shown to be the same. The area of the outer square never changes, and the total area of the four right triangles is the same at both the beginning and the end, therefore the black area at the beginning, a2 + b2, must equal the black area at the end, c2. The angle of the triangles is arbitrary, therefore this works as a general proof."
+          ]
+        },
+        {
+          "title": "File:Bhaskara Proof of Pythagoras Theorem.png",
+          "url": "https://commons.wikimedia.org/wiki/File:Bhaskara_Proof_of_Pythagoras_Theorem.png",
+          "excerpts": [
+            "Nov 29, 2023 — English: Diagram illustrating Indian mathematician Bhaskara II's (c. 1114–1185) proof of Pythagorean theorem. Date, 29 November 2023. Source ..."
+          ]
+        }
+      ],
+      "reasoning": "The target fine-grained value states that the visual intuitively demonstrates that the sum of the areas a^2 and b^2 equals area c^2 by physically showing the pieces fitting together. The first excerpt explicitly describes a rearrangement in which the areas a^2 + b^2 and c^2 are shown to be equal by moving right triangles inside an outer square, with the total area remaining constant, so the black area at the start matches the black area at the end. This directly matches the claim about a visual demonstration that a^2 + b^2 equals c^2 through a fitting-together argument. The second excerpt discusses Bhaskara II's diagram illustrating a proof of the Pythagorean theorem. While it confirms that the visual approach conveys a Pythagorean proof, it is slightly less explicit about the exact mechanism (the a^2 + b^2 equals c^2 via piece fitting) but remains highly relevant as it pertains to intuitive, diagrammatic proofs of the same theorem. Taken together, both excerpts support the fine-grained value, with the first providing direct alignment and the second offering complementary evidence of intuitive diagrammatic proofs.",
+      "confidence": "high"
+    },
+    {
+      "field": "mathematical_visuals_database.0.Source_URL",
+      "citations": [
+        {
+          "title": "Pythag_anim.gif (Wikimedia/Wikipedia)",
+          "url": "https://en.wikipedia.org/wiki/File:Pythag_anim.gif",
+          "excerpts": [
+            "y:Pythagorean_theorem \"Category:Pythagorean theorem\"), showing how by rearranging triangles the areas a2 + b2 and c2 can be shown to be the same. The area of the outer square never changes, and the total area of the four right triangles is the same at both the beginning and the end, therefore the black area at the beginning, a2 + b2, must equal the black area at the end, c2. The angle of the triangles is arbitrary, therefore this works as a general proof."
+          ]
+        }
+      ],
+      "reasoning": "The excerpt explicitly mentions the file name and URL: 'Pythag_anim.gif (Wikimedia/Wikipedia) (source: https://en.wikipedia.org/wiki/File:Pythag_anim.gif)' and explains that the visual demonstrates the Pythagorean theorem by rearranging triangles so that the areas corresponding to a^2 + b^2 and c^2 remain equal, linking the image to the underlying concept. This directly supports the finegrained field value, which is the exact Source_URL pointing to that file. The excerpt also notes the general proof idea that the outer square area stays constant through rearrangement, which corroborates the purpose and identity of the visual in question. An additional excerpt discusses a different Pythagoras proof and a different image URL, which is related contextually but does not confirm the exact Source_URL value in question. Therefore, the most relevant content centers on the explicit URL and description of the Pythag_anim.gif file, with secondary context from related Pythagorean visuals that do not match the specified URL.",
+      "confidence": "high"
+    },
+    {
+      "field": "mathematical_visuals_database.4.Visual_URL",
+      "citations": [
+        {
+          "title": "File:CircleArea.gif",
+          "url": "https://commons.wikimedia.org/wiki/File:CircleArea.gif",
+          "excerpts": [
+            "Mar 17, 2024 — Animated illustration of the circle area(own work). You cannot overwrite this file. File usage on Commons. The following page uses this file:."
+          ]
+        },
+        {
+          "title": "File:CircleArea.gif",
+          "url": "https://so.wikipedia.org/wiki/File:CircleArea.gif",
+          "excerpts": [
+            "Animated illustration of the circle area(own work). Faylka lagu isticmaalay ... Ku isticmaal ar.wikipedia.org. مساحة. Ku isticmaal ast.wikipedia.org."
+          ]
+        }
+      ],
+      "reasoning": "The target finegrained value is a direct URL to a Wikimedia-hosted CircleArea.gif image. The first excerpt identifies a file named CircleArea.gif on Wikimedia Commons and notes it is an animated illustration of the circle area, which aligns with the requested visual. The second excerpt also describes an animated CircleArea.gif and cites Wikimedia/Somali Wikipedia contexts, further corroborating the same visual artifact hosted on Wikimedia platforms. Both excerpts substantiate that a CircleArea.gif animation exists under Wikimedia-hosted domains, making them directly relevant to the requested Visual_URL. The target URL points to a specific 497px version on Wikimedia's upload domain, which is a plausible derivative of the same file described in the excerpts, reinforcing the connection between the described file and the target URL.",
+      "confidence": "high"
+    },
+    {
+      "field": "mathematical_visuals_database.0.Visual_Technique",
+      "citations": [
+        {
+          "title": "Pythag_anim.gif (Wikimedia/Wikipedia)",
+          "url": "https://en.wikipedia.org/wiki/File:Pythag_anim.gif",
+          "excerpts": [
+            "y:Pythagorean_theorem \"Category:Pythagorean theorem\"), showing how by rearranging triangles the areas a2 + b2 and c2 can be shown to be the same. The area of the outer square never changes, and the total area of the four right triangles is the same at both the beginning and the end, therefore the black area at the beginning, a2 + b2, must equal the black area at the end, c2. The angle of the triangles is arbitrary, therefore this works as a general proof."
+          ]
+        }
+      ],
+      "reasoning": "The first excerpt mentions a file named 'Pythag_anim.gif' and discusses how rearranging right triangles demonstrates the equality of areas in a dynamic way, which aligns with an animated visual format. This supports the finegrained field value of Animated GIF by indicating both the file type (gif) and the intended moving demonstration of the theorem. The second excerpt references a static PNG diagram illustrating Bhaskara's proof, which does not indicate animation or movement, and thus does not support the Animated GIF field value. Therefore, the most relevant content is the first excerpt, as it directly points to an animated file and describes a dynamic teaching approach, while the second is irrelevant to the specified field value.",
+      "confidence": "high"
+    },
+    {
+      "field": "mathematical_visuals_database.1.Visual_Technique",
+      "citations": [
+        {
+          "title": "Pythag_anim.gif (Wikimedia/Wikipedia)",
+          "url": "https://en.wikipedia.org/wiki/File:Pythag_anim.gif",
+          "excerpts": [
+            "y:Pythagorean_theorem \"Category:Pythagorean theorem\"), showing how by rearranging triangles the areas a2 + b2 and c2 can be shown to be the same. The area of the outer square never changes, and the total area of the four right triangles is the same at both the beginning and the end, therefore the black area at the beginning, a2 + b2, must equal the black area at the end, c2. The angle of the triangles is arbitrary, therefore this works as a general proof."
+          ]
+        }
+      ],
+      "reasoning": "The field value specifies the technique as an Animated GIF. The excerpt explicitly naming 'Pythag_anim.gif' (a .gif file) and describing the rearrangement of triangles to illustrate the Pythagorean theorem strongly supports that the visual is an animated GIF, as the .gif extension commonly denotes an animation. In contrast, the other excerpt references a static PNG image (not animated), which does not support the animated GIF classification. Therefore, the most relevant information comes from the excerpt describing the GIF file and its animated demonstration of the theorem.",
+      "confidence": "high"
+    },
+    {
+      "field": "mathematical_visuals_database.4.Source_Type",
+      "citations": [
+        {
+          "title": "File:CircleArea.gif",
+          "url": "https://so.wikipedia.org/wiki/File:CircleArea.gif",
+          "excerpts": [
+            "Animated illustration of the circle area(own work). Faylka lagu isticmaalay ... Ku isticmaal ar.wikipedia.org. مساحة. Ku isticmaal ast.wikipedia.org."
+          ]
+        }
+      ],
+      "reasoning": "The finegrained field value seeks to classify the source type as an Online Encyclopedia. The most relevant excerpt explicitly states a URL on the Somali Wikipedia site, which is an online encyclopedia. This direct link to a Wikipedia domain provides clear support for the Online Encyclopedia classification. The other excerpt points to Wikimedia Commons, which is a media repository rather than an online encyclopedia; it does not demonstrate the Online Encyclopedia source type for this field. Therefore, the excerpt referencing the Wikipedia URL is the primary evidence supporting the field value, while the Wikimedia Commons reference does not corroborate the Online Encyclopedia classification.\n",
+      "confidence": "high"
+    },
+    {
+      "field": "mathematical_visuals_database.4.Source_URL",
+      "citations": [
+        {
+          "title": "File:CircleArea.gif",
+          "url": "https://commons.wikimedia.org/wiki/File:CircleArea.gif",
+          "excerpts": [
+            "Mar 17, 2024 — Animated illustration of the circle area(own work). You cannot overwrite this file. File usage on Commons. The following page uses this file:."
+          ]
+        },
+        {
+          "title": "File:CircleArea.gif",
+          "url": "https://so.wikipedia.org/wiki/File:CircleArea.gif",
+          "excerpts": [
+            "Animated illustration of the circle area(own work). Faylka lagu isticmaalay ... Ku isticmaal ar.wikipedia.org. مساحة. Ku isticmaal ast.wikipedia.org."
+          ]
+        }
+      ],
+      "reasoning": "The finegrained field value is the direct URL to the CircleArea.gif file on Wikimedia Commons. The first excerpt explicitly cites this exact URL and describes the visual as an animated illustration of the circle area, which supports both the specific Source_URL and the conceptual visualization of circle area. The second excerpt references a similarly named file (CircleArea.gif) and discusses its usage across different language pages, but it does not provide the exact Commons URL. This makes it relevant as contextual corroboration about the same visual artifact, but less directly tied to the precise URL required by the field value.",
+      "confidence": "high"
+    },
+    {
+      "field": "mathematical_visuals_database.4.Why_It_Works",
+      "citations": [
+        {
+          "title": "File:CircleArea.gif",
+          "url": "https://commons.wikimedia.org/wiki/File:CircleArea.gif",
+          "excerpts": [
+            "Mar 17, 2024 — Animated illustration of the circle area(own work). You cannot overwrite this file. File usage on Commons. The following page uses this file:."
+          ]
+        },
+        {
+          "title": "File:CircleArea.gif",
+          "url": "https://so.wikipedia.org/wiki/File:CircleArea.gif",
+          "excerpts": [
+            "Animated illustration of the circle area(own work). Faylka lagu isticmaalay ... Ku isticmaal ar.wikipedia.org. مساحة. Ku isticmaal ast.wikipedia.org."
+          ]
+        }
+      ],
+      "reasoning": "The finegrained field value claims a highly specific visual technique: slicing the circle into sectors and rearranging them into a rectangle to intuitively derive the area formula. The excerpts mention animated illustrations of the circle area, which aligns with the general concept of using animation to teach area, but they do not explicitly describe the slicing and rearrangement process. As such, these excerpts support the broader idea that an animation is used to teach circle area, yet they do not provide direct evidence of the exact instructional mechanism described. Therefore, they are relevant in establishing that the visual is an animated representation of circle area, but they do not confirm the precise method of illustrating the area derivation through sector rearrangement.",
+      "confidence": "low"
+    },
+    {
+      "field": "mathematical_visuals_database.4.Concept_Illustrated",
+      "citations": [
+        {
+          "title": "File:CircleArea.gif",
+          "url": "https://commons.wikimedia.org/wiki/File:CircleArea.gif",
+          "excerpts": [
+            "Mar 17, 2024 — Animated illustration of the circle area(own work). You cannot overwrite this file. File usage on Commons. The following page uses this file:."
+          ]
+        },
+        {
+          "title": "File:CircleArea.gif",
+          "url": "https://so.wikipedia.org/wiki/File:CircleArea.gif",
+          "excerpts": [
+            "Animated illustration of the circle area(own work). Faylka lagu isticmaalay ... Ku isticmaal ar.wikipedia.org. مساحة. Ku isticmaal ast.wikipedia.org."
+          ]
+        }
+      ],
+      "reasoning": "The target concept is a visual demonstration of circle area by rearranging sectors. Excerpt content describes an animated illustration of the circle area (CircleArea.gif), which is precisely the kind of visual that would show how circle area can be understood through rearranging sectors or partitioning into sectors. The first excerpt explicitly labels the file as an animated illustration of the circle area, implying a dynamic visualization of the circle's area. The second excerpt references the same file in a different language context but conveys the same idea of an animated circle area illustration. Together, these excerpts directly support that the visual concept illustrated is Circle Area by rearranging sectors, since an animation of circle area is the typical method to convey that idea visually and intuitively.",
+      "confidence": "high"
+    },
+    {
+      "field": "mathematical_visuals_database.1.Concept_Illustrated",
+      "citations": [
+        {
+          "title": "Pythag_anim.gif (Wikimedia/Wikipedia)",
+          "url": "https://en.wikipedia.org/wiki/File:Pythag_anim.gif",
+          "excerpts": [
+            "y:Pythagorean_theorem \"Category:Pythagorean theorem\"), showing how by rearranging triangles the areas a2 + b2 and c2 can be shown to be the same. The area of the outer square never changes, and the total area of the four right triangles is the same at both the beginning and the end, therefore the black area at the beginning, a2 + b2, must equal the black area at the end, c2. The angle of the triangles is arbitrary, therefore this works as a general proof."
+          ]
+        },
+        {
+          "title": "File:Bhaskara Proof of Pythagoras Theorem.png",
+          "url": "https://commons.wikimedia.org/wiki/File:Bhaskara_Proof_of_Pythagoras_Theorem.png",
+          "excerpts": [
+            "Nov 29, 2023 — English: Diagram illustrating Indian mathematician Bhaskara II's (c. 1114–1185) proof of Pythagorean theorem. Date, 29 November 2023. Source ..."
+          ]
+        }
+      ],
+      "reasoning": "The most directly relevant content describes a visual arrangement where the areas a^2 + b^2 and c^2 are shown to be equal through a rearrangement of triangles within a square, establishing that the outer square's area remains constant while the internal configuration changes. This directly maps to the finegrained field value, which is a Pythagorean theorem demonstration framed as the sum of squares. The second excerpt, while not focusing on the explicit sum-of-squares decomposition, presents a historically established visual proof (Bhaskara II's diagram) of the Pythagorean theorem, which aligns with the same geometric principle and reinforces the concept through a different visual representation. Together, they substantiate the idea of a sum-of-squares demonstration as a visual proof of the theorem, with the first excerpt providing the strongest, most explicit link to the requested depiction and the second offering supportive corroboration via an alternative diagrammatic proof.",
+      "confidence": "high"
+    },
+    {
+      "field": "mathematical_visuals_database.5.Concept_Illustrated",
+      "citations": [
+        {
+          "title": "File:CircleArea.gif",
+          "url": "https://commons.wikimedia.org/wiki/File:CircleArea.gif",
+          "excerpts": [
+            "Mar 17, 2024 — Animated illustration of the circle area(own work). You cannot overwrite this file. File usage on Commons. The following page uses this file:."
+          ]
+        },
+        {
+          "title": "File:CircleArea.gif",
+          "url": "https://so.wikipedia.org/wiki/File:CircleArea.gif",
+          "excerpts": [
+            "Animated illustration of the circle area(own work). Faylka lagu isticmaalay ... Ku isticmaal ar.wikipedia.org. مساحة. Ku isticmaal ast.wikipedia.org."
+          ]
+        }
+      ],
+      "reasoning": "The key idea in the fine-grained field value is a specific visualization of circle area achieved by some unwrapping process into a triangle. The excerpts describe an animated illustration of the circle area, which directly relates to visualizing circle area concepts and would support understanding how the circle's area can be represented visually. However, neither excerpt explicitly states the unwrapping-to-triangle method; they confirm circle-area visualization but not the particular unwrapping technique. This suggests partial support: the general circle-area visualization is evidenced, but the exact unwrapping-to-triangle portrayal is not explicitly described in the excerpts.",
+      "confidence": "medium"
+    },
+    {
+      "field": "mathematical_visuals_database.1.Why_It_Works",
+      "citations": [
+        {
+          "title": "Pythag_anim.gif (Wikimedia/Wikipedia)",
+          "url": "https://en.wikipedia.org/wiki/File:Pythag_anim.gif",
+          "excerpts": [
+            "y:Pythagorean_theorem \"Category:Pythagorean theorem\"), showing how by rearranging triangles the areas a2 + b2 and c2 can be shown to be the same. The area of the outer square never changes, and the total area of the four right triangles is the same at both the beginning and the end, therefore the black area at the beginning, a2 + b2, must equal the black area at the end, c2. The angle of the triangles is arbitrary, therefore this works as a general proof."
+          ]
+        },
+        {
+          "title": "File:Bhaskara Proof of Pythagoras Theorem.png",
+          "url": "https://commons.wikimedia.org/wiki/File:Bhaskara_Proof_of_Pythagoras_Theorem.png",
+          "excerpts": [
+            "Nov 29, 2023 — English: Diagram illustrating Indian mathematician Bhaskara II's (c. 1114–1185) proof of Pythagorean theorem. Date, 29 November 2023. Source ..."
+          ]
+        }
+      ],
+      "reasoning": "The most supportive excerpt explicitly explains that rearranging triangles demonstrates the equality of the sum of the two smaller squares to the largest square, showing that the areas before and after rearrangement are equal. This directly aligns with the idea of a clear, animated rearrangement illustrating the sum of squares concept (a^2 + b^2 = c^2) and how the visual conveys this invariant through a dynamic reconfiguration of areas. A second excerpt also supports the core concept by presenting a diagram-based proof of the Pythagorean theorem attributed to Bhaskara, which reinforces that the visual method can establish the same sum-of-squares relationship through a diagrammatic proof. Together, these excerpts substantiate that a visual, animated rearrangement can convey the sum-of-squares idea. ",
+      "confidence": "high"
+    },
+    {
+      "field": "mathematical_visuals_database.1.Visual_URL",
+      "citations": [
+        {
+          "title": "Pythag_anim.gif (Wikimedia/Wikipedia)",
+          "url": "https://en.wikipedia.org/wiki/File:Pythag_anim.gif",
+          "excerpts": [
+            "y:Pythagorean_theorem \"Category:Pythagorean theorem\"), showing how by rearranging triangles the areas a2 + b2 and c2 can be shown to be the same. The area of the outer square never changes, and the total area of the four right triangles is the same at both the beginning and the end, therefore the black area at the beginning, a2 + b2, must equal the black area at the end, c2. The angle of the triangles is arbitrary, therefore this works as a general proof."
+          ]
+        },
+        {
+          "title": "File:Bhaskara Proof of Pythagoras Theorem.png",
+          "url": "https://commons.wikimedia.org/wiki/File:Bhaskara_Proof_of_Pythagoras_Theorem.png",
+          "excerpts": [
+            "Nov 29, 2023 — English: Diagram illustrating Indian mathematician Bhaskara II's (c. 1114–1185) proof of Pythagorean theorem. Date, 29 November 2023. Source ..."
+          ]
+        }
+      ],
+      "reasoning": "The finegrained field value specifies a direct URL to an animated GIF that demonstrates the Pythagorean theorem via a sum-of-squares visualization. The first excerpt explicitly describes an animated rearrangement of right triangles to show that the areas a^2 + b^2 and c^2 are equal, concluding that the black area remains the same before and after, which directly embodies the same visual teaching goal as the target GIF. This excerpt provides a concrete description of an animation that teaches the Pythagorean relationship through a dynamic area argument, matching both the concept and the visual-animational approach of the field value.\n\nThe second excerpt presents Bhaskara II's diagram-based proof of the Pythagorean theorem, illustrating another visual method to convey the same mathematical relationship. While this is a static diagram rather than an animation, it corroborates that the Pythagorean theorem can be communicated effectively through visual proofs. This strengthens relevance by showing an additional, reputable visual approach to the same concept presented in the field value, albeit not the exact animated format.\n\nTogether, these excerpts support the field value's core idea (a visual demonstration of the Pythagorean theorem via a sum-of-squares argument) and provide both an animation-based and a diagram-based validation of the concept, with the animation-focused description being the most directly aligned.",
+      "confidence": "medium"
+    },
+    {
+      "field": "mathematical_visuals_database.5.Visual_Technique",
+      "citations": [
+        {
+          "title": "File:CircleArea.gif",
+          "url": "https://commons.wikimedia.org/wiki/File:CircleArea.gif",
+          "excerpts": [
+            "Mar 17, 2024 — Animated illustration of the circle area(own work). You cannot overwrite this file. File usage on Commons. The following page uses this file:."
+          ]
+        },
+        {
+          "title": "File:CircleArea.gif",
+          "url": "https://so.wikipedia.org/wiki/File:CircleArea.gif",
+          "excerpts": [
+            "Animated illustration of the circle area(own work). Faylka lagu isticmaalay ... Ku isticmaal ar.wikipedia.org. مساحة. Ku isticmaal ast.wikipedia.org."
+          ]
+        }
+      ],
+      "reasoning": "The finegrained field seeks to confirm the Visual_Technique as an Animated GIF. Both excerpts describe the visual as animated and reference a file named CircleArea.gif, which by its .gif extension denotes an Animated GIF. The first excerpt explicitly labels it as an animated illustration and references the file CircleArea.gif with a Wikimedia Commons source page, while the second excerpt also describes an animated illustration and identifies the same or a related GIF file. Together, they substantiate that the visual technique used is an Animated GIF, supporting the specified field value. No excerpts conflict with this interpretation, and these excerpts provide direct evidence of the animated format via the file naming and description.",
+      "confidence": "high"
+    },
+    {
+      "field": "mathematical_visuals_database.5.Source_Type",
+      "citations": [
+        {
+          "title": "File:CircleArea.gif",
+          "url": "https://so.wikipedia.org/wiki/File:CircleArea.gif",
+          "excerpts": [
+            "Animated illustration of the circle area(own work). Faylka lagu isticmaalay ... Ku isticmaal ar.wikipedia.org. مساحة. Ku isticmaal ast.wikipedia.org."
+          ]
+        },
+        {
+          "title": "File:CircleArea.gif",
+          "url": "https://commons.wikimedia.org/wiki/File:CircleArea.gif",
+          "excerpts": [
+            "Mar 17, 2024 — Animated illustration of the circle area(own work). You cannot overwrite this file. File usage on Commons. The following page uses this file:."
+          ]
+        }
+      ],
+      "reasoning": "The finegrained field value specifies the Source_Type as Online Encyclopedia. An excerpt that references a page hosted on a Wikipedia domain clearly aligns with the concept of an online encyclopedia as a source type, since Wikipedia is widely recognized as an online encyclopedia. The excerpt notes involvement with the so.wikipedia.org and ar.wikipedia.org domains, which reinforces its alignment with Digital encyclopedia sources. Another excerpt references Wikimedia Commons as the file hosting and usage page for the same animated circle area file. While Wikimedia Commons is a media repository rather than an encyclopedia itself, its association with a Wikimedia project ecosystem can be relevant to how the visual is sourced, but it doesn't explicitly confirm the source type as an online encyclopedia. Therefore, the excerpt mentioning Wikipedia domains directly supports the field value, while the Wikimedia Commons excerpt provides contextual but weaker support. Taken together, these excerpts establish a plausible link to the Online Encyclopedia category, with the former being the strongest support.",
+      "confidence": "medium"
+    }
+  ],
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "mathematical_visuals_database": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "Visual_URL": {
+              "type": "string",
+              "description": "A direct link to the image or GIF file."
+            },
+            "Concept_Illustrated": {
+              "type": "string",
+              "description": "The primary mathematical idea being shown, e.g., 'Visualizing Pi', 'The Pythagorean Theorem Proof'."
+            },
+            "Visual_Technique": {
+              "type": "string",
+              "description": "The method used to convey the information, e.g., 'Geometric Proof', 'Animated GIF', 'Data Visualization'."
+            },
+            "Target_Audience": {
+              "type": "string",
+              "description": "The estimated learning level for the visual, e.g., 'Elementary School', 'High School', 'Undergraduate'."
+            },
+            "Why_It_Works": {
+              "type": "string",
+              "description": "A concise, one-sentence explanation of what makes the visual so effective."
+            },
+            "Source_Type": {
+              "type": "string",
+              "description": "The category of the source, e.g., 'Educational Blog', 'Academic Paper', 'Online Encyclopedia'."
+            },
+            "Source_URL": {
+              "type": "string",
+              "description": "The URL of the article, page, or video where the visual was found."
+            }
+          },
+          "required": [
+            "Visual_URL",
+            "Concept_Illustrated",
+            "Visual_Technique",
+            "Target_Audience",
+            "Why_It_Works",
+            "Source_Type",
+            "Source_URL"
+          ],
+          "additionalProperties": false
+        },
+        "description": "A curated list of insightful mathematical visuals, designed to be compiled into a CSV file. Each item in this list represents a single visual and contains all the necessary information for one row of the final table, corresponding to the headers specified in the prompt."
+      }
+    },
+    "required": [
+      "mathematical_visuals_database"
+    ],
+    "additionalProperties": false
+  }
+}

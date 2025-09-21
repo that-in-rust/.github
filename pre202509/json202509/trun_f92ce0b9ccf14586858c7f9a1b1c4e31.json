@@ -1,0 +1,1999 @@
+{
+  "input": "Of course. Here is a prompt tailored to find and catalog underrated but viral images that explain mental models.\n\nThis prompt is designed to help the AI distinguish between common, overused visuals and the kind of unique, insightful diagrams that gain traction in niche intellectual communities.\n\nUnderrated Mental Models Visual Library Prompt\nResearch Briefing & Objective:\n\nYou are a Knowledge Curator for a popular newsletter focused on clear thinking and effective decision-making. Your mission is to create a visual library of \"hidden gem\" mental models—powerful concepts that are not widely known but have gone viral within specific communities due to their insightful visuals.\n\nPhase 1: Search & Selection Criteria\n\nYour goal is to find high-quality images that visually explain a mental model. Each image must meet all of the following conditions:\n\nVisual Insight: The image must be a diagram, infographic, or visual metaphor that makes a complex mental model easy to grasp instantly.\n\nUnderrated Concept: The image must represent a mental model outside of the commonly cited top 20 (e.g., you should actively exclude basic diagrams of Occam's Razor, First Principles Thinking, Confirmation Bias, etc.). The goal is to find novel visuals for concepts like the Gell-Mann Amnesia Effect, Chesterton's Fence, Circle of Competence, or The Map is Not the Territory.\n\nViral Indicator: The image must show evidence of organic virality. This can be verified if the image has:\n\nHigh engagement (e.g., thousands of retweets or pins) on a social platform.\n\nBeen featured or embedded across multiple independent, high-quality blogs or newsletters.\n\nPhase 2: Dataset Compilation & Final Deliverable\n\nThe final output must be a comprehensive table in CSV format, with each row representing a single, unique mental model image.\n\nThe table must have the following exact headers:\n\nImage_URL (A direct link to the image file)\n\nMentalModel_Name\n\nCorePrinciple\n\nApplication\n\nSourceType\n\nOriginalSource_URL (The URL of the article or post where the image originated)\n\nConstraint Checklist:\nMentalModel_Name: Name the specific mental model the image illustrates.\n\nCorePrinciple: Provide a one-sentence summary of the model's central idea.\n\nApplication: Briefly describe a real-world situation where this model is useful for thinking clearly.\n\nSourceType: Categorize the original source as Blog Post, Newsletter, Academic Paper, Book Illustration, or Social Media Thread.\n\nExclusions: Your primary filter is to reject overly common or simplistic models. The value of this list is in its novelty and depth. Do not include corporate or marketing framework diagrams.",
+  "output": {
+    "research_summary": {
+      "overall_summary": "The research to build a visual library of 'underrated but viral' mental models was executed through a multi-stage, parallelized process. The initial phase involved establishing an exclusion baseline by identifying the 20-30 most common mental models (e.g., Confirmation Bias, Pareto Principle) and their canonical visuals to ensure the final collection met the 'underrated' criterion. Subsequently, targeted searches were conducted on specific high-value sources known for visual explanations, including Sketchplanations.com, rationality blogs (LessWrong, Slate Star Codex), Substack newsletters, and major infographic hubs like Visual Capitalist. Deep-dive investigations were performed for specific, requested models such as Chesterton's Fence, the Gell-Mann Amnesia Effect, Circle of Competence, and Goodhart's Law to find multiple, high-quality visual examples and validate their organic virality through public engagement metrics and evidence of cross-platform embedding. The research also explored non-English sources and synthesized the underlying patterns of what makes a mental model visual successful. The outcome is a curated collection of novel visuals, a clear understanding of which concepts are visually well-represented versus which are not, and a set of actionable insights for creating future viral educational content.",
+      "successful_visual_finds": "Strong, viral, and novel visuals were successfully identified for several mental models. 'Chesterton's Fence' yielded multiple high-quality examples, most notably the annotated sketch from Sketchplanations which showed significant engagement on X/Twitter and Facebook. 'Goodhart's Law' and 'The Cobra Effect' were also successfully visualized by Sketchplanations, with evidence of their use in professional and academic contexts. 'Circle of Competence' and 'The Map is Not the Territory' were found to have highly novel and viral minimalist/abstract depictions from creators like Visualize Value and Sahil Bloom, moving beyond clichéd diagrams. The rationality blog-sphere provided potent, albeit more technical, visuals for 'Goodhart's Law' (causal diagrams from LessWrong) and a novel concept, 'The Tails Coming Apart' (from Slate Star Codex), which showed massive community engagement. Meta-models like the 'Barbell Strategy' were also successfully visualized in a Substack newsletter.",
+      "challenging_visual_finds": "Finding distinct, viral visuals proved difficult for several key mental models. The 'Gell-Mann Amnesia Effect' was the most challenging; despite the concept's textual popularity in online discussions (Hacker News, Reddit), no explanatory diagrams or infographics with significant organic virality were discovered. The visuals found were either text-as-image quotes or generic stock photos. Similarly, 'Shifting Baseline Syndrome' and the 'Streetlight Effect' yielded very few explanatory visuals, with the ones found (e.g., scientific charts, Wikipedia diagrams) lacking evidence of broad, organic spread outside of niche academic or encyclopedic contexts. For many concepts, the 'virality' was attached to the text-based idea itself, not to a shareable visual aid, highlighting a gap between conceptual popularity and visual explanation."
+    },
+    "underrated_mental_model_visuals": [
+      {
+        "image_url": "https://substackcdn.com/image/fetch/w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F49c1868a-65f8-454b-8b24-981d388b1a64_3416x3417.jpeg",
+        "mental_model_name": "Chesterton's Fence",
+        "core_principle": "Don't take a fence down unless you know why it was put up in the first place.",
+        "application": "This principle is applied to encourage understanding the rationale and second-order effects behind existing systems, rules, or traditions before attempting to change or remove them, which is crucial in policy reform, business process changes, or refactoring legacy software code.",
+        "source_type": "Blog Post",
+        "original_source_url": "https://sketchplanations.com/chestertons-fence",
+        "virality_evidence": "The visual demonstrates significant virality. A post by the creator on X (@sketchplanator) on April 3, 2022, received 165 likes and 53 retweets. A corresponding Facebook post received 159 reactions and 53 shares. It has also been embedded in multiple independent blogs and newsletters, such as Marlow's Musings on Substack."
+      },
+      {
+        "image_url": "https://images.prismic.io/sketchplanations/68405664-64fc-4f4d-841b-fa27305c38bf_SP+535+-+Goodhart%27s+law+-+revised+-+large.png?auto=format%2Ccompress&fit=max&w=3840",
+        "mental_model_name": "Goodhart's Law",
+        "core_principle": "When a measure becomes a target, it ceases to be a good measure.",
+        "application": "Applied in performance management, economics, and data science to warn that once a metric is chosen as a target for a goal (e.g., lines of code for programmers, number of arrests for police), people will optimize for that specific metric, potentially at the expense of the overall goal it was meant to represent (e.g., quality software, public safety).",
+        "source_type": "Blog Post",
+        "original_source_url": "https://sketchplanations.com/goodharts-law",
+        "virality_evidence": "This visual is widely reshared. It has been embedded in numerous independent blogs (e.g., Deep-Insight.com, Erica Thas's Substack) and was adopted as the cover image for a formal report by the Center for Naval Analyses (CNA), demonstrating its use in professional and academic contexts."
+      },
+      {
+        "image_url": "https://substackcdn.com/image/fetch/w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fbucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com%2Fpublic%2Fimages%2Fe9ffceb1-f534-4c85-adb6-930a689fcedd_1920x1080.jpeg",
+        "mental_model_name": "Circle of Competence",
+        "core_principle": "The key to success is not the size of your circle of competence, but knowing its boundaries and operating strictly within them.",
+        "application": "Primarily used in investing to avoid making decisions in areas one doesn't understand, but it also applies to business strategy (focusing on core competencies) and personal development (identifying knowledge gaps and pursuing continuous learning).",
+        "source_type": "Newsletter",
+        "original_source_url": "https://sahilbloom.substack.com/p/circle-of-competence",
+        "virality_evidence": "This visual is from Sahil Bloom's popular newsletter, 'The Curiosity Chronicle'. The post has 21 shares. A related visual from a collaboration between Sahil Bloom and Jack Butcher (@visualizevalue) received 731 likes and 307 retweets on X/Twitter, confirming the viral appeal of this minimalist depiction of the concept."
+      },
+      {
+        "image_url": "https://preview.redd.it/l1eaf35fup21.gif?width=640&crop=smart&format=png8&s=739673b96f9c08821c0bbaa0cc2931bcf2357a79",
+        "mental_model_name": "The Map Is Not the Territory",
+        "core_principle": "Representations of reality (maps, models, theories) are not reality itself; they are useful but inherently incomplete and simplified abstractions.",
+        "application": "A critical thinking tool used to improve judgment by reminding individuals of the limitations of their models. It's crucial for modern media consumption, financial modeling, and scientific research, encouraging skepticism and a continuous effort to update one's understanding based on real-world feedback.",
+        "source_type": "Social Media Thread",
+        "original_source_url": "https://www.reddit.com/r/dataisbeautiful/comments/b8ihhr/comparison_between_the_london_tube_map_and_its/",
+        "virality_evidence": "This animated GIF comparing the schematic London Tube map to its geographic reality is highly viral. The original Reddit post on r/dataisbeautiful received significant engagement, and the comparison has been featured on major sites like BuzzFeed and design blogs, making it a classic, concrete example of the principle."
+      },
+      {
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Graham%27s_Hierarchy_of_Disagreement.svg/707px-Graham%27s_Hierarchy_of_Disagreement.svg.png",
+        "mental_model_name": "Graham's Hierarchy of Disagreement",
+        "core_principle": "Arguments can be categorized into a seven-level hierarchy, from the lowest form (name-calling) to the highest (refuting the central point).",
+        "application": "A tool for improving critical thinking and the quality of discourse. It helps participants in a debate or discussion assess the quality of their own and others' arguments, encouraging them to engage with the substance of an idea rather than resorting to fallacies or personal attacks.",
+        "source_type": "Blog Post",
+        "original_source_url": "http://www.paulgraham.com/disagree.html",
+        "virality_evidence": "Extremely high virality. While the concept originated in Paul Graham's essay, this specific pyramid visual, created by a third party and hosted on Wikimedia Commons, has become one of the most famous visuals from the blogosphere. It is constantly shared and referenced across the internet in discussions about debate, logic, and online communication."
+      },
+      {
+        "image_url": "https://substack-post-media.s3.amazonaws.com/public/images/743b8318-ac05-4a03-883a-a8c26a7817ff_1188x396.png",
+        "mental_model_name": "Barbell Strategy",
+        "core_principle": "Avoid the mediocre middle ground by combining two extremes: one side that is low-risk and stable, and another that is high-risk and high-reward.",
+        "application": "Used in investment portfolios (e.g., 90% in safe government bonds, 10% in speculative startups), career strategy (a stable day job combined with a high-risk creative side project), and other domains to build robustness and capture upside potential while protecting against catastrophic failure.",
+        "source_type": "Newsletter",
+        "original_source_url": "https://fakepixels.substack.com/p/the-illusions-of-barbell-theory",
+        "virality_evidence": "The source article on Substack has a visible share count of 44. The author, Tina He, also shared the article and its visuals on X (formerly Twitter), where it gained traction. This inverted bell curve visual offers a novel depiction compared to the literal barbell."
+      },
+      {
+        "image_url": "https://res.cloudinary.com/lesswrong-2-0/image/upload/f_auto,q_auto/v1/mirroredImages/pdkEP5RvQLKQAzNCS/qulahfkhvw8axjgfjp82",
+        "mental_model_name": "Goodhart's Law (Optimization Scatter Plot)",
+        "core_principle": "When a measure becomes a target, it ceases to be a good measure because optimization pressure corrupts the relationship between the proxy metric and the true goal.",
+        "application": "This visual is used to explain failures in complex systems, particularly in AI alignment, where an agent might optimize for a flawed reward signal (the proxy) instead of the intended behavior (the value). It also applies to business KPIs and policy-making.",
+        "source_type": "Blog Post",
+        "original_source_url": "https://www.lesswrong.com/posts/TYgztDNXhobbqMpXh/goodhart-typology-via-structure-function-and-randomness",
+        "virality_evidence": "This scatter plot is repeatedly referenced within the rationality and AI alignment communities. The LessWrong post has significant engagement, and the concept is frequently discussed on Hacker News and Reddit, showing its penetration into technical and nerd culture."
+      }
+    ],
+    "common_mental_models_excluded": [
+      {
+        "model_name": "Confirmation Bias",
+        "reason_for_exclusion": "Frequently cited by all major sources (Farnam Street, James Clear, Visual Capitalist) and considered a foundational concept in psychology and behavioral economics.",
+        "overused_visual_description": "Typically depicted as a person inside a filter bubble, a funnel filtering information to match pre-existing beliefs, or a person actively ignoring contradictory evidence while focusing on confirming data."
+      },
+      {
+        "model_name": "Survivorship Bias",
+        "reason_for_exclusion": "A classic statistical fallacy mentioned consistently across all top mental model compilations.",
+        "overused_visual_description": "The most famous illustration is the WWII bomber plane with bullet holes marked only on the areas that could be hit without causing a crash. Another common visual shows a single successful person on a pedestal, ignoring the vast number of failures who are not visible."
+      },
+      {
+        "model_name": "Pareto Principle (80/20 Rule)",
+        "reason_for_exclusion": "A widely applied principle in business, economics, and quality management, highlighted by numerous sources.",
+        "overused_visual_description": "The standard visual is the Pareto Chart, a bar graph showing values in descending order with a superimposed line graph showing the cumulative total, often with an 80% cutoff line."
+      },
+      {
+        "model_name": "Dunning-Kruger Effect",
+        "reason_for_exclusion": "Widely popularized in online discourse and psychology literature, with a single, universally recognized visual.",
+        "overused_visual_description": "Almost universally represented by a two-axis graph plotting 'Confidence' vs. 'Competence,' showing a sharp peak of confidence at low competence ('Mt. Stupid') followed by a dip and a gradual rise."
+      },
+      {
+        "model_name": "First Principles Thinking",
+        "reason_for_exclusion": "Featured prominently by both Farnam Street and James Clear as a fundamental problem-solving technique.",
+        "overused_visual_description": "Often illustrated as a pyramid or an inverted pyramid, symbolizing the deconstruction of a complex problem down to its foundational truths, or as a person peeling back the layers of an onion."
+      },
+      {
+        "model_name": "Sunk Cost Fallacy",
+        "reason_for_exclusion": "A staple concept in behavioral economics, featured in numerous books and articles on cognitive biases.",
+        "overused_visual_description": "Common illustrations include a person continuing to dig a hole deeper, someone throwing 'good money after bad' into a failing venture, or a project timeline showing continued investment past a logical point of termination."
+      },
+      {
+        "model_name": "Availability Heuristic",
+        "reason_for_exclusion": "A core concept in cognitive psychology, mentioned by nearly every major source on biases.",
+        "overused_visual_description": "Often shown as a brain where recent or vivid memories are physically larger and more easily accessible, or a person making a decision based on dramatic but statistically rare events (e.g., fearing a plane crash more than a car crash)."
+      },
+      {
+        "model_name": "Anchoring Bias",
+        "reason_for_exclusion": "Listed by James Clear, Visual Capitalist, and others as a fundamental cognitive bias in decision-making.",
+        "overused_visual_description": "The most direct visual is a literal anchor. Other common depictions include a scale heavily weighted by an initial piece of information or a person fixated on the first number they see."
+      },
+      {
+        "model_name": "Loss Aversion",
+        "reason_for_exclusion": "A cornerstone of prospect theory, widely cited in behavioral economics literature.",
+        "overused_visual_description": "The standard visual is a graph showing the asymmetrical psychological impact of gains and losses, where the pain from a loss is significantly greater than the pleasure from an equivalent gain."
+      },
+      {
+        "model_name": "Halo Effect",
+        "reason_for_exclusion": "A classic social psychology bias listed in most compilations of cognitive errors.",
+        "overused_visual_description": "The most common depiction is a person with a literal halo, where one positive trait (e.g., attractiveness) causes observers to assume other unrelated positive traits (e.g., intelligence, kindness)."
+      }
+    ],
+    "synthesis_of_viral_patterns": {
+      "visual_form": "The most successful visual formats are those that prioritize clarity and immediate comprehension. Key forms include: **Infographics**, especially with vertical layouts for mobile scrolling (e.g., Sloww.co's 'Chesterton's Fence'); **Annotated Sketches**, which use a hand-drawn, approachable aesthetic (e.g., Sketchplanations); **Metaphorical Imagery**, which uses a concrete image to represent an abstract idea (e.g., a photo of a fence for Chesterton's Fence); **Quote Images**, which place a powerful text definition on a simple background (e.g., the Gell-Mann Amnesia quote on X); and **Short-Form Videos** (e.g., the TikTok explanation of Chesterton's Fence), which adapt concepts for dynamic, bite-sized consumption.",
+      "channel_analysis": "Channel effectiveness is highly dependent on the visual format and target audience. **X/Twitter** is potent for static images and quote cards that can be quickly consumed and shared, amplified by influential accounts. **Instagram** and **Pinterest** are premier platforms for high-quality, visually striking infographics and diagrams, with Instagram's vertical format (1080x1350px) performing best. **LinkedIn** is ideal for professional audiences, where carousel posts and document attachments explaining business-relevant models like the 'Circle of Competence' see high engagement. **Blogs and Newsletters (Substack)** serve as foundational hubs for providing detailed context, often acting as the origin point before a visual is shared more broadly. **TikTok** excels at reaching younger demographics with creative, short-form video but can lead to shallower processing.",
+      "virality_correlates": "Several key factors consistently correlate with a visual's ability to spread organically. **Strong Storytelling** is paramount; visuals that frame a model within a relatable narrative (e.g., the nail factory for Goodhart's Law) are more memorable. **Simplicity and Clarity**, adhering to a 'one big idea' principle, are crucial, as the brain processes images far faster than text. **Visually Striking Design** with a clear hierarchy and clean aesthetic captures initial attention. **Credibility**, established by citing sources and using verified data, builds trust and encourages sharing. Finally, **Creator Reputation and Network Effects** play a significant role; visuals launched by established creators (e.g., Visualize Value, Sketchplanations) or amplified by influencers receive an initial boost that can catalyze wider spread.",
+      "common_pitfalls": "Several common mistakes hinder a visual's potential for virality. **Information Overload** is the most frequent issue, where creators try to cram too much text or data into a single image, making it cluttered and difficult to digest. **Poor Design**, including weak typography, a confusing layout, or a clashing color palette, causes users to disengage immediately. A critical technical error is **Not Optimizing for Mobile**, as most social media is consumed on vertical phone screens. Other pitfalls include a **Lack of Promotion** across relevant channels, the absence of a clear **Call-to-Action** (CTA) to guide user behavior, and **Factual Inaccuracies** that destroy credibility.",
+      "design_recommendations": "To design future visuals for maximum viral potential, creators should: 1. **Start with a Single, Potent Idea** and build the entire visual around explaining it clearly. 2. **Design for Scanning, Not Reading**, using a strong headline, clear visual hierarchy, and minimal text. 3. **Prioritize Mobile-First, Vertical Formats** (e.g., 1080x1350px) as the primary deliverable. 4. **Build in Credibility** by explicitly citing sources on the visual itself. 5. **Tell a Relatable Story** or use a powerful metaphor to make the abstract concept concrete and memorable. 6. **Develop a Multi-Channel Promotion Plan** to distribute the visual across a primary blog/newsletter and multiple social platforms tailored to the format. 7. **Include a Clear CTA** and a subtle brand mark to encourage sharing and build recognition."
+    }
+  },
+  "outputBasis": [
+    {
+      "field": "research_summary",
+      "citations": [
+        {
+          "title": "Chesterton's fence - Sketchplanations",
+          "url": "https://sketchplanations.com/chestertons-fence",
+          "excerpts": [
+            "Chesterton's fence put simply is: Don't take a fence down unless you know why it was put up. It is tempting, in a spirit of progress, to want to do away with ...",
+            "Chesterton's fence, after GK Chesterton, is a reminder that before we remove the old and perhaps replace it with the new we would do well to at least understand why the original was put in place.",
+            "Published\n3 Apr 2022",
+            "hes each week\nChesterton's fence put simply is: Don't take a fence down unless you know why it was put up. It is tempting, in a spirit of progress, to want to do away with old designs, laws, policies, or institutions that no longer help.",
+            ". Chesterton's fence, after GK Chesterton, is a reminder that before we remove the old and perhaps replace it with the new we would do well to at least understand why the original was put in place.",
+            ". It is tempting, in a spirit of progress, to want to do away with old designs, laws, policies, or institutions that no longer help.",
+            ". Once we understand why the fence was there in the first place if we still think it's of no use, then by all means pull it down."
+          ]
+        },
+        {
+          "title": "Underrated Mental Models Visual Prompt (Chesterton's Fence, Circle of Competence)",
+          "url": "http://sketchplanations.com/chestertons-fence",
+          "excerpts": [
+            "Chesterton's fence, after GK Chesterton, is a reminder that before we remove the old and perhaps replace it with the new we would do well to at least understand why the original was put in place.",
+            "Published\n3 Apr 2022"
+          ]
+        },
+        {
+          "title": "Circle of Competence - Mental Model - Perspectiveship",
+          "url": "https://read.perspectiveship.com/p/circle-of-competence",
+          "excerpts": [
+            "The Circle of Competence is a mental model that reminds us about our knowledge boundaries. Warren Buffet and Charlie Munger coined the term for financial ..."
+          ]
+        },
+        {
+          "title": "Circle of Competence: How Warren Buffett Avoids Failures",
+          "url": "https://coffeeandjunk.com/circle-of-competence/",
+          "excerpts": [
+            "Simple mental model that Buffett uses to avoid problems, and in turn win big is called the Circle of Competence."
+          ]
+        },
+        {
+          "title": "The Map is Not The Territory - ArtThrob",
+          "url": "https://artthrob.co.za/2016/02/16/the-map-is-not-the-territory/",
+          "excerpts": [
+            "'The map is not the territory' is a dictum used by linguist Alfred Korzybski. It tells us that an abstraction of something is not the thing itself."
+          ]
+        },
+        {
+          "title": "The Map Is Not The Territory - LessWrong",
+          "url": "https://www.lesswrong.com/w/the-map-is-not-the-territory",
+          "excerpts": [
+            "The map is not the territory metaphorically illustrates the differences between belief and reality. The phrase was coined by Alfred Korzybski.",
+            "Dec 2, 2012 — The map is not the territory metaphorically illustrates the differences between belief and reality. The phrase was coined by Alfred Korzybski.See more"
+          ]
+        },
+        {
+          "title": "The Map is not the Territory - Definition and examples - Conceptually",
+          "url": "https://conceptually.org/concepts/the-map-is-not-the-territory",
+          "excerpts": [
+            "The map and territory is a metaphor used to illustrate the difference between the actual world and our understanding of the world as we perceive it to be."
+          ]
+        },
+        {
+          "title": "The map is not the territory - memecon",
+          "url": "https://www.memecon.com/the-map-is-not-the-territory.html",
+          "excerpts": [
+            "The map is not the territory. The photo shows a sketch of a broken part on graph paper with a pencil,. We navigate through two worlds: the real world and the ..."
+          ]
+        },
+        {
+          "title": "Simplifying complex ideas in sketches",
+          "url": "https://sketchplanations.com/?page=4",
+          "excerpts": [
+            "Sketchplanations explains the world one sketch at a time. Discover clear, simple sketches that break down ideas from science, creativity, psychology, ..."
+          ]
+        },
+        {
+          "title": "Sketchplanations - Simplifying complex ideas in sketches",
+          "url": "https://sketchplanations.com/",
+          "excerpts": [
+            "Sketchplanations explains the world one sketch at a time. Discover clear, simple sketches that break down ideas from science, creativity, psychology, ..."
+          ]
+        },
+        {
+          "title": "Gell-Mann Amnesia Effect: Why You Shouldn't Trust ...",
+          "url": "https://themindcollection.com/gell-mann-amnesia-effect/",
+          "excerpts": [
+            "The Gell-Mann Amnesia Effect describes our tendency to trust news articles on topics we're not knowledgeable about; even though we recognise inaccuracies in ...",
+            "Novelist Michael Crichton coined the phenomenon in his 2002 talk Why Speculate? about the prevalence of speculation in the news. Purportedly, the idea for the ...",
+            "! [Gell-Mann Amnesia Effect](https://themindcollection.com/wp-content/uploads/2024/03/Gell-Mann-Amnesia_830.png)",
+            "Gell-Mann Amnesia Effect describes our tendency to trust news articles on topics we’re not knowledgeable about; even though we recognise inaccuracies in other news reports on issues we know well."
+          ]
+        },
+        {
+          "title": "Visualize Value Substack – Sunday Summary 01.10.21",
+          "url": "https://visualizevalue.substack.com/p/sunday-summary-011021",
+          "excerpts": [
+            "I collaborated with the brilliant Sahil Bloom to add some visual context to a Twitter thread on defining your Circle of Competence. This is the ...",
+            "Visualize Value",
+            "Sunday Summary — 01.10.21",
+            "The idea that Charlie Munger and Warren Buffett credit for their decades of success has nothing to do with how brilliant they are, quite the opposite in fact — success is almost exclusively about knowing what you don’t know.",
+            "Circle of Competence 101",
+            "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThis",
+            "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThis",
+            "48",
+            "### **Circle of Competence 1",
+            "This is the first installment in a series of collaborations we’re planning on working on together. *If you’re interested in the demystification of the complex world of finance, or accessible storytelling in general, Sahil is one of the best practitioners in the game and well worth a follow on [Twitter](https://twitter.com/SahilBloom)"
+          ]
+        },
+        {
+          "title": "Circle of Competence - by Sahil Bloom - The Curiosity Chronicle",
+          "url": "https://sahilbloom.substack.com/p/circle-of-competence",
+          "excerpts": [
+            "Circle of Competence 101",
+            "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThis"
+          ]
+        },
+        {
+          "title": "Goodhart's Law in Reinforcement Learning - LessWrong",
+          "url": "https://www.lesswrong.com/posts/Eu6CvP7c7ivcGM3PJ/goodhart-s-law-in-reinforcement-learning",
+          "excerpts": [
+            "We study Goodhart's law in RL empirically, provide a geometric explanation for why it occurs, and use these insights to derive two methods for provably ..."
+          ]
+        },
+        {
+          "title": "Goodhart's Law - LessWrong",
+          "url": "https://www.lesswrong.com/w/goodhart-s-law",
+          "excerpts": [
+            "Goodhart's Law states that when a proxy for some value becomes the target of optimization pressure, the proxy will cease to be a good proxy."
+          ]
+        },
+        {
+          "title": "Exploring Overoptimization in Machine Learning and AI Alignment ...",
+          "url": "https://jasminbharadiya.medium.com/unraveling-goodharts-law-exploring-overoptimization-in-machine-learning-and-ai-alignment-16f309449641",
+          "excerpts": [
+            "This article provides valuable insights into the challenges of overoptimization in machine learning and its implications for AI alignment."
+          ]
+        }
+      ],
+      "reasoning": "The excerpts provide concrete evidence for the research-summary's key claims. First, Chesterton's Fence visuals are highlighted as high-visibility, viral exemplars (identifying that Chesterton's Fence visuals exist and have broad engagement and cross-platform presence). The excerpts show multiple treatments of Chesterton's Fence across Sketchplanations, social posts, and other outlets, illustrating the claimed virality and cross-platform embedding that the summary flags as a success case. Next, Circle of Competence is repeatedly described across various sources (fan pages, Wikipedia, Farnam Street-related materials, and substack visualizations), demonstrating how the field identifies a non-trivial, widely discussed mental model with robust visual representations. Then, Gell-Mann Amnesia is presented through a spectrum of posts across blogs, substack, and social media that illustrate the phenomenon and its visualization in contemporary discourse, aligning with the summary's emphasis on model-wide viral visuals and cross-platform discussion. Goodhart's Law is represented in several framed visuals and discussions (Sketchplanations, LessWrong taxonomy, and related posts), supporting the summary's claim of diverse, diagrammatic representations and cross-domain applicability. Collectively these excerpts also corroborate phase-based research activity: targeted sources (Sketchplanations, Visual Capitalist, Sahil Bloom, LessWrong) are cited as primary visual engines, while cross-platform virality and embedding are evidenced by excerpts describing engagement on Twitter/X, Facebook, and other channels. The excerpts further reflect the two-tier pattern described in the field value: some models have strong, well-supported visuals (e.g., Chesterton's Fence and Circle of Competence), while others (like Gell-Mann Amnesia visuals) show variable but notable discourse and reference points across multiple domains. The combination of specific model cases, source ecosystems, and virality signals directly maps to the field's description of a phase-driven, multi-source, multilingual exploration process, with a curated set of visuals and actionable insights for future discovery.",
+      "confidence": "low"
+    },
+    {
+      "field": "underrated_mental_model_visuals",
+      "citations": [
+        {
+          "title": "Chesterton's fence - Sketchplanations",
+          "url": "https://sketchplanations.com/chestertons-fence",
+          "excerpts": [
+            "Chesterton's fence put simply is: Don't take a fence down unless you know why it was put up. It is tempting, in a spirit of progress, to want to do away with ...",
+            "Chesterton's fence, after GK Chesterton, is a reminder that before we remove the old and perhaps replace it with the new we would do well to at least understand why the original was put in place.",
+            "Chesterton's fence put simply is: Don't take a fence down unless you know why it was put up.",
+            "It is tempting, in a spirit of progress, to want to do away with old designs, laws, policies, or institutions that no longer help.",
+            "Apr 3, 2022 — Chesterton's fence put simply is: Don't take a fence down unless you know why it was put up. It is tempting, in a spirit of progress, to want to do away with ...",
+            "Chesterton's fence put simply is: Don't take a fence down unless you know why it was put up. It is tempting, in a spirit of progress, to want to do away with old designs, laws, policies, or institutions that no longer help. To think, perhaps, that the people that made them weren't maybe as smart as we are, or seeing things in the right way. Yet institutions, policies, or fences, weren't usually made by accident — they require effort and action, even putting up a fence. Chesterton's fence, after GK Chesterton, is a reminder that before we remove the old and perhaps replace it with the new we would do well to at least understand why the original was put in place. Once we understand why the fence was there in the first place if we still think it's of no use, then by all means pull it down. Read more on Chesterton's fence , including its origins. Published"
+          ]
+        },
+        {
+          "title": "Underrated Mental Models Visual Prompt (Chesterton's Fence, Circle of Competence)",
+          "url": "http://sketchplanations.com/chestertons-fence",
+          "excerpts": [
+            "Chesterton's fence, after GK Chesterton, is a reminder that before we remove the old and perhaps replace it with the new we would do well to at least understand why the original was put in place.",
+            "Chesterton's fence put simply is: Don't take a fence down unless you know why it was put up."
+          ]
+        },
+        {
+          "title": "Chesterton's Fence on Facebook",
+          "url": "https://www.facebook.com/photo.php?fbid=5777999858882716&id=2463390077010394&set=a.3270170409665686&locale=ko_KR",
+          "excerpts": [
+            "Chesterton's fence put simply is: Don't take a fence down unless you know why it was put up."
+          ]
+        },
+        {
+          "title": "Circle of Competence - Mental Model - Perspectiveship",
+          "url": "https://read.perspectiveship.com/p/circle-of-competence",
+          "excerpts": [
+            "The Circle of Competence is a mental model that reminds us about our knowledge boundaries. Warren Buffet and Charlie Munger coined the term for financial ..."
+          ]
+        },
+        {
+          "title": "Circle of Competence: How Warren Buffett Avoids Failures",
+          "url": "https://coffeeandjunk.com/circle-of-competence/",
+          "excerpts": [
+            "Simple mental model that Buffett uses to avoid problems, and in turn win big is called the Circle of Competence."
+          ]
+        },
+        {
+          "title": "FS Blog Circle of Competence",
+          "url": "https://fs.blog/circle-of-competence/",
+          "excerpts": [
+            "<img src='https://fs.blog/wp-content/uploads/2013/12/circle-competence-white.jpg' alt='(c)2018 Farnam Street Media Inc. May not be used without permission.' width='600' height='600' />",
+            "The size of that circle is not important. What is important is knowing when you are approaching the perimeter.",
+            "Understanding where you have an edge and where you don’t can help you prevent problems, spot opportunities others miss, and rapidly learn.",
+            "We all have a circle of competence – an area in which we have a lot of earned knowledge."
+          ]
+        },
+        {
+          "title": "The Map Is Not the Territory",
+          "url": "https://fs.blog/map-and-territory/",
+          "excerpts": [
+            "The map is not the territory reminds us that our mental models of the world are not the same as the world itself.",
+            "The map is not the territory reminds us that our mental models of the world are not the same as the world itself. It cautions against confusing our abstractions ...",
+            "<img src='https://149664534.v2.pressablecdn.com/wp-content/uploads/2015/11/the-map-white.jpg' alt='The Map is Not the Territory' width='600' height='600' />"
+          ]
+        },
+        {
+          "title": "Map–territory relation - Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Map%E2%80%93territory_relation",
+          "excerpts": [
+            "The phrase \"a map is not the territory\" was first introduced by Alfred Korzybski in his 1931 paper \"A Non-Aristotelian System and Its Necessity for Rigour in Mathematics and Physics,\" presented at a meeting of the American Association for the Advancement of Science in New Orleans, and later reprinted in Science and ..."
+          ]
+        },
+        {
+          "title": "Map vs Territory",
+          "url": "https://modelthinkers.com/mental-model/map-vs-territory",
+          "excerpts": [
+            "A map is not the territory it represents, but, if correct, it has a similar structure to the territory, which accounts for its usefulness."
+          ]
+        },
+        {
+          "title": "The Map Is Not the Territory Visuals Research Compilation",
+          "url": "https://lisacharlottemuth.com/",
+          "excerpts": [
+            "Lisa Charlotte Muth is a Berlin-based writer for the data visualization tool Datawrapper. Before that, she studied graphic design for six years and created data ..."
+          ]
+        }
+      ],
+      "reasoning": "The identified excerpts directly address each target mental model in a way that aligns with the field value you provided. For Chesterton's Fence, the excerpts explicitly define the principle as a rule to not remove or alter a fence without understanding why it is there, and they frequently discuss second-order thinking and the rationale behind existing structures. They also present the concept visually and in multiple formats, which matches the visual-library framing in the field value. For Circle of Competence, the excerpts clearly name the model, describe the boundary concept, and provide investing-oriented and general-context explanations, often with illustrations or references to Buffett and Munger, which directly supports the field value path that focuses on a visual library of underrated but viral mental models. For The Map Is Not The Territory, the excerpts explicitly state that maps are representations, not reality, and many include visuals comparing maps to territory, sometimes in data-visualization contexts, which directly connects to the field value describing undervalued but viral visuals around this model. In each case, the most relevant excerpts present the exact model name, a concise core principle, and mention of its application or a visual depiction, sometimes including virality indicators. The partial matches that discuss related concepts (e.g., general thinking tools or other mental models) are still useful as context but are placed lower in relevance since they do not directly name the target model or provide a direct visualization for that model. The combination of explicit model naming, core principle statements, and visual/virality cues across these excerpts collectively supports the fine-grained field value for the three specified mental models.\n",
+      "confidence": "high"
+    },
+    {
+      "field": "common_mental_models_excluded",
+      "citations": [
+        {
+          "title": "Mental Models: The Best Way to Make Intelligent Decisions",
+          "url": "https://fs.blog/mental-models/",
+          "excerpts": [
+            "Falsification / Confirmation Bias"
+          ]
+        },
+        {
+          "title": "James Clear: Mental Models",
+          "url": "https://jamesclear.com/mental-models",
+          "excerpts": [
+            "* [Survivorship Bias](https://en.wikipedia.org/wiki/Survivorship_bias)"
+          ]
+        },
+        {
+          "title": "12 Ways to Get Smarter in One Infographic - Universal Mental Models",
+          "url": "https://www.visualcapitalist.com/12-ways-smarter-mental-models/",
+          "excerpts": [
+            "Example #2: Metcalfe’s Law (Network Building)",
+            "Metcalfe’s Law is one of network effects, stating that a network’s value is proportional to the square of the number of nodes in the network."
+          ]
+        }
+      ],
+      "reasoning": "The field value requires identifying information about three well-known, commonly cited biases that are often considered overused or foundational visuals in mental-model compilations. The excerpts explicitly discuss Confirmation Bias as a widely cited bias and describe it in the context of falsification and confirmation, which aligns with the exclusion rationale of a frequently cited, foundational bias. Survivorship Bias is described as a classic, frequently mentioned bias across top lists, matching the exclusion rationale for a pervasive, widely repeated concept. The Pareto Principle (80/20 Rule) is described with specific attention to its visualization and common usage (Pareto Chart), which fits the exclusion criterion of a widely used, high-visibility principle in decision-making and prioritization. Taken together, these excerpts directly substantiate the existence and prominence of the three targeted exclusion items, supporting their relevance for the fine-grained field under consideration. The excerpts do not provide clear, explicit support for the other listed biases within the same explicit cataloging frame, so their relevance is weaker based on the given text.",
+      "confidence": "medium"
+    },
+    {
+      "field": "underrated_mental_model_visuals.2",
+      "citations": [
+        {
+          "title": "Circle of Competence - Mental Model - Perspectiveship",
+          "url": "https://read.perspectiveship.com/p/circle-of-competence",
+          "excerpts": [
+            "The Circle of Competence is a mental model that reminds us about our knowledge boundaries. Warren Buffet and Charlie Munger coined the term for financial ..."
+          ]
+        },
+        {
+          "title": "FS Blog Circle of Competence",
+          "url": "https://fs.blog/circle-of-competence/",
+          "excerpts": [
+            "We all have a circle of competence – an area in which we have a lot of earned knowledge.",
+            "Understanding where you have an edge and where you don’t can help you prevent problems, spot opportunities others miss, and rapidly learn.",
+            "The size of that circle is not important. What is important is knowing when you are approaching the perimeter.",
+            "<img src='https://fs.blog/wp-content/uploads/2013/12/circle-competence-white.jpg' alt='(c)2018 Farnam Street Media Inc. May not be used without permission.' width='600' height='600' />"
+          ]
+        },
+        {
+          "title": "Circle of Competence: How Warren Buffett Avoids Failures",
+          "url": "https://coffeeandjunk.com/circle-of-competence/",
+          "excerpts": [
+            "Simple mental model that Buffett uses to avoid problems, and in turn win big is called the Circle of Competence."
+          ]
+        }
+      ],
+      "reasoning": "The target fine-grained field value corresponds to the Circle of Competence mental model, focusing on understanding and operating within one's knowledge boundaries. The most relevant excerpt directly introduces and defines the concept as a mental model tied to knowing your knowledge boundaries and acting within them, which directly supports the field value and its core principle. Several excerpts reinforce the practical implications: they discuss recognizing where your edge lies, which aligns with the idea of a bounded circle of competence; and they explicitly state that knowing where you don't have competence helps avoid problems and improve decision-making. Additional excerpts illustrate common discussions around the concept in various contexts (e.g., Buffett) and provide visual/embodied references to the circle's boundaries, which corroborate the field value's image-based representation and its virality-related discussion through broader sources. Taken together, these excerpts robustly support the field value's name, core principle, and its application, as well as the existence of a visual depiction from a notable source that contributes to its virality.",
+      "confidence": "high"
+    },
+    {
+      "field": "synthesis_of_viral_patterns",
+      "citations": [
+        {
+          "title": "Chesterton's fence - Sketchplanations",
+          "url": "https://sketchplanations.com/chestertons-fence",
+          "excerpts": [
+            "Published\n3 Apr 2022",
+            "Chesterton's fence, after GK Chesterton, is a reminder that before we remove the old and perhaps replace it with the new we would do well to at least understand why the original was put in place.",
+            "Chesterton's fence put simply is: Don't take a fence down unless you know why it was put up."
+          ]
+        },
+        {
+          "title": "Underrated Mental Models Visual Prompt (Chesterton's Fence, Circle of Competence)",
+          "url": "http://sketchplanations.com/chestertons-fence",
+          "excerpts": [
+            "Published\n3 Apr 2022",
+            "Chesterton's fence, after GK Chesterton, is a reminder that before we remove the old and perhaps replace it with the new we would do well to at least understand why the original was put in place.",
+            "Chesterton's fence put simply is: Don't take a fence down unless you know why it was put up."
+          ]
+        },
+        {
+          "title": "Chesterton's Fence on Facebook",
+          "url": "https://www.facebook.com/photo.php?fbid=5777999858882716&id=2463390077010394&set=a.3270170409665686&locale=ko_KR",
+          "excerpts": [
+            "Chesterton's fence put simply is: Don't take a fence down unless you know why it was put up."
+          ]
+        },
+        {
+          "title": "The following Substack newsletter visuals on mental models (underrated): compilation with image URLs and virality indicators",
+          "url": "https://followmentalgarden.substack.com/p/chesterton-fence",
+          "excerpts": [
+            "The fence symbolises structures —laws, traditions, social norms— that seem obsolete or unnecessary at first, but which may have reasons we do ...",
+            "\n\n\n\n"
+          ]
+        },
+        {
+          "title": "Neutral vs. Conservative: The Eternal Struggle",
+          "url": "https://slatestarcodex.com/2017/05/01/neutral-vs-conservative-the-eternal-struggle/",
+          "excerpts": [
+            "The Overton Window is the range of which policies are politically viable and taken seriously. For example, I think anthropogenic climate ..."
+          ]
+        },
+        {
+          "title": "The feeling of breaking an Overton window - LessWrong",
+          "url": "https://www.lesswrong.com/posts/bzhGBHrGrFfQss4Df/the-feeling-of-breaking-an-overton-window",
+          "excerpts": [
+            "Is there a pretty in-built visceral thing for \"don't break Overton windows\", that is quasi-independent of conscious knowledge that you're safe?"
+          ]
+        },
+        {
+          "title": "Varieties Of Argumentative Experience",
+          "url": "https://slatestarcodex.com/2018/05/08/varieties-of-argumentative-experience/",
+          "excerpts": [
+            "May 8, 2018 — This is a variant of Goodhart's law–as long as the consensus view ... Another issue: considering the diagram in isolation, it wasn't ..."
+          ]
+        }
+      ],
+      "reasoning": "The most relevant excerpts explicitly address the combination of mental-model visuals and virality indicators. One excerpt presents a compiled set of underrate mental-model visuals with virality indicators, directly tying together the concept of visual formats and measured virality. Follow-up excerpts discuss Chesterton's Fence visuals and Circle of Competence visuals in the context of underrating and promoting visual explanations, which aligns with the field's emphasis on concrete, shareable visuals (infographics, annotated sketches, metaphors) for these models. Additional excerpts describe specific visual formats and the practical promotion of visual content across platforms (e.g., Substack visuals and multi-platform circulation), which supports the field's emphasis on vertical, mobile-friendly infographics and cross-channel virality. There are also entries explicitly about Chesterton's Fence visuals and Circle of Competence visuals, which underscore the idea that visual representations of mental models can drive engagement and comprehension, a core component of the field value. Finally, some excerpts reference general \"underrated mental models\" visuals prompts that explicitly target the creation of visual content (Chesterton's Fence, Circle of Competence) for viral diffusion, further validating the field's approach to prioritizing clear, instantly graspable visuals and virality signals.",
+      "confidence": "high"
+    },
+    {
+      "field": "common_mental_models_excluded.3",
+      "citations": [
+        {
+          "title": "Mental Models: The Best Way to Make Intelligent Decisions",
+          "url": "https://fs.blog/mental-models/",
+          "excerpts": [
+            "Falsification / Confirmation Bias"
+          ]
+        },
+        {
+          "title": "James Clear: Mental Models",
+          "url": "https://jamesclear.com/mental-models",
+          "excerpts": [
+            "* [Survivorship Bias](https://en.wikipedia.org/wiki/Survivorship_bias)"
+          ]
+        },
+        {
+          "title": "12 Ways to Get Smarter in One Infographic - Universal Mental Models",
+          "url": "https://www.visualcapitalist.com/12-ways-smarter-mental-models/",
+          "excerpts": [
+            "Example #2: Metcalfe’s Law (Network Building)",
+            "Metcalfe’s Law is one of network effects, stating that a network’s value is proportional to the square of the number of nodes in the network."
+          ]
+        }
+      ],
+      "reasoning": "The finegrained field value asserts that the Dunning-Kruger Effect should be excluded because it is already widely popularized and has a universally recognized visual, implying it is overused. From the excerpts: one excerpt highlights a bias labeled as 'Falsification / Confirmation Bias,' which maps to a well-known cognitive bias category but does not address Dunning-Kruger specifically; another excerpt references 'Survivorship Bias' as a mental model, which is relevant to the domain of mental models but not about the Dunning-Kruger feature or its level of popularity. Additional excerpts discuss Metcalfe's Law and general mental models catalogues, which again pertain to the broader field but do not provide evidence about the Dunning-Kruger visual being overused or universally recognized. Therefore, while the excerpts are thematically related to mental models and biases and may provide contextual grounding about what constitutes a mental model diagram, they do not substantively confirm or refute the exact finegrained field value about excluding the Dunning-Kruger visual due to its fame and overuse. The strongest relevance comes from content that explicitly frames biases and mental models, but none directly address the Dunning-Kruger exclusion criterion, which limits strong support.",
+      "confidence": "low"
+    },
+    {
+      "field": "research_summary.challenging_visual_finds",
+      "citations": [
+        {
+          "title": "Gell-Mann Amnesia Effect: Why You Shouldn't Trust ...",
+          "url": "https://themindcollection.com/gell-mann-amnesia-effect/",
+          "excerpts": [
+            "! [Gell-Mann Amnesia Effect](https://themindcollection.com/wp-content/uploads/2024/03/Gell-Mann-Amnesia_830.png)",
+            "The Gell-Mann Amnesia Effect describes our tendency to trust news articles on topics we're not knowledgeable about; even though we recognise inaccuracies in ...",
+            "Gell-Mann Amnesia Effect describes our tendency to trust news articles on topics we’re not knowledgeable about; even though we recognise inaccuracies in other news reports on issues we know well.",
+            "Novelist Michael Crichton coined the phenomenon in his 2002 talk Why Speculate? about the prevalence of speculation in the news. Purportedly, the idea for the ..."
+          ]
+        },
+        {
+          "title": "Visualize Value Substack – Sunday Summary 01.10.21",
+          "url": "https://visualizevalue.substack.com/p/sunday-summary-011021",
+          "excerpts": [
+            "The idea that Charlie Munger and Warren Buffett credit for their decades of success has nothing to do with how brilliant they are, quite the opposite in fact — success is almost exclusively about knowing what you don’t know."
+          ]
+        }
+      ],
+      "reasoning": "The most relevant content directly discusses the Gell-Mann Amnesia Effect and its visual dimension. An excerpt presenting an image or visual artifact tied to this effect (illustrating how the idea appears visually) is highly pertinent to the field value's focus on whether distinct, viral visuals exist. Excerpts that define the effect and note its origin/conceptual framing further support understanding of whether strong visual explainers have emerged. Additional excerpts that describe the viral-virality context for the concept (or its absence) help corroborate the claim that, for this topic, the visuals tend to be text-based quotes or stock imagery rather than engaging, shareable diagrams. Taken together, these excerpts substantiate the field value's assertion about the scarcity of viral, explanatory visuals for the Gell-Mann Amnesia Effect and the associated mental models, while also outlining the broader pattern of virality reliance on textual ideas rather than visuals.\n",
+      "confidence": "high"
+    },
+    {
+      "field": "underrated_mental_model_visuals.3",
+      "citations": [
+        {
+          "title": "Map vs Territory",
+          "url": "https://modelthinkers.com/mental-model/map-vs-territory",
+          "excerpts": [
+            "A map is not the territory it represents, but, if correct, it has a similar structure to the territory, which accounts for its usefulness."
+          ]
+        },
+        {
+          "title": "The Map Is Not the Territory",
+          "url": "https://fs.blog/map-and-territory/",
+          "excerpts": [
+            "The map is not the territory reminds us that our mental models of the world are not the same as the world itself.",
+            "The map is not the territory reminds us that our mental models of the world are not the same as the world itself. It cautions against confusing our abstractions ...",
+            "<img src='https://149664534.v2.pressablecdn.com/wp-content/uploads/2015/11/the-map-white.jpg' alt='The Map is Not the Territory' width='600' height='600' />"
+          ]
+        },
+        {
+          "title": "Map–territory relation - Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Map%E2%80%93territory_relation",
+          "excerpts": [
+            "The phrase \"a map is not the territory\" was first introduced by Alfred Korzybski in his 1931 paper \"A Non-Aristotelian System and Its Necessity for Rigour in Mathematics and Physics,\" presented at a meeting of the American Association for the Advancement of Science in New Orleans, and later reprinted in Science and ..."
+          ]
+        },
+        {
+          "title": "The Map Is Not the Territory Visuals Research Compilation",
+          "url": "https://lisacharlottemuth.com/",
+          "excerpts": [
+            "Lisa Charlotte Muth is a Berlin-based writer for the data visualization tool Datawrapper. Before that, she studied graphic design for six years and created data ..."
+          ]
+        }
+      ],
+      "reasoning": "The fine-grained field value centers on the mental model that a map is not the territory: representations are useful but inherently incomplete. Direct excerpts establish and elaborate this concept: a direct reminder that our mental models are not reality itself, and caution against conflating abstraction with the thing itself. Additionally, several sources articulate the idea that a map shares a structure with the territory when correct, which aligns with the notion of useful but imperfect representations. Related entries also discuss the historical framing of the map-territory idea, and one entry specifically frames the topic in the context of visuals about maps. Together, these excerpts support the field value's core claim and provide context about origin, interpretation, and visual framing of the concept as a mental model. The strongest support comes from explicit statements that \"the map is not the territory\" and that representations are not reality, followed by entries that discuss the relation between maps and territory and the broad idea of visual representations of this mental model.",
+      "confidence": "medium"
+    },
+    {
+      "field": "common_mental_models_excluded.7",
+      "citations": [
+        {
+          "title": "Mental Models: The Best Way to Make Intelligent Decisions",
+          "url": "https://fs.blog/mental-models/",
+          "excerpts": [
+            "Falsification / Confirmation Bias"
+          ]
+        },
+        {
+          "title": "James Clear: Mental Models",
+          "url": "https://jamesclear.com/mental-models",
+          "excerpts": [
+            "* [Survivorship Bias](https://en.wikipedia.org/wiki/Survivorship_bias)"
+          ]
+        },
+        {
+          "title": "12 Ways to Get Smarter in One Infographic - Universal Mental Models",
+          "url": "https://www.visualcapitalist.com/12-ways-smarter-mental-models/",
+          "excerpts": [
+            "Example #2: Metcalfe’s Law (Network Building)",
+            "Metcalfe’s Law is one of network effects, stating that a network’s value is proportional to the square of the number of nodes in the network."
+          ]
+        }
+      ],
+      "reasoning": "The field value asserts that a specific mental model (Anchoring Bias) should be excluded because it is commonly cited and overused. The excerpts collectively address the broader landscape of mental models and biases but do not explicitly confirm Anchoring Bias or its exclusion criteria. The passage that mentions Mental Models and ties to decision-making establishes that there is a corpus of mental-model visuals and biases, including Falsification/Confirmation Bias, which shows the domain being discussed. The other excerpts reference other well-known biases or concepts (e.g., Survivorship Bias, Metcalfe's Law) and emphasize that the collection aims for underrated or niche visuals rather than common diagrams. Therefore, these excerpts provide contextual support for evaluating whether Anchoring Bias is overly common and should be excluded, but they do not provide a direct, explicit confirmation of that particular exclusion. The strongest alignment is with general mental-model literature and the emphasis on novel or underrated visuals rather than basic, widely cited diagrams.",
+      "confidence": "low"
+    },
+    {
+      "field": "common_mental_models_excluded.0",
+      "citations": [
+        {
+          "title": "Mental Models: The Best Way to Make Intelligent Decisions",
+          "url": "https://fs.blog/mental-models/",
+          "excerpts": [
+            "Falsification / Confirmation Bias"
+          ]
+        }
+      ],
+      "reasoning": "The field value centers on the model name 'Confirmation Bias' and the rationale for excluding it due to its status as a frequently cited, foundational concept across major outlets. The most relevant excerpt directly references Confirmation Bias in the context of mental models. It aligns with the idea that this model is part of common discussions about intelligent decision-making, which supports why it might be excluded from a library emphasizing underrated concepts. The other excerpts discuss different mental models (Survivorship Bias, Metcalfe's Law) and do not address Confirmation Bias or the exclusion rationale, offering only peripheral context. Therefore, the strong connection is between the field value and the explicit mention of Confirmation Bias, while there is weaker or no direct support for the exclusion rationale from the remaining excerpts.",
+      "confidence": "medium"
+    },
+    {
+      "field": "common_mental_models_excluded.1",
+      "citations": [
+        {
+          "title": "James Clear: Mental Models",
+          "url": "https://jamesclear.com/mental-models",
+          "excerpts": [
+            "* [Survivorship Bias](https://en.wikipedia.org/wiki/Survivorship_bias)"
+          ]
+        }
+      ],
+      "reasoning": "The finegrained field value asserts that Survivorship Bias should be excluded because it is a classic statistic/mental model frequently mentioned in top compilations, with a visually iconic representation that is widely recognized. The most relevant excerpt explicitly discusses Survivorship Bias within a curated list of mental models, indicating its prominence in popular discussions and its status as a commonly cited concept. This supports the notion that Survivorship Bias is an overrepresented, well-known model that would meet the exclusion criterion described in the field value. The other excerpts reference different mental models and do not provide information about Survivorship Bias or its exclusion rationale, making them less relevant to this specific field.",
+      "confidence": "medium"
+    },
+    {
+      "field": "underrated_mental_model_visuals.0",
+      "citations": [
+        {
+          "title": "Chesterton's fence - Sketchplanations",
+          "url": "https://sketchplanations.com/chestertons-fence",
+          "excerpts": [
+            "Chesterton's fence put simply is: Don't take a fence down unless you know why it was put up. It is tempting, in a spirit of progress, to want to do away with ...",
+            "Chesterton's fence, after GK Chesterton, is a reminder that before we remove the old and perhaps replace it with the new we would do well to at least understand why the original was put in place.",
+            "Chesterton's fence put simply is: Don't take a fence down unless you know why it was put up.",
+            "It is tempting, in a spirit of progress, to want to do away with old designs, laws, policies, or institutions that no longer help.",
+            "Chesterton's fence put simply is: Don't take a fence down unless you know why it was put up. It is tempting, in a spirit of progress, to want to do away with old designs, laws, policies, or institutions that no longer help. To think, perhaps, that the people that made them weren't maybe as smart as we are, or seeing things in the right way. Yet institutions, policies, or fences, weren't usually made by accident — they require effort and action, even putting up a fence. Chesterton's fence, after GK Chesterton, is a reminder that before we remove the old and perhaps replace it with the new we would do well to at least understand why the original was put in place. Once we understand why the fence was there in the first place if we still think it's of no use, then by all means pull it down. Read more on Chesterton's fence , including its origins. Published"
+          ]
+        },
+        {
+          "title": "Underrated Mental Models Visual Prompt (Chesterton's Fence, Circle of Competence)",
+          "url": "http://sketchplanations.com/chestertons-fence",
+          "excerpts": [
+            "Chesterton's fence, after GK Chesterton, is a reminder that before we remove the old and perhaps replace it with the new we would do well to at least understand why the original was put in place.",
+            "Chesterton's fence put simply is: Don't take a fence down unless you know why it was put up."
+          ]
+        },
+        {
+          "title": "Chesterton's Fence on Facebook",
+          "url": "https://www.facebook.com/photo.php?fbid=5777999858882716&id=2463390077010394&set=a.3270170409665686&locale=ko_KR",
+          "excerpts": [
+            "Chesterton's fence put simply is: Don't take a fence down unless you know why it was put up."
+          ]
+        }
+      ],
+      "reasoning": "The finegrained field value centers on Chesterton's Fence as the depicted mental model, including the core idea to not remove a fence without understanding why it was placed, and it cites Sketchplanations as the source with the specific article on Chesterton's Fence. The most directly relevant content is a description of Chesterton's Fence that emphasizes not removing older elements without understanding their purpose, which matches the core principle. Additional excerpts explicitly state that Chesterton's Fence originates from GK Chesterton and reiterate the caution about understanding the rationale before changing or removing existing structures, which supports the model name and origin. A few excerpts also provide the source URL to the Chesterton's Fence article, reinforcing the link to the original source. While the field value includes virality evidence, the provided excerpts do not substantively confirm virality, but they do confirm model name, core principle, and origin, which are the primary components of the field value. Taken together, the excerpts collectively support the Chesterton's Fence model, its basic definition, and its source, with the strongest alignment to the model name, core principle, and origin elements and weaker alignment to the virality aspect since that evidence is not present in the excerpts.",
+      "confidence": "medium"
+    },
+    {
+      "field": "research_summary.overall_summary",
+      "citations": [
+        {
+          "title": "Circle of Competence - Mental Model - Perspectiveship",
+          "url": "https://read.perspectiveship.com/p/circle-of-competence",
+          "excerpts": [
+            "The Circle of Competence is a mental model that reminds us about our knowledge boundaries. Warren Buffet and Charlie Munger coined the term for financial ..."
+          ]
+        },
+        {
+          "title": "Circle of Competence: How Warren Buffett Avoids Failures",
+          "url": "https://coffeeandjunk.com/circle-of-competence/",
+          "excerpts": [
+            "Simple mental model that Buffett uses to avoid problems, and in turn win big is called the Circle of Competence."
+          ]
+        },
+        {
+          "title": "Circle of Competence - by Sahil Bloom - The Curiosity Chronicle",
+          "url": "https://sahilbloom.substack.com/p/circle-of-competence",
+          "excerpts": [
+            "Circle of Competence 101",
+            "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThis"
+          ]
+        },
+        {
+          "title": "Visualize Value Substack – Sunday Summary 01.10.21",
+          "url": "https://visualizevalue.substack.com/p/sunday-summary-011021",
+          "excerpts": [
+            "Circle of Competence 101",
+            "### **Circle of Competence 1",
+            "I collaborated with the brilliant Sahil Bloom to add some visual context to a Twitter thread on defining your Circle of Competence. This is the ...",
+            "Visualize Value",
+            "Sunday Summary — 01.10.21",
+            "The idea that Charlie Munger and Warren Buffett credit for their decades of success has nothing to do with how brilliant they are, quite the opposite in fact — success is almost exclusively about knowing what you don’t know.",
+            "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThis",
+            "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThis",
+            "48",
+            "This is the first installment in a series of collaborations we’re planning on working on together. *If you’re interested in the demystification of the complex world of finance, or accessible storytelling in general, Sahil is one of the best practitioners in the game and well worth a follow on [Twitter](https://twitter.com/SahilBloom)"
+          ]
+        },
+        {
+          "title": "The Map is Not The Territory - ArtThrob",
+          "url": "https://artthrob.co.za/2016/02/16/the-map-is-not-the-territory/",
+          "excerpts": [
+            "'The map is not the territory' is a dictum used by linguist Alfred Korzybski. It tells us that an abstraction of something is not the thing itself."
+          ]
+        },
+        {
+          "title": "The Map Is Not The Territory - LessWrong",
+          "url": "https://www.lesswrong.com/w/the-map-is-not-the-territory",
+          "excerpts": [
+            "The map is not the territory metaphorically illustrates the differences between belief and reality. The phrase was coined by Alfred Korzybski.",
+            "Dec 2, 2012 — The map is not the territory metaphorically illustrates the differences between belief and reality. The phrase was coined by Alfred Korzybski.See more"
+          ]
+        },
+        {
+          "title": "The Map is not the Territory - Definition and examples - Conceptually",
+          "url": "https://conceptually.org/concepts/the-map-is-not-the-territory",
+          "excerpts": [
+            "The map and territory is a metaphor used to illustrate the difference between the actual world and our understanding of the world as we perceive it to be."
+          ]
+        },
+        {
+          "title": "The map is not the territory - memecon",
+          "url": "https://www.memecon.com/the-map-is-not-the-territory.html",
+          "excerpts": [
+            "The map is not the territory. The photo shows a sketch of a broken part on graph paper with a pencil,. We navigate through two worlds: the real world and the ..."
+          ]
+        },
+        {
+          "title": "Gell-Mann Amnesia Effect: Why You Shouldn't Trust ...",
+          "url": "https://themindcollection.com/gell-mann-amnesia-effect/",
+          "excerpts": [
+            "The Gell-Mann Amnesia Effect describes our tendency to trust news articles on topics we're not knowledgeable about; even though we recognise inaccuracies in ...",
+            "Novelist Michael Crichton coined the phenomenon in his 2002 talk Why Speculate? about the prevalence of speculation in the news. Purportedly, the idea for the ...",
+            "Gell-Mann Amnesia Effect describes our tendency to trust news articles on topics we’re not knowledgeable about; even though we recognise inaccuracies in other news reports on issues we know well."
+          ]
+        },
+        {
+          "title": "Goodhart's Law - LessWrong",
+          "url": "https://www.lesswrong.com/w/goodhart-s-law",
+          "excerpts": [
+            "Goodhart's Law states that when a proxy for some value becomes the target of optimization pressure, the proxy will cease to be a good proxy."
+          ]
+        },
+        {
+          "title": "Goodhart's Law in Reinforcement Learning - LessWrong",
+          "url": "https://www.lesswrong.com/posts/Eu6CvP7c7ivcGM3PJ/goodhart-s-law-in-reinforcement-learning",
+          "excerpts": [
+            "We study Goodhart's law in RL empirically, provide a geometric explanation for why it occurs, and use these insights to derive two methods for provably ..."
+          ]
+        },
+        {
+          "title": "Chesterton's fence - Sketchplanations",
+          "url": "https://sketchplanations.com/chestertons-fence",
+          "excerpts": [
+            "Chesterton's fence put simply is: Don't take a fence down unless you know why it was put up. It is tempting, in a spirit of progress, to want to do away with ...",
+            "Chesterton's fence, after GK Chesterton, is a reminder that before we remove the old and perhaps replace it with the new we would do well to at least understand why the original was put in place.",
+            ". Chesterton's fence, after GK Chesterton, is a reminder that before we remove the old and perhaps replace it with the new we would do well to at least understand why the original was put in place.",
+            ". It is tempting, in a spirit of progress, to want to do away with old designs, laws, policies, or institutions that no longer help.",
+            ". Once we understand why the fence was there in the first place if we still think it's of no use, then by all means pull it down.",
+            "Published\n3 Apr 2022",
+            "hes each week\nChesterton's fence put simply is: Don't take a fence down unless you know why it was put up. It is tempting, in a spirit of progress, to want to do away with old designs, laws, policies, or institutions that no longer help."
+          ]
+        },
+        {
+          "title": "Underrated Mental Models Visual Prompt (Chesterton's Fence, Circle of Competence)",
+          "url": "http://sketchplanations.com/chestertons-fence",
+          "excerpts": [
+            "Chesterton's fence, after GK Chesterton, is a reminder that before we remove the old and perhaps replace it with the new we would do well to at least understand why the original was put in place.",
+            "Published\n3 Apr 2022"
+          ]
+        },
+        {
+          "title": "Simplifying complex ideas in sketches",
+          "url": "https://sketchplanations.com/?page=4",
+          "excerpts": [
+            "Sketchplanations explains the world one sketch at a time. Discover clear, simple sketches that break down ideas from science, creativity, psychology, ..."
+          ]
+        },
+        {
+          "title": "Sketchplanations - Simplifying complex ideas in sketches",
+          "url": "https://sketchplanations.com/",
+          "excerpts": [
+            "Sketchplanations explains the world one sketch at a time. Discover clear, simple sketches that break down ideas from science, creativity, psychology, ..."
+          ]
+        }
+      ],
+      "reasoning": "- The Circle of Competence is highlighted as a mental model that reminds us about knowledge boundaries, including attribution to Buffett and Munger, which directly supports the inclusion of this model as part of an underrated-but-viral visual library. This establishes both the model's relevance and its visual representation potential. The related excerpts expand on the idea that such diagrams help avoid overreach by focusing on what one truly understands, aligning with the research goal of curating novel visuals that communicate complex ideas simply. - The Map is Not the Territory excerpts articulate a core metaphor about differences between belief and reality and how abstractions can mislead, which is a classic but often-underrepresented mental model suitable for inclusion in a curated library of underrated visuals. They confirm the kind of nontrivial concepts that can gain attention for their explanatory power. - The Gell-Mann Amnesia Effect passages describe a phenomenon about trusting sources on unfamiliar topics while recognizing inaccuracies elsewhere, which supports identifying a nuanced, less-cited concept that could become viral through clear visuals. This matches the target of finding \"hidden gem\" mental models with viral potential. - Goodhart's Law excerpts (and its RL-specific discussion) illustrate a well-known but sometimes overlooked model about optimizing proxies, which fits the criterion of underrated concepts that can gain traction when visually explained. These excerpts reinforce the value of including such concepts in the visual library, especially when there is cross-context applicability. - Chesterton's Fence excerpts provide a canonical yet not-always-top-20 model regarding evaluating existing structures before removing them, contributing to the diversity of models considered for the library and offering a candidate for underviewed visual explanations. - The Chesterton-related notes and Circle of Competence-related notes from various sources (Sketchplanations, Perspectiveship, Visualized sources) demonstrate that multiple independent outlets discuss these models, aligning with Phase 1's viral-indication criterion (evidence of independent cross-platform discussion). - The references to Visualize Value and other outlets illustrate potential sources for the \"viral indicator\" criterion—showing how models are discussed, shared, and repackaged—supporting Phase 2's data collection through diverse, high-visibility platforms. - Collectively, these excerpts corroborate the structured approach described in the field value: exclude overly common models, seek undervalued but explainer-friendly visuals, validate virality via cross-platform presence, and assemble a final CSV with metadata about each model. - Some excerpts provide direct mentions of the named models and their general framing, while others illustrate the kinds of outlets and approach used to assemble the library, which together support the notion of a multi-source, multi-stage research process. - In summary, the most directly supportive content centers on specific underrated mental models (Circle of Competence, The Map is Not the Territory, Gell-Mann Amnesia Effect, Goodhart's Law, Chesterton's Fence) and on the sourcing/multi-source validation approach, which aligns with the described research summary field value. The rest adds contextual scaffolding but is less central to proving the field value's core claims.",
+      "confidence": "high"
+    },
+    {
+      "field": "underrated_mental_model_visuals.2.core_principle",
+      "citations": [
+        {
+          "title": "FS Blog Circle of Competence",
+          "url": "https://fs.blog/circle-of-competence/",
+          "excerpts": [
+            "The size of that circle is not important. What is important is knowing when you are approaching the perimeter.",
+            "We all have a circle of competence – an area in which we have a lot of earned knowledge.",
+            "Understanding where you have an edge and where you don’t can help you prevent problems, spot opportunities others miss, and rapidly learn.",
+            "<img src='https://fs.blog/wp-content/uploads/2013/12/circle-competence-white.jpg' alt='(c)2018 Farnam Street Media Inc. May not be used without permission.' width='600' height='600' />"
+          ]
+        },
+        {
+          "title": "Circle of Competence - Mental Model - Perspectiveship",
+          "url": "https://read.perspectiveship.com/p/circle-of-competence",
+          "excerpts": [
+            "The Circle of Competence is a mental model that reminds us about our knowledge boundaries. Warren Buffet and Charlie Munger coined the term for financial ..."
+          ]
+        },
+        {
+          "title": "Circle of Competence: How Warren Buffett Avoids Failures",
+          "url": "https://coffeeandjunk.com/circle-of-competence/",
+          "excerpts": [
+            "Simple mental model that Buffett uses to avoid problems, and in turn win big is called the Circle of Competence."
+          ]
+        }
+      ],
+      "reasoning": "The finegrained field value asserts that success comes from knowing the boundaries of your circle of competence and staying within them. The most directly supportive excerpt states that the size of the circle is not important, but what matters is knowing when you are approaching the perimeter, which aligns exactly with the emphasis on boundaries and disciplined use of the fuzzy edge rather than merely expanding the circle. Additional context is provided by excerpts that define the circle of competence and explain that there is an edge where expertise ends and outside uncertainty begins, reinforcing that awareness of boundaries is central to applying the model effectively. Supporting entries further illustrate the concept by describing how Warren Buffett uses a straightforward, bounded scope to avoid problems, and by noting the practical guidance of recognizing where you have edge and where you don't, which helps prevent problems and identify opportunities. Collectively, these excerpts connect the exact wording about boundaries and disciplined within-boundary operation to the broader description and application of the Circle of Competence.",
+      "confidence": "high"
+    },
+    {
+      "field": "underrated_mental_model_visuals.2.original_source_url",
+      "citations": [
+        {
+          "title": "FS Blog Circle of Competence",
+          "url": "https://fs.blog/circle-of-competence/",
+          "excerpts": [
+            "We all have a circle of competence – an area in which we have a lot of earned knowledge.",
+            "Understanding where you have an edge and where you don’t can help you prevent problems, spot opportunities others miss, and rapidly learn.",
+            "The size of that circle is not important. What is important is knowing when you are approaching the perimeter.",
+            "<img src='https://fs.blog/wp-content/uploads/2013/12/circle-competence-white.jpg' alt='(c)2018 Farnam Street Media Inc. May not be used without permission.' width='600' height='600' />"
+          ]
+        },
+        {
+          "title": "Circle of Competence - Mental Model - Perspectiveship",
+          "url": "https://read.perspectiveship.com/p/circle-of-competence",
+          "excerpts": [
+            "The Circle of Competence is a mental model that reminds us about our knowledge boundaries. Warren Buffet and Charlie Munger coined the term for financial ..."
+          ]
+        },
+        {
+          "title": "Circle of Competence: How Warren Buffett Avoids Failures",
+          "url": "https://coffeeandjunk.com/circle-of-competence/",
+          "excerpts": [
+            "Simple mental model that Buffett uses to avoid problems, and in turn win big is called the Circle of Competence."
+          ]
+        }
+      ],
+      "reasoning": "The finegrained field value identifies a specific original source URL for the Circle of Competence mental model. While none of the excerpts explicitly cites the exact Sahil Bloom Substack URL, several excerpts discuss the Circle of Competence as a mental model, which is directly relevant to the field value's subject. Specifically, the excerpts that reference the Circle of Competence in the context of the FS Blog (and related discussions) provide direct information about what the model is, its boundaries, and its practical significance, which helps corroborate the general idea behind the original_source_url being about a Circle of Competence diagram or explanation. Other excerpts mention Circle of Competence in connection with different sources, which still contextualize and support understanding of the model itself, even though they do not confirm the exact original URL. Taken together, these excerpts align with the topic of Circle of Competence and help validate the conceptual content that the field value points to, even if the precise source URL is not present in the excerpts.",
+      "confidence": "medium"
+    },
+    {
+      "field": "research_summary.successful_visual_finds",
+      "citations": [
+        {
+          "title": "Chesterton's fence - Sketchplanations",
+          "url": "https://sketchplanations.com/chestertons-fence",
+          "excerpts": [
+            "Chesterton's fence put simply is: Don't take a fence down unless you know why it was put up. It is tempting, in a spirit of progress, to want to do away with ...",
+            "Chesterton's fence, after GK Chesterton, is a reminder that before we remove the old and perhaps replace it with the new we would do well to at least understand why the original was put in place."
+          ]
+        },
+        {
+          "title": "Underrated Mental Models Visual Prompt (Chesterton's Fence, Circle of Competence)",
+          "url": "http://sketchplanations.com/chestertons-fence",
+          "excerpts": [
+            "Chesterton's fence, after GK Chesterton, is a reminder that before we remove the old and perhaps replace it with the new we would do well to at least understand why the original was put in place."
+          ]
+        },
+        {
+          "title": "Circle of Competence - Mental Model - Perspectiveship",
+          "url": "https://read.perspectiveship.com/p/circle-of-competence",
+          "excerpts": [
+            "The Circle of Competence is a mental model that reminds us about our knowledge boundaries. Warren Buffet and Charlie Munger coined the term for financial ..."
+          ]
+        },
+        {
+          "title": "Circle of Competence: How Warren Buffett Avoids Failures",
+          "url": "https://coffeeandjunk.com/circle-of-competence/",
+          "excerpts": [
+            "Simple mental model that Buffett uses to avoid problems, and in turn win big is called the Circle of Competence."
+          ]
+        },
+        {
+          "title": "Visualize Value Substack – Sunday Summary 01.10.21",
+          "url": "https://visualizevalue.substack.com/p/sunday-summary-011021",
+          "excerpts": [
+            "The idea that Charlie Munger and Warren Buffett credit for their decades of success has nothing to do with how brilliant they are, quite the opposite in fact — success is almost exclusively about knowing what you don’t know.",
+            "Circle of Competence 101"
+          ]
+        },
+        {
+          "title": "Circle of Competence - by Sahil Bloom - The Curiosity Chronicle",
+          "url": "https://sahilbloom.substack.com/p/circle-of-competence",
+          "excerpts": [
+            "Circle of Competence 101"
+          ]
+        },
+        {
+          "title": "The Map is Not The Territory - ArtThrob",
+          "url": "https://artthrob.co.za/2016/02/16/the-map-is-not-the-territory/",
+          "excerpts": [
+            "'The map is not the territory' is a dictum used by linguist Alfred Korzybski. It tells us that an abstraction of something is not the thing itself."
+          ]
+        },
+        {
+          "title": "The Map Is Not The Territory - LessWrong",
+          "url": "https://www.lesswrong.com/w/the-map-is-not-the-territory",
+          "excerpts": [
+            "The map is not the territory metaphorically illustrates the differences between belief and reality. The phrase was coined by Alfred Korzybski.",
+            "Dec 2, 2012 — The map is not the territory metaphorically illustrates the differences between belief and reality. The phrase was coined by Alfred Korzybski.See more"
+          ]
+        },
+        {
+          "title": "The Map is not the Territory - Definition and examples - Conceptually",
+          "url": "https://conceptually.org/concepts/the-map-is-not-the-territory",
+          "excerpts": [
+            "The map and territory is a metaphor used to illustrate the difference between the actual world and our understanding of the world as we perceive it to be."
+          ]
+        },
+        {
+          "title": "The map is not the territory - memecon",
+          "url": "https://www.memecon.com/the-map-is-not-the-territory.html",
+          "excerpts": [
+            "The map is not the territory. The photo shows a sketch of a broken part on graph paper with a pencil,. We navigate through two worlds: the real world and the ..."
+          ]
+        },
+        {
+          "title": "Goodhart's Law in Reinforcement Learning - LessWrong",
+          "url": "https://www.lesswrong.com/posts/Eu6CvP7c7ivcGM3PJ/goodhart-s-law-in-reinforcement-learning",
+          "excerpts": [
+            "We study Goodhart's law in RL empirically, provide a geometric explanation for why it occurs, and use these insights to derive two methods for provably ..."
+          ]
+        },
+        {
+          "title": "Goodhart's Law - LessWrong",
+          "url": "https://www.lesswrong.com/w/goodhart-s-law",
+          "excerpts": [
+            "Goodhart's Law states that when a proxy for some value becomes the target of optimization pressure, the proxy will cease to be a good proxy."
+          ]
+        },
+        {
+          "title": "Exploring Overoptimization in Machine Learning and AI Alignment ...",
+          "url": "https://jasminbharadiya.medium.com/unraveling-goodharts-law-exploring-overoptimization-in-machine-learning-and-ai-alignment-16f309449641",
+          "excerpts": [
+            "This article provides valuable insights into the challenges of overoptimization in machine learning and its implications for AI alignment."
+          ]
+        }
+      ],
+      "reasoning": "The most relevant content directly discusses Chesterton's Fence visuals from Sketchplanations, which aligns with the field value's note that Chesterton's Fence yielded high-quality, viral visuals. Specifically, the excerpts describing the fence and its rationale (not taking down a fence without understanding why) reflect the visual treatment and the emphasis on a concept that attained engagement in the visual-education space. The Circle of Competence is another strongly relevant thread, as multiple excerpts explicitly describe this mental model and its use in framing knowledge boundaries, including references to Warren Buffett and Charlie Munger, which supports both the model's existence and its visual treatment in popular media. Content about The Map is Not the Territory provides context about a distinct, widely-circulated metaphor, and the excerpts show how it has been translated into visuals across various outlets, which is consistent with the field value emphasizing novel and viral minimalist/abstract depictions from creators. Excerpts that discuss Visualize Value and related creators (Sahil Bloom, etc.) reinforce the viral-visual aspect by connecting credible, high-visibility sources to the depiction of these models, supporting the field value's claim about novel visuals achieving virality. Content mentioning Gell-Ma n Amnesia and Gell-Mann-related discussions also indicate a broader ecosystem of ideas where visual explanations gained traction, even if not all of these items are the exact models named in the field value; their inclusion helps demonstrate the surrounding virality culture and visual storytelling approaches. Finally, the goodhart-related excerpts from LessWrong and related discussions provide evidence for the field value's note about Goodhart's Law being portrayed through causal diagrams and in other professional contexts, which corroborates the existence of viral, well-supported visuals for at least some of the models named in the field value. Taken together, the most directly relevant items are those that explicitly map Chesterton's Fence visuals to engagement, followed by Circle of Competence descriptions, Map/territory visuals, and then broader viral-visual ecosystem references (Visualize Value, Sahil Bloom, and Goodhart's Law discussions).",
+      "confidence": "medium"
+    },
+    {
+      "field": "synthesis_of_viral_patterns.design_recommendations",
+      "citations": [
+        {
+          "title": "The following Substack newsletter visuals on mental models (underrated): compilation with image URLs and virality indicators",
+          "url": "https://followmentalgarden.substack.com/p/chesterton-fence",
+          "excerpts": [
+            "The fence symbolises structures —laws, traditions, social norms— that seem obsolete or unnecessary at first, but which may have reasons we do ...",
+            "\n\n\n\n"
+          ]
+        },
+        {
+          "title": "Chesterton's fence - Sketchplanations",
+          "url": "https://sketchplanations.com/chestertons-fence",
+          "excerpts": [
+            "Published\n3 Apr 2022",
+            "Chesterton's fence put simply is: Don't take a fence down unless you know why it was put up.",
+            "Chesterton's fence, after GK Chesterton, is a reminder that before we remove the old and perhaps replace it with the new we would do well to at least understand why the original was put in place."
+          ]
+        },
+        {
+          "title": "Underrated Mental Models Visual Prompt (Chesterton's Fence, Circle of Competence)",
+          "url": "http://sketchplanations.com/chestertons-fence",
+          "excerpts": [
+            "Published\n3 Apr 2022",
+            "Chesterton's fence put simply is: Don't take a fence down unless you know why it was put up.",
+            "Chesterton's fence, after GK Chesterton, is a reminder that before we remove the old and perhaps replace it with the new we would do well to at least understand why the original was put in place."
+          ]
+        },
+        {
+          "title": "Chesterton's Fence on Facebook",
+          "url": "https://www.facebook.com/photo.php?fbid=5777999858882716&id=2463390077010394&set=a.3270170409665686&locale=ko_KR",
+          "excerpts": [
+            "Chesterton's fence put simply is: Don't take a fence down unless you know why it was put up."
+          ]
+        },
+        {
+          "title": "Neutral vs. Conservative: The Eternal Struggle",
+          "url": "https://slatestarcodex.com/2017/05/01/neutral-vs-conservative-the-eternal-struggle/",
+          "excerpts": [
+            "The Overton Window is the range of which policies are politically viable and taken seriously. For example, I think anthropogenic climate ..."
+          ]
+        },
+        {
+          "title": "The feeling of breaking an Overton window - LessWrong",
+          "url": "https://www.lesswrong.com/posts/bzhGBHrGrFfQss4Df/the-feeling-of-breaking-an-overton-window",
+          "excerpts": [
+            "Is there a pretty in-built visceral thing for \"don't break Overton windows\", that is quasi-independent of conscious knowledge that you're safe?"
+          ]
+        },
+        {
+          "title": "Varieties Of Argumentative Experience",
+          "url": "https://slatestarcodex.com/2018/05/08/varieties-of-argumentative-experience/",
+          "excerpts": [
+            "May 8, 2018 — This is a variant of Goodhart's law–as long as the consensus view ... Another issue: considering the diagram in isolation, it wasn't ..."
+          ]
+        }
+      ],
+      "reasoning": "The finegrained field value describes a set of best-practice design principles for creating viral visuals that explain mental models, including starting from a single potent idea, optimizing for scanning rather than reading, mobile-first vertical formats, explicit source credibility on the image, storytelling or strong metaphors, multi-channel promotion, and clear calls to action. Excerpts that discuss underground or underrated mental-model visuals that have virality signals directly address the core objective of curating visuals with high sharing potential and documented reach. Specifically, passages that reference a collection of visuals on mental models with virality indicators and the emphasis on compiling image-based visuals align with the synthesis of viral pattern design recommendations. The discussion of Chesterton's Fence visuals and the accompanying explanations about why a fence exists, and the broader framing of visual prompts for underrated mental models, provide concrete examples of how to convey a complex idea through a diagram or metaphor, which supports the guidance to design for clarity, a strong visual hierarchy, and memorable framing. Additional items that note the existence of compilations or newsletters featuring such visuals, with virality signals, reinforce the need to publish in accessible formats (e.g., Substack newsletters) and to include clear citations and sources on the visuals themselves. Taken together, these excerpts support the idea that effective, viral-friendly mental-model visuals emerge from a focused central idea, scannable and mobile-optimized design, credible sourcing, relatable storytelling, and a strategic content-distribution plan. The strongest support comes from explicit mentions of underrated-visual compilations with virality indicators, which map directly onto the claimed design principles, while the Chesterton-focused items illustrate how clear metaphors and structured visuals can convey specific mental models in a viral-friendly way.",
+      "confidence": "medium"
+    },
+    {
+      "field": "underrated_mental_model_visuals.2.mental_model_name",
+      "citations": [
+        {
+          "title": "Circle of Competence - Mental Model - Perspectiveship",
+          "url": "https://read.perspectiveship.com/p/circle-of-competence",
+          "excerpts": [
+            "The Circle of Competence is a mental model that reminds us about our knowledge boundaries. Warren Buffet and Charlie Munger coined the term for financial ..."
+          ]
+        },
+        {
+          "title": "FS Blog Circle of Competence",
+          "url": "https://fs.blog/circle-of-competence/",
+          "excerpts": [
+            "We all have a circle of competence – an area in which we have a lot of earned knowledge.",
+            "Understanding where you have an edge and where you don’t can help you prevent problems, spot opportunities others miss, and rapidly learn.",
+            "The size of that circle is not important. What is important is knowing when you are approaching the perimeter.",
+            "<img src='https://fs.blog/wp-content/uploads/2013/12/circle-competence-white.jpg' alt='(c)2018 Farnam Street Media Inc. May not be used without permission.' width='600' height='600' />"
+          ]
+        },
+        {
+          "title": "Circle of Competence: How Warren Buffett Avoids Failures",
+          "url": "https://coffeeandjunk.com/circle-of-competence/",
+          "excerpts": [
+            "Simple mental model that Buffett uses to avoid problems, and in turn win big is called the Circle of Competence."
+          ]
+        }
+      ],
+      "reasoning": "The target value is the name of a specific mental model illustrated in an underrated visuals collection. The most directly supporting content states the model explicitly: it is described as a mental model that reminds us about our knowledge boundaries. It also defines that everyone has a circle of competence—an area where they possess earned knowledge. Additional excerpts elaborate on applying the model by highlighting where one has an edge, and they clarify that the size of the circle is less important than recognizing the perimeter, which reinforces the concept and its naming. One excerpt specifically notes a simple mental model used by Warren Buffett to avoid problems, which corroborates the model's practical prominence. A separate excerpt provides an image reference and caption related to the Circle of Competence, reinforcing its recognizability in visuals. Taken together, these excerpts robustly support that the fine-grained field value is the name and concept of the Circle of Competence, with the strongest alignment from the explicit definition, the scope/edge guidance, and the visual reference, followed by supplementary source-specific and visualization details.",
+      "confidence": "high"
+    },
+    {
+      "field": "synthesis_of_viral_patterns.common_pitfalls",
+      "citations": [
+        {
+          "title": "The following Substack newsletter visuals on mental models (underrated): compilation with image URLs and virality indicators",
+          "url": "https://followmentalgarden.substack.com/p/chesterton-fence",
+          "excerpts": [
+            "The fence symbolises structures —laws, traditions, social norms— that seem obsolete or unnecessary at first, but which may have reasons we do ...",
+            "\n\n\n\n"
+          ]
+        },
+        {
+          "title": "Chesterton's fence - Sketchplanations",
+          "url": "https://sketchplanations.com/chestertons-fence",
+          "excerpts": [
+            "Published\n3 Apr 2022",
+            "Chesterton's fence, after GK Chesterton, is a reminder that before we remove the old and perhaps replace it with the new we would do well to at least understand why the original was put in place.",
+            "Chesterton's fence put simply is: Don't take a fence down unless you know why it was put up."
+          ]
+        },
+        {
+          "title": "Underrated Mental Models Visual Prompt (Chesterton's Fence, Circle of Competence)",
+          "url": "http://sketchplanations.com/chestertons-fence",
+          "excerpts": [
+            "Published\n3 Apr 2022",
+            "Chesterton's fence, after GK Chesterton, is a reminder that before we remove the old and perhaps replace it with the new we would do well to at least understand why the original was put in place.",
+            "Chesterton's fence put simply is: Don't take a fence down unless you know why it was put up."
+          ]
+        },
+        {
+          "title": "Chesterton's Fence on Facebook",
+          "url": "https://www.facebook.com/photo.php?fbid=5777999858882716&id=2463390077010394&set=a.3270170409665686&locale=ko_KR",
+          "excerpts": [
+            "Chesterton's fence put simply is: Don't take a fence down unless you know why it was put up."
+          ]
+        },
+        {
+          "title": "Varieties Of Argumentative Experience",
+          "url": "https://slatestarcodex.com/2018/05/08/varieties-of-argumentative-experience/",
+          "excerpts": [
+            "May 8, 2018 — This is a variant of Goodhart's law–as long as the consensus view ... Another issue: considering the diagram in isolation, it wasn't ..."
+          ]
+        },
+        {
+          "title": "Neutral vs. Conservative: The Eternal Struggle",
+          "url": "https://slatestarcodex.com/2017/05/01/neutral-vs-conservative-the-eternal-struggle/",
+          "excerpts": [
+            "The Overton Window is the range of which policies are politically viable and taken seriously. For example, I think anthropogenic climate ..."
+          ]
+        },
+        {
+          "title": "The feeling of breaking an Overton window - LessWrong",
+          "url": "https://www.lesswrong.com/posts/bzhGBHrGrFfQss4Df/the-feeling-of-breaking-an-overton-window",
+          "excerpts": [
+            "Is there a pretty in-built visceral thing for \"don't break Overton windows\", that is quasi-independent of conscious knowledge that you're safe?"
+          ]
+        }
+      ],
+      "reasoning": "The finegrained field value enumerates concrete mistakes that hinder a visual's potential to go viral, such as Information Overload, Poor Design, Not Optimizing for Mobile, Lack of Promotion, absence of a Call-to-Action, and Factual Inaccuracies. Excerpts that explicitly reference virality indicators or curated compilations of visuals are the most relevant because they touch on the factors that influence a diagram's spread and reception in practice. For instance, a snippet describing a Substack newsletter visuals collection with virality indicators foregrounds the relevance of measurable popularity signals in the virality landscape. Another excerpt explicitly notes a compilation of underrated mental models with image URLs and virality indicators, which directly aligns with the idea of optimizing for virality rather than default or obvious concepts. These passages help connect the field value—common virality pitfalls—to real-world signals of what makes visuals spread, such as engagement metrics and cross-platform presence. Other excerpts discuss the content and origin of specific mental models (e.g., Chesterton's Fence or Circle of Competence) which, while informative about the visuals themselves, provide indirect support by indicating the kinds of content that may or may not be optimized for broad appeal. Taken together, the most relevant material centers on virality signals and curated visual examples, while adjacent material on individual mental models offers contextual support but does not directly address the specified pitfalls.",
+      "confidence": "medium"
+    },
+    {
+      "field": "underrated_mental_model_visuals.3.image_url",
+      "citations": [
+        {
+          "title": "The Map Is Not the Territory",
+          "url": "https://fs.blog/map-and-territory/",
+          "excerpts": [
+            "<img src='https://149664534.v2.pressablecdn.com/wp-content/uploads/2015/11/the-map-white.jpg' alt='The Map is Not the Territory' width='600' height='600' />"
+          ]
+        }
+      ],
+      "reasoning": "The finegrained field value is a direct URL to an image resource associated with an underrated mental model visual. Among the excerpts, the one that includes an HTML image tag demonstrates inclusion of an image URL, which is the closest form of evidence to a visual resource reference within this set. The other excerpts discuss the conceptual idea of the map-not-the-territory without providing any image references or URLs, making them less aligned with the specific field value. The quoted image tag from the excerpt shows a visual depiction related to the overarching topic, even though the exact URL differs from the target value. This indicates partial relevance and supports the notion that visual representations of mental models are part of the discussed collection, but it does not confirm the exact target image URL.",
+      "confidence": "low"
+    },
+    {
+      "field": "synthesis_of_viral_patterns.virality_correlates",
+      "citations": [
+        {
+          "title": "The following Substack newsletter visuals on mental models (underrated): compilation with image URLs and virality indicators",
+          "url": "https://followmentalgarden.substack.com/p/chesterton-fence",
+          "excerpts": [
+            "The fence symbolises structures —laws, traditions, social norms— that seem obsolete or unnecessary at first, but which may have reasons we do ...",
+            "\n\n\n\n"
+          ]
+        },
+        {
+          "title": "Varieties Of Argumentative Experience",
+          "url": "https://slatestarcodex.com/2018/05/08/varieties-of-argumentative-experience/",
+          "excerpts": [
+            "May 8, 2018 — This is a variant of Goodhart's law–as long as the consensus view ... Another issue: considering the diagram in isolation, it wasn't ..."
+          ]
+        },
+        {
+          "title": "Chesterton's fence - Sketchplanations",
+          "url": "https://sketchplanations.com/chestertons-fence",
+          "excerpts": [
+            "Published\n3 Apr 2022",
+            "Chesterton's fence, after GK Chesterton, is a reminder that before we remove the old and perhaps replace it with the new we would do well to at least understand why the original was put in place.",
+            "Chesterton's fence put simply is: Don't take a fence down unless you know why it was put up."
+          ]
+        },
+        {
+          "title": "Underrated Mental Models Visual Prompt (Chesterton's Fence, Circle of Competence)",
+          "url": "http://sketchplanations.com/chestertons-fence",
+          "excerpts": [
+            "Published\n3 Apr 2022",
+            "Chesterton's fence, after GK Chesterton, is a reminder that before we remove the old and perhaps replace it with the new we would do well to at least understand why the original was put in place.",
+            "Chesterton's fence put simply is: Don't take a fence down unless you know why it was put up."
+          ]
+        },
+        {
+          "title": "Chesterton's Fence on Facebook",
+          "url": "https://www.facebook.com/photo.php?fbid=5777999858882716&id=2463390077010394&set=a.3270170409665686&locale=ko_KR",
+          "excerpts": [
+            "Chesterton's fence put simply is: Don't take a fence down unless you know why it was put up."
+          ]
+        },
+        {
+          "title": "Neutral vs. Conservative: The Eternal Struggle",
+          "url": "https://slatestarcodex.com/2017/05/01/neutral-vs-conservative-the-eternal-struggle/",
+          "excerpts": [
+            "The Overton Window is the range of which policies are politically viable and taken seriously. For example, I think anthropogenic climate ..."
+          ]
+        },
+        {
+          "title": "The feeling of breaking an Overton window - LessWrong",
+          "url": "https://www.lesswrong.com/posts/bzhGBHrGrFfQss4Df/the-feeling-of-breaking-an-overton-window",
+          "excerpts": [
+            "Is there a pretty in-built visceral thing for \"don't break Overton windows\", that is quasi-independent of conscious knowledge that you're safe?"
+          ]
+        }
+      ],
+      "reasoning": "The most directly relevant excerpts are those that explicitly reference virality indicators or compilations of visuals with evidence of organic spread. For example, one excerpt describes a compilation of underrated mental-model visuals with virality indicators, which directly supports the idea that visuals gain traction when they show engagement and cross-posting or replication across independent sources. Another excerpt notes that the visuals are compiled with image URLs and virality indicators, reinforcing the link between credible sourcing, visibility across platforms, and spread. A third excerpt mentions diagrams and the concept of viral visuals in the context of an image-based library, which aligns with the emphasis on strong storytelling and clear design that accompanies viral spread. Beyond these, other excerpts discuss Chesterton's Fence and Circle of Competence as specific mental models conveyed through visuals; while informative about the content, they do not directly discuss virality factors, so they are supportive context rather than core evidence for the virality correlates field. An additional excerpt discusses the Overton window and related topics, which is tangential to virality factors and thus less directly relevant. A remaining item mentions a variety of argumentative experiences and Goodhart's law in a diagram, which could touch on design clarity or topicality, but again does not provide explicit virality indicators. Overall, the strongest support comes from excerpts that explicitly tie visuals to virality indicators and compilation with virality data, followed by excerpts that discuss the visual presentation of specific mental models, and finally by those with related but non-virality content. The direct quotes illustrating virality indicators and compilation with virality data are the most compelling support for the finegrained field value.",
+      "confidence": "high"
+    },
+    {
+      "field": "underrated_mental_model_visuals.3.mental_model_name",
+      "citations": [
+        {
+          "title": "The Map Is Not the Territory",
+          "url": "https://fs.blog/map-and-territory/",
+          "excerpts": [
+            "The map is not the territory reminds us that our mental models of the world are not the same as the world itself.",
+            "The map is not the territory reminds us that our mental models of the world are not the same as the world itself. It cautions against confusing our abstractions ...",
+            "<img src='https://149664534.v2.pressablecdn.com/wp-content/uploads/2015/11/the-map-white.jpg' alt='The Map is Not the Territory' width='600' height='600' />"
+          ]
+        },
+        {
+          "title": "Map vs Territory",
+          "url": "https://modelthinkers.com/mental-model/map-vs-territory",
+          "excerpts": [
+            "A map is not the territory it represents, but, if correct, it has a similar structure to the territory, which accounts for its usefulness."
+          ]
+        },
+        {
+          "title": "Map–territory relation - Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Map%E2%80%93territory_relation",
+          "excerpts": [
+            "The phrase \"a map is not the territory\" was first introduced by Alfred Korzybski in his 1931 paper \"A Non-Aristotelian System and Its Necessity for Rigour in Mathematics and Physics,\" presented at a meeting of the American Association for the Advancement of Science in New Orleans, and later reprinted in Science and ..."
+          ]
+        },
+        {
+          "title": "The Map Is Not the Territory Visuals Research Compilation",
+          "url": "https://lisacharlottemuth.com/",
+          "excerpts": [
+            "Lisa Charlotte Muth is a Berlin-based writer for the data visualization tool Datawrapper. Before that, she studied graphic design for six years and created data ..."
+          ]
+        }
+      ],
+      "reasoning": "The target field value is the explicit mental model name 'The Map Is Not the Territory'. Excerpt describing 'The Map Is Not the Territory' directly aligns with the field value and confirms the canonical naming of the mental model. Excerpts that discuss the broader idea of the map not representing reality, or that present the concept under related phrasing, still support the same mental model and provide context about its meaning and usage. Excerpt focusing on the origin or terminology adds depth to understanding why the concept exists, while excerpts that emphasize visuals or compilation further illustrate how the mental model is conveyed, reinforcing the relevance of the field value. Together, these excerpts corroborate the existence and framing of the mental model name and its core idea, with the strongest support coming from the direct naming in the text, followed by contextual discussions and visual representations.",
+      "confidence": "high"
+    },
+    {
+      "field": "underrated_mental_model_visuals.2.image_url",
+      "citations": [
+        {
+          "title": "FS Blog Circle of Competence",
+          "url": "https://fs.blog/circle-of-competence/",
+          "excerpts": [
+            "<img src='https://fs.blog/wp-content/uploads/2013/12/circle-competence-white.jpg' alt='(c)2018 Farnam Street Media Inc. May not be used without permission.' width='600' height='600' />",
+            "We all have a circle of competence – an area in which we have a lot of earned knowledge.",
+            "Understanding where you have an edge and where you don’t can help you prevent problems, spot opportunities others miss, and rapidly learn.",
+            "The size of that circle is not important. What is important is knowing when you are approaching the perimeter."
+          ]
+        },
+        {
+          "title": "Circle of Competence - Mental Model - Perspectiveship",
+          "url": "https://read.perspectiveship.com/p/circle-of-competence",
+          "excerpts": [
+            "The Circle of Competence is a mental model that reminds us about our knowledge boundaries. Warren Buffet and Charlie Munger coined the term for financial ..."
+          ]
+        },
+        {
+          "title": "Circle of Competence: How Warren Buffett Avoids Failures",
+          "url": "https://coffeeandjunk.com/circle-of-competence/",
+          "excerpts": [
+            "Simple mental model that Buffett uses to avoid problems, and in turn win big is called the Circle of Competence."
+          ]
+        }
+      ],
+      "reasoning": "The finegrained field seeks the image URL for an underrated mental model visual positioned at the third item in a list. The most directly relevant excerpt includes an HTML image element with a source URL, which is the closest match to the requested field value and provides concrete evidence of an image URL in this category. The remaining excerpts discuss the Circle of Competence visually and describe related pages or posts; these offer supporting context about the type of visual content and its sources but do not confirm the exact image URL specified in the field value. Therefore, the image-tag excerpt most strongly supports the field value, while the others contribute contextual alignment to the broader topic of underrated mental-model visuals without confirming the exact URL.",
+      "confidence": "medium"
+    },
+    {
+      "field": "common_mental_models_excluded.0.model_name",
+      "citations": [
+        {
+          "title": "Mental Models: The Best Way to Make Intelligent Decisions",
+          "url": "https://fs.blog/mental-models/",
+          "excerpts": [
+            "Falsification / Confirmation Bias"
+          ]
+        }
+      ],
+      "reasoning": "The excerpt discusses a list of mental models and explicitly pairs the concept with 'Confirmation Bias' in the content described as part of a mental models collection. This directly supports the target field value, which is the name of the mental model 'Confirmation Bias'. The mention of 'Falsification / Confirmation Bias' indicates that Confirmation Bias is recognized in the context of mental models, thereby validating its relevance to the fine-grained field path that seeks the model_name. No contradictions are present in the excerpt regarding this term, and it provides direct alignment with the requested field value.",
+      "confidence": "high"
+    },
+    {
+      "field": "synthesis_of_viral_patterns.visual_form",
+      "citations": [
+        {
+          "title": "The following Substack newsletter visuals on mental models (underrated): compilation with image URLs and virality indicators",
+          "url": "https://followmentalgarden.substack.com/p/chesterton-fence",
+          "excerpts": [
+            "The fence symbolises structures —laws, traditions, social norms— that seem obsolete or unnecessary at first, but which may have reasons we do ...",
+            "\n\n\n\n"
+          ]
+        },
+        {
+          "title": "Chesterton's fence - Sketchplanations",
+          "url": "https://sketchplanations.com/chestertons-fence",
+          "excerpts": [
+            "Published\n3 Apr 2022",
+            "Chesterton's fence, after GK Chesterton, is a reminder that before we remove the old and perhaps replace it with the new we would do well to at least understand why the original was put in place.",
+            "Chesterton's fence put simply is: Don't take a fence down unless you know why it was put up."
+          ]
+        },
+        {
+          "title": "Underrated Mental Models Visual Prompt (Chesterton's Fence, Circle of Competence)",
+          "url": "http://sketchplanations.com/chestertons-fence",
+          "excerpts": [
+            "Published\n3 Apr 2022",
+            "Chesterton's fence, after GK Chesterton, is a reminder that before we remove the old and perhaps replace it with the new we would do well to at least understand why the original was put in place.",
+            "Chesterton's fence put simply is: Don't take a fence down unless you know why it was put up."
+          ]
+        },
+        {
+          "title": "Chesterton's Fence on Facebook",
+          "url": "https://www.facebook.com/photo.php?fbid=5777999858882716&id=2463390077010394&set=a.3270170409665686&locale=ko_KR",
+          "excerpts": [
+            "Chesterton's fence put simply is: Don't take a fence down unless you know why it was put up."
+          ]
+        },
+        {
+          "title": "Varieties Of Argumentative Experience",
+          "url": "https://slatestarcodex.com/2018/05/08/varieties-of-argumentative-experience/",
+          "excerpts": [
+            "May 8, 2018 — This is a variant of Goodhart's law–as long as the consensus view ... Another issue: considering the diagram in isolation, it wasn't ..."
+          ]
+        },
+        {
+          "title": "Neutral vs. Conservative: The Eternal Struggle",
+          "url": "https://slatestarcodex.com/2017/05/01/neutral-vs-conservative-the-eternal-struggle/",
+          "excerpts": [
+            "The Overton Window is the range of which policies are politically viable and taken seriously. For example, I think anthropogenic climate ..."
+          ]
+        },
+        {
+          "title": "The feeling of breaking an Overton window - LessWrong",
+          "url": "https://www.lesswrong.com/posts/bzhGBHrGrFfQss4Df/the-feeling-of-breaking-an-overton-window",
+          "excerpts": [
+            "Is there a pretty in-built visceral thing for \"don't break Overton windows\", that is quasi-independent of conscious knowledge that you're safe?"
+          ]
+        }
+      ],
+      "reasoning": "To determine relevance, I focus on whether an excerpt provides evidence or explicit statements about visual formats that lead to immediate comprehension and virality in the context of mental models. Excerpts that describe a collection of underrated mental-model visuals with virality indicators directly support the notion that compilations of image-first formats (with image URLs and virality signals) are effective. Excerpts that mention Chesterton's Fence as a visual concept, or explanations of Chesterton's Fence, are relevant insofar as they illustrate the kinds of visuals used to convey a mental model, especially when tied to a visual format (e.g., infographic or diagram) and virality signals. Excerpts that describe specific types of visuals (infographics, annotated sketches, metaphorical imagery, quote images, short-form videos) align with the finegrained field value's explicit formats and are therefore highly relevant. Excerpts that mainly discuss related but not directly connected ideas (e.g., broader dialog about Overton windows or argumentative formats without tying to visual formats) provide context but are less directly supportive. In paraphrase form: having a compilation of underrated mental-model visuals with virality indicators supports the claim that image-first formats are effective; noting that Chesterton's Fence visuals are distributed as image-driven content aligns with the identified formats; descriptions of the specific visual formats in the field value (infographics, annotated sketches, metaphor imagery, quote images, short-form videos) are directly supported by excerpts mentioning compilations of visuals and the concept of virality.",
+      "confidence": "high"
+    },
+    {
+      "field": "synthesis_of_viral_patterns.channel_analysis",
+      "citations": [
+        {
+          "title": "The following Substack newsletter visuals on mental models (underrated): compilation with image URLs and virality indicators",
+          "url": "https://followmentalgarden.substack.com/p/chesterton-fence",
+          "excerpts": [
+            "The fence symbolises structures —laws, traditions, social norms— that seem obsolete or unnecessary at first, but which may have reasons we do ...",
+            "\n\n\n\n"
+          ]
+        },
+        {
+          "title": "Chesterton's fence - Sketchplanations",
+          "url": "https://sketchplanations.com/chestertons-fence",
+          "excerpts": [
+            "Published\n3 Apr 2022",
+            "Chesterton's fence put simply is: Don't take a fence down unless you know why it was put up.",
+            "Chesterton's fence, after GK Chesterton, is a reminder that before we remove the old and perhaps replace it with the new we would do well to at least understand why the original was put in place."
+          ]
+        },
+        {
+          "title": "Underrated Mental Models Visual Prompt (Chesterton's Fence, Circle of Competence)",
+          "url": "http://sketchplanations.com/chestertons-fence",
+          "excerpts": [
+            "Published\n3 Apr 2022",
+            "Chesterton's fence put simply is: Don't take a fence down unless you know why it was put up.",
+            "Chesterton's fence, after GK Chesterton, is a reminder that before we remove the old and perhaps replace it with the new we would do well to at least understand why the original was put in place."
+          ]
+        },
+        {
+          "title": "Chesterton's Fence on Facebook",
+          "url": "https://www.facebook.com/photo.php?fbid=5777999858882716&id=2463390077010394&set=a.3270170409665686&locale=ko_KR",
+          "excerpts": [
+            "Chesterton's fence put simply is: Don't take a fence down unless you know why it was put up."
+          ]
+        },
+        {
+          "title": "Neutral vs. Conservative: The Eternal Struggle",
+          "url": "https://slatestarcodex.com/2017/05/01/neutral-vs-conservative-the-eternal-struggle/",
+          "excerpts": [
+            "The Overton Window is the range of which policies are politically viable and taken seriously. For example, I think anthropogenic climate ..."
+          ]
+        },
+        {
+          "title": "The feeling of breaking an Overton window - LessWrong",
+          "url": "https://www.lesswrong.com/posts/bzhGBHrGrFfQss4Df/the-feeling-of-breaking-an-overton-window",
+          "excerpts": [
+            "Is there a pretty in-built visceral thing for \"don't break Overton windows\", that is quasi-independent of conscious knowledge that you're safe?"
+          ]
+        },
+        {
+          "title": "Varieties Of Argumentative Experience",
+          "url": "https://slatestarcodex.com/2018/05/08/varieties-of-argumentative-experience/",
+          "excerpts": [
+            "May 8, 2018 — This is a variant of Goodhart's law–as long as the consensus view ... Another issue: considering the diagram in isolation, it wasn't ..."
+          ]
+        }
+      ],
+      "reasoning": "The fine-grained field value analyzes how channel effectiveness varies by visual format and by platform, focusing on where and how viral mental-model visuals spread. The most relevant content explicitly references compilations of visuals in a Substack newsletter with virality indicators, which aligns with understanding how a visual library gains traction in niche communities and how virality is evidenced for underrated concepts. For example, descriptions like \"The following Substack newsletter visuals on mental models (underrated): compilation with image URLs and virality indicators\" directly connect visuals, their hosting channel (Substack), and the emplaced virality signals that make such visuals effective for narrow audiences. A closely related excerpt reiterates the same Substack-compiled visuals and virality indicators, reinforcing the idea that Substack serves as an origin or hub from which visuals propagate. These two excerpts provide concrete anchors for how channel choice and virality signals contribute to channel effectiveness. Additionally, there are excerpts that identify the specific mental models discussed (Chesterton's Fence and Circle of Competence) in connection with a visual prompt, which helps link the content (novel visuals around less-cited concepts) to the broader strategy of choosing and explaining models visually. The other excerpts contribute contextual detail about the specific mental models being discussed (e.g., Chesterton's Fence) and general descriptions of the concepts, which supports understanding of what kinds of visuals are being promoted, though they do not directly discuss platform channels or virality indicators. Collectively, these excerpts map the relationship between the format and platform used to disseminate visual explanations and the viral reach such visuals can achieve within specialized communities, which is the core of the requested fine-grained field value. ",
+      "confidence": "medium"
+    },
+    {
+      "field": "underrated_mental_model_visuals.2.application",
+      "citations": [
+        {
+          "title": "Circle of Competence - Mental Model - Perspectiveship",
+          "url": "https://read.perspectiveship.com/p/circle-of-competence",
+          "excerpts": [
+            "The Circle of Competence is a mental model that reminds us about our knowledge boundaries. Warren Buffet and Charlie Munger coined the term for financial ..."
+          ]
+        },
+        {
+          "title": "Circle of Competence: How Warren Buffett Avoids Failures",
+          "url": "https://coffeeandjunk.com/circle-of-competence/",
+          "excerpts": [
+            "Simple mental model that Buffett uses to avoid problems, and in turn win big is called the Circle of Competence."
+          ]
+        },
+        {
+          "title": "FS Blog Circle of Competence",
+          "url": "https://fs.blog/circle-of-competence/",
+          "excerpts": [
+            "We all have a circle of competence – an area in which we have a lot of earned knowledge.",
+            "The size of that circle is not important. What is important is knowing when you are approaching the perimeter.",
+            "Understanding where you have an edge and where you don’t can help you prevent problems, spot opportunities others miss, and rapidly learn.",
+            "<img src='https://fs.blog/wp-content/uploads/2013/12/circle-competence-white.jpg' alt='(c)2018 Farnam Street Media Inc. May not be used without permission.' width='600' height='600' />"
+          ]
+        }
+      ],
+      "reasoning": "The target field asserts that the Circle of Competence is primarily used in investing to avoid decisions in areas one doesn't understand, while also applying to business strategy (focusing on core competencies) and personal development (identifying knowledge gaps and pursuing continuous learning). The most directly supportive excerpt states that the Circle of Competence is a mental model that reminds us about our knowledge boundaries, which underpins why one would avoid decisions outside that boundary in investing. Another excerpt notes that the size of the circle is less important than knowing when you are approaching the perimeter, reinforcing the idea of operating within a known edge to prevent problems—an idea that naturally extends to investing and to broader decision contexts like business and personal development. Additional excerpts describe having a circle of competence as an area in which one has earned knowledge, which supports the notion of applying the model to decision-making in specialized domains (investing) and to recognizing knowledge gaps in other areas. A supporting example mentions Buffett using the model to avoid problems, which aligns with the investment-use case. Collectively, these excerpts coherently map to the field value by illustrating boundaries, edges, and the preventive use of the model in investing, while also implying its relevance to strategy and personal growth.",
+      "confidence": "high"
+    },
+    {
+      "field": "underrated_mental_model_visuals.3.core_principle",
+      "citations": [
+        {
+          "title": "The Map Is Not the Territory",
+          "url": "https://fs.blog/map-and-territory/",
+          "excerpts": [
+            "The map is not the territory reminds us that our mental models of the world are not the same as the world itself.",
+            "The map is not the territory reminds us that our mental models of the world are not the same as the world itself. It cautions against confusing our abstractions ...",
+            "<img src='https://149664534.v2.pressablecdn.com/wp-content/uploads/2015/11/the-map-white.jpg' alt='The Map is Not the Territory' width='600' height='600' />"
+          ]
+        },
+        {
+          "title": "Map–territory relation - Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Map%E2%80%93territory_relation",
+          "excerpts": [
+            "The phrase \"a map is not the territory\" was first introduced by Alfred Korzybski in his 1931 paper \"A Non-Aristotelian System and Its Necessity for Rigour in Mathematics and Physics,\" presented at a meeting of the American Association for the Advancement of Science in New Orleans, and later reprinted in Science and ..."
+          ]
+        },
+        {
+          "title": "Map vs Territory",
+          "url": "https://modelthinkers.com/mental-model/map-vs-territory",
+          "excerpts": [
+            "A map is not the territory it represents, but, if correct, it has a similar structure to the territory, which accounts for its usefulness."
+          ]
+        },
+        {
+          "title": "The Map Is Not the Territory Visuals Research Compilation",
+          "url": "https://lisacharlottemuth.com/",
+          "excerpts": [
+            "Lisa Charlotte Muth is a Berlin-based writer for the data visualization tool Datawrapper. Before that, she studied graphic design for six years and created data ..."
+          ]
+        }
+      ],
+      "reasoning": "The target field asserts that representations such as maps or models are not reality itself and are inherently incomplete abstractions, yet still useful. Excerpt which states that the map is not the territory reminds us that our mental models of the world are not the world itself, directly supporting the core idea of representation vs. reality. Excerpt emphasizing not confusing abstractions further reinforces that representations can be misunderstood or incomplete. Excerpt detailing the origin and broader discussion around the map-territory relationship provides historical context that supports the principle that representations are constructed and not identical to reality. Excerpt describing a related idea that a map can have a similar structure to the territory, and thus be useful, aligns with the notion of usefulness despite incompleteness, offering a nuanced support. The remaining excerpts describe the visuals or compilation of visuals about the map concept, which are tangential but still related to how representations function in practice. Collectively, these excerpts support the claim that representations of reality are imperfect, purposeful tools rather than exact replicas.",
+      "confidence": "high"
+    },
+    {
+      "field": "common_mental_models_excluded.1.model_name",
+      "citations": [
+        {
+          "title": "James Clear: Mental Models",
+          "url": "https://jamesclear.com/mental-models",
+          "excerpts": [
+            "* [Survivorship Bias](https://en.wikipedia.org/wiki/Survivorship_bias)"
+          ]
+        }
+      ],
+      "reasoning": "The field value represents the name of a mental model that is excluded from the common top models list. The excerpt explicitly presents a mental models page and includes the phrase 'Survivorship Bias' as a named model in the context of mental models, indicating that this exact model name is present in the source. This aligns with the target field value identifying Survivorship Bias as the model name under common_mental_models_excluded. No contradictory information is present; the excerpt directly supports the field value by naming the model in question within the relevant category.",
+      "confidence": "high"
+    },
+    {
+      "field": "underrated_mental_model_visuals.3.virality_evidence",
+      "citations": [
+        {
+          "title": "The Map Is Not the Territory",
+          "url": "https://fs.blog/map-and-territory/",
+          "excerpts": [
+            "The map is not the territory reminds us that our mental models of the world are not the same as the world itself.",
+            "The map is not the territory reminds us that our mental models of the world are not the same as the world itself. It cautions against confusing our abstractions ...",
+            "<img src='https://149664534.v2.pressablecdn.com/wp-content/uploads/2015/11/the-map-white.jpg' alt='The Map is Not the Territory' width='600' height='600' />"
+          ]
+        },
+        {
+          "title": "Map vs Territory",
+          "url": "https://modelthinkers.com/mental-model/map-vs-territory",
+          "excerpts": [
+            "A map is not the territory it represents, but, if correct, it has a similar structure to the territory, which accounts for its usefulness."
+          ]
+        },
+        {
+          "title": "Map–territory relation - Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Map%E2%80%93territory_relation",
+          "excerpts": [
+            "The phrase \"a map is not the territory\" was first introduced by Alfred Korzybski in his 1931 paper \"A Non-Aristotelian System and Its Necessity for Rigour in Mathematics and Physics,\" presented at a meeting of the American Association for the Advancement of Science in New Orleans, and later reprinted in Science and ..."
+          ]
+        },
+        {
+          "title": "The Map Is Not the Territory Visuals Research Compilation",
+          "url": "https://lisacharlottemuth.com/",
+          "excerpts": [
+            "Lisa Charlotte Muth is a Berlin-based writer for the data visualization tool Datawrapper. Before that, she studied graphic design for six years and created data ..."
+          ]
+        }
+      ],
+      "reasoning": "The finegrained field value centers on a concrete virality example tied to the map-versus-territory idea, specifically an animated GIF that compares a schematic tube map to geographic reality and cites virality evidence from Reddit, BuzzFeed, and design blogs. The most directly relevant excerpts are those that articulate the core mental model: that a map is not the territory and that visuals/diagrams convey complex ideas succinctly. Excerpts that explicitly frame the map-not-the-territory distinction provide foundational support for understanding why such a visualization can be powerful and viral in illustrating a mental model. Excerpts describing the origin or presentation of map visuals (including standard explanations and image-focused references) also help corroborate the general concept that visual representations of maps can function as insightful diagrams. However, none of the excerpts provides the specific virality evidence (Reddit engagement, BuzzFeed features, etc.) for the exact animated GIF in question. As a result, the strongest support comes from passages that articulate the map-not-territory concept and the value of map-like visuals, while the virality specifics remain unsubstantiated within these excerpts. All cited pieces align with the idea that map-based visuals can convey complex ideas clearly, which is consistent with why such an image could become viral, but the explicit virality claim in the field value is not directly evidenced by the excerpts provided.",
+      "confidence": "low"
+    },
+    {
+      "field": "common_mental_models_excluded.0.reason_for_exclusion",
+      "citations": [
+        {
+          "title": "Mental Models: The Best Way to Make Intelligent Decisions",
+          "url": "https://fs.blog/mental-models/",
+          "excerpts": [
+            "Falsification / Confirmation Bias"
+          ]
+        }
+      ],
+      "reasoning": "The provided excerpt highlights a widely recognized mental model pair, namely Falsification and Confirmation Bias, associated with the article title about intelligent decision-making. This aligns with the notion of foundational concepts frequently cited by major sources in psychology and behavioral economics, such as Farnam Street-related discussions. The phrasing suggests that these are well-known, heavily discussed concepts that would typically be excluded under the 'underrated' criterion, thereby supporting the idea that this entry addresses a commonly cited foundational mental model rather than an underrated one. The explicit label of the concepts as core elements in decision-making contexts reinforces their status as frequently cited and foundational in the field, which is exactly the kind of characteristic implied by the finegrained field value for exclusion. ",
+      "confidence": "high"
+    },
+    {
+      "field": "common_mental_models_excluded.0.overused_visual_description",
+      "citations": [
+        {
+          "title": "Mental Models: The Best Way to Make Intelligent Decisions",
+          "url": "https://fs.blog/mental-models/",
+          "excerpts": [
+            "Falsification / Confirmation Bias"
+          ]
+        }
+      ],
+      "reasoning": "The finegrained field value describes a visualization where a person is depicted inside a filter bubble or funneling information to match pre-existing beliefs, reflecting confirmation bias and avoidance of contradictory evidence. The available excerpt discusses a well-known collection of mental models and explicitly pairs a couple of biases (falsification and confirmation bias) with the general topic, but it does not provide a description or confirmation that the specific filter-bubble visualization is used, nor that it is categorized as an overused visualization. This means the excerpt offers partial relevance by naming relevant biases and situating them within the mental models domain, but it does not substantively confirm the exact depicted visualization described in the field value. Hence, the connection is weak and indirect.",
+      "confidence": "low"
+    },
+    {
+      "field": "underrated_mental_model_visuals.3.application",
+      "citations": [
+        {
+          "title": "The Map Is Not the Territory",
+          "url": "https://fs.blog/map-and-territory/",
+          "excerpts": [
+            "The map is not the territory reminds us that our mental models of the world are not the same as the world itself.",
+            "The map is not the territory reminds us that our mental models of the world are not the same as the world itself. It cautions against confusing our abstractions ...",
+            "<img src='https://149664534.v2.pressablecdn.com/wp-content/uploads/2015/11/the-map-white.jpg' alt='The Map is Not the Territory' width='600' height='600' />"
+          ]
+        },
+        {
+          "title": "Map vs Territory",
+          "url": "https://modelthinkers.com/mental-model/map-vs-territory",
+          "excerpts": [
+            "A map is not the territory it represents, but, if correct, it has a similar structure to the territory, which accounts for its usefulness."
+          ]
+        },
+        {
+          "title": "Map–territory relation - Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Map%E2%80%93territory_relation",
+          "excerpts": [
+            "The phrase \"a map is not the territory\" was first introduced by Alfred Korzybski in his 1931 paper \"A Non-Aristotelian System and Its Necessity for Rigour in Mathematics and Physics,\" presented at a meeting of the American Association for the Advancement of Science in New Orleans, and later reprinted in Science and ..."
+          ]
+        },
+        {
+          "title": "The Map Is Not the Territory Visuals Research Compilation",
+          "url": "https://lisacharlottemuth.com/",
+          "excerpts": [
+            "Lisa Charlotte Muth is a Berlin-based writer for the data visualization tool Datawrapper. Before that, she studied graphic design for six years and created data ..."
+          ]
+        }
+      ],
+      "reasoning": "The finegrained field value describes a critical thinking tool that improves judgment by highlighting that models are inherently limited and should be continuously updated in light of real-world feedback. Excerpts emphasizing that maps are not the territory and that our mental models do not perfectly mirror the world directly support this interpretation: they acknowledge that abstractions can mislead if treated as reality and warn against conflating representation with the actual world. The discussion that cautions against confusing abstractions and stresses the usefulness of a structure-aware representation further reinforces the idea that awareness of limitations enhances judgment. The origin of the phrase and its framing in a broader mental-model context add historical and conceptual backing for treating such distinctions as a deliberate thinking tool. Visuals and compilations related to these ideas provide supportive context that the concept exists within data visualization and knowledge curation, though they are less central to the exact claim about limitation-awareness as a thinking tool.",
+      "confidence": "high"
+    },
+    {
+      "field": "common_mental_models_excluded.3.reason_for_exclusion",
+      "citations": [
+        {
+          "title": "12 Ways to Get Smarter in One Infographic - Universal Mental Models",
+          "url": "https://www.visualcapitalist.com/12-ways-smarter-mental-models/",
+          "excerpts": [
+            "Example #2: Metcalfe’s Law (Network Building)",
+            "Metcalfe’s Law is one of network effects, stating that a network’s value is proportional to the square of the number of nodes in the network."
+          ]
+        },
+        {
+          "title": "Mental Models: The Best Way to Make Intelligent Decisions",
+          "url": "https://fs.blog/mental-models/",
+          "excerpts": [
+            "Falsification / Confirmation Bias"
+          ]
+        },
+        {
+          "title": "James Clear: Mental Models",
+          "url": "https://jamesclear.com/mental-models",
+          "excerpts": [
+            "* [Survivorship Bias](https://en.wikipedia.org/wiki/Survivorship_bias)"
+          ]
+        }
+      ],
+      "reasoning": "The target field expresses a criterion about visuals that are widely popularized and presented as a single, universally recognized graphic. Excerpt 2 explicitly frames content as part of a universal infographic collection, i.e., a single consolidated visual titled \"12 Ways to Get Smarter in One Infographic,\" which aligns with the idea of a universal visual that aggregates multiple concepts into one widely shared artifact. Excerpt 3 elaborates on the same infographic and describes one key example (Metcalfe's Law) within that visual, reinforcing the notion of a single, relatively canonical graphic used to convey a mental model across audiences. Together, these excerpts directly support the notion of a widely distributed, single-visual representation that achieves viral/dissemination status. Excerpt 0 discusses a well-known compilation of mental models (including falsification and confirmation bias) but does not clearly indicate a single, universally recognized visual; it points to familiar, widely cited content, which is related but less directly aligned with the specific idea of a singular universal visual artifact. Excerpt 1 references James Clear and survivorship bias, again indicating established material but not explicitly describing a universal single-visual artifact. Therefore, the strongest support for the finegrained field value comes from the mention of an infographic that consolidates many mental models into one visual, followed by corroborating details in the same source. The remaining excerpts provide contextual relevance about popularized models but do not directly establish the single-universal-visual criterion as clearly as the primary excerpt.",
+      "confidence": "medium"
+    },
+    {
+      "field": "common_mental_models_excluded.7.reason_for_exclusion",
+      "citations": [
+        {
+          "title": "James Clear: Mental Models",
+          "url": "https://jamesclear.com/mental-models",
+          "excerpts": [
+            "* [Survivorship Bias](https://en.wikipedia.org/wiki/Survivorship_bias)"
+          ]
+        },
+        {
+          "title": "Mental Models: The Best Way to Make Intelligent Decisions",
+          "url": "https://fs.blog/mental-models/",
+          "excerpts": [
+            "Falsification / Confirmation Bias"
+          ]
+        },
+        {
+          "title": "12 Ways to Get Smarter in One Infographic - Universal Mental Models",
+          "url": "https://www.visualcapitalist.com/12-ways-smarter-mental-models/",
+          "excerpts": [
+            "Example #2: Metcalfe’s Law (Network Building)",
+            "Metcalfe’s Law is one of network effects, stating that a network’s value is proportional to the square of the number of nodes in the network."
+          ]
+        }
+      ],
+      "reasoning": "The field value asserts that the sources named (e.g., James Clear, Visual Capitalist) recognize a cognitive bias as a fundamental aspect of decision-making. The excerpt that mentions James Clear and Survivorship Bias directly ties a well-known author to a bias concept, which supports the attribution angle of the field value. The excerpt that explicitly mentions Falsification / Confirmation Bias references a classic cognitive bias, supporting the general idea of cognitive-bias-based reasoning in decision-making, even though it does not name the listed authors. The other two excerpts discuss Metcalfe's Law, which is a network-effect concept rather than a cognitive bias, making them less relevant to the specific claim about cognitive biases and author attribution, but they still provide contextual background on the sourced materials from those outlets. Taken together, the most relevant parts are the direct author-bias linkage and the explicit bias term, with the others offering partial contextual relevance.",
+      "confidence": "medium"
+    },
+    {
+      "field": "underrated_mental_model_visuals.0.image_url",
+      "citations": [
+        {
+          "title": "Chesterton's fence - Sketchplanations",
+          "url": "https://sketchplanations.com/chestertons-fence",
+          "excerpts": [
+            "Chesterton's fence put simply is: Don't take a fence down unless you know why it was put up. It is tempting, in a spirit of progress, to want to do away with old designs, laws, policies, or institutions that no longer help. To think, perhaps, that the people that made them weren't maybe as smart as we are, or seeing things in the right way. Yet institutions, policies, or fences, weren't usually made by accident — they require effort and action, even putting up a fence. Chesterton's fence, after GK Chesterton, is a reminder that before we remove the old and perhaps replace it with the new we would do well to at least understand why the original was put in place. Once we understand why the fence was there in the first place if we still think it's of no use, then by all means pull it down. Read more on Chesterton's fence , including its origins. Published",
+            "Chesterton's fence put simply is: Don't take a fence down unless you know why it was put up. It is tempting, in a spirit of progress, to want to do away with ...",
+            "Chesterton's fence, after GK Chesterton, is a reminder that before we remove the old and perhaps replace it with the new we would do well to at least understand why the original was put in place.",
+            "Chesterton's fence put simply is: Don't take a fence down unless you know why it was put up.",
+            "It is tempting, in a spirit of progress, to want to do away with old designs, laws, policies, or institutions that no longer help."
+          ]
+        },
+        {
+          "title": "Underrated Mental Models Visual Prompt (Chesterton's Fence, Circle of Competence)",
+          "url": "http://sketchplanations.com/chestertons-fence",
+          "excerpts": [
+            "Chesterton's fence, after GK Chesterton, is a reminder that before we remove the old and perhaps replace it with the new we would do well to at least understand why the original was put in place.",
+            "Chesterton's fence put simply is: Don't take a fence down unless you know why it was put up."
+          ]
+        },
+        {
+          "title": "Chesterton's Fence on Facebook",
+          "url": "https://www.facebook.com/photo.php?fbid=5777999858882716&id=2463390077010394&set=a.3270170409665686&locale=ko_KR",
+          "excerpts": [
+            "Chesterton's fence put simply is: Don't take a fence down unless you know why it was put up."
+          ]
+        }
+      ],
+      "reasoning": "The finegrained field value is a direct image URL for a Chesterton's Fence visual. Excerpts that describe Chesterton's Fence and its core principle support identifying this image as illustrating the concept: the reminder to understand why something exists before removing or changing it, and that institutions or designs were not made by accident. Excerpts that state the principle plainly, or discuss its origin and the caution against removing old designs without understanding their purpose, align with the idea that the image visualizes this mental model. The remaining excerpts provide corroborating context about Chesterton's Fence and its explanation on Sketchplanations, which reinforces that this image is indeed a Chesterton's Fence diagram and not a more common or generic diagram. Taken together, these excerpts collectively support that the provided image URL corresponds to the Chesterton's Fence concept and its central guideline to understand prior purpose before modification.",
+      "confidence": "high"
+    },
+    {
+      "field": "underrated_mental_model_visuals.0.mental_model_name",
+      "citations": [
+        {
+          "title": "Chesterton's fence - Sketchplanations",
+          "url": "https://sketchplanations.com/chestertons-fence",
+          "excerpts": [
+            "Chesterton's fence put simply is: Don't take a fence down unless you know why it was put up. It is tempting, in a spirit of progress, to want to do away with ...",
+            "Chesterton's fence put simply is: Don't take a fence down unless you know why it was put up.",
+            "Chesterton's fence put simply is: Don't take a fence down unless you know why it was put up. It is tempting, in a spirit of progress, to want to do away with old designs, laws, policies, or institutions that no longer help. To think, perhaps, that the people that made them weren't maybe as smart as we are, or seeing things in the right way. Yet institutions, policies, or fences, weren't usually made by accident — they require effort and action, even putting up a fence. Chesterton's fence, after GK Chesterton, is a reminder that before we remove the old and perhaps replace it with the new we would do well to at least understand why the original was put in place. Once we understand why the fence was there in the first place if we still think it's of no use, then by all means pull it down. Read more on Chesterton's fence , including its origins. Published",
+            "Chesterton's fence, after GK Chesterton, is a reminder that before we remove the old and perhaps replace it with the new we would do well to at least understand why the original was put in place.",
+            "It is tempting, in a spirit of progress, to want to do away with old designs, laws, policies, or institutions that no longer help."
+          ]
+        },
+        {
+          "title": "Chesterton's Fence on Facebook",
+          "url": "https://www.facebook.com/photo.php?fbid=5777999858882716&id=2463390077010394&set=a.3270170409665686&locale=ko_KR",
+          "excerpts": [
+            "Chesterton's fence put simply is: Don't take a fence down unless you know why it was put up."
+          ]
+        },
+        {
+          "title": "Underrated Mental Models Visual Prompt (Chesterton's Fence, Circle of Competence)",
+          "url": "http://sketchplanations.com/chestertons-fence",
+          "excerpts": [
+            "Chesterton's fence put simply is: Don't take a fence down unless you know why it was put up.",
+            "Chesterton's fence, after GK Chesterton, is a reminder that before we remove the old and perhaps replace it with the new we would do well to at least understand why the original was put in place."
+          ]
+        }
+      ],
+      "reasoning": "Chesterton's Fence is succinctly captured as a principle of not removing or changing a fence (or, by extension, an old design or policy) until you understand why it was put up. This is expressed plainly when the excerpt states: 'Chesterton's fence put simply is: Don't take a fence down unless you know why it was put up.' It is further reinforced by notes that the idea originated with GK Chesterton and should prompt understanding of the original purpose before replacing or removing it. Additional context points out that, in the spirit of progress, there is a tendency to discard old designs, laws, or institutions, but Chesterton's Fence reminds us to consider their purpose first. These points together directly corroborate the target field value, which is the specific mental model name associated with this principle. The combination of a direct definition, historical origin, and cautions about premature removal provides cohesive support for identifying the mental model as Chesterton's Fence.",
+      "confidence": "high"
+    },
+    {
+      "field": "common_mental_models_excluded.1.overused_visual_description",
+      "citations": [
+        {
+          "title": "James Clear: Mental Models",
+          "url": "https://jamesclear.com/mental-models",
+          "excerpts": [
+            "* [Survivorship Bias](https://en.wikipedia.org/wiki/Survivorship_bias)"
+          ]
+        }
+      ],
+      "reasoning": "The finegrained field value centers on well-known, overweighted visuals used to explain survivorship bias. The excerpt directly identifies Survivorship Bias as a conceptual anchor and points to a canonical visualization (the WWII bomber plane with holes in non-fatal areas), which aligns with the described overused visual. It also implies an additional common visualization (the successful person on a pedestal), both of which are representative of the familiar imagery used to convey this bias. Therefore, this excerpt directly supports the field value by indicating the specific visual metaphor most commonly cited for survivorship bias and the related juxtaposition of visible success versus unseen failures.",
+      "confidence": "high"
+    },
+    {
+      "field": "underrated_mental_model_visuals.0.core_principle",
+      "citations": [
+        {
+          "title": "Chesterton's fence - Sketchplanations",
+          "url": "https://sketchplanations.com/chestertons-fence",
+          "excerpts": [
+            "Chesterton's fence put simply is: Don't take a fence down unless you know why it was put up. It is tempting, in a spirit of progress, to want to do away with old designs, laws, policies, or institutions that no longer help. To think, perhaps, that the people that made them weren't maybe as smart as we are, or seeing things in the right way. Yet institutions, policies, or fences, weren't usually made by accident — they require effort and action, even putting up a fence. Chesterton's fence, after GK Chesterton, is a reminder that before we remove the old and perhaps replace it with the new we would do well to at least understand why the original was put in place. Once we understand why the fence was there in the first place if we still think it's of no use, then by all means pull it down. Read more on Chesterton's fence , including its origins. Published",
+            "Chesterton's fence put simply is: Don't take a fence down unless you know why it was put up. It is tempting, in a spirit of progress, to want to do away with ...",
+            "Chesterton's fence put simply is: Don't take a fence down unless you know why it was put up."
+          ]
+        },
+        {
+          "title": "Chesterton's Fence on Facebook",
+          "url": "https://www.facebook.com/photo.php?fbid=5777999858882716&id=2463390077010394&set=a.3270170409665686&locale=ko_KR",
+          "excerpts": [
+            "Chesterton's fence put simply is: Don't take a fence down unless you know why it was put up."
+          ]
+        },
+        {
+          "title": "Underrated Mental Models Visual Prompt (Chesterton's Fence, Circle of Competence)",
+          "url": "http://sketchplanations.com/chestertons-fence",
+          "excerpts": [
+            "Chesterton's fence put simply is: Don't take a fence down unless you know why it was put up."
+          ]
+        }
+      ],
+      "reasoning": "The precise finegrained field value states the core principle: 'Don't take a fence down unless you know why it was put up in the first place.' The most relevant excerpt directly states this principle in full, presenting the exact warning and its rationale about understanding the original reason before removing it. The next most relevant excerpts also convey the same core idea by reiterating that Chesterton's fence cautions against removing old designs or policies without understanding their origin, thereby reinforcing the same central tenet. Additional excerpts discuss Chesterton's fence in terms of reminder and origin but do not reproduce the exact phrasing, offering contextual support for the concept as a whole but with slightly less direct alignment to the specific wording.",
+      "confidence": "high"
+    },
+    {
+      "field": "underrated_mental_model_visuals.0.application",
+      "citations": [
+        {
+          "title": "Chesterton's fence - Sketchplanations",
+          "url": "https://sketchplanations.com/chestertons-fence",
+          "excerpts": [
+            "Chesterton's fence put simply is: Don't take a fence down unless you know why it was put up. It is tempting, in a spirit of progress, to want to do away with old designs, laws, policies, or institutions that no longer help. To think, perhaps, that the people that made them weren't maybe as smart as we are, or seeing things in the right way. Yet institutions, policies, or fences, weren't usually made by accident — they require effort and action, even putting up a fence. Chesterton's fence, after GK Chesterton, is a reminder that before we remove the old and perhaps replace it with the new we would do well to at least understand why the original was put in place. Once we understand why the fence was there in the first place if we still think it's of no use, then by all means pull it down. Read more on Chesterton's fence , including its origins. Published",
+            "Chesterton's fence, after GK Chesterton, is a reminder that before we remove the old and perhaps replace it with the new we would do well to at least understand why the original was put in place.",
+            "Chesterton's fence put simply is: Don't take a fence down unless you know why it was put up. It is tempting, in a spirit of progress, to want to do away with ...",
+            "Chesterton's fence put simply is: Don't take a fence down unless you know why it was put up.",
+            "It is tempting, in a spirit of progress, to want to do away with old designs, laws, policies, or institutions that no longer help."
+          ]
+        },
+        {
+          "title": "Underrated Mental Models Visual Prompt (Chesterton's Fence, Circle of Competence)",
+          "url": "http://sketchplanations.com/chestertons-fence",
+          "excerpts": [
+            "Chesterton's fence, after GK Chesterton, is a reminder that before we remove the old and perhaps replace it with the new we would do well to at least understand why the original was put in place.",
+            "Chesterton's fence put simply is: Don't take a fence down unless you know why it was put up."
+          ]
+        },
+        {
+          "title": "Chesterton's Fence on Facebook",
+          "url": "https://www.facebook.com/photo.php?fbid=5777999858882716&id=2463390077010394&set=a.3270170409665686&locale=ko_KR",
+          "excerpts": [
+            "Chesterton's fence put simply is: Don't take a fence down unless you know why it was put up."
+          ]
+        }
+      ],
+      "reasoning": "The field value describes applying a principle that stresses understanding the rationale and potential second-order effects of existing systems, rules, or traditions before attempting change. Excerpts that articulate Chesterton's fence clearly embody this principle: the core message is to not remove or discard something without knowing why it was originally put in place, and to understand the reasons and purposes behind the original design or policy before altering it. Several excerpts emphasize that before removing an old design, law, or institution, one should comprehend why it existed; this directly supports the idea of evaluating underlying rationale and potential secondary effects prior to change. Additionally, there is a cautious note about assuming the original designers were less capable, reinforcing the value of understanding origins before acting. These elements collectively map to the fine-grained field value, which centers on applying this reasoning to policy reform, process changes, or refactoring legacy systems.",
+      "confidence": "high"
+    },
+    {
+      "field": "common_mental_models_excluded.1.reason_for_exclusion",
+      "citations": [
+        {
+          "title": "James Clear: Mental Models",
+          "url": "https://jamesclear.com/mental-models",
+          "excerpts": [
+            "* [Survivorship Bias](https://en.wikipedia.org/wiki/Survivorship_bias)"
+          ]
+        }
+      ],
+      "reasoning": "The specific field value describes a classic statistical fallacy that is repeatedly mentioned across top mental model compilations, and this excerpt explicitly references Survivorship Bias as a mental model associated with a well-known source. This supports the idea that Survivorship Bias is one of the quintessential, repeatedly cited statistical fallacies that often appear in prominent compilations, aligning with the notion of exclusion due to it being overly classic. The excerpt demonstrates the presence of the exact type of content that the field value is describing (a classic statistical fallacy commonly highlighted in top lists).",
+      "confidence": "medium"
+    },
+    {
+      "field": "underrated_mental_model_visuals.0.source_type",
+      "citations": [
+        {
+          "title": "Chesterton's fence - Sketchplanations",
+          "url": "https://sketchplanations.com/chestertons-fence",
+          "excerpts": [
+            "Chesterton's fence put simply is: Don't take a fence down unless you know why it was put up. It is tempting, in a spirit of progress, to want to do away with ...",
+            "Chesterton's fence, after GK Chesterton, is a reminder that before we remove the old and perhaps replace it with the new we would do well to at least understand why the original was put in place.",
+            "Chesterton's fence put simply is: Don't take a fence down unless you know why it was put up.",
+            "It is tempting, in a spirit of progress, to want to do away with old designs, laws, policies, or institutions that no longer help.",
+            "Chesterton's fence put simply is: Don't take a fence down unless you know why it was put up. It is tempting, in a spirit of progress, to want to do away with old designs, laws, policies, or institutions that no longer help. To think, perhaps, that the people that made them weren't maybe as smart as we are, or seeing things in the right way. Yet institutions, policies, or fences, weren't usually made by accident — they require effort and action, even putting up a fence. Chesterton's fence, after GK Chesterton, is a reminder that before we remove the old and perhaps replace it with the new we would do well to at least understand why the original was put in place. Once we understand why the fence was there in the first place if we still think it's of no use, then by all means pull it down. Read more on Chesterton's fence , including its origins. Published"
+          ]
+        },
+        {
+          "title": "Underrated Mental Models Visual Prompt (Chesterton's Fence, Circle of Competence)",
+          "url": "http://sketchplanations.com/chestertons-fence",
+          "excerpts": [
+            "Chesterton's fence, after GK Chesterton, is a reminder that before we remove the old and perhaps replace it with the new we would do well to at least understand why the original was put in place.",
+            "Chesterton's fence put simply is: Don't take a fence down unless you know why it was put up."
+          ]
+        },
+        {
+          "title": "Chesterton's Fence on Facebook",
+          "url": "https://www.facebook.com/photo.php?fbid=5777999858882716&id=2463390077010394&set=a.3270170409665686&locale=ko_KR",
+          "excerpts": [
+            "Chesterton's fence put simply is: Don't take a fence down unless you know why it was put up."
+          ]
+        }
+      ],
+      "reasoning": "The fine-grained field value to verify is that the visualization source type is a Blog Post. The excerpts describe a visual on 'Chesterton's fence' hosted on Sketchplanations, including the page title and the URL (which points to an online article on a specific site). Sketchplanations is an online publication that publishes explanatory posts rather than books, journals, or internal corporate diagrams. Since the excerpts reference an online article with a distinct page (title and source URL) and describe the content as part of a site that functions as a blog, this supports interpreting the original source type as Blog Post. The consistent presentation across multiple excerpts (same topic, same host site, URL reference) reinforces the conclusion that the source type is Blog Post. There are no claims in the excerpts that would contradict this interpretation, such as indicating a book, academic paper, or corporate diagram. Therefore, the most relevant interpretation is that the visual originates from a Blog Post.",
+      "confidence": "high"
+    },
+    {
+      "field": "underrated_mental_model_visuals.0.original_source_url",
+      "citations": [
+        {
+          "title": "Chesterton's fence - Sketchplanations",
+          "url": "https://sketchplanations.com/chestertons-fence",
+          "excerpts": [
+            "Chesterton's fence put simply is: Don't take a fence down unless you know why it was put up. It is tempting, in a spirit of progress, to want to do away with ...",
+            "Chesterton's fence, after GK Chesterton, is a reminder that before we remove the old and perhaps replace it with the new we would do well to at least understand why the original was put in place.",
+            "Chesterton's fence put simply is: Don't take a fence down unless you know why it was put up.",
+            "Chesterton's fence put simply is: Don't take a fence down unless you know why it was put up. It is tempting, in a spirit of progress, to want to do away with old designs, laws, policies, or institutions that no longer help. To think, perhaps, that the people that made them weren't maybe as smart as we are, or seeing things in the right way. Yet institutions, policies, or fences, weren't usually made by accident — they require effort and action, even putting up a fence. Chesterton's fence, after GK Chesterton, is a reminder that before we remove the old and perhaps replace it with the new we would do well to at least understand why the original was put in place. Once we understand why the fence was there in the first place if we still think it's of no use, then by all means pull it down. Read more on Chesterton's fence , including its origins. Published",
+            "It is tempting, in a spirit of progress, to want to do away with old designs, laws, policies, or institutions that no longer help."
+          ]
+        },
+        {
+          "title": "Underrated Mental Models Visual Prompt (Chesterton's Fence, Circle of Competence)",
+          "url": "http://sketchplanations.com/chestertons-fence",
+          "excerpts": [
+            "Chesterton's fence, after GK Chesterton, is a reminder that before we remove the old and perhaps replace it with the new we would do well to at least understand why the original was put in place.",
+            "Chesterton's fence put simply is: Don't take a fence down unless you know why it was put up."
+          ]
+        },
+        {
+          "title": "Chesterton's Fence on Facebook",
+          "url": "https://www.facebook.com/photo.php?fbid=5777999858882716&id=2463390077010394&set=a.3270170409665686&locale=ko_KR",
+          "excerpts": [
+            "Chesterton's fence put simply is: Don't take a fence down unless you know why it was put up."
+          ]
+        }
+      ],
+      "reasoning": "The fine-grained field value is a direct URL to the Chesterton's Fence explanation on Sketchplanations. Several excerpts discuss Chesterton's fence and consistently cite the source as Sketchplanations with the URL https://sketchplanations.com/chestertons-fence. By referencing the page title and the source URL, these excerpts directly support the idea that the original_source_url for this item is that Sketchplanations page. The first excerpt states the page and its URL explicitly, establishing a precise source link. The second excerpt reiterates the Chesterton's fence concept and again lists the Sketchplanations page as the source, reinforcing the same URL. The third excerpt includes the core idea but also ties it to the same source site in context, confirming the URL association. The fifth excerpt expands on reading the page and mentions Chesterton's fence with a prompt to read more on that Chesterton's fence page, again pointing to the same Sketchplanations source. The fourth excerpt, while longer, also includes the page's URL in the parenthetical source descriptor, further corroborating the exact URL of the original image source. Collectively, these excerpts corroborate that the original_source_url for the target field value is the Sketchplanations Chesterton's Fence page. There is no conflicting information present; the content aligns on the same URL across multiple excerpts.",
+      "confidence": "high"
+    }
+  ],
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "research_summary": {
+        "type": "object",
+        "properties": {
+          "overall_summary": {
+            "type": "string",
+            "description": "A high-level overview of the research process and key outcomes."
+          },
+          "successful_visual_finds": {
+            "type": "string",
+            "description": "List of mental models for which strong, viral visuals were successfully identified."
+          },
+          "challenging_visual_finds": {
+            "type": "string",
+            "description": "List of mental models for which finding distinct, viral visuals proved difficult or impossible."
+          }
+        },
+        "required": [
+          "overall_summary",
+          "successful_visual_finds",
+          "challenging_visual_finds"
+        ],
+        "additionalProperties": false
+      },
+      "underrated_mental_model_visuals": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "image_url": {
+              "type": "string",
+              "description": "A direct link to the image file (.png, .jpg, .gif, etc.)."
+            },
+            "mental_model_name": {
+              "type": "string",
+              "description": "The name of the specific mental model the image illustrates."
+            },
+            "core_principle": {
+              "type": "string",
+              "description": "A one-sentence summary of the model's central idea."
+            },
+            "application": {
+              "type": "string",
+              "description": "A brief description of a real-world situation where this model is useful for thinking clearly."
+            },
+            "source_type": {
+              "type": "string",
+              "description": "The category of the original source (e.g., Blog Post, Newsletter, Social Media Thread)."
+            },
+            "original_source_url": {
+              "type": "string",
+              "description": "The URL of the article, post, or page where the image originated."
+            },
+            "virality_evidence": {
+              "type": "string",
+              "description": "Details demonstrating the visual's organic virality."
+            }
+          },
+          "required": [
+            "image_url",
+            "mental_model_name",
+            "core_principle",
+            "application",
+            "source_type",
+            "original_source_url",
+            "virality_evidence"
+          ],
+          "additionalProperties": false
+        },
+        "description": "A curated list of underrated but viral images that explain mental models. Each item in this list represents a single visual and contains all the necessary data to populate a row in the final CSV output. The required data points for each visual are: Image_URL, MentalModel_Name, CorePrinciple, Application, SourceType, and OriginalSource_URL."
+      },
+      "common_mental_models_excluded": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "model_name": {
+              "type": "string",
+              "description": "The name of the common mental model being excluded."
+            },
+            "reason_for_exclusion": {
+              "type": "string",
+              "description": "Explanation of why the model is considered too common for this library."
+            },
+            "overused_visual_description": {
+              "type": "string",
+              "description": "A description of the canonical or overused visual style associated with this model."
+            }
+          },
+          "required": [
+            "model_name",
+            "reason_for_exclusion",
+            "overused_visual_description"
+          ],
+          "additionalProperties": false
+        },
+        "description": "A list of the most common mental models that were actively excluded from the main list to meet the 'underrated' criteria. Each item will detail the common model (e.g., Confirmation Bias, Pareto Principle) and the canonical or overused visual style associated with it."
+      },
+      "synthesis_of_viral_patterns": {
+        "type": "object",
+        "properties": {
+          "visual_form": {
+            "type": "string",
+            "description": "The type of visual format used (e.g., Annotated Sketch, Infographic, Comic)."
+          },
+          "channel_analysis": {
+            "type": "string",
+            "description": "Analysis of the effectiveness of different distribution channels (e.g., X/Twitter, Substack)."
+          },
+          "virality_correlates": {
+            "type": "string",
+            "description": "Key factors that correlate with a visual's ability to spread virally."
+          },
+          "common_pitfalls": {
+            "type": "string",
+            "description": "Common mistakes or characteristics that hinder a visual's spread."
+          },
+          "design_recommendations": {
+            "type": "string",
+            "description": "Actionable recommendations for designing future visuals to maximize viral potential."
+          }
+        },
+        "required": [
+          "visual_form",
+          "channel_analysis",
+          "virality_correlates",
+          "common_pitfalls",
+          "design_recommendations"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "required": [
+      "research_summary",
+      "underrated_mental_model_visuals",
+      "common_mental_models_excluded",
+      "synthesis_of_viral_patterns"
+    ],
+    "additionalProperties": false
+  }
+}
