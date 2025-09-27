@@ -441,12 +441,16 @@ create_worktree() {
     local worktree_path="$1"
     local branch="$2"
     
-    if git worktree add "$worktree_path" "$branch" 2>/dev/null; then
+    log_debug "Attempting to create worktree at: $worktree_path for branch: $branch"
+    
+    local git_error
+    if git_error=$(git worktree add "$worktree_path" "$branch" 2>&1); then
         add_worktree "$worktree_path"
         log_debug "Created worktree: $worktree_path"
         echo "$worktree_path"
     else
-        handle_git_error "Failed to create worktree at $worktree_path"
+        log_error "Git worktree add failed with error: $git_error"
+        handle_git_error "Failed to create worktree at $worktree_path: $git_error"
     fi
 }
 
@@ -1132,7 +1136,13 @@ execute_union_merge() {
     
     # Create a temporary worktree for atomic merge operations
     local worktree_dir
-    worktree_dir=$(create_temp_dir "union-merge-worktree")
+    worktree_dir=$(mktemp -d -t "union-merge-worktree.XXXXXX") || {
+        handle_git_error "Failed to create temporary directory for worktree"
+    }
+    # Remove the directory so git worktree can create it
+    rmdir "$worktree_dir" || {
+        handle_git_error "Failed to remove temporary directory: $worktree_dir"
+    }
     
     log_verbose "Creating worktree for atomic merge operations: $worktree_dir"
     create_worktree "$worktree_dir" "$main_branch"
