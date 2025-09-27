@@ -1134,24 +1134,9 @@ execute_union_merge() {
         }
     fi
     
-    # Create a temporary worktree for atomic merge operations
-    local worktree_dir
-    worktree_dir=$(mktemp -d -t "union-merge-worktree.XXXXXX") || {
-        handle_git_error "Failed to create temporary directory for worktree"
-    }
-    # Remove the directory so git worktree can create it
-    rmdir "$worktree_dir" || {
-        handle_git_error "Failed to remove temporary directory: $worktree_dir"
-    }
-    
-    log_verbose "Creating worktree for atomic merge operations: $worktree_dir"
-    create_worktree "$worktree_dir" "$main_branch"
-    
-    # Change to worktree directory for merge operations
-    local original_dir="$PWD"
-    cd "$worktree_dir" || {
-        handle_git_error "Failed to change to worktree directory: $worktree_dir"
-    }
+    # Perform merge operations directly in the main repository
+    # The checkpoint system provides the safety we need for atomic operations
+    log_verbose "Performing merge operations in main repository with checkpoint safety"
     
     # Track merge statistics
     local successful_merges=0
@@ -1176,10 +1161,7 @@ execute_union_merge() {
         fi
     done
     
-    # Return to original directory
-    cd "$original_dir" || {
-        handle_git_error "Failed to return to original directory: $original_dir"
-    }
+    # Merge operations completed in main repository
     
     # Generate final merge commit with all branch information
     if [[ $successful_merges -gt 0 ]]; then
