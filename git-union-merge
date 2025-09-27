@@ -968,6 +968,715 @@ estimate_merge_time() {
 }
 
 # ============================================================================
+# CHECKPOINT SYSTEM FUNCTIONS
+# ============================================================================
+
+# Global variables for checkpoint management
+CHECKPOINT_DIR=".git/union-merge-checkpoints"
+CURRENT_CHECKPOINT=""
+
+# Create a checkpoint to save current repository state
+create_checkpoint() {
+    log_verbose "Creating repository checkpoint..."
+    
+    # Create checkpoint directory if it doesn't exist
+    if [[ ! -d "$CHECKPOINT_DIR" ]]; then
+        mkdir -p "$CHECKPOINT_DIR" || {
+            handle_checkpoint_error "Failed to create checkpoint directory: $CHECKPOINT_DIR"
+        }
+    fi
+    
+    # Generate unique checkpoint ID with timestamp
+    local checkpoint_id="union-merge-$(date +%Y%m%d-%H%M%S)"
+    local checkpoint_path="$CHECKPOINT_DIR/$checkpoint_id"
+    
+    # Create checkpoint subdirectory
+    mkdir -p "$checkpoint_path" || {
+        handle_checkpoint_error "Failed to create checkpoint path: $checkpoint_path"
+    }
+    
+    log_verbose "Checkpoint ID: $checkpoint_id"
+    
+    # Save current HEAD SHA
+    local current_head
+    current_head=$(git rev-parse HEAD) || {
+        handle_checkpoint_error "Failed to get current HEAD SHA"
+    }
+    echo "$current_head" > "$checkpoint_path/head_sha" || {
+        handle_checkpoint_error "Failed to save HEAD SHA to checkpoint"
+    }
+    
+    # Save current branch name
+    local current_branch
+    current_branch=$(git branch --show-current) || {
+        handle_checkpoint_error "Failed to get current branch name"
+    }
+    echo "$current_branch" > "$checkpoint_path/current_branch" || {
+        handle_checkpoint_error "Failed to save current branch to checkpoint"
+    }
+    
+    # Save all branch references
+    git branch -a > "$checkpoint_path/branch_refs" || {
+        handle_checkpoint_error "Failed to save branch references to checkpoint"
+    }
+    
+    # Save stash state
+    git stash list > "$checkpoint_path/stash_state" || {
+        handle_checkpoint_error "Failed to save stash state to checkpoint"
+    }
+    
+    # Save repository status
+    git status --porcelain > "$checkpoint_path/repo_status" || {
+        handle_checkpoint_error "Failed to save repository status to checkpoint"
+    }
+    
+    # Save timestamp
+    date -u +%Y-%m-%dT%H:%M:%SZ > "$checkpoint_path/timestamp" || {
+        handle_checkpoint_error "Failed to save timestamp to checkpoint"
+    }
+    
+    # Save the list of branches that will be merged
+    printf '%s\n' "${DISCOVERED_BRANCHES[@]}" > "$checkpoint_path/merged_branches" || {
+        handle_checkpoint_error "Failed to save merged branches list to checkpoint"
+    }
+    
+    # Set global checkpoint variable
+    CURRENT_CHECKPOINT="$checkpoint_id"
+    
+    log_info "Checkpoint created: $checkpoint_id"
+    log_verbose "Checkpoint saved to: $checkpoint_path"
+    
+    echo "$checkpoint_id"
+}
+
+# Find the most recent checkpoint
+find_latest_checkpoint() {
+    if [[ ! -d "$CHECKPOINT_DIR" ]]; then
+        return 1
+    fi
+    
+    # Find the most recent checkpoint directory
+    local latest_checkpoint
+    latest_checkpoint=$(ls -1t "$CHECKPOINT_DIR" 2>/dev/null | head -n1)
+    
+    if [[ -n "$latest_checkpoint" && -d "$CHECKPOINT_DIR/$latest_checkpoint" ]]; then
+        echo "$latest_checkpoint"
+        return 0
+    fi
+    
+    return 1
+}
+
+# Validate checkpoint integrity
+validate_checkpoint() {
+    local checkpoint_id="$1"
+    local checkpoint_path="$CHECKPOINT_DIR/$checkpoint_id"
+    
+    if [[ ! -d "$checkpoint_path" ]]; then
+        log_error "Checkpoint directory not found: $checkpoint_path"
+        return 1
+    fi
+    
+    # Check required files exist
+    local required_files=("head_sha" "current_branch" "branch_refs" "timestamp")
+    for file in "${required_files[@]}"; do
+        if [[ ! -f "$checkpoint_path/$file" ]]; then
+            log_error "Checkpoint file missing: $checkpoint_path/$file"
+            return 1
+        fi
+    done
+    
+    # Validate HEAD SHA format
+    local head_sha
+    head_sha=$(cat "$checkpoint_path/head_sha")
+    if [[ ! "$head_sha" =~ ^[a-f0-9]{40}$ ]]; then
+        log_error "Invalid HEAD SHA in checkpoint: $head_sha"
+        return 1
+    fi
+    
+    # Verify the commit still exists
+    if ! git cat-file -e "$head_sha" 2>/dev/null; then
+        log_error "Checkpoint HEAD SHA no longer exists in repository: $head_sha"
+        return 1
+    fi
+    
+    log_verbose "Checkpoint validation passed: $checkpoint_id"
+    return 0
+}
+
+# ============================================================================
+# CORE MERGE EXECUTION FUNCTIONS
+# ============================================================================
+
+# Execute the union merge of all discovered branches
+execute_union_merge() {
+    log_info "Starting union merge execution..."
+    
+    local main_branch
+    main_branch=$(get_main_branch) || {
+        handle_git_error "Cannot determine main branch for merge"
+    }
+    
+    log_info "Merging ${#DISCOVERED_BRANCHES[@]} branches into $main_branch"
+    log_verbose "Branches to merge: ${DISCOVERED_BRANCHES[*]}"
+    
+    # Ensure we're on the main branch
+    local current_branch
+    current_branch=$(git branch --show-current)
+    if [[ "$current_branch" != "$main_branch" ]]; then
+        log_info "Switching to main branch: $main_branch"
+        git checkout "$main_branch" || {
+            handle_git_error "Failed to checkout main branch: $main_branch"
+        }
+    fi
+    
+    # Create a temporary worktree for atomic merge operations
+    local worktree_dir
+    worktree_dir=$(create_temp_dir "union-merge-worktree")
+    
+    log_verbose "Creating worktree for atomic merge operations: $worktree_dir"
+    create_worktree "$worktree_dir" "$main_branch"
+    
+    # Change to worktree directory for merge operations
+    local original_dir="$PWD"
+    cd "$worktree_dir" || {
+        handle_git_error "Failed to change to worktree directory: $worktree_dir"
+    }
+    
+    # Track merge statistics
+    local successful_merges=0
+    local failed_merges=0
+    local failed_branches=()
+    
+    # Merge each branch sequentially
+    for branch in "${DISCOVERED_BRANCHES[@]}"; do
+        log_info "Merging branch: $branch"
+        
+        if merge_single_branch "$branch" "$main_branch"; then
+            ((successful_merges++))
+            log_verbose "Successfully merged branch: $branch"
+        else
+            ((failed_merges++))
+            failed_branches+=("$branch")
+            log_warn "Failed to merge branch: $branch"
+            
+            # For now, continue with other branches
+            # In a production version, we might want to make this configurable
+            log_info "Continuing with remaining branches..."
+        fi
+    done
+    
+    # Return to original directory
+    cd "$original_dir" || {
+        handle_git_error "Failed to return to original directory: $original_dir"
+    }
+    
+    # Generate final merge commit with all branch information
+    if [[ $successful_merges -gt 0 ]]; then
+        log_info "Creating union merge commit..."
+        create_union_merge_commit "$successful_merges" "$failed_merges" "${failed_branches[@]}"
+        
+        # Create tag for this merge
+        create_merge_tag
+        
+        log_info "Union merge completed successfully!"
+        log_info "Merged branches: $successful_merges"
+        if [[ $failed_merges -gt 0 ]]; then
+            log_warn "Failed branches: $failed_merges (${failed_branches[*]})"
+        fi
+    else
+        handle_git_error "No branches were successfully merged"
+    fi
+    
+    # Generate merge report
+    generate_merge_report "$successful_merges" "$failed_merges" "${failed_branches[@]}"
+}
+
+# Merge a single branch into the current branch
+merge_single_branch() {
+    local branch="$1"
+    local main_branch="$2"
+    
+    log_verbose "Attempting to merge branch $branch into $main_branch"
+    
+    # Verify the branch exists
+    if ! git show-ref --verify --quiet "refs/heads/$branch"; then
+        log_error "Branch does not exist: $branch"
+        return 1
+    fi
+    
+    # Attempt the merge with no-ff to preserve branch history
+    if git merge --no-ff --no-edit "$branch" 2>/dev/null; then
+        log_verbose "Clean merge successful for branch: $branch"
+        return 0
+    else
+        log_verbose "Merge conflict detected for branch: $branch"
+        
+        # Check if there are conflicts to resolve
+        local conflicted_files
+        conflicted_files=$(git diff --name-only --diff-filter=U 2>/dev/null)
+        
+        if [[ -n "$conflicted_files" ]]; then
+            log_verbose "Attempting automatic conflict resolution for: $conflicted_files"
+            
+            # Try to auto-resolve conflicts
+            if auto_resolve_conflicts "$conflicted_files"; then
+                # Complete the merge after auto-resolution
+                git add . && git commit --no-edit || {
+                    log_error "Failed to complete merge after auto-resolution for branch: $branch"
+                    git merge --abort 2>/dev/null || true
+                    return 1
+                }
+                log_verbose "Auto-resolved conflicts and completed merge for branch: $branch"
+                return 0
+            else
+                log_warn "Could not auto-resolve conflicts for branch: $branch"
+                git merge --abort 2>/dev/null || true
+                return 1
+            fi
+        else
+            log_error "Merge failed for unknown reason for branch: $branch"
+            git merge --abort 2>/dev/null || true
+            return 1
+        fi
+    fi
+}
+
+# Attempt to automatically resolve merge conflicts
+auto_resolve_conflicts() {
+    local conflicted_files="$1"
+    local resolved_count=0
+    local total_count=0
+    
+    while IFS= read -r file; do
+        [[ -n "$file" ]] || continue
+        ((total_count++))
+        
+        log_verbose "Attempting to resolve conflict in: $file"
+        
+        # For now, implement basic conflict resolution strategies
+        if resolve_file_conflict "$file"; then
+            ((resolved_count++))
+            log_verbose "Resolved conflict in: $file"
+        else
+            log_verbose "Could not resolve conflict in: $file"
+        fi
+    done <<< "$conflicted_files"
+    
+    log_verbose "Auto-resolved $resolved_count out of $total_count conflicted files"
+    
+    # Return success if we resolved all conflicts
+    [[ $resolved_count -eq $total_count ]]
+}
+
+# Resolve conflict in a single file
+resolve_file_conflict() {
+    local file="$1"
+    
+    # Check if file has conflict markers
+    if ! grep -q "^<<<<<<< " "$file" 2>/dev/null; then
+        log_verbose "No conflict markers found in: $file"
+        return 0
+    fi
+    
+    # For basic implementation, try simple strategies
+    
+    # Strategy 1: If it's a simple addition conflict (both sides added different content)
+    # and the file extension suggests it's safe to merge both sides
+    case "$file" in
+        *.md|*.txt|*.rst)
+            # For documentation files, try to merge both sides
+            if merge_both_sides "$file"; then
+                return 0
+            fi
+            ;;
+        *.json|*.yml|*.yaml)
+            # For config files, be more conservative
+            log_verbose "Config file conflict requires manual resolution: $file"
+            return 1
+            ;;
+        *)
+            # For other files, try basic resolution
+            if attempt_basic_resolution "$file"; then
+                return 0
+            fi
+            ;;
+    esac
+    
+    return 1
+}
+
+# Attempt to merge both sides of a conflict (for documentation files)
+merge_both_sides() {
+    local file="$1"
+    local temp_file
+    temp_file=$(create_temp_file "conflict-resolution")
+    
+    # Simple strategy: remove conflict markers and keep both sides
+    if sed -e '/^<<<<<<< /d' -e '/^=======/d' -e '/^>>>>>>> /d' "$file" > "$temp_file"; then
+        if mv "$temp_file" "$file"; then
+            log_verbose "Merged both sides for: $file"
+            return 0
+        fi
+    fi
+    
+    return 1
+}
+
+# Attempt basic conflict resolution
+attempt_basic_resolution() {
+    local file="$1"
+    
+    # Count conflict sections
+    local conflict_count
+    conflict_count=$(grep -c "^<<<<<<< " "$file" 2>/dev/null || echo "0")
+    
+    # If there's only one conflict and it's small, try to resolve it
+    if [[ $conflict_count -eq 1 ]]; then
+        local conflict_size
+        conflict_size=$(sed -n '/^<<<<<<< /,/^>>>>>>> /p' "$file" | wc -l)
+        
+        # If conflict is small (less than 10 lines), try simple resolution
+        if [[ $conflict_size -lt 10 ]]; then
+            # For now, just take the "ours" version (remove theirs)
+            if sed -i.bak -e '/^<<<<<<< /,/^=======/d' -e '/^>>>>>>> /d' "$file"; then
+                log_verbose "Applied 'ours' strategy for small conflict in: $file"
+                return 0
+            fi
+        fi
+    fi
+    
+    return 1
+}
+
+# Create the final union merge commit with detailed information
+create_union_merge_commit() {
+    local successful_merges="$1"
+    local failed_merges="$2"
+    shift 2
+    local failed_branches=("$@")
+    
+    log_verbose "Creating union merge commit..."
+    
+    # Generate comprehensive commit message
+    local commit_message
+    commit_message=$(generate_union_commit_message "$successful_merges" "$failed_merges" "${failed_branches[@]}")
+    
+    # Create the commit (this should already be done by individual merges, but ensure it's committed)
+    if git diff --cached --quiet && git diff --quiet; then
+        log_verbose "No additional changes to commit"
+    else
+        git add . && git commit -m "$commit_message" || {
+            handle_git_error "Failed to create union merge commit"
+        }
+    fi
+    
+    log_info "Union merge commit created successfully"
+}
+
+# Generate detailed commit message for union merge
+generate_union_commit_message() {
+    local successful_merges="$1"
+    local failed_merges="$2"
+    shift 2
+    local failed_branches=("$@")
+    
+    local message="Union merge: Merged $successful_merges branches"
+    
+    if [[ $failed_merges -gt 0 ]]; then
+        message+=" ($failed_merges failed)"
+    fi
+    
+    message+="\n\nMerged branches:"
+    for branch in "${DISCOVERED_BRANCHES[@]}"; do
+        # Check if this branch failed
+        local branch_failed=false
+        for failed_branch in "${failed_branches[@]}"; do
+            if [[ "$branch" == "$failed_branch" ]]; then
+                branch_failed=true
+                break
+            fi
+        done
+        
+        if [[ "$branch_failed" == true ]]; then
+            message+="\n  ❌ $branch (merge failed)"
+        else
+            message+="\n  ✅ $branch"
+        fi
+    done
+    
+    message+="\n\nMerge summary:"
+    message+="\n- Total branches processed: ${#DISCOVERED_BRANCHES[@]}"
+    message+="\n- Successful merges: $successful_merges"
+    message+="\n- Failed merges: $failed_merges"
+    message+="\n- Timestamp: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+    
+    if [[ -n "$CURRENT_CHECKPOINT" ]]; then
+        message+="\n- Checkpoint: $CURRENT_CHECKPOINT"
+    fi
+    
+    echo -e "$message"
+}
+
+# Create a tag for the union merge
+create_merge_tag() {
+    local tag_name="union-merge-$(date +%Y%m%d-%H%M%S)"
+    local current_commit
+    current_commit=$(git rev-parse HEAD)
+    
+    log_verbose "Creating merge tag: $tag_name"
+    
+    if git tag -a "$tag_name" -m "Union merge completed at $(date)" "$current_commit"; then
+        log_info "Created merge tag: $tag_name"
+    else
+        log_warn "Failed to create merge tag: $tag_name"
+    fi
+}
+
+# Generate merge report
+generate_merge_report() {
+    local successful_merges="$1"
+    local failed_merges="$2"
+    shift 2
+    local failed_branches=("$@")
+    
+    if [[ "$OUTPUT_FORMAT" == "json" ]]; then
+        generate_json_merge_report "$successful_merges" "$failed_merges" "${failed_branches[@]}"
+    else
+        generate_text_merge_report "$successful_merges" "$failed_merges" "${failed_branches[@]}"
+    fi
+}
+
+# Generate JSON format merge report
+generate_json_merge_report() {
+    local successful_merges="$1"
+    local failed_merges="$2"
+    shift 2
+    local failed_branches=("$@")
+    
+    local failed_branches_json="["
+    local first=true
+    for branch in "${failed_branches[@]}"; do
+        if [[ "$first" == true ]]; then
+            first=false
+        else
+            failed_branches_json+=","
+        fi
+        failed_branches_json+="\"$branch\""
+    done
+    failed_branches_json+="]"
+    
+    cat << EOF
+{
+  "success": true,
+  "merge_result": {
+    "total_branches": ${#DISCOVERED_BRANCHES[@]},
+    "successful_merges": $successful_merges,
+    "failed_merges": $failed_merges,
+    "failed_branches": $failed_branches_json,
+    "checkpoint": "${CURRENT_CHECKPOINT:-}",
+    "timestamp": "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+  }
+}
+EOF
+}
+
+# Generate text format merge report
+generate_text_merge_report() {
+    local successful_merges="$1"
+    local failed_merges="$2"
+    shift 2
+    local failed_branches=("$@")
+    
+    echo ""
+    echo "=== Union Merge Complete ==="
+    echo "Total branches processed: ${#DISCOVERED_BRANCHES[@]}"
+    echo "Successful merges: $successful_merges"
+    echo "Failed merges: $failed_merges"
+    
+    if [[ $failed_merges -gt 0 ]]; then
+        echo ""
+        echo "Failed branches:"
+        for branch in "${failed_branches[@]}"; do
+            echo "  - $branch"
+        done
+    fi
+    
+    if [[ -n "$CURRENT_CHECKPOINT" ]]; then
+        echo ""
+        echo "Checkpoint created: $CURRENT_CHECKPOINT"
+        echo "Use 'git union-merge --rollback' to restore previous state if needed"
+    fi
+    
+    echo ""
+    echo "Merge completed at: $(date)"
+}
+
+# ============================================================================
+# ROLLBACK FUNCTIONALITY
+# ============================================================================
+
+# Execute rollback to restore repository to pre-merge state
+execute_rollback_operation() {
+    log_info "Starting rollback operation..."
+    
+    # Find the checkpoint to rollback to
+    local checkpoint_id="$1"
+    
+    if [[ -z "$checkpoint_id" ]]; then
+        # Find the latest checkpoint
+        checkpoint_id=$(find_latest_checkpoint) || {
+            log_error "No checkpoints found for rollback"
+            log_info "Available checkpoints:"
+            list_available_checkpoints
+            exit $EXIT_CHECKPOINT_ERROR
+        }
+        log_info "Using latest checkpoint: $checkpoint_id"
+    fi
+    
+    # Validate checkpoint
+    if ! validate_checkpoint "$checkpoint_id"; then
+        handle_checkpoint_error "Invalid checkpoint: $checkpoint_id"
+    fi
+    
+    local checkpoint_path="$CHECKPOINT_DIR/$checkpoint_id"
+    
+    # Read checkpoint data
+    local saved_head_sha
+    local saved_branch
+    saved_head_sha=$(cat "$checkpoint_path/head_sha")
+    saved_branch=$(cat "$checkpoint_path/current_branch")
+    
+    log_info "Rolling back to checkpoint: $checkpoint_id"
+    log_info "Target HEAD SHA: $saved_head_sha"
+    log_info "Target branch: $saved_branch"
+    
+    # Confirm rollback with user (unless in non-interactive mode)
+    if [[ -t 0 && -t 1 ]]; then  # Check if running interactively
+        echo ""
+        echo "⚠️  WARNING: This will reset your repository to the state before the union merge."
+        echo "   Current HEAD: $(git rev-parse HEAD)"
+        echo "   Rollback HEAD: $saved_head_sha"
+        echo ""
+        read -p "Are you sure you want to proceed with rollback? (y/N): " -r
+        if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+            log_info "Rollback cancelled by user"
+            exit $EXIT_SUCCESS
+        fi
+    fi
+    
+    # Perform rollback operations
+    log_info "Performing rollback operations..."
+    
+    # Stash any current changes to avoid losing work
+    local stash_created=false
+    if ! git diff --quiet || ! git diff --cached --quiet; then
+        log_info "Stashing current changes before rollback..."
+        if git stash push -m "Pre-rollback stash $(date)"; then
+            stash_created=true
+            log_info "Current changes stashed"
+        else
+            log_warn "Failed to stash current changes"
+        fi
+    fi
+    
+    # Switch to the saved branch
+    if [[ "$saved_branch" != "$(git branch --show-current)" ]]; then
+        log_info "Switching to branch: $saved_branch"
+        git checkout "$saved_branch" || {
+            handle_git_error "Failed to checkout branch: $saved_branch"
+        }
+    fi
+    
+    # Reset to the saved HEAD
+    log_info "Resetting to saved HEAD: $saved_head_sha"
+    git reset --hard "$saved_head_sha" || {
+        handle_git_error "Failed to reset to saved HEAD: $saved_head_sha"
+    }
+    
+    # Clean up any untracked files that might have been created during merge
+    log_verbose "Cleaning up untracked files..."
+    git clean -fd || {
+        log_warn "Failed to clean untracked files"
+    }
+    
+    # Verify rollback success
+    local current_head
+    current_head=$(git rev-parse HEAD)
+    if [[ "$current_head" == "$saved_head_sha" ]]; then
+        log_info "✅ Rollback completed successfully"
+        log_info "Repository restored to checkpoint: $checkpoint_id"
+        
+        if [[ "$stash_created" == true ]]; then
+            log_info "Your previous changes are available in the stash"
+            log_info "Use 'git stash pop' to restore them if needed"
+        fi
+        
+        # Generate rollback report
+        generate_rollback_report "$checkpoint_id" "$saved_head_sha" "$stash_created"
+    else
+        handle_checkpoint_error "Rollback verification failed. Current HEAD: $current_head, Expected: $saved_head_sha"
+    fi
+}
+
+# List available checkpoints
+list_available_checkpoints() {
+    if [[ ! -d "$CHECKPOINT_DIR" ]]; then
+        echo "No checkpoints directory found"
+        return 1
+    fi
+    
+    local checkpoints
+    checkpoints=$(ls -1t "$CHECKPOINT_DIR" 2>/dev/null)
+    
+    if [[ -z "$checkpoints" ]]; then
+        echo "No checkpoints available"
+        return 1
+    fi
+    
+    echo "Available checkpoints:"
+    while IFS= read -r checkpoint; do
+        if [[ -f "$CHECKPOINT_DIR/$checkpoint/timestamp" ]]; then
+            local timestamp
+            timestamp=$(cat "$CHECKPOINT_DIR/$checkpoint/timestamp")
+            echo "  - $checkpoint (created: $timestamp)"
+        else
+            echo "  - $checkpoint"
+        fi
+    done <<< "$checkpoints"
+}
+
+# Generate rollback report
+generate_rollback_report() {
+    local checkpoint_id="$1"
+    local restored_head="$2"
+    local stash_created="$3"
+    
+    if [[ "$OUTPUT_FORMAT" == "json" ]]; then
+        cat << EOF
+{
+  "success": true,
+  "rollback_result": {
+    "checkpoint_id": "$checkpoint_id",
+    "restored_head": "$restored_head",
+    "stash_created": $stash_created,
+    "timestamp": "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+  }
+}
+EOF
+    else
+        echo ""
+        echo "=== Rollback Complete ==="
+        echo "Checkpoint: $checkpoint_id"
+        echo "Restored HEAD: $restored_head"
+        echo "Stash created: $stash_created"
+        echo "Rollback completed at: $(date)"
+        echo ""
+        echo "Repository has been restored to its pre-merge state."
+    fi
+}
+
+# ============================================================================
 # COMMAND EXECUTION FUNCTIONS
 # ============================================================================
 
@@ -1009,8 +1718,38 @@ execute_merge() {
     
     if discover_branches; then
         log_info "Starting union merge of ${#DISCOVERED_BRANCHES[@]} branches..."
-        # TODO: Implement actual merge logic in next task
-        log_info "Merge execution - functionality to be implemented in next task"
+        
+        # Create checkpoint before starting merge
+        log_info "Creating checkpoint before merge..."
+        create_checkpoint || {
+            handle_checkpoint_error "Failed to create checkpoint before merge"
+        }
+        
+        # Perform conflict detection first
+        log_info "Analyzing conflicts before merge..."
+        if detect_conflicts; then
+            log_verbose "Conflict analysis completed"
+            
+            # Check if there are any manual conflicts that would block the merge
+            local manual_conflicts=0
+            for detail in "${CONFLICT_DETAILS[@]}"; do
+                IFS='|' read -r file branch conflict_type <<< "$detail"
+                if [[ "$conflict_type" == "CONTENT_CONFLICT" || "$conflict_type" == "DELETED_FILE" ]]; then
+                    ((manual_conflicts++))
+                fi
+            done
+            
+            if [[ $manual_conflicts -gt 0 ]]; then
+                log_warn "Found $manual_conflicts conflicts that may require manual resolution"
+                log_info "Proceeding with merge - conflicts will be handled automatically where possible"
+            fi
+        else
+            log_verbose "Conflict detection completed with no issues"
+        fi
+        
+        # Execute the actual union merge
+        execute_union_merge
+        
     else
         log_error "Branch discovery failed"
         exit $EXIT_GENERAL_ERROR
@@ -1023,8 +1762,8 @@ execute_rollback() {
     
     validate_repository
     
-    # TODO: Implement rollback functionality
-    log_info "Rollback mode - functionality to be implemented in next task"
+    # Execute the rollback operation
+    execute_rollback_operation
 }
 
 # Main function
