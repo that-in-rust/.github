@@ -25,4 +25,4 @@
   - Generate merge commit with all branch information
   - _Requirements: 1.4, 5.1, 6.1, 6.2_
 
-- [-] 5. Run union merge for current repo
+- [x] 5. Run union merge for current repo
