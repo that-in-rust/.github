@@ -1166,7 +1166,11 @@ execute_union_merge() {
     # Generate final merge commit with all branch information
     if [[ $successful_merges -gt 0 ]]; then
         log_info "Creating union merge commit..."
-        create_union_merge_commit "$successful_merges" "$failed_merges" "${failed_branches[@]}"
+        if [[ ${#failed_branches[@]} -gt 0 ]]; then
+            create_union_merge_commit "$successful_merges" "$failed_merges" "${failed_branches[@]}"
+        else
+            create_union_merge_commit "$successful_merges" "$failed_merges"
+        fi
         
         # Create tag for this merge
         create_merge_tag
@@ -1181,7 +1185,11 @@ execute_union_merge() {
     fi
     
     # Generate merge report
-    generate_merge_report "$successful_merges" "$failed_merges" "${failed_branches[@]}"
+    if [[ ${#failed_branches[@]} -gt 0 ]]; then
+        generate_merge_report "$successful_merges" "$failed_merges" "${failed_branches[@]}"
+    else
+        generate_merge_report "$successful_merges" "$failed_merges"
+    fi
 }
 
 # Merge a single branch into the current branch
@@ -1352,7 +1360,11 @@ create_union_merge_commit() {
     
     # Generate comprehensive commit message
     local commit_message
-    commit_message=$(generate_union_commit_message "$successful_merges" "$failed_merges" "${failed_branches[@]}")
+    if [[ ${#failed_branches[@]} -gt 0 ]]; then
+        commit_message=$(generate_union_commit_message "$successful_merges" "$failed_merges" "${failed_branches[@]}")
+    else
+        commit_message=$(generate_union_commit_message "$successful_merges" "$failed_merges")
+    fi
     
     # Create the commit (this should already be done by individual merges, but ensure it's committed)
     if git diff --cached --quiet && git diff --quiet; then
@@ -1383,12 +1395,14 @@ generate_union_commit_message() {
     for branch in "${DISCOVERED_BRANCHES[@]}"; do
         # Check if this branch failed
         local branch_failed=false
-        for failed_branch in "${failed_branches[@]}"; do
-            if [[ "$branch" == "$failed_branch" ]]; then
-                branch_failed=true
-                break
-            fi
-        done
+        if [[ ${#failed_branches[@]} -gt 0 ]]; then
+            for failed_branch in "${failed_branches[@]}"; do
+                if [[ "$branch" == "$failed_branch" ]]; then
+                    branch_failed=true
+                    break
+                fi
+            done
+        fi
         
         if [[ "$branch_failed" == true ]]; then
             message+="\n  ❌ $branch (merge failed)"
@@ -1433,9 +1447,17 @@ generate_merge_report() {
     local failed_branches=("$@")
     
     if [[ "$OUTPUT_FORMAT" == "json" ]]; then
-        generate_json_merge_report "$successful_merges" "$failed_merges" "${failed_branches[@]}"
+        if [[ ${#failed_branches[@]} -gt 0 ]]; then
+            generate_json_merge_report "$successful_merges" "$failed_merges" "${failed_branches[@]}"
+        else
+            generate_json_merge_report "$successful_merges" "$failed_merges"
+        fi
     else
-        generate_text_merge_report "$successful_merges" "$failed_merges" "${failed_branches[@]}"
+        if [[ ${#failed_branches[@]} -gt 0 ]]; then
+            generate_text_merge_report "$successful_merges" "$failed_merges" "${failed_branches[@]}"
+        else
+            generate_text_merge_report "$successful_merges" "$failed_merges"
+        fi
     fi
 }
 
@@ -1448,14 +1470,16 @@ generate_json_merge_report() {
     
     local failed_branches_json="["
     local first=true
-    for branch in "${failed_branches[@]}"; do
-        if [[ "$first" == true ]]; then
-            first=false
-        else
-            failed_branches_json+=","
-        fi
-        failed_branches_json+="\"$branch\""
-    done
+    if [[ ${#failed_branches[@]} -gt 0 ]]; then
+        for branch in "${failed_branches[@]}"; do
+            if [[ "$first" == true ]]; then
+                first=false
+            else
+                failed_branches_json+=","
+            fi
+            failed_branches_json+="\"$branch\""
+        done
+    fi
     failed_branches_json+="]"
     
     cat << EOF
@@ -1486,7 +1510,7 @@ generate_text_merge_report() {
     echo "Successful merges: $successful_merges"
     echo "Failed merges: $failed_merges"
     
-    if [[ $failed_merges -gt 0 ]]; then
+    if [[ $failed_merges -gt 0 && ${#failed_branches[@]} -gt 0 ]]; then
         echo ""
         echo "Failed branches:"
         for branch in "${failed_branches[@]}"; do
