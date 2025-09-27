@@ -18,9 +18,11 @@
   - Add structured output for conflicts that need manual resolution
   - _Requirements: 1.3, 2.1, 2.2_
 
-- [ ] 4. Implement core union merge execution
+- [x] 4. Implement core union merge execution
   - Create checkpoint system to save current repository state
   - Write merge execution logic to merge all branches into main
   - Add basic rollback functionality to restore previous state
   - Generate merge commit with all branch information
   - _Requirements: 1.4, 5.1, 6.1, 6.2_
+
+- [-] 5. Run union merge for current repo
