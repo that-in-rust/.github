@@ -1,0 +1,1043 @@
+#!/bin/bash
+
+# git-union-merge - Atomic union merge tool for multiple Git branches
+# Version: 1.0.0
+# Author: Git Union Merge Tool
+
+set -euo pipefail
+
+# Global variables
+readonly SCRIPT_NAME="git-union-merge"
+readonly VERSION="1.0.0"
+
+# Command flags
+DRY_RUN=false
+EXECUTE=false
+ROLLBACK=false
+VERBOSE=false
+CONFIG_FILE=""
+
+# Exit codes
+readonly EXIT_SUCCESS=0
+readonly EXIT_GENERAL_ERROR=1
+readonly EXIT_INVALID_ARGS=2
+readonly EXIT_GIT_ERROR=3
+readonly EXIT_CONFIG_ERROR=4
+readonly EXIT_CONFLICT_ERROR=5
+readonly EXIT_CHECKPOINT_ERROR=6
+readonly EXIT_VALIDATION_ERROR=7
+
+# Global state variables
+OUTPUT_FORMAT="text"  # text or json
+TEMP_FILES=()
+TEMP_DIRS=()
+WORKTREES=()
+CLEANUP_REGISTERED=false
+
+# Display help information
+show_help() {
+    cat << EOF
+$SCRIPT_NAME - Atomic union merge tool for multiple Git branches
+
+USAGE:
+    $SCRIPT_NAME [OPTIONS]
+
+OPTIONS:
+    -h, --help          Show this help message and exit
+    -d, --dry-run       Preview the merge operation without executing
+    -x, --execute       Execute the union merge operation
+    -r, --rollback      Rollback the last union merge operation
+    -c, --config FILE   Use specified configuration file (default: .git-union-merge.json)
+    -v, --verbose       Enable verbose output
+    --json              Output results in JSON format
+    --version           Show version information
+
+EXAMPLES:
+    $SCRIPT_NAME --dry-run              # Preview merge operation
+    $SCRIPT_NAME --execute              # Execute union merge
+    $SCRIPT_NAME --rollback             # Rollback last merge
+    $SCRIPT_NAME --config custom.json  # Use custom config file
+    $SCRIPT_NAME --verbose --dry-run    # Verbose preview
+
+DESCRIPTION:
+    This tool performs atomic union merges of multiple feature branches into the main branch.
+    It intelligently resolves conflicts, preserves commit history, and provides rollback capability.
+
+    The tool operates in three main modes:
+    - Preview mode (--dry-run): Analyze branches and conflicts without making changes
+    - Execute mode (--execute): Perform the actual union merge operation
+    - Rollback mode (--rollback): Restore repository to pre-merge state
+
+EOF
+}
+
+# Display version information
+show_version() {
+    echo "$SCRIPT_NAME version $VERSION"
+}
+
+# Parse command line arguments
+parse_arguments() {
+    if [[ $# -eq 0 ]]; then
+        show_help
+        exit $EXIT_SUCCESS
+    fi
+
+    while [[ $# -gt 0 ]]; do
+        case $1 in
+            -h|--help)
+                show_help
+                exit $EXIT_SUCCESS
+                ;;
+            -d|--dry-run)
+                DRY_RUN=true
+                shift
+                ;;
+            -x|--execute)
+                EXECUTE=true
+                shift
+                ;;
+            -r|--rollback)
+                ROLLBACK=true
+                shift
+                ;;
+            -c|--config)
+                if [[ -n "${2:-}" ]]; then
+                    CONFIG_FILE="$2"
+                    shift 2
+                else
+                    echo "Error: --config requires a file path" >&2
+                    exit $EXIT_INVALID_ARGS
+                fi
+                ;;
+            -v|--verbose)
+                VERBOSE=true
+                shift
+                ;;
+            --json)
+                OUTPUT_FORMAT="json"
+                shift
+                ;;
+            --version)
+                show_version
+                exit $EXIT_SUCCESS
+                ;;
+            -*)
+                echo "Error: Unknown option '$1'" >&2
+                echo "Use '$SCRIPT_NAME --help' for usage information." >&2
+                exit $EXIT_INVALID_ARGS
+                ;;
+            *)
+                echo "Error: Unexpected argument '$1'" >&2
+                echo "Use '$SCRIPT_NAME --help' for usage information." >&2
+                exit $EXIT_INVALID_ARGS
+                ;;
+        esac
+    done
+}
+
+# Validate command line arguments
+validate_arguments() {
+    local mode_count=0
+    
+    # Count how many modes are specified
+    [[ "$DRY_RUN" == true ]] && ((mode_count++))
+    [[ "$EXECUTE" == true ]] && ((mode_count++))
+    [[ "$ROLLBACK" == true ]] && ((mode_count++))
+    
+    # Ensure exactly one mode is specified
+    if [[ $mode_count -eq 0 ]]; then
+        echo "Error: Must specify one of --dry-run, --execute, or --rollback" >&2
+        echo "Use '$SCRIPT_NAME --help' for usage information." >&2
+        exit $EXIT_INVALID_ARGS
+    elif [[ $mode_count -gt 1 ]]; then
+        echo "Error: Cannot specify multiple modes simultaneously" >&2
+        echo "Use '$SCRIPT_NAME --help' for usage information." >&2
+        exit $EXIT_INVALID_ARGS
+    fi
+    
+    # Validate config file if specified
+    if [[ -n "$CONFIG_FILE" && ! -f "$CONFIG_FILE" ]]; then
+        echo "Error: Configuration file '$CONFIG_FILE' not found" >&2
+        exit $EXIT_INVALID_ARGS
+    fi
+}
+
+# ============================================================================
+# LOGGING FUNCTIONS
+# ============================================================================
+
+# Log levels: DEBUG=0, INFO=1, WARN=2, ERROR=3
+readonly LOG_DEBUG=0
+readonly LOG_INFO=1
+readonly LOG_WARN=2
+readonly LOG_ERROR=3
+
+# Current log level (INFO by default, DEBUG if verbose)
+LOG_LEVEL=$LOG_INFO
+
+# Set log level based on verbosity
+set_log_level() {
+    if [[ "$VERBOSE" == true ]]; then
+        LOG_LEVEL=$LOG_DEBUG
+    else
+        LOG_LEVEL=$LOG_INFO
+    fi
+}
+
+# Internal logging function with level checking
+_log() {
+    local level=$1
+    local level_name=$2
+    local color_code=$3
+    shift 3
+    
+    if [[ $level -ge $LOG_LEVEL ]]; then
+        local timestamp=$(date '+%Y-%m-%d %H:%M:%S')
+        if [[ -t 2 ]]; then  # If stderr is a terminal, use colors
+            echo -e "\033[${color_code}m[$level_name] $timestamp: $*\033[0m" >&2
+        else
+            echo "[$level_name] $timestamp: $*" >&2
+        fi
+    fi
+}
+
+# Public logging functions
+log_debug() {
+    _log $LOG_DEBUG "DEBUG" "36" "$@"  # Cyan
+}
+
+log_info() {
+    _log $LOG_INFO "INFO" "32" "$@"   # Green
+}
+
+log_warn() {
+    _log $LOG_WARN "WARN" "33" "$@"   # Yellow
+}
+
+log_error() {
+    _log $LOG_ERROR "ERROR" "31" "$@" # Red
+}
+
+# Verbose logging (alias for debug when verbose mode is enabled)
+log_verbose() {
+    if [[ "$VERBOSE" == true ]]; then
+        log_debug "$@"
+    fi
+}
+
+# ============================================================================
+# ERROR HANDLING AND REPORTING
+# ============================================================================
+
+# Structured error reporting with JSON support
+report_error() {
+    local error_type="$1"
+    local error_msg="$2"
+    local suggestions="${3:-}"
+    local exit_code="${4:-$EXIT_GENERAL_ERROR}"
+    
+    log_error "$error_type: $error_msg"
+    
+    if [[ "$OUTPUT_FORMAT" == "json" ]]; then
+        local json_output
+        json_output=$(cat << EOF
+{
+  "success": false,
+  "error": {
+    "type": "$error_type",
+    "message": "$error_msg",
+    "exit_code": $exit_code,
+    "timestamp": "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+  }
+EOF
+)
+        if [[ -n "$suggestions" ]]; then
+            json_output+=", \"suggestions\": \"$suggestions\""
+        fi
+        json_output+="}"
+        echo "$json_output"
+    else
+        [[ -n "$suggestions" ]] && echo "Suggestions: $suggestions" >&2
+    fi
+}
+
+# Specific error handlers
+handle_git_error() {
+    local error_msg="$1"
+    local suggestions="Check Git repository state and permissions. Ensure you're in a valid Git repository."
+    cleanup_on_exit
+    report_error "GIT_ERROR" "$error_msg" "$suggestions" $EXIT_GIT_ERROR
+    exit $EXIT_GIT_ERROR
+}
+
+handle_config_error() {
+    local error_msg="$1"
+    local suggestions="Verify configuration file syntax. Use 'jq .' to validate JSON format."
+    cleanup_on_exit
+    report_error "CONFIG_ERROR" "$error_msg" "$suggestions" $EXIT_CONFIG_ERROR
+    exit $EXIT_CONFIG_ERROR
+}
+
+handle_conflict_error() {
+    local file="$1"
+    local error_msg="$2"
+    local suggestions="Manually resolve conflicts in $file, or exclude problematic branches in configuration."
+    cleanup_on_exit
+    report_error "CONFLICT_ERROR" "$error_msg" "$suggestions" $EXIT_CONFLICT_ERROR
+    exit $EXIT_CONFLICT_ERROR
+}
+
+handle_checkpoint_error() {
+    local error_msg="$1"
+    local suggestions="Check disk space and permissions in .git directory. Manual recovery may be required."
+    cleanup_on_exit
+    report_error "CHECKPOINT_ERROR" "$error_msg" "$suggestions" $EXIT_CHECKPOINT_ERROR
+    exit $EXIT_CHECKPOINT_ERROR
+}
+
+handle_validation_error() {
+    local error_msg="$1"
+    local suggestions="Ensure repository is in clean state and all dependencies are available."
+    cleanup_on_exit
+    report_error "VALIDATION_ERROR" "$error_msg" "$suggestions" $EXIT_VALIDATION_ERROR
+    exit $EXIT_VALIDATION_ERROR
+}
+
+# ============================================================================
+# CLEANUP FUNCTIONS
+# ============================================================================
+
+# Register cleanup function to run on script exit
+register_cleanup() {
+    if [[ "$CLEANUP_REGISTERED" == false ]]; then
+        trap cleanup_on_exit EXIT INT TERM
+        CLEANUP_REGISTERED=true
+        log_debug "Cleanup handlers registered"
+    fi
+}
+
+# Add temporary file for cleanup tracking
+add_temp_file() {
+    local file="$1"
+    TEMP_FILES+=("$file")
+    log_debug "Registered temp file for cleanup: $file"
+}
+
+# Add temporary directory for cleanup tracking
+add_temp_dir() {
+    local dir="$1"
+    TEMP_DIRS+=("$dir")
+    log_debug "Registered temp directory for cleanup: $dir"
+}
+
+# Add git worktree for cleanup tracking
+add_worktree() {
+    local worktree_path="$1"
+    WORKTREES+=("$worktree_path")
+    log_debug "Registered worktree for cleanup: $worktree_path"
+}
+
+# Clean up temporary files
+cleanup_temp_files() {
+    log_debug "Cleaning up temporary files..."
+    
+    for file in "${TEMP_FILES[@]}"; do
+        if [[ -f "$file" ]]; then
+            rm -f "$file" && log_debug "Removed temp file: $file" || log_warn "Failed to remove temp file: $file"
+        fi
+    done
+    
+    for dir in "${TEMP_DIRS[@]}"; do
+        if [[ -d "$dir" ]]; then
+            rm -rf "$dir" && log_debug "Removed temp directory: $dir" || log_warn "Failed to remove temp directory: $dir"
+        fi
+    done
+    
+    # Clear arrays
+    TEMP_FILES=()
+    TEMP_DIRS=()
+}
+
+# Clean up git worktrees
+cleanup_worktrees() {
+    log_debug "Cleaning up git worktrees..."
+    
+    for worktree in "${WORKTREES[@]}"; do
+        if [[ -d "$worktree" ]]; then
+            # Remove worktree using git command
+            if git worktree remove "$worktree" 2>/dev/null; then
+                log_debug "Removed worktree: $worktree"
+            else
+                # Force removal if normal removal fails
+                log_warn "Force removing worktree: $worktree"
+                rm -rf "$worktree" 2>/dev/null || log_warn "Failed to remove worktree: $worktree"
+                # Clean up worktree reference from git
+                git worktree prune 2>/dev/null || true
+            fi
+        fi
+    done
+    
+    # Clear array
+    WORKTREES=()
+}
+
+# Comprehensive cleanup function
+cleanup_on_exit() {
+    local exit_code=$?
+    
+    # Prevent multiple cleanup calls
+    if [[ "${CLEANUP_IN_PROGRESS:-false}" == "true" ]]; then
+        return $exit_code
+    fi
+    CLEANUP_IN_PROGRESS=true
+    
+    local cleaned_something=false
+    
+    if [[ ${#TEMP_FILES[@]} -gt 0 || ${#TEMP_DIRS[@]} -gt 0 ]]; then
+        log_debug "Performing cleanup of temporary files and directories..."
+        cleanup_temp_files
+        cleaned_something=true
+    fi
+    
+    if [[ ${#WORKTREES[@]} -gt 0 ]]; then
+        log_debug "Performing cleanup of git worktrees..."
+        cleanup_worktrees
+        cleaned_something=true
+    fi
+    
+    # Only log cleanup completion if we actually cleaned something
+    if [[ "$cleaned_something" == "true" ]]; then
+        log_debug "Cleanup completed"
+    fi
+    
+    return $exit_code
+}
+
+# Create temporary file with automatic cleanup registration
+create_temp_file() {
+    local prefix="${1:-git-union-merge}"
+    local temp_file
+    temp_file=$(mktemp -t "${prefix}.XXXXXX") || {
+        handle_validation_error "Failed to create temporary file"
+    }
+    add_temp_file "$temp_file"
+    echo "$temp_file"
+}
+
+# Create temporary directory with automatic cleanup registration
+create_temp_dir() {
+    local prefix="${1:-git-union-merge}"
+    local temp_dir
+    temp_dir=$(mktemp -d -t "${prefix}.XXXXXX") || {
+        handle_validation_error "Failed to create temporary directory"
+    }
+    add_temp_dir "$temp_dir"
+    echo "$temp_dir"
+}
+
+# Create git worktree with automatic cleanup registration
+create_worktree() {
+    local worktree_path="$1"
+    local branch="$2"
+    
+    if git worktree add "$worktree_path" "$branch" 2>/dev/null; then
+        add_worktree "$worktree_path"
+        log_debug "Created worktree: $worktree_path"
+        echo "$worktree_path"
+    else
+        handle_git_error "Failed to create worktree at $worktree_path"
+    fi
+}
+
+# Command execution dispatcher
+execute_command() {
+    # Initialize logging and cleanup systems
+    set_log_level
+    register_cleanup
+    
+    log_info "Starting $SCRIPT_NAME v$VERSION with mode: $(get_current_mode)"
+    log_debug "Verbose logging enabled"
+    log_debug "Output format: $OUTPUT_FORMAT"
+    log_debug "Configuration file: ${CONFIG_FILE:-default}"
+    
+    if [[ "$DRY_RUN" == true ]]; then
+        execute_dry_run
+    elif [[ "$EXECUTE" == true ]]; then
+        execute_merge
+    elif [[ "$ROLLBACK" == true ]]; then
+        execute_rollback
+    else
+        handle_validation_error "Internal error: No valid mode selected"
+    fi
+}
+
+# Get current operation mode for logging
+get_current_mode() {
+    if [[ "$DRY_RUN" == true ]]; then
+        echo "dry-run"
+    elif [[ "$EXECUTE" == true ]]; then
+        echo "execute"
+    elif [[ "$ROLLBACK" == true ]]; then
+        echo "rollback"
+    else
+        echo "unknown"
+    fi
+}
+
+# ============================================================================
+# COMMAND IMPLEMENTATIONS (Placeholder functions for future implementation)
+# ============================================================================
+
+# ============================================================================
+# REPOSITORY VALIDATION FUNCTIONS
+# ============================================================================
+
+validate_repository() {
+    log_verbose "Validating Git repository..."
+    
+    # Check if we're in a Git repository
+    if ! git rev-parse --git-dir >/dev/null 2>&1; then
+        log_error "Not in a Git repository. Please run this command from within a Git repository."
+        exit $EXIT_GENERAL_ERROR
+    fi
+    
+    # Check if working directory is clean
+    if ! is_working_directory_clean; then
+        log_error "Working directory is not clean. Please commit or stash your changes before running union merge."
+        log_info "Uncommitted changes:"
+        git status --porcelain
+        exit $EXIT_GENERAL_ERROR
+    fi
+    
+    # Verify we can identify the main branch
+    if ! get_main_branch >/dev/null; then
+        log_error "Cannot identify main branch. Please ensure you have a 'main', 'master', or 'develop' branch."
+        exit $EXIT_GENERAL_ERROR
+    fi
+    
+    log_verbose "Repository validation passed"
+}
+
+is_working_directory_clean() {
+    # Returns 0 (true) if working directory is clean, 1 (false) otherwise
+    [[ -z "$(git status --porcelain)" ]]
+}
+
+get_main_branch() {
+    # Try to find the main branch in order of preference
+    local main_candidates=("main" "master" "develop")
+    
+    for branch in "${main_candidates[@]}"; do
+        if git show-ref --verify --quiet "refs/heads/$branch"; then
+            echo "$branch"
+            return 0
+        fi
+    done
+    
+    return 1
+}
+
+# ============================================================================
+# BRANCH DISCOVERY FUNCTIONS
+# ============================================================================
+
+# Global array to store discovered branches
+DISCOVERED_BRANCHES=()
+
+discover_branches() {
+    log_verbose "Discovering branches for union merge..."
+    
+    local main_branch
+    main_branch=$(get_main_branch)
+    
+    if [[ -z "$main_branch" ]]; then
+        log_error "Cannot determine main branch"
+        return 1
+    fi
+    
+    log_verbose "Main branch identified as: $main_branch"
+    
+    # Get all local branches excluding main branches
+    local branches=()
+    while IFS= read -r branch; do
+        # Skip if empty line
+        [[ -n "$branch" ]] || continue
+        
+        # Apply basic filtering
+        if should_include_branch "$branch" "$main_branch"; then
+            branches+=("$branch")
+            log_verbose "Including branch: $branch"
+        else
+            log_verbose "Excluding branch: $branch"
+        fi
+    done < <(git branch --format='%(refname:short)' | grep -v "^$main_branch$")
+    
+    if [[ ${#branches[@]} -eq 0 ]]; then
+        log_warn "No feature branches found to merge"
+        return 1
+    fi
+    
+    log_info "Found ${#branches[@]} branches to merge: ${branches[*]}"
+    
+    # Store branches in global array for other functions to use
+    DISCOVERED_BRANCHES=("${branches[@]}")
+    return 0
+}
+
+should_include_branch() {
+    local branch="$1"
+    local main_branch="$2"
+    
+    # Basic exclusion patterns
+    local exclude_patterns=(
+        "^$main_branch$"
+        "^master$"
+        "^main$" 
+        "^develop$"
+        "^HEAD$"
+        "^origin/"
+        "^release/"
+        "^hotfix/"
+    )
+    
+    # Check exclusion patterns first
+    for pattern in "${exclude_patterns[@]}"; do
+        if [[ "$branch" =~ $pattern ]]; then
+            return 1  # Exclude this branch
+        fi
+    done
+    
+    # Basic inclusion patterns (simple defaults)
+    local include_patterns=(
+        "^feature/"
+        "^bugfix/"
+        "^fix/"
+    )
+    
+    # Check inclusion patterns
+    for pattern in "${include_patterns[@]}"; do
+        if [[ "$branch" =~ $pattern ]]; then
+            return 0  # Include this branch
+        fi
+    done
+    
+    # For branches that don't match naming conventions, include them
+    # but only if they're not in the exclusion list
+    return 0
+}
+
+get_branch_info() {
+    local branch="$1"
+    local main_branch
+    main_branch=$(get_main_branch)
+    
+    local commit_sha
+    local commit_count
+    local last_commit_msg
+    
+    commit_sha=$(git rev-parse "$branch" 2>/dev/null) || return 1
+    commit_count=$(git rev-list --count "$branch" ^"$main_branch" 2>/dev/null) || commit_count="unknown"
+    last_commit_msg=$(git log -1 --format="%s" "$branch" 2>/dev/null) || last_commit_msg="unknown"
+    
+    echo "Branch: $branch"
+    echo "  SHA: $commit_sha"
+    echo "  Commits ahead of $main_branch: $commit_count"
+    echo "  Last commit: $last_commit_msg"
+}
+
+# ============================================================================
+# CONFLICT DETECTION FUNCTIONS
+# ============================================================================
+
+# Global arrays to store conflict information
+CONFLICT_FILES=()
+CONFLICT_DETAILS=()
+
+# Detect conflicts between branches using git merge-tree
+detect_conflicts() {
+    log_verbose "Detecting conflicts between branches..."
+    
+    local main_branch
+    main_branch=$(get_main_branch)
+    
+    # Clear previous conflict data
+    CONFLICT_FILES=()
+    CONFLICT_DETAILS=()
+    
+    local total_conflicts=0
+    local branch_pairs_checked=0
+    
+    # Check conflicts between each branch and main
+    for branch in "${DISCOVERED_BRANCHES[@]}"; do
+        log_verbose "Checking conflicts for branch: $branch"
+        
+        # Get merge base between branch and main
+        local merge_base
+        merge_base=$(git merge-base "$main_branch" "$branch" 2>/dev/null) || {
+            log_warn "Cannot find merge base for branch $branch, skipping conflict detection"
+            continue
+        }
+        
+        # Use git merge-tree to detect conflicts
+        local merge_tree_output
+        merge_tree_output=$(git merge-tree "$merge_base" "$main_branch" "$branch" 2>/dev/null) || {
+            log_verbose "No conflicts detected for branch $branch"
+            ((branch_pairs_checked++))
+            continue
+        }
+        
+        # If merge-tree produces output, there are conflicts
+        if [[ -n "$merge_tree_output" ]]; then
+            log_verbose "Conflicts detected for branch $branch"
+            
+            # Parse conflict files from merge-tree output
+            local conflict_files_for_branch=()
+            while IFS= read -r line; do
+                # Look for conflict markers or file paths in merge-tree output
+                if [[ "$line" =~ ^[[:space:]]*[+\-] ]] || [[ "$line" =~ ^\+\+\+|^--- ]]; then
+                    # Extract file path from diff header
+                    if [[ "$line" =~ ^\+\+\+[[:space:]]b/(.+)$ ]]; then
+                        local file_path="${BASH_REMATCH[1]}"
+                        if [[ ! " ${conflict_files_for_branch[*]} " =~ " ${file_path} " ]]; then
+                            conflict_files_for_branch+=("$file_path")
+                        fi
+                    fi
+                fi
+            done <<< "$merge_tree_output"
+            
+            # If we couldn't parse files from diff, try alternative method
+            if [[ ${#conflict_files_for_branch[@]} -eq 0 ]]; then
+                # Get list of modified files in the branch
+                while IFS= read -r file; do
+                    if [[ -n "$file" ]]; then
+                        conflict_files_for_branch+=("$file")
+                    fi
+                done < <(git diff --name-only "$main_branch".."$branch" 2>/dev/null)
+            fi
+            
+            # Store conflict information
+            for file in "${conflict_files_for_branch[@]}"; do
+                # Check if file is already in CONFLICT_FILES array
+                local file_already_exists=false
+                if [[ ${#CONFLICT_FILES[@]} -gt 0 ]]; then
+                    for existing_file in "${CONFLICT_FILES[@]}"; do
+                        if [[ "$existing_file" == "$file" ]]; then
+                            file_already_exists=true
+                            break
+                        fi
+                    done
+                fi
+                
+                if [[ "$file_already_exists" == false ]]; then
+                    CONFLICT_FILES+=("$file")
+                    
+                    # Analyze conflict type
+                    local conflict_type
+                    conflict_type=$(analyze_conflict_type "$file" "$main_branch" "$branch")
+                    
+                    # Store detailed conflict information
+                    local conflict_detail="$file|$branch|$conflict_type"
+                    CONFLICT_DETAILS+=("$conflict_detail")
+                    
+                    ((total_conflicts++))
+                fi
+            done
+        fi
+        
+        ((branch_pairs_checked++))
+    done
+    
+    log_verbose "Conflict detection complete: $total_conflicts conflicts found across $branch_pairs_checked branch pairs"
+    return 0
+}
+
+# Analyze the type of conflict for a specific file
+analyze_conflict_type() {
+    local file="$1"
+    local main_branch="$2"
+    local feature_branch="$3"
+    
+    # Check if file exists in both branches
+    local main_has_file=false
+    local branch_has_file=false
+    
+    if git cat-file -e "$main_branch:$file" 2>/dev/null; then
+        main_has_file=true
+    fi
+    
+    if git cat-file -e "$feature_branch:$file" 2>/dev/null; then
+        branch_has_file=true
+    fi
+    
+    # Determine conflict type based on file existence and content
+    if [[ "$main_has_file" == false && "$branch_has_file" == true ]]; then
+        echo "NEW_FILE"
+    elif [[ "$main_has_file" == true && "$branch_has_file" == false ]]; then
+        echo "DELETED_FILE"
+    elif [[ "$main_has_file" == true && "$branch_has_file" == true ]]; then
+        # Both branches have the file, check for content differences
+        if git diff --quiet "$main_branch:$file" "$feature_branch:$file" 2>/dev/null; then
+            echo "NO_CONFLICT"
+        else
+            # Check if it's just whitespace differences
+            if git diff --ignore-space-change --quiet "$main_branch:$file" "$feature_branch:$file" 2>/dev/null; then
+                echo "WHITESPACE_ONLY"
+            else
+                echo "CONTENT_CONFLICT"
+            fi
+        fi
+    else
+        echo "UNKNOWN"
+    fi
+}
+
+# Generate conflict summary for preview
+generate_conflict_summary() {
+    local total_files=${#CONFLICT_FILES[@]}
+    local auto_resolvable=0
+    local manual_required=0
+    
+    # Categorize conflicts
+    for detail in "${CONFLICT_DETAILS[@]}"; do
+        IFS='|' read -r file branch conflict_type <<< "$detail"
+        
+        case "$conflict_type" in
+            "NEW_FILE"|"WHITESPACE_ONLY")
+                ((auto_resolvable++))
+                ;;
+            "CONTENT_CONFLICT"|"DELETED_FILE")
+                ((manual_required++))
+                ;;
+        esac
+    done
+    
+    if [[ "$OUTPUT_FORMAT" == "json" ]]; then
+        generate_json_conflict_summary "$total_files" "$auto_resolvable" "$manual_required"
+    else
+        generate_text_conflict_summary "$total_files" "$auto_resolvable" "$manual_required"
+    fi
+}
+
+# Generate JSON format conflict summary
+generate_json_conflict_summary() {
+    local total_files="$1"
+    local auto_resolvable="$2"
+    local manual_required="$3"
+    
+    local conflicts_json="["
+    local first=true
+    
+    for detail in "${CONFLICT_DETAILS[@]}"; do
+        IFS='|' read -r file branch conflict_type <<< "$detail"
+        
+        if [[ "$first" == true ]]; then
+            first=false
+        else
+            conflicts_json+=","
+        fi
+        
+        conflicts_json+="{\"file\":\"$file\",\"branch\":\"$branch\",\"type\":\"$conflict_type\"}"
+    done
+    conflicts_json+="]"
+    
+    cat << EOF
+{
+  "success": true,
+  "preview": {
+    "branch_count": ${#DISCOVERED_BRANCHES[@]},
+    "branches": [$(printf '"%s",' "${DISCOVERED_BRANCHES[@]}" | sed 's/,$//')],
+    "conflicts": {
+      "total_files": $total_files,
+      "auto_resolvable": $auto_resolvable,
+      "manual_required": $manual_required,
+      "details": $conflicts_json
+    },
+    "estimated_time": "$(estimate_merge_time)",
+    "timestamp": "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+  }
+}
+EOF
+}
+
+# Generate text format conflict summary
+generate_text_conflict_summary() {
+    local total_files="$1"
+    local auto_resolvable="$2"
+    local manual_required="$3"
+    
+    echo "=== Union Merge Preview ==="
+    echo "Branches to merge: ${#DISCOVERED_BRANCHES[@]}"
+    echo "Branch list: ${DISCOVERED_BRANCHES[*]}"
+    echo ""
+    echo "=== Conflict Analysis ==="
+    echo "Total files with conflicts: $total_files"
+    echo "Auto-resolvable conflicts: $auto_resolvable"
+    echo "Manual resolution required: $manual_required"
+    echo ""
+    
+    if [[ $total_files -gt 0 ]]; then
+        echo "=== Conflict Details ==="
+        for detail in "${CONFLICT_DETAILS[@]}"; do
+            IFS='|' read -r file branch conflict_type <<< "$detail"
+            
+            local resolution_strategy
+            case "$conflict_type" in
+                "NEW_FILE")
+                    resolution_strategy="AUTO (new file will be added)"
+                    ;;
+                "WHITESPACE_ONLY")
+                    resolution_strategy="AUTO (whitespace normalization)"
+                    ;;
+                "CONTENT_CONFLICT")
+                    resolution_strategy="MANUAL (overlapping changes detected)"
+                    ;;
+                "DELETED_FILE")
+                    resolution_strategy="MANUAL (file deletion conflict)"
+                    ;;
+                *)
+                    resolution_strategy="UNKNOWN"
+                    ;;
+            esac
+            
+            echo "  $file (from $branch): $conflict_type - $resolution_strategy"
+        done
+        echo ""
+    fi
+    
+    echo "=== Estimated Merge Time ==="
+    echo "$(estimate_merge_time)"
+    echo ""
+    
+    if [[ $manual_required -gt 0 ]]; then
+        echo "⚠️  WARNING: $manual_required conflicts require manual resolution"
+        echo "   Consider resolving these conflicts before running --execute"
+    else
+        echo "✅ All conflicts can be auto-resolved"
+    fi
+    
+    echo ""
+    echo "=== Next Steps ==="
+    if [[ $total_files -eq 0 ]]; then
+        echo "✅ No conflicts detected. Run with --execute to perform the merge."
+    elif [[ $manual_required -eq 0 ]]; then
+        echo "✅ All conflicts are auto-resolvable. Run with --execute to perform the merge."
+    else
+        echo "⚠️  Manual conflicts detected. Review the conflicts above and consider:"
+        echo "   1. Resolving conflicts manually in individual branches first"
+        echo "   2. Excluding problematic branches using configuration"
+        echo "   3. Proceeding with --execute (manual conflicts will halt the merge)"
+    fi
+}
+
+# Estimate merge time based on branch and conflict complexity
+estimate_merge_time() {
+    local branch_count=${#DISCOVERED_BRANCHES[@]}
+    local conflict_count=${#CONFLICT_FILES[@]}
+    
+    # Base time: 2 seconds per branch
+    local base_time=$((branch_count * 2))
+    
+    # Additional time for conflicts: 3 seconds per conflict file
+    local conflict_time=$((conflict_count * 3))
+    
+    # Manual conflicts add more time: 10 seconds per manual conflict
+    local manual_conflicts=0
+    for detail in "${CONFLICT_DETAILS[@]}"; do
+        IFS='|' read -r file branch conflict_type <<< "$detail"
+        if [[ "$conflict_type" == "CONTENT_CONFLICT" || "$conflict_type" == "DELETED_FILE" ]]; then
+            ((manual_conflicts++))
+        fi
+    done
+    local manual_time=$((manual_conflicts * 10))
+    
+    local total_seconds=$((base_time + conflict_time + manual_time))
+    
+    # Format time nicely
+    if [[ $total_seconds -lt 60 ]]; then
+        echo "${total_seconds}s"
+    elif [[ $total_seconds -lt 3600 ]]; then
+        local minutes=$((total_seconds / 60))
+        local seconds=$((total_seconds % 60))
+        echo "${minutes}m ${seconds}s"
+    else
+        local hours=$((total_seconds / 3600))
+        local minutes=$(((total_seconds % 3600) / 60))
+        echo "${hours}h ${minutes}m"
+    fi
+}
+
+# ============================================================================
+# COMMAND EXECUTION FUNCTIONS
+# ============================================================================
+
+execute_dry_run() {
+    log_info "Executing dry-run mode..."
+    log_verbose "Configuration file: ${CONFIG_FILE:-default}"
+    
+    validate_repository
+    
+    if discover_branches; then
+        log_verbose "Branch discovery successful, proceeding with conflict detection..."
+        
+        # Perform conflict detection
+        if detect_conflicts; then
+            log_verbose "Conflict detection completed successfully"
+            
+            # Generate and display the preview
+            if [[ "$OUTPUT_FORMAT" == "json" ]]; then
+                generate_conflict_summary
+            else
+                # For text output, log through our logging system but also output the summary
+                generate_conflict_summary
+            fi
+        else
+            log_error "Conflict detection failed"
+            exit $EXIT_GENERAL_ERROR
+        fi
+    else
+        log_error "Branch discovery failed"
+        exit $EXIT_GENERAL_ERROR
+    fi
+}
+
+execute_merge() {
+    log_info "Executing union merge..."
+    log_verbose "Configuration file: ${CONFIG_FILE:-default}"
+    
+    validate_repository
+    
+    if discover_branches; then
+        log_info "Starting union merge of ${#DISCOVERED_BRANCHES[@]} branches..."
+        # TODO: Implement actual merge logic in next task
+        log_info "Merge execution - functionality to be implemented in next task"
+    else
+        log_error "Branch discovery failed"
+        exit $EXIT_GENERAL_ERROR
+    fi
+}
+
+execute_rollback() {
+    log_info "Executing rollback..."
+    log_verbose "Configuration file: ${CONFIG_FILE:-default}"
+    
+    validate_repository
+    
+    # TODO: Implement rollback functionality
+    log_info "Rollback mode - functionality to be implemented in next task"
+}
+
+# Main function
+main() {
+    parse_arguments "$@"
+    validate_arguments
+    execute_command
+    
+    # Explicit cleanup call for normal exit
+    cleanup_on_exit
+}
+
+# Script entry point
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+    main "$@"
+fi

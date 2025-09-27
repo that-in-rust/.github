@@ -1,0 +1,6 @@
+{
+  "branch_filters": {
+    "include": ["feature/*", "bugfix/*"],
+    "exclude": ["release/*", "hotfix/*"]
+  }
+}
